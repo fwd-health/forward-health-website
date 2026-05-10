@@ -1,0 +1,100 @@
+---
+const services = [
+  { label: "Physiotherapy", href: "/physiotherapy" },
+  { label: "Pelvic floor & women's health", href: "/pelvic-floor-physio" },
+  { label: "Paediatric physiotherapy", href: "/paediatric-physio" },
+  { label: "Vertigo & vestibular", href: "/vertigo-vestibular-physio" },
+  { label: "Running assessments", href: "/running-assessments" },
+  { label: "Remedial massage", href: "/remedial-massage" },
+  { label: "Clinical pilates", href: "/clinical-pilates" },
+  { label: "Home visit physio", href: "/home-visits" },
+];
+
+const partners = [
+  { label: "Currimundi Family Doctors", href: "https://currimundifamilydoctors.com.au/" },
+  { label: "Andrew Khoury Podiatry", href: "https://www.andrewkhourypodiatry.com/" },
+  { label: "The Perfect Balance Massage", href: "https://theperfectbalancemassage.com.au/" },
+  { label: "SOAQ", href: "https://www.soaq.au/" },
+  { label: "Just See Bee Kinesiology", href: "https://justseebee.com/" },
+];
+---
+
+<footer class="bg-sage-700 text-cream-100 mt-24">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 grid gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-4">
+      <div class="flex items-baseline gap-1.5">
+        <span class="font-display text-3xl font-bold text-cream-50">forward</span>
+        <span class="font-body text-sm uppercase tracking-[0.18em] text-tan-200">health</span>
+      </div>
+      <p class="mt-4 text-sm text-cream-100/80 leading-relaxed max-w-sm">
+        Locally-owned physiotherapy, remedial massage and clinical pilates serving the
+        Sunshine Coast and Moreton Bay regions.
+      </p>
+
+      <div class="mt-6 text-sm space-y-1">
+        <a href="tel:0420522558" class="block hover:text-tan-200">0420 522 558</a>
+        <a href="mailto:hello@fwdhealth.com.au" class="block hover:text-tan-200">hello@fwdhealth.com.au</a>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        <span class="inline-flex items-center rounded-full bg-sage-800/60 px-3 py-1 text-xs">
+          HCF preferred provider
+        </span>
+        <span class="inline-flex items-center rounded-full bg-sage-800/60 px-3 py-1 text-xs">
+          Medibank preferred (physio)
+        </span>
+        <span class="inline-flex items-center rounded-full bg-sage-800/60 px-3 py-1 text-xs">
+          HICAPS for all funds
+        </span>
+      </div>
+    </div>
+
+    <div class="lg:col-span-3">
+      <h4 class="text-cream-50 text-sm uppercase tracking-[0.18em] mb-4">Currimundi</h4>
+      <p class="text-sm text-cream-100/80 leading-relaxed">
+        Shop 3 / 768 Nicklin Way<br />
+        Currimundi QLD 4551<br />
+        <span class="text-cream-100/60">Sunshine Coast</span>
+      </p>
+      <h4 class="text-cream-50 text-sm uppercase tracking-[0.18em] mt-8 mb-4">Sandstone Point</h4>
+      <p class="text-sm text-cream-100/80 leading-relaxed">
+        Shop 3 / 208 Bestmann Road East<br />
+        Sandstone Point QLD 4511<br />
+        <span class="text-cream-100/60">Just over the bridge from Bribie Island</span>
+      </p>
+    </div>
+
+    <div class="lg:col-span-3">
+      <h4 class="text-cream-50 text-sm uppercase tracking-[0.18em] mb-4">Services</h4>
+      <ul class="space-y-2 text-sm">
+        {services.map((s) => (
+          <li><a href={s.href} class="text-cream-100/80 hover:text-tan-200 transition-colors">{s.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="lg:col-span-2">
+      <h4 class="text-cream-50 text-sm uppercase tracking-[0.18em] mb-4">Our partners</h4>
+      <ul class="space-y-2 text-sm">
+        {partners.map((p) => (
+          <li>
+            <a href={p.href} target="_blank" rel="noopener" class="text-cream-100/80 hover:text-tan-200 transition-colors">
+              {p.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-sage-600/40">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-cream-100/60">
+      <p>© {new Date().getFullYear()} Forward Health Group Pty Ltd. All rights reserved.</p>
+      <div class="flex gap-5">
+        <a href="/privacy" class="hover:text-tan-200">Privacy</a>
+        <a href="/policies" class="hover:text-tan-200">Policies</a>
+        <a href="/careers" class="hover:text-tan-200">Careers</a>
+      </div>
+    </div>
+  </div>
+</footer>
