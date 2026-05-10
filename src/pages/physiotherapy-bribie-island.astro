@@ -1,0 +1,269 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import BookingBlock from "../components/BookingBlock.astro";
+import PractitionerCard from "../components/PractitionerCard.astro";
+import {
+  physiotherapists,
+  massageTherapists,
+} from "../data/practitioners";
+import clinicImage from "../assets/locations/sandstone-point.jpg";
+
+const team = [
+  ...physiotherapists.filter((p) =>
+    p.locations.includes("Sandstone Point")
+  ),
+  ...massageTherapists.filter((p) =>
+    p.locations.includes("Sandstone Point")
+  ),
+];
+
+const neighbourhoods = [
+  "Bellara",
+  "Bongaree",
+  "Banksia Beach",
+  "Woorim",
+  "White Patch",
+  "Welsby",
+  "Sandstone Point",
+  "Ningi",
+];
+---
+
+<Layout
+  title="Physio Bribie Island | Forward Health — just over the bridge"
+  description="Looking for a physio near Bribie Island? Forward Health Sandstone Point is the closest mainland clinic — five minutes over the bridge. Physiotherapy, pelvic floor, remedial massage and reformer pilates serving Bellara, Bongaree, Banksia Beach and Woorim."
+>
+  <!-- Hero -->
+  <section class="bg-sage-50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20 grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-4">For Bribie Island residents</p>
+        <h1 class="text-charcoal">Physio for Bribie Island.</h1>
+        <p class="mt-2 font-display text-2xl lg:text-3xl text-sage-700 italic">
+          Five minutes over the bridge. Worth the drive.
+        </p>
+        <p class="mt-6 text-lg text-stone leading-relaxed max-w-xl">
+          Forward Health Sandstone Point is the closest mainland physiotherapy clinic to Bribie Island —
+          a quick trip over the bridge to a purpose-built clinic with physios, remedial massage,
+          paediatrics, pelvic floor and a full reformer pilates studio. Free parking right out front.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a
+            href="#book"
+            class="inline-flex items-center rounded-full bg-sage-600 px-7 py-3.5 text-base font-semibold text-white hover:bg-sage-700 transition-colors"
+          >
+            Book online
+          </a>
+          <a
+            href="tel:0420522558"
+            class="inline-flex items-center rounded-full bg-white border border-sage-200 px-7 py-3.5 text-base font-semibold text-charcoal hover:border-sage-400 transition-colors"
+          >
+            Call 0420 522 558
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5">
+        <Image
+          src={clinicImage}
+          alt="Forward Health Sandstone Point clinic exterior — five minutes over the bridge from Bribie Island"
+          width={900}
+          height={1125}
+          class="aspect-[4/5] rounded-3xl object-cover w-full"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Why drive over -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="max-w-3xl mb-12">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Why we're worth the drive</p>
+      <h2>Specialist physio you can't get on the island.</h2>
+      <p class="mt-5 text-stone leading-relaxed">
+        There's only one physio clinic on Bribie itself, and it's been the only option for decades.
+        Bribie residents tell us they wish they had more choice — particularly for the kinds of care
+        a small clinic can't easily offer: a vestibular-trained physio for vertigo, women's health
+        physiotherapy with pessary fittings, a full reformer studio, paediatric expertise that spans
+        babies through teens, and remedial massage with evening and weekend appointments.
+      </p>
+      <p class="mt-4 text-stone leading-relaxed">
+        Sandstone Point is five minutes from the bridge. For most of Bribie, we're closer than the
+        Caboolture options — and a much shorter drive than going north for specialist care.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="p-6 rounded-2xl border border-sage-100 bg-white">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-600">Vestibular care</p>
+        <h3 class="mt-2 text-charcoal">Specialist vertigo physio</h3>
+        <p class="mt-3 text-sm text-stone leading-relaxed">
+          BPPV, vestibular migraine and post-concussion dizziness — most BPPV resolves within 1–2 visits.
+        </p>
+        <a href="/vertigo-vestibular-physio" class="mt-4 inline-block text-sm font-semibold text-sage-600">
+          Learn more →
+        </a>
+      </div>
+      <div class="p-6 rounded-2xl border border-sage-100 bg-white">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-600">Women's health</p>
+        <h3 class="mt-2 text-charcoal">Pelvic floor & pessary fittings</h3>
+        <p class="mt-3 text-sm text-stone leading-relaxed">
+          Pregnancy, postnatal recovery, prolapse and pessary fittings with experienced women's health physios.
+        </p>
+        <a href="/pelvic-floor-physio" class="mt-4 inline-block text-sm font-semibold text-sage-600">
+          Learn more →
+        </a>
+      </div>
+      <div class="p-6 rounded-2xl border border-sage-100 bg-white">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-600">Reformer studio</p>
+        <h3 class="mt-2 text-charcoal">Clinical pilates</h3>
+        <p class="mt-3 text-sm text-stone leading-relaxed">
+          Small-group reformer pilates (max 6) led by physiotherapists, claimable through your health fund.
+        </p>
+        <a href="/clinical-pilates" class="mt-4 inline-block text-sm font-semibold text-sage-600">
+          Learn more →
+        </a>
+      </div>
+      <div class="p-6 rounded-2xl border border-sage-100 bg-white">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-600">Evening + weekend</p>
+        <h3 class="mt-2 text-charcoal">Remedial massage outside business hours</h3>
+        <p class="mt-3 text-sm text-stone leading-relaxed">
+          The only clinic in the area offering remedial massage on evenings and weekends.
+        </p>
+        <a href="/remedial-massage" class="mt-4 inline-block text-sm font-semibold text-sage-600">
+          Learn more →
+        </a>
+      </div>
+      <div class="p-6 rounded-2xl border border-sage-100 bg-white">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-600">Mobile rehab</p>
+        <h3 class="mt-2 text-charcoal">Home visits across Bribie</h3>
+        <p class="mt-3 text-sm text-stone leading-relaxed">
+          Can't make it to the clinic? Our home-visit physio service covers all of Bribie Island.
+          NDIS plan-managed, Home Care Packages and DVA welcome.
+        </p>
+        <a href="/home-visits" class="mt-4 inline-block text-sm font-semibold text-sage-600">
+          Learn more →
+        </a>
+      </div>
+      <div class="p-6 rounded-2xl border border-sage-100 bg-white">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-600">All ages</p>
+        <h3 class="mt-2 text-charcoal">Paediatric physio</h3>
+        <p class="mt-3 text-sm text-stone leading-relaxed">
+          From flat-head and developmental milestones to teen sports injuries — both ends of paeds.
+        </p>
+        <a href="/paediatric-physio" class="mt-4 inline-block text-sm font-semibold text-sage-600">
+          Learn more →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas served -->
+  <section class="bg-cream-50 py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-5">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Where our Bribie clients live</p>
+        <h2>Serving the whole island.</h2>
+        <p class="mt-5 text-stone leading-relaxed">
+          We see clients regularly from every corner of Bribie. Most are at our Sandstone Point clinic,
+          but our home-visit team covers the whole island for clients who can't easily travel.
+        </p>
+      </div>
+      <div class="lg:col-span-7">
+        <div class="grid sm:grid-cols-2 gap-3">
+          {neighbourhoods.map((n) => (
+            <div class="flex items-center gap-3 p-4 rounded-xl bg-white border border-sage-100">
+              <span class="w-1.5 h-1.5 rounded-full bg-sage-500"></span>
+              <span class="text-charcoal font-medium">{n}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The drive -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="rounded-3xl bg-tan-100/40 border border-tan-200 p-10 lg:p-14">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">The drive</p>
+      <h2 class="text-charcoal max-w-3xl">Closer than you think.</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-8 text-stone">
+        <div>
+          <p class="font-display text-3xl text-sage-700">~5 min</p>
+          <p class="mt-2 text-sm leading-relaxed">From Bongaree, over the bridge, into our car park.</p>
+        </div>
+        <div>
+          <p class="font-display text-3xl text-sage-700">~8 min</p>
+          <p class="mt-2 text-sm leading-relaxed">From Banksia Beach via Goodwin Drive and the bridge.</p>
+        </div>
+        <div>
+          <p class="font-display text-3xl text-sage-700">~12 min</p>
+          <p class="mt-2 text-sm leading-relaxed">From Woorim — the longest run on the island, still under 15.</p>
+        </div>
+      </div>
+      <p class="mt-8 text-sm text-stone max-w-2xl">
+        Free parking right at the door. Step-free access. We try to run on time so the drive over isn't wasted.
+      </p>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="bg-cream-50 py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Who you'll see at Sandstone Point</p>
+        <h2>Your local-ish team.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {team.map((p) => (
+          <PractitionerCard
+            name={p.name}
+            role={p.role}
+            locations={p.locations}
+            blurb={p.blurb}
+            href={p.href}
+            photo={p.photo}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <BookingBlock
+    heading="Book at Sandstone Point."
+    blurb="Online or by phone — we usually have new-patient appointments within 1–2 days."
+    variant="sage"
+  />
+
+  <!-- LocalBusiness schema with Bribie service area -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Physiotherapy",
+      name: "Forward Health Sandstone Point",
+      url: "https://www.fwdhealth.com.au/physiotherapy-bribie-island",
+      telephone: "+61420522558",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Shop 3 / 208 Bestmann Road East",
+        addressLocality: "Sandstone Point",
+        addressRegion: "QLD",
+        postalCode: "4511",
+        addressCountry: "AU",
+      },
+      areaServed: [
+        { "@type": "City", name: "Bribie Island" },
+        { "@type": "Place", name: "Bellara" },
+        { "@type": "Place", name: "Bongaree" },
+        { "@type": "Place", name: "Banksia Beach" },
+        { "@type": "Place", name: "Woorim" },
+        { "@type": "Place", name: "White Patch" },
+        { "@type": "Place", name: "Sandstone Point" },
+        { "@type": "Place", name: "Ningi" },
+      ],
+    })}
+  />
+</Layout>

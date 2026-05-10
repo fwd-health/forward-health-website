@@ -1,0 +1,102 @@
+---
+import ServiceLayout from "../layouts/ServiceLayout.astro";
+import { practitioners } from "../data/practitioners";
+import heroImage from "../assets/services/pelvic-floor.jpg";
+---
+
+<ServiceLayout
+  title="Pelvic floor physio"
+  description="Pelvic floor and women's health physiotherapy in Currimundi and Sandstone Point — pregnancy, postnatal recovery, prolapse, pessary fittings and pelvic pain. Trusted by mums across the Sunshine Coast and Moreton Bay."
+  eyebrow="Pelvic health · Pregnancy & postnatal"
+  intro="Whether you're navigating pregnancy, returning to running after a baby, or living with a long-standing pelvic concern — our pelvic floor team gives you the time, privacy and expertise this care actually needs."
+  heroImage={heroImage}
+  heroImageAlt="Forward Health pelvic floor physiotherapist with a patient"
+  conditions={[
+    {
+      heading: "Pregnancy",
+      items: [
+        "Pelvic girdle and lower back pain in pregnancy",
+        "Pelvic floor prep for birth",
+        "Round ligament pain and rib flare",
+        "Diastasis (abdominal separation) screening",
+        "Birth preparation appointments",
+      ],
+    },
+    {
+      heading: "Postnatal recovery",
+      items: [
+        "6-week postnatal check (vaginal birth or caesarean)",
+        "Return to running after baby",
+        "Ongoing diastasis rehab",
+        "Caesarean scar mobilisation",
+        "Mastitis and blocked ducts",
+      ],
+    },
+    {
+      heading: "Bladder, bowel and prolapse",
+      items: [
+        "Stress incontinence and urge incontinence",
+        "Pelvic organ prolapse — assessment and management",
+        "Pessary fittings and ongoing reviews",
+        "Constipation and pelvic floor coordination",
+        "Bedwetting in older children",
+      ],
+    },
+    {
+      heading: "Pelvic pain & menopause",
+      items: [
+        "Persistent pelvic pain and endometriosis-related pain",
+        "Painful intercourse",
+        "Pudendal nerve irritation",
+        "Coccyx (tailbone) pain",
+        "Menopause and genitourinary symptoms",
+      ],
+    },
+  ]}
+  whatToExpect={[
+    {
+      title: "A thorough chat",
+      body: "Your first appointment is an hour. We'll talk through your history, your concerns and what you want from treatment — no rushing, no assumptions.",
+    },
+    {
+      title: "Internal exam — only if you want one",
+      body: "An internal pelvic floor assessment is the gold standard, but it's always your choice. We'll explain why, what's involved, and only proceed when you're ready.",
+    },
+    {
+      title: "Practical, doable plan",
+      body: "You leave with a plan that fits your life — whether you're running on three hours of sleep with a newborn or training for a half marathon. We see you back to track progress.",
+    },
+  ]}
+  practitioners={[
+    practitioners.steph,
+    practitioners.brianna,
+  ]}
+  locations={["Currimundi", "Sandstone Point"]}
+  faqs={[
+    {
+      q: "What should I bring or wear?",
+      a: "Comfortable clothes are fine. If you have a recent ultrasound, scan or specialist letter, bring it. If you're booking a pessary fitting, we'll send you specific prep instructions when you book.",
+    },
+    {
+      q: "Can I bring my baby?",
+      a: "Absolutely — both clinics are baby-friendly. We have a pram space, a change mat, and we're happy to pause if you need to feed.",
+    },
+    {
+      q: "Do I need a referral for a pessary fitting?",
+      a: "No referral needed. We do recommend an initial appointment first so we can assess prolapse type and grade, and discuss whether a pessary is the right option for you.",
+    },
+    {
+      q: "Will I need an internal examination?",
+      a: "It's the most accurate way to assess pelvic floor function, but it's never required. We can run a meaningful first appointment with external assessment, real-time ultrasound, or symptom-based questionnaires if you prefer.",
+    },
+    {
+      q: "Can I claim through my health fund?",
+      a: "Yes — pelvic floor physio is claimable through every major health fund. We're HCF preferred provider and Medibank preferred for physio, with HICAPS available for everyone else.",
+    },
+  ]}
+  related={[
+    { title: "Paediatric physio", href: "/paediatric-physio", blurb: "Same trusted physios for your bub." },
+    { title: "Clinical pilates", href: "/clinical-pilates", blurb: "Postnatal-safe, rehab-led reformer classes." },
+    { title: "Mums & Bubs at Forward Health", href: "/mums-and-bubs", blurb: "Pregnancy, postnatal and paeds — under one roof." },
+  ]}
+/>

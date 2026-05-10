@@ -1,0 +1,90 @@
+---
+import ServiceLayout from "../layouts/ServiceLayout.astro";
+import { practitioners } from "../data/practitioners";
+import heroImage from "../assets/services/clinical-pilates.jpg";
+---
+
+<ServiceLayout
+  title="Clinical pilates"
+  description="Reformer-based clinical pilates in Sandstone Point and Currimundi — small groups (max 6), led by physiotherapists. Rehab-first, not fitness-first. Postnatal, post-injury and active-lifestyle clients all welcome."
+  eyebrow="Reformer · Small groups · Physio-led"
+  intro="Clinical pilates is rehab dressed up as exercise. Every class is run by a physiotherapist, capped at six people, and your program is personalised — so you're not following a generic flow that doesn't suit your body."
+  heroImage={heroImage}
+  heroImageAlt="Forward Health clinical pilates reformer class"
+  conditions={[
+    {
+      heading: "Common reasons people start",
+      items: [
+        "Persistent low back or hip pain",
+        "Postnatal recovery (cleared by your physio)",
+        "Post-injury or post-surgical rehab",
+        "Hypermobility and joint instability",
+        "Osteoporosis and bone-density support",
+        "Building consistent strength habits",
+      ],
+    },
+    {
+      heading: "What makes ours different",
+      items: [
+        "Capped at 6 — never lost in a crowd",
+        "Run by a physiotherapist, every class",
+        "Reformer-based with springs adjusted to you",
+        "Programs reviewed and progressed regularly",
+        "Health-fund claimable as physio",
+      ],
+    },
+    {
+      heading: "Who shouldn't start with us",
+      items: [
+        "Total beginners just looking for a workout — we're rehab-led",
+        "People wanting a high-impact cardio session",
+        "Acute, undiagnosed pain — see one of our physios first",
+      ],
+    },
+  ]}
+  whatToExpect={[
+    {
+      title: "1:1 assessment first",
+      body: "Before you join a class, we book you in for a one-on-one with the physio who'll run your classes. They build your individual program based on your body, goals and any injuries.",
+    },
+    {
+      title: "Small group, your program",
+      body: "In class you follow your program on the reformer — guided, cued and progressed by your physio. Up to five other people are in the room, but no one's doing exactly what you're doing.",
+    },
+    {
+      title: "Reviewed every 6–8 weeks",
+      body: "We update your program as you get stronger so the work stays meaningful. If something's painful or unclear, you tell us immediately — that's the whole point of having a physio in the room.",
+    },
+  ]}
+  practitioners={[practitioners.brianna, practitioners.holly]}
+  locations={["Currimundi", "Sandstone Point"]}
+  bookingHeading="Reformer studio at Sandstone Point."
+  bookingBlurb="Our larger reformer studio is at Sandstone Point. Currimundi runs smaller-group classes too — easiest way to start is a 1:1 assessment, then we'll match you to a class time."
+  faqs={[
+    {
+      q: "Can I claim pilates through my health fund?",
+      a: "Yes — clinical pilates is delivered by a physiotherapist and is claimable under physio cover. We're HCF preferred and Medibank preferred for physio. HICAPS available for everyone else.",
+    },
+    {
+      q: "How many classes per week?",
+      a: "Most clients do 1–2 classes a week. Two is where we see the strongest changes in strength and confidence over the first 8–12 weeks.",
+    },
+    {
+      q: "I'm 8 weeks postnatal — can I start?",
+      a: "Pop in for a postnatal physio assessment first. If you've had a straightforward recovery, you'll likely be cleared. If you need to build groundwork on diastasis or pelvic floor first, we'll do that and bring you to reformer when you're ready.",
+    },
+    {
+      q: "Will I lose weight?",
+      a: "Possibly — but we don't pitch this as a weight-loss class. The honest answer is that consistent strength work, sleep and nutrition are what change body composition. We focus on what we're best at: rehab and strength.",
+    },
+    {
+      q: "What if I miss a class?",
+      a: "We have a fair make-up policy — let us know in advance and we'll find another class that suits you within the same fortnight where possible.",
+    },
+  ]}
+  related={[
+    { title: "Pelvic floor physio", href: "/pelvic-floor-physio", blurb: "Postnatal clearance and pelvic floor screening." },
+    { title: "Physiotherapy", href: "/physiotherapy", blurb: "Hands-on rehab for what reformer alone won't fix." },
+    { title: "Running assessments", href: "/running-assessments", blurb: "Strength + running prescribed together." },
+  ]}
+/>

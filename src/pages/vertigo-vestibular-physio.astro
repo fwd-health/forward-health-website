@@ -1,0 +1,87 @@
+---
+import ServiceLayout from "../layouts/ServiceLayout.astro";
+import { practitioners } from "../data/practitioners";
+import heroImage from "../assets/services/vertigo.jpg";
+---
+
+<ServiceLayout
+  title="Vertigo & vestibular physio"
+  description="Vestibular physiotherapy in Currimundi and Sandstone Point — BPPV, vestibular migraine, post-concussion dizziness and balance disorders. Most BPPV resolves within 1–2 sessions."
+  eyebrow="Dizziness · Balance · BPPV"
+  intro="Dizziness, vertigo and unsteadiness are exhausting — and often dismissed. Our vestibular-trained physios take dizziness seriously and treat it with proven, hands-on techniques."
+  heroImage={heroImage}
+  heroImageAlt="Forward Health physiotherapist performing vestibular assessment"
+  conditions={[
+    {
+      heading: "Vertigo",
+      items: [
+        "BPPV (benign paroxysmal positional vertigo)",
+        "Vestibular migraine",
+        "Vestibular neuritis and labyrinthitis",
+        "Meniere's disease",
+        "Persistent postural-perceptual dizziness (PPPD)",
+      ],
+    },
+    {
+      heading: "Concussion and head injury",
+      items: [
+        "Post-concussion dizziness and visual symptoms",
+        "Cervicogenic dizziness (neck-related)",
+        "Whiplash-associated dizziness",
+        "Return-to-sport vestibular screening",
+      ],
+    },
+    {
+      heading: "Balance and falls",
+      items: [
+        "Balance retraining for older adults",
+        "Falls prevention and confidence work",
+        "Bilateral vestibular hypofunction",
+        "Pre- and post-surgical vestibular rehab",
+      ],
+    },
+  ]}
+  whatToExpect={[
+    {
+      title: "Detailed history",
+      body: "Vertigo has many causes, and the story you tell us — when it happens, what it feels like, how long it lasts — is often the strongest clue. We take 60 minutes for your first appointment.",
+    },
+    {
+      title: "Targeted assessment",
+      body: "Eye movement tests, positional tests (including Dix-Hallpike for BPPV), balance tests, and cervical screening. We tell you what we find as we go and explain what's likely happening.",
+    },
+    {
+      title: "Treatment same day",
+      body: "Most BPPV is treated with the Epley or a related canalith repositioning manoeuvre — often resolving within 1–2 sessions. Other vestibular conditions are managed with a tailored exercise program.",
+    },
+  ]}
+  practitioners={[practitioners.joe, practitioners.steph]}
+  locations={["Currimundi", "Sandstone Point"]}
+  faqs={[
+    {
+      q: "Can you treat vertigo on the first visit?",
+      a: "Usually yes. If we identify BPPV during assessment, we'll perform the Epley (or appropriate repositioning manoeuvre) the same day. Most BPPV resolves within 1–2 visits.",
+    },
+    {
+      q: "Do I need a referral from my GP or ENT?",
+      a: "No referral needed. That said, if you've already seen an ENT or had imaging, please bring those notes — they help us narrow down the cause faster.",
+    },
+    {
+      q: "I get motion sickness, not vertigo. Can you still help?",
+      a: "Yes — vestibular rehab can substantially reduce motion sensitivity, including for sea, car or virtual-reality motion sickness, with a graded exposure program.",
+    },
+    {
+      q: "How is vertigo physio different from regular physio?",
+      a: "It uses specific assessment techniques (positional testing, eye movement testing, vestibular ocular reflex testing) and treatment approaches (canalith repositioning, gaze stabilisation, habituation exercises) that aren't part of general musculoskeletal physiotherapy.",
+    },
+    {
+      q: "Will I be told to just 'wait it out'?",
+      a: "Not by us. Untreated BPPV can persist for months, and untreated vestibular migraine often gets worse. There are evidence-based treatments for almost every vestibular cause of dizziness.",
+    },
+  ]}
+  related={[
+    { title: "Physiotherapy", href: "/physiotherapy", blurb: "Neck and headache treatment alongside vestibular care." },
+    { title: "Paediatric physio", href: "/paediatric-physio", blurb: "Concussion and balance support for kids and teens." },
+    { title: "Home visit physio", href: "/home-visits", blurb: "Vestibular rehab in your home if travel makes symptoms worse." },
+  ]}
+/>

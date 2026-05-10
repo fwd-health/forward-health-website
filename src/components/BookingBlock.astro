@@ -1,0 +1,93 @@
+---
+interface Props {
+  heading?: string;
+  blurb?: string;
+  variant?: "light" | "sage";
+}
+const {
+  heading = "Ready to book?",
+  blurb = "Book online below, or give us a call — we usually have appointments within 1–2 days.",
+  variant = "light",
+} = Astro.props;
+
+const isSage = variant === "sage";
+---
+
+<section
+  id="book"
+  class:list={[
+    "py-16 lg:py-20",
+    isSage ? "bg-sage-700 text-cream-100" : "bg-cream-50",
+  ]}
+>
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="max-w-2xl mb-10">
+      <h2 class:list={[isSage ? "text-cream-50" : "text-charcoal"]}>{heading}</h2>
+      <p
+        class:list={[
+          "mt-5 leading-relaxed",
+          isSage ? "text-cream-100/90" : "text-stone",
+        ]}
+      >
+        {blurb}
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a
+          href="#cliniko"
+          class:list={[
+            "inline-flex items-center rounded-full px-7 py-3.5 text-base font-semibold transition-colors",
+            isSage
+              ? "bg-cream-50 text-sage-700 hover:bg-tan-100"
+              : "bg-sage-600 text-white hover:bg-sage-700",
+          ]}
+        >
+          Jump to bookings
+        </a>
+        <a
+          href="tel:0420522558"
+          class:list={[
+            "inline-flex items-center rounded-full border px-7 py-3.5 text-base font-semibold transition-colors",
+            isSage
+              ? "border-cream-50/40 text-cream-50 hover:bg-sage-600"
+              : "border-sage-200 bg-white text-charcoal hover:border-sage-400",
+          ]}
+        >
+          Call 0420 522 558
+        </a>
+      </div>
+    </div>
+
+    <div
+      id="cliniko"
+      class:list={[
+        "rounded-2xl overflow-hidden border",
+        isSage ? "bg-cream-50 border-sage-500/40" : "bg-white border-sage-100",
+      ]}
+    >
+      <iframe
+        id="cliniko-38144861"
+        src="https://forward-health-group.au2.cliniko.com/bookings?embedded=true"
+        frameborder="0"
+        scrolling="auto"
+        width="100%"
+        height="1000"
+        style="pointer-events: auto; display: block;"
+        title="Book online with Forward Health"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  window.addEventListener("message", function handleIFrameMessage(e) {
+    var clinikoBookings = document.getElementById("cliniko-38144861");
+    if (!clinikoBookings) return;
+    if (typeof e.data !== "string") return;
+    if (e.data.search("cliniko-bookings-resize") > -1) {
+      var height = Number(e.data.split(":")[1]);
+      clinikoBookings.style.height = height + "px";
+    }
+    e.data.search("cliniko-bookings-page") > -1 && clinikoBookings.scrollIntoView();
+  });
+</script>

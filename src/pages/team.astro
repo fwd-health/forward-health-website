@@ -1,0 +1,273 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import BookingBlock from "../components/BookingBlock.astro";
+import PractitionerCard from "../components/PractitionerCard.astro";
+import {
+  physiotherapists,
+  massageTherapists,
+  careTeam,
+} from "../data/practitioners";
+
+import galleryAnniversary from "../assets/team/gallery/team-clinic-anniversary.png";
+import galleryPottery from "../assets/team/gallery/team-pottery-class.png";
+import gallerySunset from "../assets/team/gallery/team-sunset-beach.jpg";
+import galleryDinnerBaby from "../assets/team/gallery/team-dinner-with-baby.jpg";
+import galleryPizza from "../assets/team/gallery/team-pizza-night.jpg";
+import galleryBowling from "../assets/team/gallery/team-bowling-night.jpg";
+
+const gallery = [
+  { img: galleryAnniversary, caption: "Two years of Forward Health." },
+  { img: galleryPottery, caption: "Team pottery class." },
+  { img: gallerySunset, caption: "Sunset team trip." },
+  { img: galleryDinnerBaby, caption: "Team dinner — bub included." },
+  { img: galleryPizza, caption: "Pizza night, off the clock." },
+  { img: galleryBowling, caption: "Team bowling night." },
+];
+
+const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const allPractitioners = [...physiotherapists, ...massageTherapists, ...careTeam];
+---
+
+<Layout
+  title="Our team — Forward Health"
+  description="Meet the Forward Health team — physiotherapists, remedial massage therapists and client care coordinators across our Currimundi and Sandstone Point clinics."
+>
+  <!-- Hero -->
+  <section class="bg-sage-50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-4">Our team</p>
+        <h1 class="text-charcoal">A clinical team that actually shares notes.</h1>
+        <p class="mt-6 text-lg text-stone leading-relaxed">
+          Every Forward Health practitioner has a clinical niche — and they all talk to each other.
+          That's how a pelvic floor patient ends up with the right reformer class, why a runner with
+          recurring vertigo gets the same diagnosis story from two different clinicians, and how a paeds
+          referral doesn't get lost between the GP and the gym.
+        </p>
+        <p class="mt-4 text-stone leading-relaxed">
+          Click any practitioner to see their full background.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Physiotherapists -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="max-w-2xl mb-10">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Physiotherapy</p>
+      <h2>Physiotherapists.</h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {physiotherapists.map((p) => (
+        <PractitionerCard
+          name={p.name}
+          role={p.role}
+          locations={p.locations}
+          blurb={p.blurb}
+          photo={p.photo}
+          lightboxId={`lb-${slugify(p.name)}`}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Remedial massage -->
+  <section class="bg-cream-50 py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl mb-10">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Remedial massage</p>
+        <h2>Massage therapists & myotherapists.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {massageTherapists.map((p) => (
+          <PractitionerCard
+            name={p.name}
+            role={p.role}
+            locations={p.locations}
+            blurb={p.blurb}
+            photo={p.photo}
+            lightboxId={`lb-${slugify(p.name)}`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Care team -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="max-w-2xl mb-10">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Front-of-house</p>
+      <h2>Client care coordinators.</h2>
+      <p class="mt-4 text-stone leading-relaxed">
+        The first faces you meet — and the people who keep both clinics running on time.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {careTeam.map((p) => (
+        <PractitionerCard
+          name={p.name}
+          role={p.role}
+          locations={p.locations}
+          blurb={p.blurb}
+          photo={p.photo}
+          lightboxId={`lb-${slugify(p.name)}`}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Behind the clinic gallery -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 pb-16 lg:pb-20">
+    <div class="max-w-2xl mb-10">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Behind the clinic</p>
+      <h2>The team you don't see in the treatment room.</h2>
+      <p class="mt-4 text-stone leading-relaxed">
+        Pottery classes, sunset team trips, the occasional bowling night — the bits that make a
+        clinic feel like a team rather than a roster.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4">
+      {gallery.map((g) => (
+        <figure class="relative overflow-hidden rounded-2xl">
+          <Image
+            src={g.img}
+            alt={g.caption}
+            width={800}
+            height={600}
+            class="aspect-[4/3] object-cover w-full hover:scale-[1.03] transition-transform duration-500"
+          />
+          <figcaption class="absolute inset-x-0 bottom-0 p-3 lg:p-4 text-xs lg:text-sm text-cream-50 bg-gradient-to-t from-charcoal/70 via-charcoal/30 to-transparent">
+            {g.caption}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <BookingBlock variant="sage" />
+
+  <!-- Lightbox modals -->
+  {allPractitioners.map((p) => (
+    <dialog
+      id={`lb-${slugify(p.name)}`}
+      class="fixed inset-0 m-auto p-0 max-w-2xl w-[calc(100%-2rem)] max-h-[90vh] bg-cream-50 rounded-3xl border border-sage-100 shadow-2xl backdrop:bg-charcoal/60 backdrop:backdrop-blur-sm"
+    >
+      <div class="overflow-y-auto max-h-[90vh]">
+        <div class="relative">
+          <button
+            type="button"
+            data-lightbox-close
+            aria-label="Close"
+            class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-sage-100 hover:bg-white text-charcoal flex items-center justify-center text-xl"
+          >
+            ×
+          </button>
+          <div class="aspect-[4/3] bg-sage-100">
+            <Image
+              src={p.photo}
+              alt={p.name}
+              width={800}
+              height={600}
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        <div class="p-8 lg:p-10">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600">{p.role}</p>
+          <h3 class="mt-2 font-display text-3xl text-charcoal">{p.name}</h3>
+          <p class="mt-1 text-sm text-stone">{p.locations}</p>
+
+          <p class="mt-6 text-stone leading-relaxed">{p.fullBio}</p>
+
+          {p.specialties.length > 0 && (
+            <div class="mt-7">
+              <p class="text-xs uppercase tracking-[0.18em] text-tan-600 mb-3">Clinical interests</p>
+              <div class="flex flex-wrap gap-2">
+                {p.specialties.map((s) => (
+                  <span class="inline-flex items-center rounded-full bg-sage-100 border border-sage-200 px-3 py-1 text-xs text-sage-700">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {p.qualifications.length > 0 && (
+            <div class="mt-6">
+              <p class="text-xs uppercase tracking-[0.18em] text-tan-600 mb-3">Qualifications</p>
+              <ul class="space-y-1 text-sm text-stone">
+                {p.qualifications.map((q) => (
+                  <li class="flex gap-2.5">
+                    <span class="mt-2 w-1 h-1 shrink-0 rounded-full bg-sage-500"></span>
+                    <span>{q}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div class="mt-8 pt-6 border-t border-sage-100 flex flex-wrap gap-3">
+            <a
+              href="/#book"
+              class="inline-flex items-center rounded-full bg-sage-600 px-6 py-3 text-sm font-semibold text-white hover:bg-sage-700 transition-colors"
+            >
+              Book with {p.name.split(" ")[0]}
+            </a>
+            <button
+              type="button"
+              data-lightbox-close
+              class="inline-flex items-center rounded-full bg-white border border-sage-200 px-6 py-3 text-sm font-semibold text-charcoal hover:border-sage-400 transition-colors"
+            >
+              Back to team
+            </button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+  ))}
+</Layout>
+
+<script>
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    const trigger = target.closest("[data-lightbox-trigger]");
+    if (trigger) {
+      const id = trigger.getAttribute("data-lightbox-trigger");
+      if (id) {
+        const dialog = document.getElementById(id) as HTMLDialogElement | null;
+        dialog?.showModal();
+      }
+      return;
+    }
+    const close = target.closest("[data-lightbox-close]");
+    if (close) {
+      const dialog = close.closest("dialog") as HTMLDialogElement | null;
+      dialog?.close();
+      return;
+    }
+    if (target.tagName === "DIALOG") {
+      (target as HTMLDialogElement).close();
+    }
+  });
+</script>
+
+<style>
+  dialog[open] {
+    animation: fadeIn 0.18s ease-out;
+  }
+  dialog[open]::backdrop {
+    animation: backdropFadeIn 0.18s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes backdropFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  body:has(dialog[open]) {
+    overflow: hidden;
+  }
+</style>

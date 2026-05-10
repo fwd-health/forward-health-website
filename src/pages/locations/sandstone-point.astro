@@ -1,0 +1,184 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import BookingBlock from "../../components/BookingBlock.astro";
+import PractitionerCard from "../../components/PractitionerCard.astro";
+import { practitioners } from "../../data/practitioners";
+import clinicImage from "../../assets/locations/sandstone-point.jpg";
+import studioImage from "../../assets/locations/sandstone-point-studio.jpg";
+
+const services = [
+  { title: "Physiotherapy", href: "/physiotherapy" },
+  { title: "Pelvic floor physio", href: "/pelvic-floor-physio" },
+  { title: "Remedial massage", href: "/remedial-massage", note: "Evening + weekend" },
+  { title: "Running assessments", href: "/running-assessments" },
+  { title: "Vertigo & vestibular physio", href: "/vertigo-vestibular-physio" },
+  { title: "Paediatric physio", href: "/paediatric-physio" },
+  { title: "Clinical pilates", href: "/clinical-pilates", note: "Reformer studio" },
+];
+
+const team = [
+  practitioners.joe,
+  practitioners.steph,
+  practitioners.brianna,
+  practitioners.jarrod,
+  practitioners.holly,
+  practitioners.catalina,
+  practitioners.chloe,
+];
+---
+
+<Layout
+  title="Sandstone Point clinic — Forward Health"
+  description="Forward Health Sandstone Point — physiotherapy, pelvic floor, remedial massage, paediatrics and reformer pilates just over the bridge from Bribie Island. Evening and weekend massage appointments available. Shop 3 / 208 Bestmann Road East."
+>
+  <!-- Hero -->
+  <section class="bg-sage-50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20 grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-4">Moreton Bay · Just over the bridge from Bribie Island</p>
+        <h1 class="text-charcoal">Forward Health Sandstone Point.</h1>
+        <p class="mt-5 text-lg text-stone leading-relaxed max-w-xl">
+          Our Moreton Bay clinic — purpose-built reformer pilates studio, dedicated treatment rooms, and the
+          only allied health space in the area offering remedial massage on evenings and weekends. Serving
+          Sandstone Point, Bribie Island, Ningi, Bellara, Bongaree and Banksia Beach.
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a
+            href="#book"
+            class="inline-flex items-center rounded-full bg-sage-600 px-7 py-3.5 text-base font-semibold text-white hover:bg-sage-700 transition-colors"
+          >
+            Book online
+          </a>
+          <a
+            href="tel:0420522558"
+            class="inline-flex items-center rounded-full bg-white border border-sage-200 px-7 py-3.5 text-base font-semibold text-charcoal hover:border-sage-400 transition-colors"
+          >
+            Call 0420 522 558
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="rounded-3xl bg-white border border-sage-100 p-6 lg:p-8">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600 mb-3">Find us</p>
+          <p class="text-charcoal font-display text-xl leading-snug">
+            Shop 3 / 208 Bestmann Road East<br />
+            Sandstone Point QLD 4511
+          </p>
+          <dl class="mt-6 space-y-3 text-sm">
+            <div class="flex justify-between gap-6">
+              <dt class="text-stone">Phone</dt>
+              <dd><a href="tel:0420522558" class="text-charcoal font-medium hover:text-sage-600">0420 522 558</a></dd>
+            </div>
+            <div class="flex justify-between gap-6">
+              <dt class="text-stone">Email</dt>
+              <dd><a href="mailto:hello@fwdhealth.com.au" class="text-charcoal font-medium hover:text-sage-600">hello@fwdhealth.com.au</a></dd>
+            </div>
+            <div class="flex justify-between gap-6">
+              <dt class="text-stone">Parking</dt>
+              <dd class="text-charcoal text-right">Free on-site</dd>
+            </div>
+            <div class="flex justify-between gap-6">
+              <dt class="text-stone">From Bribie Island</dt>
+              <dd class="text-charcoal text-right">~5 minutes via the bridge</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo strip -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-12 grid md:grid-cols-2 gap-5">
+    <Image
+      src={clinicImage}
+      alt="Forward Health Sandstone Point clinic exterior"
+      width={900}
+      height={600}
+      class="aspect-[3/2] rounded-3xl object-cover w-full"
+    />
+    <Image
+      src={studioImage}
+      alt="Forward Health Sandstone Point reformer pilates studio"
+      width={900}
+      height={600}
+      class="aspect-[3/2] rounded-3xl object-cover w-full"
+    />
+  </section>
+
+  <!-- Bribie callout -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 pb-12">
+    <div class="rounded-3xl bg-tan-100/40 border border-tan-200 p-8 lg:p-12 grid lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-7">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">For Bribie Island residents</p>
+        <h2 class="text-charcoal text-3xl">5 minutes over the bridge — and worth the drive.</h2>
+        <p class="mt-4 text-stone leading-relaxed">
+          We're not on Bribie itself, but we're the closest mainland clinic to the bridge — and we're set
+          up specifically for the Bribie/Sandstone community. If you live in Bellara, Bongaree, Banksia Beach
+          or Woorim, you'll find us a short drive away with parking right out front.
+        </p>
+      </div>
+      <div class="lg:col-span-5">
+        <a
+          href="/physiotherapy-bribie-island"
+          class="inline-flex items-center rounded-full bg-charcoal px-7 py-3.5 text-base font-semibold text-cream-50 hover:bg-sage-700 transition-colors"
+        >
+          Physio for Bribie Island residents →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services available -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="max-w-2xl mb-12">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">What we offer here</p>
+      <h2>Full physio, massage and pilates under one roof.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {services.map((s) => (
+        <a
+          href={s.href}
+          class="group p-5 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 hover:shadow-sm transition-all"
+        >
+          <div class="flex items-center justify-between">
+            <span class="text-charcoal group-hover:text-sage-600 transition-colors font-medium">{s.title}</span>
+            <span class="text-sage-600 group-hover:translate-x-0.5 transition-transform">→</span>
+          </div>
+          {s.note && <p class="mt-1 text-xs text-tan-600 uppercase tracking-[0.14em]">{s.note}</p>}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="bg-cream-50 py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Practitioners at Sandstone Point</p>
+        <h2>The team you'll meet.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {team.filter(Boolean).map((p) => (
+          <PractitionerCard
+            name={p.name}
+            role={p.role}
+            locations={p.locations}
+            blurb={p.blurb}
+            href={p.href}
+            photo={p.photo}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <BookingBlock
+    heading="Book at Sandstone Point."
+    blurb="Book online or call us. Evening and weekend remedial massage appointments are available — typically book ahead by a week for those slots."
+    variant="sage"
+  />
+</Layout>

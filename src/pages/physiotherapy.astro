@@ -1,0 +1,99 @@
+---
+import ServiceLayout from "../layouts/ServiceLayout.astro";
+import { practitioners } from "../data/practitioners";
+import heroImage from "../assets/services/physiotherapy.jpg";
+---
+
+<ServiceLayout
+  title="Physiotherapy"
+  description="Physiotherapy in Currimundi and Sandstone Point — back pain, neck and shoulder, sports injuries, knee and hip rehab, post-surgical recovery. HCF and Medibank preferred provider."
+  eyebrow="Sunshine Coast · Moreton Bay"
+  intro="From everyday aches to stubborn chronic problems, our physios use hands-on treatment, targeted exercise and education to help you move better and stay better."
+  heroImage={heroImage}
+  heroImageAlt="Forward Health physiotherapist providing hands-on treatment to a patient"
+  conditions={[
+    {
+      heading: "Spine",
+      items: [
+        "Low back pain and disc-related symptoms",
+        "Neck pain, stiffness and headaches",
+        "Postural and desk-related pain",
+        "Sciatica and nerve referral",
+        "Whiplash and post-MVA recovery",
+      ],
+    },
+    {
+      heading: "Shoulders, arms and hands",
+      items: [
+        "Rotator cuff strains and tendinopathy",
+        "Frozen shoulder",
+        "Tennis and golfer's elbow",
+        "Wrist, thumb and hand overuse",
+      ],
+    },
+    {
+      heading: "Hips, knees, ankles, feet",
+      items: [
+        "Knee and hip osteoarthritis",
+        "Post-surgical rehab (knee/hip replacement, ACL, meniscus)",
+        "Patellofemoral pain and runner's knee",
+        "Achilles tendinopathy and plantar fasciitis",
+        "Ankle sprains and chronic instability",
+      ],
+    },
+    {
+      heading: "Sport and active",
+      items: [
+        "Hamstring, calf and groin strains",
+        "Tendinopathies of all kinds",
+        "Return-to-sport rehabilitation",
+        "Pre- and post-season screening",
+      ],
+    },
+  ]}
+  whatToExpect={[
+    {
+      title: "We listen first",
+      body: "Your first appointment is 45 minutes. We start by understanding your story — what hurts, when it started, what you've already tried, and what you want to get back to.",
+    },
+    {
+      title: "Hands-on assessment",
+      body: "A thorough physical assessment — movement, strength, control and any specific tests for your condition. We explain what we find as we go.",
+    },
+    {
+      title: "Treatment + plan",
+      body: "Most appointments include treatment on day one. You leave with a clear plan: what's going on, what we'll do about it, and an estimated timeframe to recovery.",
+    },
+  ]}
+  practitioners={[
+    practitioners.joe,
+    practitioners.jarrod,
+    practitioners.holly,
+    practitioners.brianna,
+    practitioners.steph,
+  ]}
+  locations={["Currimundi", "Sandstone Point"]}
+  faqs={[
+    {
+      q: "Do I need a GP referral?",
+      a: "No — physiotherapy in Australia is a primary contact profession, so you can book directly. You'll only need a referral if you're using DVA, a Workcover claim, or a chronic disease management (EPC) plan.",
+    },
+    {
+      q: "Are you a preferred provider for my health fund?",
+      a: "Yes — we are HCF preferred provider for all services and Medibank preferred provider for physiotherapy. We process HICAPS claims on the spot for every other major health fund.",
+    },
+    {
+      q: "How many sessions will I need?",
+      a: "Most musculoskeletal problems improve substantially within 3–6 sessions. Complex or post-surgical cases may take longer. We'll give you a clear estimate after your initial assessment.",
+    },
+    {
+      q: "Do you bulk-bill?",
+      a: "We don't bulk-bill standard physiotherapy, but we accept EPC plans (5 sessions/year via your GP) with a small gap fee, and we accept DVA and Workcover claims directly.",
+    },
+  ]}
+  related={[
+    { title: "Clinical pilates", href: "/clinical-pilates", blurb: "Reformer-based small-group rehab classes." },
+    { title: "Remedial massage", href: "/remedial-massage", blurb: "Deep tissue and pregnancy massage." },
+    { title: "Running assessments", href: "/running-assessments", blurb: "Video gait analysis and return-to-run plans." },
+  ]}
+/>

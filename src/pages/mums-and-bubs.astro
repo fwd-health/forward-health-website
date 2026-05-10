@@ -1,0 +1,172 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import BookingBlock from "../components/BookingBlock.astro";
+import PractitionerCard from "../components/PractitionerCard.astro";
+import { practitioners } from "../data/practitioners";
+import heroImage from "../assets/hero-pregnancy-physio.jpg";
+
+const team = [practitioners.steph, practitioners.brianna];
+
+const journey = [
+  {
+    stage: "Pregnancy",
+    title: "Through the trimesters",
+    blurb:
+      "Pelvic girdle pain, round ligament niggles, birth-prep appointments, pregnancy massage, and pelvic floor screening before bub arrives.",
+  },
+  {
+    stage: "Birth recovery",
+    title: "The 6-week postnatal check",
+    blurb:
+      "A thorough post-birth assessment — vaginal birth or caesarean — including pelvic floor, diastasis screening, scar work and a return-to-movement plan.",
+  },
+  {
+    stage: "Postnatal",
+    title: "Returning to movement",
+    blurb:
+      "Returning to running, lifting, reformer pilates and the rest of life. Your body has changed; the program meets it where it is now, not where it was before bub.",
+  },
+  {
+    stage: "Newborn",
+    title: "Babies, 0–12 months",
+    blurb:
+      "Plagiocephaly (flat head), torticollis, hip dysplasia harness reviews, settling for reflux, and gross-motor milestone support.",
+  },
+  {
+    stage: "Toddler",
+    title: "Walking and beyond",
+    blurb:
+      "Walking delays, toe-walking, hypermobility, frequent falls and gross-motor coordination concerns.",
+  },
+  {
+    stage: "Young children",
+    title: "Through to school",
+    blurb:
+      "Coordination, posture, sports niggles, growing pains and bedwetting — the lesser-talked-about side of growing up.",
+  },
+];
+---
+
+<Layout
+  title="Mums & Bubs at Forward Health — pregnancy, postnatal & paediatric physio"
+  description="From bump to bub, under one roof. Pregnancy and postnatal pelvic floor physio plus paediatric physiotherapy by the same trusted team across Currimundi and Sandstone Point."
+>
+  <!-- Hero -->
+  <section class="bg-sage-700 text-cream-100">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-200 mb-4">Mums & Bubs</p>
+        <h1 class="text-cream-50">From bump to bub.</h1>
+        <p class="mt-4 font-display text-2xl lg:text-3xl text-tan-200 italic">Under one roof.</p>
+        <p class="mt-7 text-lg text-cream-100/90 leading-relaxed max-w-xl">
+          The only physio team across the Sunshine Coast and Moreton Bay following you and your baby
+          through pregnancy, birth recovery and the early years — pelvic floor physiotherapy and
+          paediatric physiotherapy by the same trusted clinicians.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="#book"
+            class="inline-flex items-center rounded-full bg-cream-50 px-7 py-3.5 text-base font-semibold text-sage-700 hover:bg-tan-100 transition-colors"
+          >
+            Book online
+          </a>
+          <a
+            href="tel:0420522558"
+            class="inline-flex items-center rounded-full border border-cream-50/40 px-7 py-3.5 text-base font-semibold text-cream-50 hover:bg-sage-600 transition-colors"
+          >
+            Call 0420 522 558
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5">
+        <Image
+          src={heroImage}
+          alt="Forward Health pelvic floor physiotherapist with a pregnant patient"
+          width={900}
+          height={1125}
+          class="aspect-[4/5] rounded-3xl object-cover w-full"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="max-w-2xl mb-12">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">The journey</p>
+      <h2>One team. The whole arc.</h2>
+      <p class="mt-4 text-stone leading-relaxed">
+        Most clinics force you to start over with a new clinician at every life stage — different
+        physio for pregnancy, different physio for baby, different physio for school-age niggles.
+        We've built our team so the same trusted clinicians can carry you through.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {journey.map((j) => (
+        <div class="p-7 rounded-2xl border border-sage-100 bg-white">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600">{j.stage}</p>
+          <h3 class="mt-2 text-charcoal text-xl">{j.title}</h3>
+          <p class="mt-3 text-sm text-stone leading-relaxed">{j.blurb}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="bg-cream-50 py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Same trusted clinicians</p>
+        <h2>Your Mums & Bubs team.</h2>
+        <p class="mt-4 text-stone leading-relaxed">
+          Both Steph and Brianna have post-grad interest and training in pelvic floor AND paediatric
+          physio — which is the rare combination that makes carrying continuity from pregnancy through
+          to your child's first day of school actually possible.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-5">
+        {team.map((p) => (
+          <PractitionerCard
+            name={p.name}
+            role={p.role}
+            locations={p.locations}
+            blurb={p.blurb}
+            href={p.href}
+            photo={p.photo}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related services -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="max-w-2xl mb-10">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Where to start</p>
+      <h2>The right first appointment.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <a href="/pelvic-floor-physio" class="group block p-7 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 transition-all">
+        <h3 class="text-charcoal group-hover:text-sage-600 transition-colors">Pelvic floor physio</h3>
+        <p class="mt-2 text-sm text-stone leading-relaxed">Pregnancy, postnatal recovery, prolapse and pessary fittings.</p>
+        <span class="mt-4 inline-block text-sm font-semibold text-sage-600">Learn more →</span>
+      </a>
+      <a href="/paediatric-physio" class="group block p-7 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 transition-all">
+        <h3 class="text-charcoal group-hover:text-sage-600 transition-colors">Paediatric physio</h3>
+        <p class="mt-2 text-sm text-stone leading-relaxed">Newborn through teen — both ends of paeds, same warmth either way.</p>
+        <span class="mt-4 inline-block text-sm font-semibold text-sage-600">Learn more →</span>
+      </a>
+      <a href="/clinical-pilates" class="group block p-7 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 transition-all">
+        <h3 class="text-charcoal group-hover:text-sage-600 transition-colors">Clinical pilates</h3>
+        <p class="mt-2 text-sm text-stone leading-relaxed">Postnatal-safe, rehab-led reformer classes once you're cleared.</p>
+        <span class="mt-4 inline-block text-sm font-semibold text-sage-600">Learn more →</span>
+      </a>
+    </div>
+  </section>
+
+  <BookingBlock variant="sage" />
+</Layout>

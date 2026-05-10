@@ -1,0 +1,84 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BookingBlock from "../components/BookingBlock.astro";
+
+const clinics = [
+  {
+    name: "Currimundi",
+    region: "Sunshine Coast",
+    address: "Shop 3 / 768 Nicklin Way",
+    suburb: "Currimundi QLD 4551",
+    parking: "Free on-site",
+    note: "Co-located with Currimundi Family Doctors and Andrew Khoury Podiatry.",
+  },
+  {
+    name: "Sandstone Point",
+    region: "Moreton Bay",
+    address: "Shop 3 / 208 Bestmann Road East",
+    suburb: "Sandstone Point QLD 4511",
+    parking: "Free on-site",
+    note: "Five minutes over the bridge from Bribie Island.",
+  },
+];
+---
+
+<Layout
+  title="Contact us — Forward Health"
+  description="Get in touch with Forward Health — Currimundi (Sunshine Coast) and Sandstone Point (Moreton Bay). Call 0420 522 558 or book online."
+>
+  <!-- Hero -->
+  <section class="bg-sage-50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-4">Get in touch</p>
+        <h1 class="text-charcoal">We'd love to hear from you.</h1>
+        <p class="mt-6 text-lg text-stone leading-relaxed">
+          One phone number, one email — covers both clinics. Booking is fastest online; phone is best
+          for questions about appointments, GP referrals, NDIS or DVA.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact details -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="p-8 lg:p-10 rounded-3xl bg-white border border-sage-100">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-600">Phone</p>
+        <a href="tel:0420522558" class="mt-2 block font-display text-3xl text-charcoal hover:text-sage-600 transition-colors">
+          0420 522 558
+        </a>
+        <p class="mt-3 text-sm text-stone">Reception covers both clinics. Mon–Fri 7am–7pm, Sat 8am–2pm.</p>
+      </div>
+      <div class="p-8 lg:p-10 rounded-3xl bg-white border border-sage-100">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-600">Email</p>
+        <a href="mailto:hello@fwdhealth.com.au" class="mt-2 block font-display text-3xl text-charcoal hover:text-sage-600 transition-colors break-all">
+          hello@fwdhealth.com.au
+        </a>
+        <p class="mt-3 text-sm text-stone">For non-urgent queries we usually respond same business day.</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {clinics.map((c) => (
+        <div class="p-8 lg:p-10 rounded-3xl bg-cream-50 border border-sage-100">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600">{c.region}</p>
+          <h2 class="mt-2 font-display text-3xl text-charcoal">{c.name}</h2>
+          <p class="mt-4 text-stone leading-relaxed">
+            {c.address}<br />
+            {c.suburb}
+          </p>
+          <dl class="mt-5 text-sm space-y-1.5">
+            <div class="flex justify-between gap-6">
+              <dt class="text-stone">Parking</dt>
+              <dd class="text-charcoal">{c.parking}</dd>
+            </div>
+          </dl>
+          <p class="mt-5 text-sm text-stone">{c.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <BookingBlock variant="sage" />
+</Layout>

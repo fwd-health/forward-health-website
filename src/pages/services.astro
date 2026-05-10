@@ -1,0 +1,122 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import BookingBlock from "../components/BookingBlock.astro";
+
+import physiotherapyImg from "../assets/services/physiotherapy.jpg";
+import pelvicFloorImg from "../assets/services/pelvic-floor.jpg";
+import remedialMassageImg from "../assets/services/remedial-massage.jpg";
+import runningImg from "../assets/services/running.jpg";
+import vertigoImg from "../assets/services/vertigo.jpg";
+import paediatricImg from "../assets/services/paediatric.jpg";
+import clinicalPilatesImg from "../assets/services/clinical-pilates.jpg";
+import homeVisitsImg from "../assets/services/home-visits.jpg";
+
+const services = [
+  {
+    title: "Physiotherapy",
+    blurb:
+      "General musculoskeletal, sports and post-surgical rehab — back, neck, shoulders, knees, ankles. Hands-on treatment plus a clear plan.",
+    href: "/physiotherapy",
+    image: physiotherapyImg,
+  },
+  {
+    title: "Pelvic floor physio",
+    blurb:
+      "Pregnancy, postnatal recovery, prolapse, pessary fittings and pelvic pain. Trusted by mums across the Sunshine Coast and Moreton Bay.",
+    href: "/pelvic-floor-physio",
+    image: pelvicFloorImg,
+  },
+  {
+    title: "Remedial massage",
+    blurb:
+      "Deep tissue, lymphatic drainage, pregnancy and sports massage. Evening and weekend appointments at Sandstone Point.",
+    href: "/remedial-massage",
+    image: remedialMassageImg,
+  },
+  {
+    title: "Running assessments",
+    blurb:
+      "Video gait analysis, return-to-run programs and performance tuning. Led by Joe — physiotherapist and Run Club coach.",
+    href: "/running-assessments",
+    image: runningImg,
+  },
+  {
+    title: "Vertigo & vestibular physio",
+    blurb:
+      "BPPV, vestibular migraine and post-concussion dizziness. Most BPPV resolves within 1–2 visits.",
+    href: "/vertigo-vestibular-physio",
+    image: vertigoImg,
+  },
+  {
+    title: "Paediatric physiotherapy",
+    blurb:
+      "Newborn through teen — flat-head, milestones, sports injuries and NDIS plan-managed paeds.",
+    href: "/paediatric-physio",
+    image: paediatricImg,
+  },
+  {
+    title: "Clinical pilates",
+    blurb:
+      "Reformer-based, max 6 per class. Run by physiotherapists. Postnatal, post-injury and active-lifestyle clients all welcome.",
+    href: "/clinical-pilates",
+    image: clinicalPilatesImg,
+  },
+  {
+    title: "Home visit physiotherapy",
+    blurb:
+      "Mobile rehab across Sunshine Coast and Moreton Bay — post-surgical, OA, falls and balance, NDIS, HCP and DVA.",
+    href: "/home-visits",
+    image: homeVisitsImg,
+  },
+];
+---
+
+<Layout
+  title="Services — Forward Health"
+  description="Physiotherapy, pelvic floor, remedial massage, running assessments, vertigo physio, paediatrics, clinical pilates and home visits across Currimundi and Sandstone Point."
+>
+  <!-- Hero -->
+  <section class="bg-sage-50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-4">What we do</p>
+        <h1 class="text-charcoal">Specialised care alongside everyday physio.</h1>
+        <p class="mt-6 text-lg text-stone leading-relaxed">
+          Eight services, two clinics, one team. Every patient is matched with the practitioner whose
+          niche fits their condition — not just whoever's free. That's how we get better outcomes,
+          faster.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services grid -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="grid md:grid-cols-2 gap-8">
+      {services.map((s) => (
+        <a
+          href={s.href}
+          class="group block rounded-3xl overflow-hidden border border-sage-100 bg-white hover:border-sage-300 hover:shadow-md transition-all"
+        >
+          <Image
+            src={s.image}
+            alt={s.title}
+            width={1200}
+            height={800}
+            class="aspect-[3/2] object-cover w-full group-hover:scale-[1.02] transition-transform duration-500"
+          />
+          <div class="p-7 lg:p-8">
+            <h2 class="text-2xl text-charcoal group-hover:text-sage-600 transition-colors">{s.title}</h2>
+            <p class="mt-3 text-stone leading-relaxed">{s.blurb}</p>
+            <span class="mt-5 inline-block text-sm font-semibold text-sage-600 group-hover:translate-x-0.5 transition-transform">
+              Learn more →
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <BookingBlock variant="sage" />
+</Layout>

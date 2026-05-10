@@ -1,11 +1,14 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/logo-white.png";
+
 const services = [
   { label: "Physiotherapy", href: "/physiotherapy" },
-  { label: "Pelvic floor & women's health", href: "/pelvic-floor-physio" },
-  { label: "Paediatric physiotherapy", href: "/paediatric-physio" },
-  { label: "Vertigo & vestibular", href: "/vertigo-vestibular-physio" },
-  { label: "Running assessments", href: "/running-assessments" },
+  { label: "Pelvic floor physio", href: "/pelvic-floor-physio" },
   { label: "Remedial massage", href: "/remedial-massage" },
+  { label: "Running assessments", href: "/running-assessments" },
+  { label: "Vertigo & vestibular", href: "/vertigo-vestibular-physio" },
+  { label: "Paediatric physio", href: "/paediatric-physio" },
   { label: "Clinical pilates", href: "/clinical-pilates" },
   { label: "Home visit physio", href: "/home-visits" },
 ];
@@ -22,10 +25,13 @@ const partners = [
 <footer class="bg-sage-700 text-cream-100 mt-24">
   <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 grid gap-12 lg:grid-cols-12">
     <div class="lg:col-span-4">
-      <div class="flex items-baseline gap-1.5">
-        <span class="font-display text-3xl font-bold text-cream-50">forward</span>
-        <span class="font-body text-sm uppercase tracking-[0.18em] text-tan-200">health</span>
-      </div>
+      <Image
+        src={logo}
+        alt="Forward Health"
+        width={1500}
+        height={1500}
+        class="h-24 lg:h-28 w-auto -ml-3"
+      />
       <p class="mt-4 text-sm text-cream-100/80 leading-relaxed max-w-sm">
         Locally-owned physiotherapy, remedial massage and clinical pilates serving the
         Sunshine Coast and Moreton Bay regions.

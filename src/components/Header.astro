@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
+
 const nav = [
   { label: "Services", href: "/services" },
   { label: "Our team", href: "/team" },
@@ -10,10 +13,16 @@ const nav = [
 ---
 
 <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-sage-100">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between gap-6">
-    <a href="/" class="flex items-baseline gap-1.5 leading-none">
-      <span class="font-display text-2xl font-bold tracking-tight text-sage-600">forward</span>
-      <span class="font-body text-sm uppercase tracking-[0.18em] text-tan-600">health</span>
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between gap-6">
+    <a href="/" class="flex items-center leading-none" aria-label="Forward Health home">
+      <Image
+        src={logo}
+        alt="Forward Health"
+        width={406}
+        height={156}
+        class="h-12 lg:h-14 w-auto"
+        loading="eager"
+      />
     </a>
 
     <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-charcoal">
@@ -36,10 +45,122 @@ const nav = [
       </a>
       <a
         href="#book"
-        class="inline-flex items-center justify-center rounded-full bg-sage-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-sage-700 transition-colors"
+        class="hidden sm:inline-flex items-center justify-center rounded-full bg-sage-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-sage-700 transition-colors"
       >
         Book online
       </a>
+
+      <!-- Mobile menu button -->
+      <button
+        type="button"
+        id="mobile-menu-toggle"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Open menu"
+        class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-full hover:bg-sage-100 transition-colors"
+      >
+        <svg class="w-6 h-6 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu drawer -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden fixed inset-0 z-50 hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Site navigation"
+  >
+    <div data-mobile-menu-backdrop class="absolute inset-0 bg-charcoal/40 backdrop-blur-sm"></div>
+    <div class="absolute inset-y-0 right-0 w-full max-w-sm bg-cream-50 shadow-2xl flex flex-col">
+      <div class="flex items-center justify-between px-5 h-20 border-b border-sage-100">
+        <Image
+          src={logo}
+          alt="Forward Health"
+          width={406}
+          height={156}
+          class="h-12 w-auto"
+        />
+        <button
+          type="button"
+          data-mobile-menu-close
+          aria-label="Close menu"
+          class="inline-flex items-center justify-center w-10 h-10 rounded-full hover:bg-sage-100 transition-colors"
+        >
+          <svg class="w-6 h-6 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <line x1="6" y1="18" x2="18" y2="6"></line>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="flex-1 overflow-y-auto px-5 py-6">
+        <ul class="space-y-1">
+          {nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="block px-4 py-4 rounded-xl text-lg font-medium text-charcoal hover:bg-sage-100 hover:text-sage-700 transition-colors"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="border-t border-sage-100 px-5 py-5 space-y-3">
+        <a
+          href="#book"
+          class="block w-full text-center rounded-full bg-sage-600 px-5 py-3.5 text-base font-semibold text-white hover:bg-sage-700 transition-colors"
+        >
+          Book online
+        </a>
+        <a
+          href="tel:0420522558"
+          class="block w-full text-center rounded-full bg-white border border-sage-200 px-5 py-3.5 text-base font-semibold text-charcoal hover:border-sage-400 transition-colors"
+        >
+          Call 0420 522 558
+        </a>
+      </div>
     </div>
   </div>
 </header>
+
+<script>
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  function openMenu() {
+    if (!menu || !toggle) return;
+    menu.classList.remove("hidden");
+    toggle.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+  function closeMenu() {
+    if (!menu || !toggle) return;
+    menu.classList.add("hidden");
+    toggle.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  toggle?.addEventListener("click", openMenu);
+
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest("[data-mobile-menu-close]") || target.closest("[data-mobile-menu-backdrop]")) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menu && !menu.classList.contains("hidden")) {
+      closeMenu();
+    }
+  });
+</script>

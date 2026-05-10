@@ -1,0 +1,99 @@
+---
+import ServiceLayout from "../layouts/ServiceLayout.astro";
+import { practitioners } from "../data/practitioners";
+import heroImage from "../assets/services/home-visits.jpg";
+---
+
+<ServiceLayout
+  title="Home visit physiotherapy"
+  description="Mobile physiotherapy across the Sunshine Coast and Moreton Bay — post-surgical rehab at home, knee and hip osteoarthritis, falls and balance, NDIS plan-managed, Home Care Packages and DVA. Led by Jarrod Palmer-Brown."
+  eyebrow="Mobile · In-home rehab"
+  intro="When getting to the clinic isn't possible — or isn't safe — we come to you. Our home-visit physio brings a clinical-quality assessment and rehab program to your living room, with all the equipment we need."
+  heroImage={heroImage}
+  heroImageAlt="Forward Health home visit physiotherapy in a patient's home"
+  conditions={[
+    {
+      heading: "Post-surgical and post-hospital",
+      items: [
+        "Total knee and total hip replacement rehab",
+        "Post-fracture rehabilitation (hip, wrist, vertebral)",
+        "Discharge support after hospital admission",
+        "Cardiac and respiratory rehab follow-up",
+      ],
+    },
+    {
+      heading: "Older adults",
+      items: [
+        "Knee and hip osteoarthritis management",
+        "Falls prevention and balance retraining",
+        "Strength and mobility decline",
+        "Dementia-friendly physio",
+        "Vestibular rehab when travel makes symptoms worse",
+      ],
+    },
+    {
+      heading: "Disability and chronic conditions",
+      items: [
+        "NDIS — plan-managed and self-managed participants",
+        "Multiple sclerosis, Parkinson's and stroke rehab",
+        "Spinal cord injury maintenance",
+        "Chronic pain management",
+      ],
+    },
+    {
+      heading: "Funded streams we work with",
+      items: [
+        "Home Care Packages (HCP) — Levels 1–4",
+        "Remedy Health post-hospital programs",
+        "DVA Gold and White Cards",
+        "EPC plans (chronic disease management)",
+        "Private health (where you have mobile-physio cover)",
+      ],
+    },
+  ]}
+  whatToExpect={[
+    {
+      title: "Pre-visit phone chat",
+      body: "Before our first home visit, we have a brief phone call to understand your situation, what you're hoping to work on, and any access details (parking, stairs, who'll be home).",
+    },
+    {
+      title: "Full assessment at home",
+      body: "Initial home visits run 60 minutes. We assess in your actual environment — the bed you transfer in and out of, the steps you climb, the chair you struggle to stand from. That's where the gains actually happen.",
+    },
+    {
+      title: "Practical, repeatable program",
+      body: "You leave with a written exercise program suited to the equipment you have (or a recommendation for what's worth getting). We bring resistance bands, weights and step-blocks as needed.",
+    },
+  ]}
+  practitioners={[practitioners.jarrod]}
+  locations={["Currimundi", "Sandstone Point"]}
+  bookingHeading="Service area: Sunshine Coast & Moreton Bay."
+  bookingBlurb="We service the Sunshine Coast (Caloundra to Maroochydore) and Moreton Bay (Bribie Island to Caboolture). Outside that range, give us a call — we may be able to help or refer you to someone we trust."
+  faqs={[
+    {
+      q: "Are you a registered NDIS provider?",
+      a: "We are not a registered NDIS provider. We work with plan-managed and self-managed NDIS participants. If your plan is NDIA-managed, you'll need to use a registered provider — we're happy to recommend one if helpful.",
+    },
+    {
+      q: "How much does a home visit cost?",
+      a: "Home visits include a travel component on top of the standard physiotherapy fee. Pricing depends on your funding stream — call us and we'll quote you transparently before booking.",
+    },
+    {
+      q: "Do you accept Home Care Package funding?",
+      a: "Yes. We work with HCP recipients across Levels 1–4. Your provider will need to coordinate the booking and payment with us.",
+    },
+    {
+      q: "What about DVA?",
+      a: "Yes — we accept DVA Gold and White Cards (where the condition is on your card). A GP referral letter is required for DVA.",
+    },
+    {
+      q: "Who comes to my home?",
+      a: "Jarrod Palmer-Brown leads our home-visit program. He has 4+ years of experience working with knee and hip osteoarthritis and post-operative rehab. You'll see Jarrod consistently rather than a rotating roster.",
+    },
+  ]}
+  related={[
+    { title: "Physiotherapy", href: "/physiotherapy", blurb: "When you're ready to come back into the clinic." },
+    { title: "Vertigo & vestibular physio", href: "/vertigo-vestibular-physio", blurb: "Vestibular rehab in your home." },
+    { title: "Sandstone Point clinic", href: "/locations/sandstone-point", blurb: "Where Jarrod is based when not on the road." },
+  ]}
+/>

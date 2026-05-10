@@ -1,0 +1,102 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  name: string;
+  role: string;
+  locations: string;
+  blurb: string;
+  href?: string;
+  photo?: ImageMetadata;
+  lightboxId?: string;
+}
+const { name, role, locations, blurb, href, photo, lightboxId } = Astro.props;
+
+const isLightboxTrigger = !!lightboxId;
+const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
+---
+
+{isLightboxTrigger ? (
+  <button
+    type="button"
+    data-lightbox-trigger={lightboxId}
+    class="group block w-full text-left p-6 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 hover:shadow-sm transition-all"
+  >
+    <div class="flex items-start gap-4">
+      {photo ? (
+        <Image
+          src={photo}
+          alt={`${name} — ${role}`}
+          width={144}
+          height={144}
+          class="w-20 h-20 shrink-0 rounded-full object-cover border border-sage-200"
+        />
+      ) : (
+        <div class="w-20 h-20 shrink-0 rounded-full bg-sage-100 border border-sage-200 flex items-center justify-center text-xs text-sage-600/70">
+          photo
+        </div>
+      )}
+      <div class="min-w-0">
+        <h3 class="text-lg text-charcoal group-hover:text-sage-600 transition-colors">{name}</h3>
+        <p class="text-xs uppercase tracking-[0.14em] text-tan-600 mt-0.5">{role}</p>
+        <p class="text-xs text-stone mt-1">{locations}</p>
+      </div>
+    </div>
+    <p class="mt-4 text-sm text-stone leading-relaxed">{blurb}</p>
+    <span class="mt-4 inline-block text-sm font-semibold text-sage-600 group-hover:translate-x-0.5 transition-transform">
+      Read more →
+    </span>
+  </button>
+) : href ? (
+  <a
+    href={href}
+    class="group block p-6 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 hover:shadow-sm transition-all"
+  >
+    <div class="flex items-start gap-4">
+      {photo ? (
+        <Image
+          src={photo}
+          alt={`${name} — ${role}`}
+          width={144}
+          height={144}
+          class="w-20 h-20 shrink-0 rounded-full object-cover border border-sage-200"
+        />
+      ) : (
+        <div class="w-20 h-20 shrink-0 rounded-full bg-sage-100 border border-sage-200 flex items-center justify-center text-xs text-sage-600/70">
+          photo
+        </div>
+      )}
+      <div class="min-w-0">
+        <h3 class="text-lg text-charcoal group-hover:text-sage-600 transition-colors">{name}</h3>
+        <p class="text-xs uppercase tracking-[0.14em] text-tan-600 mt-0.5">{role}</p>
+        <p class="text-xs text-stone mt-1">{locations}</p>
+      </div>
+    </div>
+    <p class="mt-4 text-sm text-stone leading-relaxed">{blurb}</p>
+  </a>
+) : (
+  <div class="block p-6 rounded-2xl border border-sage-100 bg-white">
+    <div class="flex items-start gap-4">
+      {photo ? (
+        <Image
+          src={photo}
+          alt={`${name} — ${role}`}
+          width={144}
+          height={144}
+          class="w-20 h-20 shrink-0 rounded-full object-cover border border-sage-200"
+        />
+      ) : (
+        <div class="w-20 h-20 shrink-0 rounded-full bg-sage-100 border border-sage-200 flex items-center justify-center text-xs text-sage-600/70">
+          photo
+        </div>
+      )}
+      <div class="min-w-0">
+        <h3 class="text-lg text-charcoal">{name}</h3>
+        <p class="text-xs uppercase tracking-[0.14em] text-tan-600 mt-0.5">{role}</p>
+        <p class="text-xs text-stone mt-1">{locations}</p>
+      </div>
+    </div>
+    <p class="mt-4 text-sm text-stone leading-relaxed">{blurb}</p>
+  </div>
+)}
