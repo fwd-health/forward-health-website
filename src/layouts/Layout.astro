@@ -17,7 +17,7 @@ const {
   ogImage = "/og-default.jpg",
 } = Astro.props;
 
-const siteUrl = "https://fwdhealth.com.au";
+const siteUrl = "https://www.fwdhealth.com.au";
 const fullCanonical = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
@@ -41,6 +41,42 @@ const fullCanonical = canonical ?? new URL(Astro.url.pathname, siteUrl).toString
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#7c8d6f" />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "MedicalOrganization",
+        name: "Forward Health",
+        legalName: "Forward Health Group Pty Ltd",
+        url: siteUrl,
+        logo: `${siteUrl}/og-default.jpg`,
+        telephone: "+61420522558",
+        email: "hello@fwdhealth.com.au",
+        sameAs: ["https://www.instagram.com/fwdrunclub/"],
+        address: [
+          {
+            "@type": "PostalAddress",
+            streetAddress: "Shop 3 / 768 Nicklin Way",
+            addressLocality: "Currimundi",
+            addressRegion: "QLD",
+            postalCode: "4551",
+            addressCountry: "AU",
+          },
+          {
+            "@type": "PostalAddress",
+            streetAddress: "Shop 3 / 208 Bestmann Road East",
+            addressLocality: "Sandstone Point",
+            addressRegion: "QLD",
+            postalCode: "4511",
+            addressCountry: "AU",
+          },
+        ],
+        medicalSpecialty: ["Physiotherapy", "PelvicHealth", "Pediatric"],
+      })}
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

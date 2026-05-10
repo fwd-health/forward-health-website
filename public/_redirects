@@ -1,0 +1,28 @@
+# Wix → new-site cutover. See REDIRECTS.md for context.
+# Netlify-style; for Vercel, mirror as vercel.json.
+
+# Location restructure
+/location-currimundi          /locations/currimundi          301
+/location-sandstonepoint      /locations/sandstone-point     301
+
+# Service URL renames
+/physio                       /physiotherapy                 301
+/pelvic-floor                 /pelvic-floor-physio           301
+/womens-health                /pelvic-floor-physio           301
+/vertigo                      /vertigo-vestibular-physio     301
+/vestibular                   /vertigo-vestibular-physio     301
+/paediatric                   /paediatric-physio             301
+/paediatrics                  /paediatric-physio             301
+/running-assessment           /running-assessments           301
+/pilates                      /clinical-pilates              301
+/massage                      /remedial-massage              301
+/mobile-physio                /home-visits                   301
+
+# De-prioritised / no-longer-offered
+/dry-needling                 /physiotherapy                 301
+/strength-balance             /physiotherapy                 301
+/hydrotherapy                 /physiotherapy                 301
+/glad                         /physiotherapy                 301
+
+# Team page variants
+/our-team                     /team                          301
