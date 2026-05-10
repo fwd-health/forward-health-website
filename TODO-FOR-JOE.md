@@ -2,6 +2,8 @@
 
 Stuff I couldn't do without input from you.
 
+> **Overnight state (2026-05-11):** 4 commits landed — 22 pages, real photography, Cliniko booking, mobile nav, lightbox modals, Sanity Studio scaffold, sitemap, redirect map, FAQ + MedicalOrganization JSON-LD. See "What's working right now" at the bottom for the full inventory. The dev server is running at http://127.0.0.1:4321 and a clean build (`npm run build`) passes with all 22 pages.
+
 ## 📸 Photos still needed
 
 | What | Why | Where it'll go |
@@ -32,25 +34,44 @@ To help with the personal photos: drop files into `src/assets/team/personal/joe/
 - **Pricing page** — your live Wix site has one (`/pricing`). Want me to mirror it on the new site?
 - **Bribie Island page** — drive times are estimates ("~5 min from Bongaree", etc.). Verify.
 
-## 🔌 Technical TODOs (I can do these — flagging so you know)
+## 🔌 Technical TODOs
 
-- [ ] Sanity Studio scaffold (content management for non-developer edits later)
-- [ ] Sitemap + robots.txt (auto-generated via @astrojs/sitemap)
-- [ ] Favicon
-- [ ] OG share images per page (homepage + key landing pages)
-- [ ] 301 redirect map for the Wix → new site cutover
-- [ ] Google Maps embeds (need API key OR use the iframe-share format)
-- [ ] Privacy / Policies / Careers pages (currently the footer links 404)
-- [ ] Form submission handler for the Contact page (or keep CTAs as call/email only)
+**✅ Done overnight:**
+- Sanity Studio scaffold (in `/sanity-studio` — schemas for service, practitioner, location, condition, partner, faq; ready for `sanity init`)
+- Sitemap (`/sitemap-index.xml`) + `robots.txt`
+- Favicon (sage "f" mark)
+- Default OG share image (homepage hero)
+- 301 redirect map (`public/_redirects` for Netlify, also documented in `REDIRECTS.md`)
+- Privacy / Policies / Careers pages (footer links resolve)
+- `/pricing` page (mirrored from your Wix site)
+- MedicalOrganization JSON-LD sitewide + FAQPage JSON-LD on every service page
+
+**Still pending (need you):**
+- Google Maps embeds for both location pages (paste the iframe share-link from each Google Business Profile)
+- Per-page custom OG images (currently all share the homepage hero — fine for launch)
+- Form submission handler for `/contact` if you want a contact form (right now it's call/email only — possibly the right call)
+- Sanity init (`cd sanity-studio && npx sanity init` — Sanity needs your account)
 
 ## 🧩 What's working right now
 
-- 18 pages compiled cleanly in `npm run build`
-- Real photos throughout (8 service heroes, hero on homepage, sandstone point clinic + studio, run club poster, all 12 practitioner headshots, behind-the-clinic gallery)
-- Cliniko booking iframe live on every page
-- Lightbox modals on team page (close on Escape, backdrop click, or × button)
-- Mobile hamburger nav
-- 8 services in the right order, footer service list mirrors it
-- Schema.org `Physiotherapy` markup on the Bribie Island page with proper `areaServed`
+**22 pages, all building cleanly:**
+- `/` (homepage with pregnancy-physio hero + 8-service grid + Run Club teaser + Mums & Bubs teaser + locations)
+- `/services` index + 8 service pages (physiotherapy, pelvic-floor-physio, remedial-massage, running-assessments, vertigo-vestibular-physio, paediatric-physio, clinical-pilates, home-visits)
+- `/team` with 12 practitioner headshots + click-to-open lightbox modals (full bio, qualifications, specialties, "Book with X" CTA) + "Behind the clinic" team-events gallery
+- `/locations` index + `/locations/currimundi` + `/locations/sandstone-point` (Sandstone Point has clinic + studio photos)
+- `/run-club` with corgi mascot poster + "All For Run" art + sessions + tied to running assessments
+- `/physiotherapy-bribie-island` with neighbourhood callouts, drive times, and Schema.org Physiotherapy markup with areaServed
+- `/mums-and-bubs` (Phase 1 — sage hero, journey timeline, Steph + Bri team)
+- `/contact` + `/pricing` + `/privacy` + `/policies` + `/careers`
 
-You can run `npm run dev` to preview locally at http://127.0.0.1:4321 — it should already be running.
+**Plus:**
+- Real photos throughout (homepage hero, 8 service heroes, all 12 practitioner headshots scraped from your live Wix site, Sandstone Point clinic + reformer studio, Run Club poster, 6-photo team gallery)
+- Logo image used everywhere (sage on cream for header, white-on-sage for footer — pulled from your live Wix site as a real branded variant)
+- Cliniko iframe wired into the booking block on every page (auto-resize script included)
+- Mobile hamburger nav with backdrop, Esc-to-close, body lock
+- Sanity Studio scaffolded with full schemas — `cd sanity-studio && npm install && npx sanity init` to activate
+- Sitemap auto-generated, robots.txt, favicon, OG default image, theme colour
+- 301 redirect map staged for Netlify (`public/_redirects`)
+- MedicalOrganization JSON-LD sitewide + FAQPage JSON-LD on every service page (rich-snippet eligible)
+
+You can run `npm run dev` to preview locally at http://127.0.0.1:4321. Production build: `npm run build`.
