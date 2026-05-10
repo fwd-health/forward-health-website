@@ -1,0 +1,148 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BookingBlock from "../components/BookingBlock.astro";
+
+const sections = [
+  {
+    title: "Physiotherapy",
+    items: [
+      { label: "Initial consultation", duration: "60 min", price: "$135" },
+      { label: "Standard appointment", duration: "30 min", price: "$110" },
+      { label: "Extended appointment", duration: "45 min", price: "$165" },
+      { label: "Extended appointment", duration: "60 min", price: "$220" },
+    ],
+  },
+  {
+    title: "Pelvic floor physio",
+    items: [
+      { label: "Initial consultation", duration: "60 min", price: "$180" },
+      { label: "Follow-up appointment", duration: "45 min", price: "$160" },
+      { label: "Pessary fitting (excludes pessary cost)", duration: "20 min", price: "$95" },
+    ],
+  },
+  {
+    title: "Specialist physio",
+    items: [
+      { label: "Vestibular / running assessment", duration: "60 min", price: "$135" },
+      { label: "Paediatric physio", duration: "varies", price: "Contact us" },
+      { label: "Home visit physio", duration: "varies", price: "Contact us" },
+    ],
+  },
+  {
+    title: "Remedial massage",
+    items: [
+      { label: "Remedial massage", duration: "30 min", price: "$75" },
+      { label: "Remedial massage", duration: "45 min", price: "$90" },
+      { label: "Remedial massage", duration: "60 min", price: "$125" },
+    ],
+  },
+  {
+    title: "Clinical pilates",
+    items: [
+      { label: "Initial 1-on-1 assessment", duration: "60 min", price: "$135" },
+      { label: "Single class (small group, max 6)", duration: "—", price: "$45" },
+      { label: "3-class pack", duration: "—", price: "$114" },
+      { label: "6-class pack", duration: "—", price: "$216" },
+      { label: "12-class pack", duration: "—", price: "$408" },
+      { label: "24-class pack", duration: "—", price: "$768" },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Pricing — Forward Health"
+  description="Forward Health pricing for physiotherapy, pelvic floor physio, remedial massage, clinical pilates and specialist services. HCF and Medibank preferred provider; HICAPS on-the-spot claiming."
+>
+  <!-- Hero -->
+  <section class="bg-sage-50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-4">Pricing</p>
+        <h1 class="text-charcoal">Honest pricing, on-the-spot claiming.</h1>
+        <p class="mt-6 text-lg text-stone leading-relaxed">
+          Every price below is the gap fee you'd pay before health-fund rebate. We process HICAPS
+          claims on the spot for every major fund, so most clients pay only the difference between
+          the fee and their rebate.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing tables -->
+  <section class="max-w-5xl mx-auto px-5 lg:px-8 py-16 lg:py-20 space-y-10">
+    {sections.map((s) => (
+      <div class="rounded-3xl border border-sage-100 bg-white overflow-hidden">
+        <div class="px-6 lg:px-8 py-5 bg-cream-50 border-b border-sage-100">
+          <h2 class="font-display text-xl lg:text-2xl text-charcoal">{s.title}</h2>
+        </div>
+        <ul class="divide-y divide-sage-100">
+          {s.items.map((it) => (
+            <li class="px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+              <div>
+                <p class="text-charcoal font-medium">{it.label}</p>
+                {it.duration && it.duration !== "—" && (
+                  <p class="text-xs text-stone uppercase tracking-[0.14em] mt-0.5">{it.duration}</p>
+                )}
+              </div>
+              <p class="text-charcoal font-display text-lg shrink-0">{it.price}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <!-- Funding & rebates -->
+  <section class="bg-cream-50 py-16 lg:py-20">
+    <div class="max-w-5xl mx-auto px-5 lg:px-8 grid md:grid-cols-2 gap-10">
+      <div>
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Health funds</p>
+        <h2 class="text-charcoal text-2xl lg:text-3xl">Claim on the spot.</h2>
+        <p class="mt-4 text-stone leading-relaxed">
+          HICAPS for every major Australian health fund. <strong>HCF preferred provider</strong> for all services
+          and <strong>Medibank preferred provider</strong> for physiotherapy — meaning the rebate is higher.
+        </p>
+      </div>
+      <div>
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Discounts & subsidised streams</p>
+        <ul class="space-y-3 text-stone leading-relaxed">
+          <li class="flex gap-3">
+            <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
+            <span><strong>$10 discount</strong> for concession, pension and full-time student cardholders.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
+            <span><strong>EPC plans</strong> (5 sessions/year via your GP) — small gap fee applies.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
+            <span><strong>DVA Gold and White Cards</strong> — bulk billed where the condition is on your card. GP referral required.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
+            <span><strong>WorkCover</strong> — bulk billed with valid referral.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
+            <span><strong>NDIS</strong> — plan-managed and self-managed only. Not a registered provider.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cancellation note -->
+  <section class="max-w-5xl mx-auto px-5 lg:px-8 py-12">
+    <div class="rounded-3xl bg-tan-100/40 border border-tan-200 p-8 text-stone">
+      <p class="text-sm">
+        <strong class="text-charcoal">24-hour cancellation policy.</strong> We require at least 24 hours' notice
+        to cancel or reschedule. Late cancellations may attract 50% of the appointment fee; missed appointments
+        may attract the full fee. Life happens — let us know as early as you can.
+        <a href="/policies" class="text-sage-600 underline">Full policies →</a>
+      </p>
+    </div>
+  </section>
+
+  <BookingBlock variant="sage" />
+</Layout>

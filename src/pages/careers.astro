@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BookingBlock from "../components/BookingBlock.astro";
+
+const reasons = [
+  {
+    title: "Real clinical autonomy",
+    body:
+      "60-minute initial assessments. Follow-ups long enough to do good work. We trust our clinicians to treat the way they were trained — not the way a 15-minute slot demands.",
+  },
+  {
+    title: "Niche development supported",
+    body:
+      "Want to deepen your skills in pelvic floor, vestibular, paediatrics, sports? We back our team with mentorship, course funding and dedicated case-review time.",
+  },
+  {
+    title: "A team that actually shares notes",
+    body:
+      "Weekly clinical meetings where we cross-refer cases and learn from each other. Every practitioner has a niche — that means we lean on each other constantly.",
+  },
+  {
+    title: "Sustainable hours",
+    body:
+      "Saturday rotations are shared. After-hours and weekend coverage is opt-in, not assumed. We want clinicians who'll still be doing this in ten years.",
+  },
+];
+---
+
+<Layout
+  title="Careers — Forward Health"
+  description="Working at Forward Health — physiotherapy, remedial massage and reception roles across our Currimundi and Sandstone Point clinics."
+>
+  <!-- Hero -->
+  <section class="bg-sage-50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-4">Careers at Forward Health</p>
+        <h1 class="text-charcoal">Build a career here, not just a job.</h1>
+        <p class="mt-6 text-lg text-stone leading-relaxed">
+          We're a locally-owned physiotherapy and allied-health practice across the Sunshine Coast and
+          Moreton Bay — building a team of clinicians who want to do the best clinical work of their
+          careers, in an environment set up to actually support that.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="max-w-2xl mb-12">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">What's different here</p>
+      <h2>Why our team stays.</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      {reasons.map((r) => (
+        <div class="p-7 rounded-2xl border border-sage-100 bg-white">
+          <h3 class="font-display text-xl text-charcoal">{r.title}</h3>
+          <p class="mt-3 text-stone leading-relaxed">{r.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Currently hiring -->
+  <section class="bg-cream-50 py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl mb-10">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Open roles</p>
+        <h2>Currently hiring.</h2>
+        <p class="mt-4 text-stone leading-relaxed">
+          We don't always have specific positions advertised, but we're always interested in meeting
+          excellent clinicians who'd fit our team. If your story sounds like one we should hear, please
+          send your CV and a short note about what you're looking for.
+        </p>
+      </div>
+
+      <div class="rounded-3xl bg-white border border-sage-100 p-8 lg:p-10">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-600 mb-2">Always open</p>
+        <h3 class="font-display text-2xl text-charcoal">Physiotherapists, RMTs, Myotherapists</h3>
+        <p class="mt-4 text-stone leading-relaxed">
+          Whether you're newly graduated and looking for serious mentorship, or experienced with a
+          clinical niche we'd love to bring in-house — get in touch. Email your CV and a brief note
+          about what kind of practice you want to build to:
+        </p>
+        <a href="mailto:hello@fwdhealth.com.au?subject=Career%20enquiry"
+          class="mt-5 inline-flex items-center rounded-full bg-sage-600 px-7 py-3.5 text-sm font-semibold text-white hover:bg-sage-700 transition-colors">
+          hello@fwdhealth.com.au
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

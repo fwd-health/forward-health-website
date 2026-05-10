@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const policies = [
+  {
+    title: "Cancellations",
+    body:
+      "We require at least 24 hours' notice to cancel or reschedule. Cancellations within 24 hours may attract a 50% fee; missed appointments may attract the full fee. We understand that life happens — let us know as soon as you can and we'll work with you.",
+  },
+  {
+    title: "Late arrival",
+    body:
+      "If you're running late, please call. We'll do our best to fit you in, but we may need to shorten the appointment to keep the clinic running on time for everyone else.",
+  },
+  {
+    title: "Communication",
+    body:
+      "Reception is open Monday to Friday and Saturday mornings. Outside those hours we monitor email and respond on the next business day. If something is urgent and clinical, please call rather than email.",
+  },
+  {
+    title: "Health fund claiming",
+    body:
+      "We process HICAPS claims on the spot for every major Australian health fund. We're a HCF preferred provider for all services and a Medibank preferred provider for physiotherapy. The gap fee is payable at the appointment.",
+  },
+  {
+    title: "Medicare and DVA",
+    body:
+      "We accept Enhanced Primary Care (EPC) plans (5 sessions per calendar year on referral from your GP), Workcover claims, and DVA Gold and White Cards (where the condition is on your card). A referral from your GP is required for these streams.",
+  },
+  {
+    title: "NDIS",
+    body:
+      "Forward Health is not a registered NDIS provider. We welcome plan-managed and self-managed NDIS participants. Agency-managed (NDIA-managed) participants will need to use a registered provider — we can recommend one if helpful.",
+  },
+  {
+    title: "Children and young people",
+    body:
+      "A parent or guardian must be present for the whole appointment for clients under 14. From 14 to 17, we recommend a parent attend the first appointment but subsequent appointments may be attended alone with consent.",
+  },
+  {
+    title: "Concerns and feedback",
+    body:
+      "If something we did didn't meet your expectations, we genuinely want to hear about it. Email hello@fwdhealth.com.au or speak with reception and we'll do everything we can to make it right.",
+  },
+];
+---
+
+<Layout
+  title="Policies — Forward Health"
+  description="Cancellation, late arrival, communication, and health-fund policies at Forward Health."
+>
+  <section class="bg-sage-50">
+    <div class="max-w-3xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-4">Clinic policies</p>
+      <h1 class="text-charcoal">The boring-but-important bits.</h1>
+      <p class="mt-6 text-stone leading-relaxed">
+        Quick reference for cancellations, claiming, and how we communicate. If anything's unclear,
+        ask reception — we'd rather over-explain than have you feel surprised later.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-5 lg:px-8 py-12 lg:py-16">
+    <div class="divide-y divide-sage-100 border-y border-sage-100">
+      {policies.map((p) => (
+        <div class="py-8">
+          <h2 class="font-display text-xl text-charcoal">{p.title}</h2>
+          <p class="mt-3 text-stone leading-relaxed">{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
