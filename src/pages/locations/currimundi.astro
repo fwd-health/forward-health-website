@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import BookingBlock from "../../components/BookingBlock.astro";
 import PractitionerCard from "../../components/PractitionerCard.astro";
+import MapEmbed from "../../components/MapEmbed.astro";
 import { practitioners } from "../../data/practitioners";
 
 const services = [
@@ -30,6 +31,7 @@ const team = [
   practitioners.carly,
   practitioners.suzie,
   practitioners.erin,
+  practitioners.maddie,
 ];
 ---
 
@@ -95,11 +97,12 @@ const team = [
     </div>
   </section>
 
-  <!-- Map placeholder -->
+  <!-- Map -->
   <section class="max-w-7xl mx-auto px-5 lg:px-8 py-12">
-    <div class="aspect-[16/7] rounded-3xl bg-sage-100 border border-sage-200 flex items-center justify-center text-sage-600/60 text-sm">
-      [ Google Map embed — Currimundi ]
-    </div>
+    <MapEmbed
+      address="Forward Health, Shop 3 / 768 Nicklin Way, Currimundi QLD 4551"
+      title="Forward Health Currimundi — location map"
+    />
   </section>
 
   <!-- Services available -->

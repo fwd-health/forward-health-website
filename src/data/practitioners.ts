@@ -12,6 +12,7 @@ import suzieBeach from "../assets/team/personal/suzie/beach.jpg";
 import erinImg from "../assets/team/erin.jpg";
 import chloeImg from "../assets/team/chloe.jpg";
 import lucyImg from "../assets/team/lucy.jpg";
+import maddieImg from "../assets/team/maddie.jpg";
 
 import type { ImageMetadata } from "astro";
 
@@ -266,6 +267,18 @@ export const careTeam: Practitioner[] = [
     specialties: [],
     href: "/team/lucy-chung",
     photo: lucyImg,
+  },
+  {
+    name: "Maddie McCulloch",
+    role: "Client Care Coordinator",
+    locations: "Currimundi",
+    blurb: "Friendly front-of-house at Currimundi reception.",
+    fullBio:
+      "Maddie joined the Currimundi reception team in 2026. She'll be one of the first faces you meet — sorting bookings, answering questions about pricing and health-fund claims, and making sure your visit runs smoothly from the moment you walk in.",
+    qualifications: [],
+    specialties: [],
+    href: "/team/maddie-mcculloch",
+    photo: maddieImg,
   },
 ];
 
