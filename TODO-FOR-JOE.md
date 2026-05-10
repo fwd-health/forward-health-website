@@ -8,7 +8,7 @@ Stuff I couldn't do without input from you.
 
 | What | Why | Where it'll go |
 | --- | --- | --- |
-| **Suzie Irwin headshot** (RMT, Currimundi, Tuesdays) | Not on the live Wix team page yet, no photo found locally | `/team` page (RMT section) |
+| **Suzie Irwin** — *professional headshot* | She's on the team page now using the close-up portrait shot you sent (genuinely good as a temp), but slot in the proper professional headshot when it's done. Her bio + lifestyle beach photo are wired in. | `/team` (RMT section), `/remedial-massage`, `/locations/currimundi` |
 | **Maddie McCulloch headshot** (junior CCC, Currimundi) | Same — newer hire, no photo yet | `/team` page (Care Team section) |
 | **Currimundi clinic exterior + interior photos** | None of the converted folder photos clearly show the Currimundi reception/exterior. Needed to match the Sandstone Point treatment | `/locations/currimundi` page hero + photo strip |
 | **Practitioner personal/lifestyle photos** | The Wix lightbox personal photos turned out to be **team-event photos** (pottery class, sunset trip, etc.) — not individual ones. If you want individual lightboxes to show personal shots (e.g. Tara at the lookout with kids, on the mountain bike), upload them to `src/assets/team/personal/<firstname>/` | Each practitioner's lightbox gallery |
