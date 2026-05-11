@@ -170,15 +170,31 @@ const allPractitioners = [...physiotherapists, ...massageTherapists, ...careTeam
           >
             ×
           </button>
-          <div class="aspect-[4/3] bg-sage-100">
-            <Image
-              src={p.photo}
-              alt={p.name}
-              width={800}
-              height={600}
-              class="w-full h-full object-cover"
-            />
-          </div>
+          {p.personalPhotos && p.personalPhotos.length > 0 ? (
+            <div class="bg-sage-100 grid grid-cols-3 gap-1 p-1">
+              {p.personalPhotos.map((photo, i) => (
+                <div class="aspect-square overflow-hidden rounded-sm bg-sage-200">
+                  <Image
+                    src={photo}
+                    alt={`${p.name}, photo ${i + 1}`}
+                    width={600}
+                    height={600}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div class="aspect-[4/3] bg-sage-100">
+              <Image
+                src={p.photo}
+                alt={p.name}
+                width={800}
+                height={600}
+                class="w-full h-full object-cover"
+              />
+            </div>
+          )}
         </div>
         <div class="p-8 lg:p-10">
           <p class="text-xs uppercase tracking-[0.18em] text-tan-600">{p.role}</p>

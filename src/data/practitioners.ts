@@ -1,17 +1,53 @@
 import joeImg from "../assets/team/joe.jpg";
+import joePersonal1 from "../assets/team/personal/joe/photo-1.png";
+import joePersonal2 from "../assets/team/personal/joe/photo-2.png";
+import joePersonal3 from "../assets/team/personal/joe/photo-3.jpg";
+
 import stephImg from "../assets/team/steph.jpg";
+import stephPersonal1 from "../assets/team/personal/steph/photo-1.jpg";
+import stephPersonal2 from "../assets/team/personal/steph/photo-2.png";
+import stephPersonal3 from "../assets/team/personal/steph/photo-3.jpg";
+
 import briannaImg from "../assets/team/brianna.jpg";
+
 import jarrodImg from "../assets/team/jarrod.jpg";
+import jarrodPersonal1 from "../assets/team/personal/jarrod/photo-1.png";
+import jarrodPersonal2 from "../assets/team/personal/jarrod/photo-2.png";
+import jarrodPersonal3 from "../assets/team/personal/jarrod/photo-3.jpg";
+
 import hollyImg from "../assets/team/holly.jpg";
+import hollyPersonal1 from "../assets/team/personal/holly/photo-1.jpg";
+import hollyPersonal2 from "../assets/team/personal/holly/photo-2.jpg";
+import hollyPersonal3 from "../assets/team/personal/holly/photo-3.jpg";
+
 import ellaImg from "../assets/team/ella.jpg";
+import ellaPersonal1 from "../assets/team/personal/ella/photo-1.jpg";
+import ellaPersonal2 from "../assets/team/personal/ella/photo-2.jpg";
+import ellaPersonal3 from "../assets/team/personal/ella/photo-3.jpg";
+
 import catalinaImg from "../assets/team/catalina.jpg";
+import catalinaPersonal1 from "../assets/team/personal/catalina/photo-1.jpg";
+import catalinaPersonal2 from "../assets/team/personal/catalina/photo-2.jpg";
+import catalinaPersonal3 from "../assets/team/personal/catalina/photo-3.jpg";
+
 import carlyImg from "../assets/team/carly.jpg";
+import carlyPersonal1 from "../assets/team/personal/carly/photo-1.jpg";
+import carlyPersonal2 from "../assets/team/personal/carly/photo-2.jpg";
+import carlyPersonal3 from "../assets/team/personal/carly/photo-3.jpg";
+
 import taraImg from "../assets/team/tara.jpg";
+
 import suzieImg from "../assets/team/suzie.jpg";
 import suzieBeach from "../assets/team/personal/suzie/beach.jpg";
+
 import erinImg from "../assets/team/erin.jpg";
 import chloeImg from "../assets/team/chloe.jpg";
+
 import lucyImg from "../assets/team/lucy.jpg";
+import lucyPersonal1 from "../assets/team/personal/lucy/photo-1.png";
+import lucyPersonal2 from "../assets/team/personal/lucy/photo-2.jpg";
+import lucyPersonal3 from "../assets/team/personal/lucy/photo-3.jpg";
+
 import maddieImg from "../assets/team/maddie.jpg";
 
 import type { ImageMetadata } from "astro";
@@ -51,6 +87,7 @@ export const physiotherapists: Practitioner[] = [
     ],
     href: "/team/joe",
     photo: joeImg,
+    personalPhotos: [joePersonal1, joePersonal2, joePersonal3],
   },
   {
     name: "Steph",
@@ -74,6 +111,7 @@ export const physiotherapists: Practitioner[] = [
     ],
     href: "/team/steph",
     photo: stephImg,
+    personalPhotos: [stephPersonal1, stephPersonal2, stephPersonal3],
   },
   {
     name: "Brianna Bourne",
@@ -116,6 +154,7 @@ export const physiotherapists: Practitioner[] = [
     ],
     href: "/team/jarrod-palmer-brown",
     photo: jarrodImg,
+    personalPhotos: [jarrodPersonal1, jarrodPersonal2, jarrodPersonal3],
   },
   {
     name: "Holly Dalton",
@@ -133,6 +172,7 @@ export const physiotherapists: Practitioner[] = [
     ],
     href: "/team/holly-dalton",
     photo: hollyImg,
+    personalPhotos: [hollyPersonal1, hollyPersonal2, hollyPersonal3],
   },
   {
     name: "Ella Gubesch",
@@ -146,6 +186,7 @@ export const physiotherapists: Practitioner[] = [
     specialties: [],
     href: "/team/ella-gubesch",
     photo: ellaImg,
+    personalPhotos: [ellaPersonal1, ellaPersonal2, ellaPersonal3],
   },
 ];
 
@@ -186,6 +227,7 @@ export const massageTherapists: Practitioner[] = [
     specialties: ["Deep tissue", "Sports & recovery", "Tension headaches"],
     href: "/team/carly-wilson",
     photo: carlyImg,
+    personalPhotos: [carlyPersonal1, carlyPersonal2, carlyPersonal3],
   },
   {
     name: "Catalina Paredes Ramirez",
@@ -206,6 +248,7 @@ export const massageTherapists: Practitioner[] = [
     ],
     href: "/team/catalina-paredes-ramirez",
     photo: catalinaImg,
+    personalPhotos: [catalinaPersonal1, catalinaPersonal2, catalinaPersonal3],
   },
   {
     name: "Suzie Irwin",
@@ -267,6 +310,7 @@ export const careTeam: Practitioner[] = [
     specialties: [],
     href: "/team/lucy-chung",
     photo: lucyImg,
+    personalPhotos: [lucyPersonal1, lucyPersonal2, lucyPersonal3],
   },
   {
     name: "Maddie McCulloch",
