@@ -42,6 +42,17 @@
   --color-mb-muted: #7a6259;
   --color-mb-rule: #e5d5c2;
 
+  /* Forward Run Club sub-brand — rust + cream + warm brown, from mascot artwork */
+  --color-rc-cream: #f5ecd7;
+  --color-rc-warm: #fdf6e6;
+  --color-rc-rust: #9c4a36;
+  --color-rc-rust-dark: #7a3527;
+  --color-rc-tan: #c9a572;
+  --color-rc-brown: #5c3a28;
+  --color-rc-ink: #3d2618;
+  --color-rc-muted: #6e5240;
+  --color-rc-rule: #e0d2b8;
+
   /* Typography — Fraunces is a free near-equivalent to Recoleta Bold while we sort the license */
   --font-display: "Fraunces", "Recoleta", "Georgia", serif;
   --font-body: "Inter", "system-ui", "Helvetica Neue", sans-serif;

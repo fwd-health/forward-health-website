@@ -7,7 +7,14 @@ import {
   physiotherapists,
   massageTherapists,
   careTeam,
+  practitioners,
 } from "../data/practitioners";
+
+// Display order, Joe-specified
+const physioOrder = ["holly", "brianna", "jarrod", "ella", "joe", "steph"];
+const rmtOrder = ["catalina", "tara", "suzie", "carly"];
+const physiosOrdered = physioOrder.map((k) => practitioners[k]).filter(Boolean);
+const rmtsOrdered = rmtOrder.map((k) => practitioners[k]).filter(Boolean);
 
 import galleryAnniversary from "../assets/team/gallery/team-clinic-anniversary.png";
 import galleryPottery from "../assets/team/gallery/team-pottery-class.png";
@@ -38,7 +45,7 @@ const allPractitioners = [...physiotherapists, ...massageTherapists, ...careTeam
     <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
       <div class="max-w-3xl">
         <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-4">Our team</p>
-        <h1 class="text-charcoal">A clinical team that actually shares notes.</h1>
+        <h1 class="text-charcoal">A clinical team that actually works together.</h1>
         <p class="mt-6 text-lg text-stone leading-relaxed">
           Every Forward Health practitioner has a clinical niche, and they all talk to each other.
           That's how a pelvic floor patient ends up with the right reformer class, why a runner with
@@ -59,7 +66,7 @@ const allPractitioners = [...physiotherapists, ...massageTherapists, ...careTeam
       <h2>Physiotherapists.</h2>
     </div>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {physiotherapists.map((p) => (
+      {physiosOrdered.map((p) => (
         <PractitionerCard
           name={p.name}
           role={p.role}
@@ -80,7 +87,7 @@ const allPractitioners = [...physiotherapists, ...massageTherapists, ...careTeam
         <h2>Massage therapists & myotherapists.</h2>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {massageTherapists.map((p) => (
+        {rmtsOrdered.map((p) => (
           <PractitionerCard
             name={p.name}
             role={p.role}

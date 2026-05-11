@@ -3,47 +3,65 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import heroImg from "../assets/hero-pregnancy-physio.jpg";
 import runClubPoster from "../assets/run-club/run-club-poster.jpg";
+import mbLogo from "../assets/mums-and-bubs/logo.svg";
+
+import physiotherapyImg from "../assets/services/physiotherapy.jpg";
+import pelvicFloorImg from "../assets/services/pelvic-floor.jpg";
+import remedialMassageImg from "../assets/services/remedial-massage.jpg";
+import runningImg from "../assets/services/running.jpg";
+import vertigoImg from "../assets/services/vertigo.jpg";
+import paediatricImg from "../assets/services/paediatric.jpg";
+import clinicalPilatesImg from "../assets/services/clinical-pilates.jpg";
+import homeVisitsImg from "../assets/services/home-visits.jpg";
 
 const heroServices = [
   {
     title: "Physiotherapy",
     blurb: "General musculoskeletal, sports and post-surgical rehab. Back pain, neck, shoulders, knees, ankles.",
     href: "/physiotherapy",
+    image: physiotherapyImg,
   },
   {
     title: "Pelvic floor physio",
     blurb: "Pregnancy, postnatal recovery, pelvic pain, prolapse and pessary fittings.",
     href: "/pelvic-floor-physio",
+    image: pelvicFloorImg,
   },
   {
     title: "Remedial massage",
-    blurb: "Deep tissue, lymphatic, pregnancy massage. Evening + weekend at Sandstone Point.",
+    blurb: "Deep tissue, lymphatic and pregnancy massage. Available at both Currimundi and Sandstone Point.",
     href: "/remedial-massage",
+    image: remedialMassageImg,
   },
   {
     title: "Running assessments",
     blurb: "Video gait analysis, return-to-run plans and performance tuning for everyday runners.",
     href: "/running-assessments",
+    image: runningImg,
   },
   {
     title: "Vertigo & vestibular physio",
     blurb: "Expert care for BPPV, vestibular migraine, post-concussion and balance disorders.",
     href: "/vertigo-vestibular-physio",
+    image: vertigoImg,
   },
   {
     title: "Paediatric physiotherapy",
     blurb: "From developmental milestones to adolescent sports injuries, both ends of paeds.",
     href: "/paediatric-physio",
+    image: paediatricImg,
   },
   {
     title: "Clinical pilates",
-    blurb: "Reformer-based, max 6 per class. Rehab-led, not fitness-led.",
+    blurb: "Reformer-based. Small-group classes at Sandstone Point, 1:1 sessions at Currimundi.",
     href: "/clinical-pilates",
+    image: clinicalPilatesImg,
   },
   {
     title: "Home visit physiotherapy",
     blurb: "NDIS (plan / self-managed), Home Care Packages, Remedy Health post-discharge, DVA.",
     href: "/home-visits",
+    image: homeVisitsImg,
   },
 ];
 
@@ -125,13 +143,24 @@ const locations = [
       {heroServices.map((s) => (
         <a
           href={s.href}
-          class="group p-6 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 hover:shadow-sm transition-all"
+          class="group block rounded-2xl border border-sage-100 bg-white hover:border-sage-300 hover:shadow-sm transition-all overflow-hidden"
         >
-          <h3 class="text-charcoal group-hover:text-sage-600 transition-colors text-xl">{s.title}</h3>
-          <p class="mt-2 text-sm text-stone leading-relaxed">{s.blurb}</p>
-          <span class="mt-4 inline-block text-sm font-semibold text-sage-600">
-            Learn more →
-          </span>
+          <div class="aspect-[4/3] overflow-hidden bg-sage-100">
+            <Image
+              src={s.image}
+              alt={s.title}
+              width={600}
+              height={450}
+              class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+            />
+          </div>
+          <div class="p-5 lg:p-6">
+            <h3 class="text-charcoal group-hover:text-sage-600 transition-colors text-xl">{s.title}</h3>
+            <p class="mt-2 text-sm text-stone leading-relaxed">{s.blurb}</p>
+            <span class="mt-4 inline-block text-sm font-semibold text-sage-600">
+              Learn more →
+            </span>
+          </div>
         </a>
       ))}
     </div>
@@ -193,26 +222,41 @@ const locations = [
     </div>
   </section>
 
-  <!-- Mums & Bubs teaser -->
+  <!-- Mums & Bubs teaser, M&B themed -->
   <section class="max-w-7xl mx-auto px-5 lg:px-8 py-20">
-    <div class="rounded-3xl bg-sage-700 text-cream-100 p-10 lg:p-16 grid lg:grid-cols-2 gap-10 items-center">
+    <div class="rounded-3xl p-10 lg:p-16 grid lg:grid-cols-2 gap-10 items-center"
+         style="background-color: var(--color-mb-cream); color: var(--color-mb-ink); border: 1px solid var(--color-mb-rule);">
       <div>
-        <p class="text-sm uppercase tracking-[0.18em] text-tan-200 mb-3">Mums & Bubs</p>
-        <h2 class="text-cream-50">From bump to bub, under one roof.</h2>
-        <p class="mt-5 text-cream-100/90 leading-relaxed">
-          The only physio team across the Sunshine Coast and Moreton Bay following you
-          and your baby through pregnancy, birth recovery and developmental milestones -
-          pelvic floor and paediatric physio by the same trusted clinicians.
+        <div class="flex items-center gap-3 mb-5">
+          <img src={mbLogo.src} alt="" class="w-10 h-10" />
+          <p class="text-xs uppercase tracking-[0.18em] font-semibold" style="color: var(--color-mb-terracotta-dark);">Mums &amp; Bubs Physio</p>
+        </div>
+        <h2 style="font-family: var(--font-mb-serif); font-weight: 400; font-size: clamp(1.85rem, 3.5vw, 2.65rem); line-height: 1.15;">
+          From bump to bub, <em style="font-style: italic; color: var(--color-mb-terracotta);">under one roof</em>.
+        </h2>
+        <p class="mt-5 leading-relaxed" style="color: var(--color-mb-muted);">
+          The only physio team across the Sunshine Coast and Moreton Bay following you and your baby
+          through pregnancy, birth recovery and developmental milestones. Pelvic floor and paediatric
+          physio by the same trusted clinicians.
         </p>
         <a
           href="/mums-and-bubs"
-          class="mt-7 inline-flex items-center rounded-full bg-cream-50 px-7 py-3.5 text-sm font-semibold text-sage-700 hover:bg-tan-100 transition-colors"
+          class="mt-7 inline-flex items-center rounded-full px-7 py-3.5 text-sm font-semibold transition-colors"
+          style="background-color: var(--color-mb-terracotta); color: white;"
+          onmouseover="this.style.backgroundColor='var(--color-mb-terracotta-dark)'"
+          onmouseout="this.style.backgroundColor='var(--color-mb-terracotta)'"
         >
-          Mums & Bubs at Forward Health →
+          Mums &amp; Bubs at Forward Health →
         </a>
       </div>
-      <div class="aspect-[4/3] rounded-2xl bg-sage-600/40 border border-sage-500/40 flex items-center justify-center text-cream-100/60 text-sm">
-        [ pregnancy / postnatal imagery placeholder ]
+      <div>
+        <Image
+          src={heroImg}
+          alt="Forward Health pelvic floor physiotherapist with a pregnant patient"
+          width={900}
+          height={675}
+          class="aspect-[4/3] rounded-2xl object-cover w-full"
+        />
       </div>
     </div>
   </section>

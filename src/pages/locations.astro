@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import BookingBlock from "../components/BookingBlock.astro";
 import sandstoneImage from "../assets/locations/sandstone-point.jpg";
+import currimundiImage from "../assets/locations/currimundi.jpg";
 
 const clinics = [
   {
@@ -12,14 +13,14 @@ const clinics = [
     blurb:
       "Our Sunshine Coast clinic, co-located with Currimundi Family Doctors, Andrew Khoury Podiatry and a small constellation of allied health practitioners. Easy parking, ground-floor access, the largest team across our two clinics.",
     href: "/locations/currimundi",
-    image: null,
+    image: currimundiImage,
   },
   {
     name: "Sandstone Point",
     region: "Moreton Bay · Just over the bridge from Bribie Island",
     address: "Shop 3 / 208 Bestmann Road East, Sandstone Point QLD 4511",
     blurb:
-      "Our Moreton Bay clinic, purpose-built reformer pilates studio, dedicated treatment rooms, and the only allied health space in the area offering remedial massage on evenings and weekends.",
+      "Our Moreton Bay clinic, with a purpose-built reformer pilates studio and dedicated treatment rooms for physiotherapy, massage and paediatric care.",
     href: "/locations/sandstone-point",
     image: sandstoneImage,
   },
