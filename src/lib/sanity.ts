@@ -1,4 +1,4 @@
-// Sanity client wiring — placeholder, ready for activation after `sanity init`.
+// Sanity client wiring, placeholder, ready for activation after `sanity init`.
 //
 // To activate:
 // 1. Run `sanity init` inside ../sanity-studio (creates a Sanity project, gives projectId)

@@ -7,7 +7,7 @@ interface Props {
 
 const { address, title = "Map", aspectClass = "aspect-[16/7]" } = Astro.props;
 
-// Google Maps embed via address query — no API key needed.
+// Google Maps embed via address query. No API key needed.
 // If you want richer behaviour later (custom markers, styling), upgrade to
 // the Maps Embed API with a key.
 const src = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;

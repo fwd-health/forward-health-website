@@ -37,7 +37,7 @@ export const physiotherapists: Practitioner[] = [
     blurb:
       "10+ years in health and wellness. Special interest in running injury, performance and the active population. Also treats vertigo, headaches and migraines.",
     fullBio:
-      "Joe has spent more than a decade working with active people who want to keep moving — runners chasing their next race, weekend athletes, parents who want to play with their kids without grimacing. His clinical interest sits at the intersection of running performance and injury rehab, but he also brings deep skill to vestibular conditions and chronic headaches. Outside the clinic, you'll find him leading the Forward Run Club at Aurenda Coffee Co.",
+      "Joe has spent more than a decade working with active people who want to keep moving, runners chasing their next race, weekend athletes, parents who want to play with their kids without grimacing. His clinical interest sits at the intersection of running performance and injury rehab, but he also brings deep skill to vestibular conditions and chronic headaches. Outside the clinic, you'll find him leading the Forward Run Club at Aurenda Coffee Co.",
     qualifications: [
       "BSc Kinesiology (University of Alberta)",
       "Master of Physiotherapy Studies (University of Queensland)",
@@ -59,7 +59,7 @@ export const physiotherapists: Practitioner[] = [
     blurb:
       "Women's health and pelvic floor physio, including pessary fittings. Sees paediatric clients across both clinics.",
     fullBio:
-      "Steph's clinical heart sits with women navigating pregnancy, postnatal recovery, and the pelvic health concerns that often go undiscussed. She fits pessaries, runs pre-and-post natal pelvic floor consultations, and treats paediatric clients from babies through teens. Patients describe her as warm, thorough and genuinely unhurried — qualities that matter most when the questions feel sensitive.",
+      "Steph's clinical heart sits with women navigating pregnancy, postnatal recovery, and the pelvic health concerns that often go undiscussed. She fits pessaries, runs pre-and-post natal pelvic floor consultations, and treats paediatric clients from babies through teens. Patients describe her as warm, thorough and genuinely unhurried, qualities that matter most when the questions feel sensitive.",
     qualifications: [
       "Bachelor of Biomedical Science (QUT)",
       "Master of Physiotherapy Studies (University of Queensland)",
@@ -104,7 +104,7 @@ export const physiotherapists: Practitioner[] = [
     blurb:
       "4+ years working with knee and hip osteoarthritis and post-operative rehab. Leads our home-visit program.",
     fullBio:
-      "Jarrod runs Forward Health's home-visit physiotherapy service across the Sunshine Coast and Moreton Bay. His clinical wheelhouse is knee and hip osteoarthritis and post-surgical rehab — the kind of work where progress is measured in steps gained rather than reps logged. He works with NDIS plan-managed clients, Home Care Package recipients, post-discharge programs and DVA card holders.",
+      "Jarrod runs Forward Health's home-visit physiotherapy service across the Sunshine Coast and Moreton Bay. His clinical wheelhouse is knee and hip osteoarthritis and post-surgical rehab, the kind of work where progress is measured in steps gained rather than reps logged. He works with NDIS plan-managed clients, Home Care Package recipients, post-discharge programs and DVA card holders.",
     qualifications: [
       "Bachelor of Physiotherapy (Charles Sturt University)",
     ],
@@ -124,7 +124,7 @@ export const physiotherapists: Practitioner[] = [
     blurb:
       "General musculoskeletal physiotherapy, clinical pilates and our strength & balance class lead at Sandstone Point.",
     fullBio:
-      "Holly is the heart of the Sandstone Point physiotherapy team — equally at home on the treatment table, on the reformer, or running our strength-and-balance group classes. She brings warmth and clear communication to general musculoskeletal cases and has built a loyal community of regulars who come back week after week for her classes.",
+      "Holly is the heart of the Sandstone Point physiotherapy team, equally at home on the treatment table, on the reformer, or running our strength-and-balance group classes. She brings warmth and clear communication to general musculoskeletal cases and has built a loyal community of regulars who come back week after week for her classes.",
     qualifications: ["Bachelor of Physiotherapy (Australian Catholic University)"],
     specialties: [
       "General musculoskeletal physio",
@@ -139,7 +139,7 @@ export const physiotherapists: Practitioner[] = [
     role: "Physiotherapist · Currently on maternity leave",
     locations: "Currimundi",
     blurb:
-      "Currimundi physiotherapist currently on maternity leave — back with us when ready.",
+      "Currimundi physiotherapist currently on maternity leave. Back with us when ready.",
     fullBio:
       "Ella is part of the Currimundi physiotherapy team and is currently away on maternity leave. We're looking forward to welcoming her back when she's ready to return to clinical practice.",
     qualifications: [],
@@ -157,7 +157,7 @@ export const massageTherapists: Practitioner[] = [
     blurb:
       "13+ years as a remedial massage therapist with an advanced diploma of Myotherapy. Treats complex chronic pain and post-injury recovery.",
     fullBio:
-      "Tara is the most experienced bodyworker on our team, with more than thirteen years of remedial massage practice and an advanced diploma of Myotherapy. She's the right call for chronic, complex or stubborn cases that haven't shifted with general massage — combining soft tissue, dry needling, cupping and joint mobilisation depending on what your body needs.",
+      "Tara is the most experienced bodyworker on our team, with more than thirteen years of remedial massage practice and an advanced diploma of Myotherapy. She's the right call for chronic, complex or stubborn cases that haven't shifted with general massage, combining soft tissue, dry needling, cupping and joint mobilisation depending on what your body needs.",
     qualifications: [
       "Diploma of Remedial Massage (Q Academy, 2013)",
       "Advanced Diploma of Myotherapy (Q Academy, 2017)",
@@ -178,7 +178,7 @@ export const massageTherapists: Practitioner[] = [
     blurb:
       "Multiple years as a remedial massage therapist, currently studying to become a Myotherapist.",
     fullBio:
-      "Carly is one of the most-requested therapists at Currimundi — known for the right balance of firm and intuitive pressure, and an ability to find the knot you've been carrying without you needing to point it out. She's currently studying to become a Myotherapist alongside her clinic work.",
+      "Carly is one of the most-requested therapists at Currimundi, known for the right balance of firm and intuitive pressure, and an ability to find the knot you've been carrying without you needing to point it out. She's currently studying to become a Myotherapist alongside her clinic work.",
     qualifications: [
       "Diploma of Remedial Massage",
       "Studying Advanced Diploma of Myotherapy",
@@ -194,7 +194,7 @@ export const massageTherapists: Practitioner[] = [
     blurb:
       "Diploma of Remedial Massage. Several years previous experience as a physiotherapist in Colombia. Special interest in lymphatic drainage.",
     fullBio:
-      "Before becoming a remedial massage therapist in Australia, Catalina spent several years practising as a physiotherapist in Colombia. She brings that clinical lens to her massage practice — particularly skilled at lymphatic drainage and post-surgical recovery work. She's currently working towards AHPRA recognition of her overseas physiotherapy qualifications.",
+      "Before becoming a remedial massage therapist in Australia, Catalina spent several years practising as a physiotherapist in Colombia. She brings that clinical lens to her massage practice, particularly skilled at lymphatic drainage and post-surgical recovery work. She's currently working towards AHPRA recognition of her overseas physiotherapy qualifications.",
     qualifications: [
       "Diploma of Remedial Massage (Mastery Institute Australia, 2025)",
       "Physiotherapy training (Colombia)",
@@ -212,12 +212,12 @@ export const massageTherapists: Practitioner[] = [
     role: "Remedial Massage Therapist",
     locations: "Currimundi · Tuesdays",
     blurb:
-      "Trained in New Zealand, on the Sunshine Coast since 2010. Trigger point therapy, myofascial release, joint mobilisation and stretching — with a calm, nurturing approach.",
+      "Trained in New Zealand, on the Sunshine Coast since 2010. Trigger point therapy, myofascial release, joint mobilisation and stretching, with a calm, nurturing approach.",
     fullBio:
-      "Suzie brings deep experience as a remedial massage therapist alongside her background as an assistant nurse working in community and residential care. She trained in New Zealand through the Wellington School of Massage Therapy before moving to the Sunshine Coast in 2010, and has worked across many multi-disciplinary clinics since. Her treatments draw on trigger point therapy, myofascial release, joint mobilisation, and active and passive stretching — all delivered with the kind of compassionate, unhurried presence her clients come back for. Outside work, you'll find Suzie at yoga, the gym, walking in nature, meditating, at sound baths, travelling or with her loved ones.",
+      "Suzie brings deep experience as a remedial massage therapist alongside her background as an assistant nurse working in community and residential care. She trained in New Zealand through the Wellington School of Massage Therapy before moving to the Sunshine Coast in 2010, and has worked across many multi-disciplinary clinics since. Her treatments draw on trigger point therapy, myofascial release, joint mobilisation, and active and passive stretching. All delivered with the kind of compassionate, unhurried presence her clients come back for. Outside work, you'll find Suzie at yoga, the gym, walking in nature, meditating, at sound baths, travelling or with her loved ones.",
     qualifications: [
       "Diploma of Remedial Massage (Wellington School of Massage Therapy, NZ)",
-      "Assistant Nurse — community and residential care experience",
+      "Assistant Nurse, community and residential care experience",
     ],
     specialties: [
       "Trigger point therapy",
@@ -238,7 +238,7 @@ export const careTeam: Practitioner[] = [
     locations: "Currimundi",
     blurb: "First friendly face you meet at Currimundi reception.",
     fullBio:
-      "Erin is the first friendly face you meet when you walk into Currimundi — the person who'll find you a parking spot, sort your HICAPS claim, and make sure your favourite practitioner has the slot you need.",
+      "Erin is the first friendly face you meet when you walk into Currimundi. The person who'll find you a parking spot, sort your HICAPS claim, and make sure your favourite practitioner has the slot you need.",
     qualifications: [],
     specialties: [],
     href: "/team/erin-gadsby",
@@ -250,7 +250,7 @@ export const careTeam: Practitioner[] = [
     locations: "Sandstone Point",
     blurb: "First friendly face you meet at Sandstone Point reception.",
     fullBio:
-      "Chloe runs reception at Sandstone Point — bookings, callbacks, claims, and everything in between. She's the reason the day stays on time.",
+      "Chloe runs reception at Sandstone Point, bookings, callbacks, claims, and everything in between. She's the reason the day stays on time.",
     qualifications: [],
     specialties: [],
     href: "/team/chloe-becker",
@@ -262,7 +262,7 @@ export const careTeam: Practitioner[] = [
     locations: "Sandstone Point",
     blurb: "Bookings, claims and a calm front-of-house presence.",
     fullBio:
-      "Lucy keeps the Sandstone Point front desk running smoothly — patient communications, health-fund claims, and the everyday warmth that makes a clinic feel like a clinic, not a corporation.",
+      "Lucy keeps the Sandstone Point front desk running smoothly, patient communications, health-fund claims, and the everyday warmth that makes a clinic feel like a clinic, not a corporation.",
     qualifications: [],
     specialties: [],
     href: "/team/lucy-chung",
@@ -274,7 +274,7 @@ export const careTeam: Practitioner[] = [
     locations: "Currimundi",
     blurb: "Friendly front-of-house at Currimundi reception.",
     fullBio:
-      "Maddie joined the Currimundi reception team in 2026. She'll be one of the first faces you meet — sorting bookings, answering questions about pricing and health-fund claims, and making sure your visit runs smoothly from the moment you walk in.",
+      "Maddie joined the Currimundi reception team in 2026. She'll be one of the first faces you meet, sorting bookings, answering questions about pricing and health-fund claims, and making sure your visit runs smoothly from the moment you walk in.",
     qualifications: [],
     specialties: [],
     href: "/team/maddie-mcculloch",

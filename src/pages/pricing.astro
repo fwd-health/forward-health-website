@@ -40,18 +40,18 @@ const sections = [
     title: "Clinical pilates",
     items: [
       { label: "Initial 1-on-1 assessment", duration: "60 min", price: "$135" },
-      { label: "Single class (small group, max 6)", duration: "—", price: "$45" },
-      { label: "3-class pack", duration: "—", price: "$114" },
-      { label: "6-class pack", duration: "—", price: "$216" },
-      { label: "12-class pack", duration: "—", price: "$408" },
-      { label: "24-class pack", duration: "—", price: "$768" },
+      { label: "Single class (small group, max 6)", duration: "-", price: "$45" },
+      { label: "3-class pack", duration: "-", price: "$114" },
+      { label: "6-class pack", duration: "-", price: "$216" },
+      { label: "12-class pack", duration: "-", price: "$408" },
+      { label: "24-class pack", duration: "-", price: "$768" },
     ],
   },
 ];
 ---
 
 <Layout
-  title="Pricing — Forward Health"
+  title="Pricing, Forward Health"
   description="Forward Health pricing for physiotherapy, pelvic floor physio, remedial massage, clinical pilates and specialist services. HCF and Medibank preferred provider; HICAPS on-the-spot claiming."
 >
   <!-- Hero -->
@@ -81,7 +81,7 @@ const sections = [
             <li class="px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
               <div>
                 <p class="text-charcoal font-medium">{it.label}</p>
-                {it.duration && it.duration !== "—" && (
+                {it.duration && it.duration !== "-" && (
                   <p class="text-xs text-stone uppercase tracking-[0.14em] mt-0.5">{it.duration}</p>
                 )}
               </div>
@@ -101,7 +101,7 @@ const sections = [
         <h2 class="text-charcoal text-2xl lg:text-3xl">Claim on the spot.</h2>
         <p class="mt-4 text-stone leading-relaxed">
           HICAPS for every major Australian health fund. <strong>HCF preferred provider</strong> for all services
-          and <strong>Medibank preferred provider</strong> for physiotherapy — meaning the rebate is higher.
+          and <strong>Medibank preferred provider</strong> for physiotherapy, meaning the rebate is higher.
         </p>
       </div>
       <div>
@@ -113,19 +113,19 @@ const sections = [
           </li>
           <li class="flex gap-3">
             <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
-            <span><strong>EPC plans</strong> (5 sessions/year via your GP) — small gap fee applies.</span>
+            <span><strong>EPC plans</strong> (5 sessions/year via your GP), small gap fee applies.</span>
           </li>
           <li class="flex gap-3">
             <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
-            <span><strong>DVA Gold and White Cards</strong> — bulk billed where the condition is on your card. GP referral required.</span>
+            <span><strong>DVA Gold and White Cards</strong>, bulk billed where the condition is on your card. GP referral required.</span>
           </li>
           <li class="flex gap-3">
             <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
-            <span><strong>WorkCover</strong> — bulk billed with valid referral.</span>
+            <span><strong>WorkCover</strong>, bulk billed with valid referral.</span>
           </li>
           <li class="flex gap-3">
             <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
-            <span><strong>NDIS</strong> — plan-managed and self-managed only. Not a registered provider.</span>
+            <span><strong>NDIS</strong>, plan-managed and self-managed only. Not a registered provider.</span>
           </li>
         </ul>
       </div>
@@ -138,7 +138,7 @@ const sections = [
       <p class="text-sm">
         <strong class="text-charcoal">24-hour cancellation policy.</strong> We require at least 24 hours' notice
         to cancel or reschedule. Late cancellations may attract 50% of the appointment fee; missed appointments
-        may attract the full fee. Life happens — let us know as early as you can.
+        may attract the full fee. Life happens. Let us know as early as you can.
         <a href="/policies" class="text-sage-600 underline">Full policies →</a>
       </p>
     </div>
