@@ -20,48 +20,56 @@ const heroServices = [
     blurb: "General musculoskeletal, sports and post-surgical rehab. Back pain, neck, shoulders, knees, ankles.",
     href: "/physiotherapy",
     image: physiotherapyImg,
+    objectPosition: "center",
   },
   {
     title: "Pelvic floor physio",
     blurb: "Pregnancy, postnatal recovery, pelvic pain, prolapse and pessary fittings.",
     href: "/pelvic-floor-physio",
     image: pelvicFloorImg,
+    objectPosition: "center bottom",
   },
   {
     title: "Remedial massage",
     blurb: "Deep tissue, lymphatic and pregnancy massage. Available at both Currimundi and Sandstone Point.",
     href: "/remedial-massage",
     image: remedialMassageImg,
+    objectPosition: "center",
   },
   {
     title: "Running assessments",
     blurb: "Video gait analysis, return-to-run plans and performance tuning for everyday runners.",
     href: "/running-assessments",
     image: runningImg,
+    objectPosition: "center",
   },
   {
     title: "Vertigo & vestibular physio",
     blurb: "Expert care for BPPV, vestibular migraine, post-concussion and balance disorders.",
     href: "/vertigo-vestibular-physio",
     image: vertigoImg,
+    objectPosition: "center",
   },
   {
     title: "Paediatric physiotherapy",
     blurb: "From developmental milestones to adolescent sports injuries, both ends of paeds.",
     href: "/paediatric-physio",
     image: paediatricImg,
+    objectPosition: "center bottom",
   },
   {
     title: "Clinical pilates",
     blurb: "Reformer-based. Small-group classes at Sandstone Point, 1:1 sessions at Currimundi.",
     href: "/clinical-pilates",
     image: clinicalPilatesImg,
+    objectPosition: "center",
   },
   {
     title: "Home visit physiotherapy",
     blurb: "NDIS (plan / self-managed), Home Care Packages, Remedy Health post-discharge, DVA.",
     href: "/home-visits",
     image: homeVisitsImg,
+    objectPosition: "center",
   },
 ];
 
@@ -152,6 +160,7 @@ const locations = [
               width={600}
               height={450}
               class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+              style={`object-position: ${s.objectPosition};`}
             />
           </div>
           <div class="p-5 lg:p-6">
@@ -198,7 +207,7 @@ const locations = [
          style="background-color: var(--color-mb-cream); color: var(--color-mb-ink); border: 1px solid var(--color-mb-rule);">
       <div>
         <div class="flex items-center gap-3 mb-5">
-          <img src={mbLogo.src} alt="" class="w-10 h-10" />
+          <img src={mbLogo.src} alt="" class="w-16 h-16" />
           <p class="text-xs uppercase tracking-[0.18em] font-semibold" style="color: var(--color-mb-terracotta-dark);">Mums &amp; Bubs Physio</p>
         </div>
         <h2 style="font-family: var(--font-mb-serif); font-weight: 400; font-size: clamp(1.85rem, 3.5vw, 2.65rem); line-height: 1.15;">
