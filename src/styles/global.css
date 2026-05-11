@@ -30,9 +30,23 @@
   --color-charcoal: #2a2e2a;
   --color-stone: #6b6e68;
 
+  /* Mums & Bubs Physio sub-brand — warm-embrace palette (terracotta / cream / burgundy) */
+  --color-mb-cream: #f8efe2;
+  --color-mb-warm: #fdf8ef;
+  --color-mb-terracotta: #b8785e;
+  --color-mb-terracotta-dark: #9c5e45;
+  --color-mb-tan: #e7ba8f;
+  --color-mb-tan-light: #f1d2b0;
+  --color-mb-burgundy: #8e4b3a;
+  --color-mb-ink: #3d2d26;
+  --color-mb-muted: #7a6259;
+  --color-mb-rule: #e5d5c2;
+
   /* Typography — Fraunces is a free near-equivalent to Recoleta Bold while we sort the license */
   --font-display: "Fraunces", "Recoleta", "Georgia", serif;
   --font-body: "Inter", "system-ui", "Helvetica Neue", sans-serif;
+  /* Mums & Bubs uses a softer serif */
+  --font-mb-serif: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
 
   /* Layout */
   --container-readable: 68ch;

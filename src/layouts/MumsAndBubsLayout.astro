@@ -1,0 +1,174 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  schema?: object;
+}
+
+const { title, description, ogImage, schema } = Astro.props;
+
+const pathname = Astro.url.pathname.replace(/\/$/, "");
+
+const subNav = [
+  { label: "Mums & Bubs", href: "/mums-and-bubs" },
+  { label: "Prenatal", href: "/mums-and-bubs/prenatal" },
+  { label: "Postpartum", href: "/mums-and-bubs/postpartum" },
+  { label: "Pelvic floor", href: "/pelvic-floor-physio" },
+  { label: "Paediatrics", href: "/paediatric-physio" },
+];
+---
+
+<Layout title={title} description={description} ogImage={ogImage}>
+  <!-- M&B sub-brand strip -->
+  <div class="mb-section bg-[var(--color-mb-warm)] border-b border-[var(--color-mb-rule)]">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+      <a href="/mums-and-bubs" class="flex items-center gap-3 leading-none">
+        <img src="/mums-and-bubs-logo.svg" alt="" class="h-9 w-auto" />
+        <span class="font-[var(--font-mb-serif)] text-lg lg:text-xl text-[var(--color-mb-burgundy)] tracking-tight">
+          mums &amp; bubs <span class="text-[var(--color-mb-terracotta)] italic">physio</span>
+        </span>
+      </a>
+      <nav aria-label="Mums & Bubs sub-navigation" class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-[var(--color-mb-ink)] ml-auto">
+        {subNav.map((item) => {
+          const itemPath = item.href.replace(/\/$/, "");
+          const isCurrent = pathname === itemPath;
+          return (
+            <a
+              href={item.href}
+              aria-current={isCurrent ? "page" : undefined}
+              class:list={[
+                "transition-colors",
+                isCurrent
+                  ? "text-[var(--color-mb-terracotta-dark)] font-semibold"
+                  : "hover:text-[var(--color-mb-terracotta)]",
+              ]}
+            >
+              {item.label}
+            </a>
+          );
+        })}
+      </nav>
+    </div>
+  </div>
+
+  <div class="mb-section">
+    <slot />
+  </div>
+
+  {schema && (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(schema)}
+    />
+  )}
+</Layout>
+
+<style is:global>
+  /* M&B section scoped theme — applies only inside .mb-section descendants */
+  .mb-section {
+    background-color: var(--color-mb-cream);
+    color: var(--color-mb-ink);
+    font-family: var(--font-body);
+  }
+  .mb-section h1,
+  .mb-section h2,
+  .mb-section h3,
+  .mb-section h4 {
+    font-family: var(--font-mb-serif);
+    color: var(--color-mb-ink);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  .mb-section h1 {
+    font-size: clamp(2.4rem, 5vw, 3.75rem);
+    font-weight: 400;
+  }
+  .mb-section h2 {
+    font-size: clamp(1.85rem, 3.5vw, 2.65rem);
+    font-weight: 400;
+  }
+  .mb-section h1 em,
+  .mb-section h2 em,
+  .mb-section h3 em {
+    font-style: italic;
+    color: var(--color-mb-terracotta);
+  }
+  .mb-section .mb-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.78rem;
+    color: var(--color-mb-terracotta-dark);
+    font-weight: 600;
+    font-family: var(--font-body);
+  }
+  .mb-section .mb-card {
+    background: var(--color-mb-warm);
+    border: 1px solid var(--color-mb-rule);
+    border-radius: 1.25rem;
+  }
+  .mb-section .mb-btn-primary {
+    background-color: var(--color-mb-terracotta);
+    color: white;
+    transition: background-color 0.18s ease;
+  }
+  .mb-section .mb-btn-primary:hover {
+    background-color: var(--color-mb-terracotta-dark);
+  }
+  .mb-section .mb-btn-outline {
+    background: white;
+    border: 1px solid var(--color-mb-rule);
+    color: var(--color-mb-ink);
+    transition: border-color 0.18s ease;
+  }
+  .mb-section .mb-btn-outline:hover {
+    border-color: var(--color-mb-terracotta);
+  }
+  .mb-section .mb-bg-warm {
+    background-color: var(--color-mb-warm);
+  }
+  .mb-section .mb-bg-burgundy {
+    background-color: var(--color-mb-burgundy);
+    color: var(--color-mb-warm);
+  }
+  .mb-section .mb-bg-burgundy h1,
+  .mb-section .mb-bg-burgundy h2,
+  .mb-section .mb-bg-burgundy h3 {
+    color: var(--color-mb-warm);
+  }
+  .mb-section details.mb-faq summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    font-family: var(--font-mb-serif);
+    font-size: 1.15rem;
+    color: var(--color-mb-ink);
+  }
+  .mb-section details.mb-faq summary::-webkit-details-marker { display: none; }
+  .mb-section details.mb-faq summary::after {
+    content: "+";
+    color: var(--color-mb-terracotta);
+    font-family: var(--font-mb-serif);
+    font-size: 1.6rem;
+    line-height: 1;
+    transition: transform 0.18s ease;
+  }
+  .mb-section details.mb-faq[open] summary::after {
+    transform: rotate(45deg);
+  }
+  .mb-section details.mb-faq {
+    border-bottom: 1px solid var(--color-mb-rule);
+  }
+  .mb-section details.mb-faq p {
+    color: var(--color-mb-muted);
+    padding-bottom: 1.25rem;
+    line-height: 1.65;
+  }
+</style>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <!-- Mums & Bubs Physio — Warm Embrace mark (icon only, no wordmark) -->
+  <path d="M 165 430
+           Q 140 260 215 175
+           Q 275 120 345 130
+           Q 415 145 450 200
+           Q 470 235 450 260
+           Q 425 280 395 260
+           Q 370 245 340 245
+           Q 300 250 280 295
+           Q 270 340 280 380
+           Q 290 415 305 435 Z"
+        fill="#B8785E"/>
+  <circle cx="345" cy="290" r="38" fill="#E7BA8F"/>
+  <ellipse cx="355" cy="380" rx="54" ry="46" fill="#E7BA8F"/>
+  <path d="M 260 250
+           c -7 -9 -20 -3 -20 7
+           c 0 11 13 20 20 27
+           c 7 -7 20 -16 20 -27
+           c 0 -10 -13 -16 -20 -7 Z"
+        fill="#8E4B3A"/>
+</svg>

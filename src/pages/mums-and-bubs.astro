@@ -1,134 +1,315 @@
 ---
 import { Image } from "astro:assets";
-import Layout from "../layouts/Layout.astro";
-import BookingBlock from "../components/BookingBlock.astro";
+import MumsAndBubsLayout from "../layouts/MumsAndBubsLayout.astro";
 import PractitionerCard from "../components/PractitionerCard.astro";
 import { practitioners } from "../data/practitioners";
 import heroImage from "../assets/hero-pregnancy-physio.jpg";
+import logoMark from "../assets/mums-and-bubs/logo.svg?url";
 
 const team = [practitioners.steph, practitioners.brianna];
 
-const journey = [
+const services = [
   {
-    stage: "Pregnancy",
-    title: "Through the trimesters",
-    blurb:
-      "Pelvic girdle pain, round ligament niggles, birth-prep appointments, pregnancy massage, and pelvic floor screening before bub arrives.",
+    title: "Prenatal physio",
+    blurb: "Pelvic girdle pain, sciatica, back pain, carpal tunnel, birth preparation and safe exercise through every trimester.",
+    href: "/mums-and-bubs/prenatal",
+    iconPath: "M12 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM9 12c-2 0-3 1.5-3 4 0 3 2 5 6 5s6-2 6-5c0-2.5-1-4-3-4M12 13c-1.5 0-2.5 1-2.5 2.5",
   },
   {
-    stage: "Birth recovery",
-    title: "The 6-week postnatal check",
-    blurb:
-      "A thorough post-birth assessment — vaginal birth or caesarean — including pelvic floor, diastasis screening, scar work and a return-to-movement plan.",
+    title: "Postpartum physio",
+    blurb: "Pelvic floor recovery, abdominal separation (diastasis), C-section rehab, mastitis support and a confident return to exercise.",
+    href: "/mums-and-bubs/postpartum",
+    iconPath: "M21 12c0 5-4 9-9 9s-9-4-9-9 4-9 9-9c2 0 4 .7 5.5 2M16 3l3 3-3 3",
   },
   {
-    stage: "Postnatal",
-    title: "Returning to movement",
-    blurb:
-      "Returning to running, lifting, reformer pilates and the rest of life. Your body has changed; the program meets it where it is now, not where it was before bub.",
+    title: "Pelvic floor & women's health",
+    blurb: "Incontinence, prolapse, pelvic pain, painful intercourse, endometriosis and menopausal pelvic health — across all life stages.",
+    href: "/pelvic-floor-physio",
+    iconPath: "M12 21c-4.5-3.5-8-7-8-12a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 5-3.5 8.5-8 12z",
   },
   {
-    stage: "Newborn",
-    title: "Babies, 0–12 months",
-    blurb:
-      "Plagiocephaly (flat head), torticollis, hip dysplasia harness reviews, settling for reflux, and gross-motor milestone support.",
-  },
-  {
-    stage: "Toddler",
-    title: "Walking and beyond",
-    blurb:
-      "Walking delays, toe-walking, hypermobility, frequent falls and gross-motor coordination concerns.",
-  },
-  {
-    stage: "Young children",
-    title: "Through to school",
-    blurb:
-      "Coordination, posture, sports niggles, growing pains and bedwetting — the lesser-talked-about side of growing up.",
+    title: "Paediatric physio",
+    blurb: "Plagiocephaly (flat head), torticollis, gross motor delay, hypermobility, toe walking and NDIS-funded paediatric care.",
+    href: "/paediatric-physio",
+    iconPath: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM5 21c0-4 3-7 7-7s7 3 7 7",
   },
 ];
+
+const mumConditions = [
+  "Bladder leakage when you cough, sneeze, run or jump",
+  "Urgent or frequent need to wee",
+  "Pelvic heaviness, dragging or bulging (prolapse)",
+  "Painful sex (dyspareunia)",
+  "Diastasis recti (abdominal separation)",
+  "C-section scar pain or numbness",
+  "Perineal tear or episiotomy recovery",
+  "Mastitis and blocked ducts",
+  "Pelvic girdle pain and pubic symphysis pain",
+  "Pregnancy-related back and hip pain",
+  "Carpal tunnel in pregnancy",
+  "Returning to running and exercise",
+  "Endometriosis and persistent pelvic pain",
+  "Menopausal pelvic health",
+  "Pre / post gynaecological surgery",
+];
+
+const bubConditions = [
+  "Plagiocephaly (flat head)",
+  "Torticollis (neck tightness or head tilt)",
+  "Tummy time troubles",
+  "Gross motor delay",
+  "Late rolling, sitting, crawling, walking",
+  "Toe walking",
+  "Hypermobility and bendy joints",
+  "Cerebral palsy",
+  "Down syndrome and genetic conditions",
+  "Developmental Coordination Disorder (DCD)",
+  "Childhood constipation and toileting",
+  "Bedwetting (nocturnal enuresis)",
+  "Postural concerns and scoliosis",
+  "Sports and growth-plate injuries in tweens / teens",
+  "NDIS plan-managed and self-managed care",
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Physiotherapy",
+  name: "Mums & Bubs Physio — Forward Health",
+  description:
+    "Specialist physiotherapy for mums and babies — pelvic floor, prenatal, postpartum and paediatric physio on the Sunshine Coast.",
+  url: "https://www.fwdhealth.com.au/mums-and-bubs",
+  parentOrganization: {
+    "@type": "MedicalOrganization",
+    name: "Forward Health",
+    url: "https://www.fwdhealth.com.au",
+  },
+  telephone: "+61420522558",
+  email: "hello@fwdhealth.com.au",
+  address: [
+    {
+      "@type": "PostalAddress",
+      streetAddress: "Shop 3 / 768 Nicklin Way",
+      addressLocality: "Currimundi",
+      addressRegion: "QLD",
+      postalCode: "4551",
+      addressCountry: "AU",
+    },
+    {
+      "@type": "PostalAddress",
+      streetAddress: "Shop 3 / 208 Bestmann Road East",
+      addressLocality: "Sandstone Point",
+      addressRegion: "QLD",
+      postalCode: "4511",
+      addressCountry: "AU",
+    },
+  ],
+  medicalSpecialty: ["PelvicHealth", "Pediatric", "Obstetrics"],
+  areaServed: [
+    "Currimundi", "Caloundra", "Moffat Beach", "Dicky Beach", "Little Mountain",
+    "Aroona", "Meridan Plains", "Warana", "Bokarina", "Wurtulla", "Buddina",
+    "Battery Hill", "Birtinya", "Golden Beach", "Kings Beach", "Shelly Beach",
+    "Pelican Waters", "Sandstone Point", "Bribie Island", "Ningi", "Banksia Beach",
+    "Bongaree", "Bellara", "Woorim",
+  ].map((name) => ({ "@type": "Place", name })),
+};
 ---
 
-<Layout
-  title="Mums & Bubs at Forward Health — pregnancy, postnatal & paediatric physio"
-  description="From bump to bub, under one roof. Pregnancy and postnatal pelvic floor physio plus paediatric physiotherapy by the same trusted team across Currimundi and Sandstone Point."
+<MumsAndBubsLayout
+  title="Mums & Bubs Physio | Pregnancy, Postpartum, Pelvic & Paediatric Physiotherapy — Forward Health"
+  description="Specialist physiotherapy for mums and babies on the Sunshine Coast. Pelvic floor, prenatal, postpartum and paediatric physio at Forward Health Currimundi and Sandstone Point."
+  schema={schema}
 >
   <!-- Hero -->
-  <section class="bg-sage-700 text-cream-100">
-    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-12 gap-10 items-center">
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
       <div class="lg:col-span-7">
-        <p class="text-sm uppercase tracking-[0.18em] text-tan-200 mb-4">Mums & Bubs</p>
-        <h1 class="text-cream-50">From bump to bub.</h1>
-        <p class="mt-4 font-display text-2xl lg:text-3xl text-tan-200 italic">Under one roof.</p>
-        <p class="mt-7 text-lg text-cream-100/90 leading-relaxed max-w-xl">
-          The only physio team across the Sunshine Coast and Moreton Bay following you and your baby
-          through pregnancy, birth recovery and the early years — pelvic floor physiotherapy and
-          paediatric physiotherapy by the same trusted clinicians.
+        <p class="mb-eyebrow">Sunshine Coast · Currimundi · Sandstone Point</p>
+        <h1 class="mt-4">Specialist physiotherapy for <em>mums &amp; bubs</em>.</h1>
+        <p class="mt-6 text-xl leading-relaxed text-[var(--color-mb-ink)] max-w-xl">
+          Expert care through pregnancy, postpartum recovery, pelvic health and paediatrics — under
+          the one warm, welcoming roof.
+        </p>
+        <p class="mt-4 leading-relaxed text-[var(--color-mb-muted)] max-w-xl">
+          From your first trimester to your child's first steps, our team is here to help you move,
+          recover and feel at home in your body. Same-week appointments available across Currimundi
+          and Sandstone Point.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a
-            href="#book"
-            class="inline-flex items-center rounded-full bg-cream-50 px-7 py-3.5 text-base font-semibold text-sage-700 hover:bg-tan-100 transition-colors"
-          >
+          <a href="#book" class="mb-btn-primary inline-flex items-center rounded-full px-7 py-3.5 text-base font-semibold">
             Book online
           </a>
-          <a
-            href="tel:0420522558"
-            class="inline-flex items-center rounded-full border border-cream-50/40 px-7 py-3.5 text-base font-semibold text-cream-50 hover:bg-sage-600 transition-colors"
-          >
-            Call 0420 522 558
+          <a href="#what-we-do" class="mb-btn-outline inline-flex items-center rounded-full px-7 py-3.5 text-base font-semibold">
+            Explore services
           </a>
         </div>
       </div>
 
       <div class="lg:col-span-5">
-        <Image
-          src={heroImage}
-          alt="Forward Health pelvic floor physiotherapist with a pregnant patient"
-          width={900}
-          height={1125}
-          class="aspect-[4/5] rounded-3xl object-cover w-full"
-          loading="eager"
-        />
+        <div class="rounded-3xl overflow-hidden relative aspect-[4/5]">
+          <Image
+            src={heroImage}
+            alt="Forward Health pelvic floor physiotherapist with a pregnant patient and pelvic anatomy model"
+            width={900}
+            height={1125}
+            class="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Journey -->
-  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
-    <div class="max-w-2xl mb-12">
-      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">The journey</p>
-      <h2>One team. The whole arc.</h2>
-      <p class="mt-4 text-stone leading-relaxed">
+  <!-- Sub-brand identity strip -->
+  <section class="mb-bg-warm py-12 lg:py-16 border-y border-[var(--color-mb-rule)]">
+    <div class="max-w-3xl mx-auto px-5 lg:px-8 text-center">
+      <img src={logoMark} alt="" class="w-20 h-20 mx-auto mb-6" />
+      <p class="mb-eyebrow">A specialist service of Forward Health</p>
+      <h2 class="mt-3">Same physio. <em>From bump to bub.</em></h2>
+      <p class="mt-5 text-[var(--color-mb-muted)] leading-relaxed">
         Most clinics force you to start over with a new clinician at every life stage — different
         physio for pregnancy, different physio for baby, different physio for school-age niggles.
         We've built our team so the same trusted clinicians can carry you through.
       </p>
     </div>
+  </section>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {journey.map((j) => (
-        <div class="p-7 rounded-2xl border border-sage-100 bg-white">
-          <p class="text-xs uppercase tracking-[0.18em] text-tan-600">{j.stage}</p>
-          <h3 class="mt-2 text-charcoal text-xl">{j.title}</h3>
-          <p class="mt-3 text-sm text-stone leading-relaxed">{j.blurb}</p>
+  <!-- What we do -->
+  <section id="what-we-do" class="py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14">
+        <p class="mb-eyebrow">What we do</p>
+        <h2 class="mt-3">Care for every stage of mum and bub.</h2>
+        <p class="mt-5 text-[var(--color-mb-muted)] leading-relaxed">
+          Whether you're navigating pelvic girdle pain in pregnancy, finding your way back after birth,
+          or worried about your baby's flat spot — we've trained extensively in this work, and we're
+          here for it.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {services.map((s) => (
+          <a
+            href={s.href}
+            class="mb-card group p-7 hover:border-[var(--color-mb-terracotta)] transition-colors"
+          >
+            <div class="w-12 h-12 rounded-full bg-[var(--color-mb-tan-light)] flex items-center justify-center mb-5 text-[var(--color-mb-burgundy)]">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-6 h-6" aria-hidden="true">
+                <path d={s.iconPath} />
+              </svg>
+            </div>
+            <h3 class="text-xl">{s.title}</h3>
+            <p class="mt-3 text-sm text-[var(--color-mb-muted)] leading-relaxed">{s.blurb}</p>
+            <span class="mt-5 inline-block text-sm font-semibold text-[var(--color-mb-terracotta)]">
+              Learn more →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why families choose us -->
+  <section class="mb-bg-warm py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-7">
+        <p class="mb-eyebrow">Why families choose us</p>
+        <h2 class="mt-3">Specialist training. Warm, <em>unhurried</em> care.</h2>
+        <p class="mt-5 text-[var(--color-mb-muted)] leading-relaxed">
+          We're a small, deeply trained team of women's health and paediatric physiotherapists. Every
+          appointment is one-on-one, every plan is built for the body and life in front of us, and
+          nobody is rushed out the door.
+        </p>
+        <p class="mt-4 text-[var(--color-mb-muted)] leading-relaxed">
+          You'll find us inside <strong>Forward Health</strong> — a multidisciplinary clinic on the
+          Sunshine Coast and at Sandstone Point, where you can also access GPs, podiatry, massage and
+          clinical pilates under the same roof. It means joined-up care for the whole family, with
+          one front desk and one set of notes.
+        </p>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="mb-card p-7 lg:p-8">
+          <h3>What sets us apart</h3>
+          <ul class="mt-5 space-y-3 text-[var(--color-mb-ink)]">
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span><span>One-hour initial appointments — never rushed</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span><span>Pelvic floor &amp; perinatal specialised training</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span><span>Paediatric clinicians experienced with infants &amp; complex needs</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span><span>Bub-friendly rooms — you can bring your baby</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span><span>HICAPS, private health rebates, NDIS &amp; DVA</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span><span>GP, obstetrician &amp; specialist referrals welcomed</span></li>
+          </ul>
         </div>
-      ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Mum conditions -->
+  <section class="py-16 lg:py-20">
+    <div class="max-w-5xl mx-auto px-5 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="mb-eyebrow">Common reasons mums see us</p>
+        <h2 class="mt-3">You don't have to <em>live with it.</em></h2>
+        <p class="mt-5 text-[var(--color-mb-muted)] max-w-2xl mx-auto leading-relaxed">
+          If something's been quietly bothering you — leaking, heaviness, painful sex, a bump that
+          hasn't gone down, an ache that's never quite settled — these are the things we treat every day.
+        </p>
+      </div>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 text-[var(--color-mb-ink)] leading-relaxed">
+        {mumConditions.map((c) => (
+          <li class="flex gap-3">
+            <span class="mt-2.5 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span>
+            <span>{c}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="text-center mt-10">
+        <a href="/pelvic-floor-physio" class="mb-btn-outline inline-flex items-center rounded-full px-6 py-3 text-sm font-semibold">
+          See full pelvic floor info →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bub conditions -->
+  <section class="mb-bg-warm py-16 lg:py-20">
+    <div class="max-w-5xl mx-auto px-5 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="mb-eyebrow">For your bub</p>
+        <h2 class="mt-3">Paediatric physio for babies, toddlers &amp; kids.</h2>
+        <p class="mt-5 text-[var(--color-mb-muted)] max-w-2xl mx-auto leading-relaxed">
+          From a flat spot or stiff neck in the first weeks of life through to gross motor delay,
+          hypermobility and the kid who walks on their toes — we work alongside families and
+          paediatricians across the Sunshine Coast.
+        </p>
+      </div>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 text-[var(--color-mb-ink)] leading-relaxed">
+        {bubConditions.map((c) => (
+          <li class="flex gap-3">
+            <span class="mt-2.5 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span>
+            <span>{c}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="text-center mt-10">
+        <a href="/paediatric-physio" class="mb-btn-outline inline-flex items-center rounded-full px-6 py-3 text-sm font-semibold">
+          See full paediatric info →
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- Team -->
-  <section class="bg-cream-50 py-16 lg:py-20">
+  <section class="py-16 lg:py-20">
     <div class="max-w-7xl mx-auto px-5 lg:px-8">
-      <div class="max-w-2xl mb-12">
-        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Same trusted clinicians</p>
-        <h2>Your Mums & Bubs team.</h2>
-        <p class="mt-4 text-stone leading-relaxed">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="mb-eyebrow">Same trusted clinicians</p>
+        <h2 class="mt-3">Your Mums &amp; Bubs team.</h2>
+        <p class="mt-5 text-[var(--color-mb-muted)] leading-relaxed">
           Both Steph and Brianna have post-grad interest and training in pelvic floor AND paediatric
           physio — which is the rare combination that makes carrying continuity from pregnancy through
           to your child's first day of school actually possible.
         </p>
       </div>
-      <div class="grid md:grid-cols-2 gap-5">
+      <div class="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
         {team.map((p) => (
           <PractitionerCard
             name={p.name}
@@ -143,30 +324,62 @@ const journey = [
     </div>
   </section>
 
-  <!-- Related services -->
-  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
-    <div class="max-w-2xl mb-10">
-      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Where to start</p>
-      <h2>The right first appointment.</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-5">
-      <a href="/pelvic-floor-physio" class="group block p-7 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 transition-all">
-        <h3 class="text-charcoal group-hover:text-sage-600 transition-colors">Pelvic floor physio</h3>
-        <p class="mt-2 text-sm text-stone leading-relaxed">Pregnancy, postnatal recovery, prolapse and pessary fittings.</p>
-        <span class="mt-4 inline-block text-sm font-semibold text-sage-600">Learn more →</span>
-      </a>
-      <a href="/paediatric-physio" class="group block p-7 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 transition-all">
-        <h3 class="text-charcoal group-hover:text-sage-600 transition-colors">Paediatric physio</h3>
-        <p class="mt-2 text-sm text-stone leading-relaxed">Newborn through teen — both ends of paeds, same warmth either way.</p>
-        <span class="mt-4 inline-block text-sm font-semibold text-sage-600">Learn more →</span>
-      </a>
-      <a href="/clinical-pilates" class="group block p-7 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 transition-all">
-        <h3 class="text-charcoal group-hover:text-sage-600 transition-colors">Clinical pilates</h3>
-        <p class="mt-2 text-sm text-stone leading-relaxed">Postnatal-safe, rehab-led reformer classes once you're cleared.</p>
-        <span class="mt-4 inline-block text-sm font-semibold text-sage-600">Learn more →</span>
-      </a>
+  <!-- Locations -->
+  <section class="mb-bg-warm py-16 lg:py-20">
+    <div class="max-w-5xl mx-auto px-5 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="mb-eyebrow">Locations</p>
+        <h2 class="mt-3">Two welcoming clinics, close to home.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="mb-card p-7">
+          <h3>Currimundi</h3>
+          <p class="mt-3 text-[var(--color-mb-muted)] leading-relaxed">
+            Inside Forward Health<br />
+            Shop 3 / 768 Nicklin Way<br />
+            Currimundi QLD 4551
+          </p>
+          <a href="/locations/currimundi" class="mt-5 inline-block text-sm font-semibold text-[var(--color-mb-terracotta)]">
+            See clinic details →
+          </a>
+        </div>
+        <div class="mb-card p-7">
+          <h3>Sandstone Point</h3>
+          <p class="mt-3 text-[var(--color-mb-muted)] leading-relaxed">
+            Inside Forward Health<br />
+            Shop 3 / 208 Bestmann Road East<br />
+            Sandstone Point QLD 4511
+          </p>
+          <a href="/locations/sandstone-point" class="mt-5 inline-block text-sm font-semibold text-[var(--color-mb-terracotta)]">
+            See clinic details →
+          </a>
+        </div>
+      </div>
+      <p class="mt-10 text-sm text-[var(--color-mb-muted)] text-center max-w-3xl mx-auto leading-relaxed">
+        Serving Currimundi, Caloundra, Moffat Beach, Dicky Beach, Little Mountain, Aroona, Meridan
+        Plains, Warana, Bokarina, Wurtulla, Buddina, Battery Hill, Birtinya, Golden Beach, Kings Beach,
+        Shelly Beach, Pelican Waters, Sandstone Point, Bribie Island (Bellara, Bongaree, Banksia Beach,
+        Woorim) and surrounding suburbs.
+      </p>
     </div>
   </section>
 
-  <BookingBlock variant="sage" />
-</Layout>
+  <!-- CTA strip -->
+  <section id="book" class="mb-bg-burgundy py-16 lg:py-20 text-center">
+    <div class="max-w-3xl mx-auto px-5 lg:px-8">
+      <h2 style="color: var(--color-mb-warm);">Ready to feel better?</h2>
+      <p class="mt-5 text-[var(--color-mb-warm)]/90 leading-relaxed">
+        Book online any time, or give us a call to chat through what's going on. Same-week
+        availability across Currimundi and Sandstone Point.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/#book" class="inline-flex items-center rounded-full bg-[var(--color-mb-warm)] text-[var(--color-mb-burgundy)] px-7 py-3.5 text-base font-semibold hover:bg-[var(--color-mb-tan-light)] transition-colors">
+          Book an appointment
+        </a>
+        <a href="tel:0420522558" class="inline-flex items-center rounded-full border border-[var(--color-mb-warm)]/40 text-[var(--color-mb-warm)] px-7 py-3.5 text-base font-semibold hover:bg-[var(--color-mb-terracotta-dark)] transition-colors">
+          Call 0420 522 558
+        </a>
+      </div>
+    </div>
+  </section>
+</MumsAndBubsLayout>

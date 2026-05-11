@@ -1,0 +1,309 @@
+---
+import { Image } from "astro:assets";
+import MumsAndBubsLayout from "../../layouts/MumsAndBubsLayout.astro";
+import heroImage from "../../assets/hero-pregnancy-physio.jpg";
+
+const pelvicConditions = [
+  "Stress urinary incontinence (leaking with cough, sneeze, run)",
+  "Urge incontinence and frequency",
+  "Faecal incontinence and difficulty controlling wind",
+  "Pelvic organ prolapse (cystocele, rectocele, uterine)",
+  "Pelvic heaviness or 'something is falling out' sensation",
+  "Postpartum constipation and haemorrhoids",
+  "Painful intercourse (dyspareunia)",
+  "Pelvic pain and persistent perineal pain",
+  "Pelvic floor weakness or overactivity",
+  "Coccyx (tailbone) pain",
+];
+
+const abdomenConditions = [
+  "Diastasis recti (abdominal separation)",
+  "C-section scar pain, tightness, numbness or tethering",
+  "Perineal tear or episiotomy recovery",
+  "Mastitis and blocked ducts (therapeutic ultrasound available)",
+  "Postnatal back, hip and SIJ pain",
+  "Neck, shoulder and thoracic tension from feeding posture",
+  "Wrist pain (de Quervain's, 'mummy thumb')",
+  "Rib flare and thoracic mobility loss",
+  "Persistent fatigue and reconditioning",
+  "Return to running, lifting and high-impact exercise",
+];
+
+const assessmentParts = [
+  {
+    title: "Pelvic floor assessment",
+    body: "An internal exam (with consent) lets us assess strength, endurance, coordination, prolapse and any scar tenderness. Real-time ultrasound is available as an alternative.",
+  },
+  {
+    title: "Abdominal & diastasis check",
+    body: "We measure the gap — and more importantly the function. Diastasis is rarely about closing the gap and almost always about how you generate tension across it.",
+  },
+  {
+    title: "Scar review",
+    body: "C-section, perineal tear or episiotomy — we check for healing, sensitivity and tethering and refer on for any concerns. Scar mobilisation is gentle and surprisingly powerful.",
+  },
+  {
+    title: "Postural & movement screen",
+    body: "How you stand, how you lift your bub, how you breathe under load — all of which influence whether your body keeps healing or keeps protecting.",
+  },
+  {
+    title: "Goals conversation",
+    body: "Park run by Christmas? CrossFit class next month? Just being able to sneeze without crossing your legs? We map your plan to your actual life.",
+  },
+  {
+    title: "Clear plan to take home",
+    body: "A short, achievable home program. A timeline you can trust. And direct communication back to your GP, OB, midwife or maternal health nurse if you'd like.",
+  },
+];
+
+const returnToRunning = [
+  "Pelvic floor: cough / jump test with no leaking or heaviness",
+  "Walking 30 minutes briskly with no symptoms",
+  "Single-leg balance and squat tolerance",
+  "30 sec hopping on each leg, symptom-free",
+  "Calf raises: 20+ reps each leg",
+  "Plank and side-plank tolerance with no doming",
+  "A graduated walk-jog program before continuous running",
+];
+
+const faqs = [
+  {
+    q: "How long after birth should I wait to come in?",
+    a: "For a routine postnatal check, around 6 weeks postpartum is ideal. Sooner if you have a specific concern — bladder / bowel issues, mastitis, scar problems or pelvic pain don't need to wait.",
+  },
+  {
+    q: "Can I bring my baby?",
+    a: "Absolutely. Our rooms are bub-friendly — there's space for a pram, a feeding chair if you need one, and we're entirely unfussed by feeding mid-appointment.",
+  },
+  {
+    q: "I had my baby years ago — is it too late?",
+    a: "No. We see women whose youngest is a teenager. The pelvic floor and abdominal wall respond to good rehab no matter how much time has passed.",
+  },
+  {
+    q: "I had a C-section — do I still need pelvic floor physio?",
+    a: "Yes. Pregnancy itself (regardless of how the baby came out) puts significant load on your pelvic floor. C-section scar care is also genuinely valuable — we see lots of women whose persistent low back pain or numb tummy was actually a tethered scar.",
+  },
+  {
+    q: "Do you take private health rebates?",
+    a: "Yes. We process HICAPS at the clinic so you only pay the gap. Most extras policies cover physiotherapy — check with your fund for your specific limit.",
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<MumsAndBubsLayout
+  title="Postpartum & Postnatal Physio Sunshine Coast | Diastasis, Pelvic Floor, C-section Recovery"
+  description="Postnatal physiotherapy on the Sunshine Coast. Postpartum pelvic floor, diastasis recti, C-section scar care, mastitis and return to running. Currimundi and Sandstone Point."
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="py-14 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7">
+        <p class="mb-eyebrow">For mum</p>
+        <h1 class="mt-4">Postpartum &amp; <em>Postnatal</em> Physio.</h1>
+        <p class="mt-6 text-xl leading-relaxed text-[var(--color-mb-ink)] max-w-xl">
+          Comprehensive recovery after birth — pelvic floor, abdominal separation, C-section healing,
+          and a confident, sustainable return to the things you love.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/#book" class="mb-btn-primary inline-flex items-center rounded-full px-7 py-3.5 text-base font-semibold">
+            Book a postnatal check
+          </a>
+          <a href="tel:0420522558" class="mb-btn-outline inline-flex items-center rounded-full px-7 py-3.5 text-base font-semibold">
+            Call 0420 522 558
+          </a>
+        </div>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="rounded-3xl overflow-hidden relative aspect-[4/5]">
+          <Image
+            src={heroImage}
+            alt="Postnatal physiotherapy at Forward Health"
+            width={900}
+            height={1125}
+            class="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- After-birth care -->
+  <section class="py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-7">
+        <p class="mb-eyebrow">After-birth care that actually understands</p>
+        <h2 class="mt-3">Birth changes your body. <em>Recovery</em> isn't optional.</h2>
+        <p class="mt-5 text-[var(--color-mb-muted)] leading-relaxed">
+          The 6-week GP check is a great safety screen — but it's not a recovery plan. A proper
+          postnatal physio assessment looks at your pelvic floor, your abdominal wall, your C-section
+          or perineal scar, your back, your breathing and your goals. Then we build a plan that gets
+          you back to where you want to be.
+        </p>
+        <p class="mt-4 text-[var(--color-mb-muted)] leading-relaxed">
+          Whether you gave birth six weeks ago or six years ago, it's not too late. We see new mums
+          on day 10 postpartum and women who had their last baby a decade ago — there's almost always
+          something that responds to good rehab.
+        </p>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="mb-card p-7">
+          <h3>When to book in</h3>
+          <p class="mt-4 text-[var(--color-mb-muted)] leading-relaxed">
+            <strong class="text-[var(--color-mb-ink)]">Around 6 weeks postpartum</strong> is the
+            sweet spot for a routine check. By then your initial healing is done and we can fully
+            assess.
+          </p>
+          <p class="mt-3 text-[var(--color-mb-muted)] leading-relaxed">
+            <strong class="text-[var(--color-mb-ink)]">Sooner</strong> if you're worried about your
+            scar, struggling to wee or open your bowels, experiencing significant prolapse symptoms,
+            or dealing with mastitis.
+          </p>
+          <p class="mt-3 text-[var(--color-mb-muted)] leading-relaxed">
+            <strong class="text-[var(--color-mb-ink)]">Anytime</strong> beyond that — there's no
+            expiry date on rehab.
+          </p>
+          <a href="/#book" class="mb-btn-primary mt-6 inline-flex items-center rounded-full px-6 py-3 text-sm font-semibold">
+            Book a postnatal check
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conditions -->
+  <section class="mb-bg-warm py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14">
+        <p class="mb-eyebrow">Conditions we treat</p>
+        <h2 class="mt-3">Postpartum conditions we see every day.</h2>
+        <p class="mt-5 text-[var(--color-mb-muted)] leading-relaxed">
+          Many of the things on this list are common — but common isn't the same as normal, and
+          "common" definitely doesn't mean you have to put up with it.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-x-12 gap-y-10 max-w-4xl mx-auto">
+        <div>
+          <h3>Pelvic floor &amp; bladder / bowel</h3>
+          <ul class="mt-5 space-y-3 text-[var(--color-mb-ink)] leading-relaxed">
+            {pelvicConditions.map((c) => (
+              <li class="flex gap-3">
+                <span class="mt-2.5 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span>
+                <span>{c}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3>Abdomen, scars &amp; whole-body recovery</h3>
+          <ul class="mt-5 space-y-3 text-[var(--color-mb-ink)] leading-relaxed">
+            {abdomenConditions.map((c) => (
+              <li class="flex gap-3">
+                <span class="mt-2.5 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span>
+                <span>{c}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The 6-week check -->
+  <section class="py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-12">
+        <p class="mb-eyebrow">The 6-week check</p>
+        <h2 class="mt-3">What's in a comprehensive postnatal assessment?</h2>
+        <p class="mt-5 text-[var(--color-mb-muted)] leading-relaxed">
+          An hour of your time — and you can absolutely bring your bub. We assess everything that
+          birth touched, and we're honest about what's healing well versus what needs attention.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        {assessmentParts.map((a) => (
+          <div class="mb-card p-7">
+            <h3 class="text-lg">{a.title}</h3>
+            <p class="mt-3 text-sm text-[var(--color-mb-muted)] leading-relaxed">{a.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Return to running -->
+  <section class="mb-bg-warm py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-10 items-start">
+      <div class="lg:col-span-7">
+        <p class="mb-eyebrow">Return to running &amp; exercise</p>
+        <h2 class="mt-3">Back to running, <em>the right way</em>.</h2>
+        <p class="mt-5 text-[var(--color-mb-muted)] leading-relaxed">
+          Current best-practice guidelines suggest waiting until at least 12 weeks postpartum before
+          returning to running — but waiting alone doesn't make you ready. We use a structured
+          return-to-running framework that screens your pelvic floor, hopping tolerance, single-leg
+          stability and core strength to make sure you're actually rehabilitated, not just past the
+          calendar date.
+        </p>
+        <p class="mt-4 text-[var(--color-mb-muted)] leading-relaxed">
+          Same goes for CrossFit, F45, weightlifting, Pilates, surfing, paddleboarding, mountain
+          biking — whatever you love. We'll get you back to it.
+        </p>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="mb-card p-7">
+          <h4 class="font-semibold text-base text-[var(--color-mb-ink)]">Our return-to-running checkpoints</h4>
+          <ul class="mt-5 space-y-3 text-[var(--color-mb-ink)] leading-relaxed text-sm">
+            {returnToRunning.map((c) => (
+              <li class="flex gap-3">
+                <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span>
+                <span>{c}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 lg:py-20">
+    <div class="max-w-3xl mx-auto px-5 lg:px-8">
+      <div class="mb-10 text-center">
+        <p class="mb-eyebrow">FAQ</p>
+        <h2 class="mt-3">Common questions about postnatal physio.</h2>
+      </div>
+      {faqs.map((f) => (
+        <details class="mb-faq">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA strip -->
+  <section class="mb-bg-burgundy py-16 lg:py-20 text-center">
+    <div class="max-w-3xl mx-auto px-5 lg:px-8">
+      <h2 style="color: var(--color-mb-warm);">Real recovery, not just rest.</h2>
+      <p class="mt-5 text-[var(--color-mb-warm)]/90 leading-relaxed">
+        Book a postnatal physio assessment — same-week availability across Currimundi and Sandstone Point.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/#book" class="inline-flex items-center rounded-full bg-[var(--color-mb-warm)] text-[var(--color-mb-burgundy)] px-7 py-3.5 text-base font-semibold hover:bg-[var(--color-mb-tan-light)] transition-colors">
+          Book online
+        </a>
+      </div>
+    </div>
+  </section>
+</MumsAndBubsLayout>
