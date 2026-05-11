@@ -12,7 +12,7 @@ const services = [
   { title: "Running assessments", href: "/running-assessments" },
   { title: "Vertigo & vestibular physio", href: "/vertigo-vestibular-physio" },
   { title: "Paediatric physio", href: "/paediatric-physio" },
-  { title: "Clinical pilates", href: "/clinical-pilates" },
+  { title: "Clinical pilates", href: "/clinical-pilates", note: "1:1 sessions only" },
 ];
 
 const onsitePartners = [
@@ -120,10 +120,13 @@ const team = [
       {services.map((s) => (
         <a
           href={s.href}
-          class="group p-5 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 hover:shadow-sm transition-all flex items-center justify-between"
+          class="group p-5 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 hover:shadow-sm transition-all"
         >
-          <span class="text-charcoal group-hover:text-sage-600 transition-colors font-medium">{s.title}</span>
-          <span class="text-sage-600 group-hover:translate-x-0.5 transition-transform">→</span>
+          <div class="flex items-center justify-between">
+            <span class="text-charcoal group-hover:text-sage-600 transition-colors font-medium">{s.title}</span>
+            <span class="text-sage-600 group-hover:translate-x-0.5 transition-transform">→</span>
+          </div>
+          {s.note && <p class="mt-1 text-xs text-tan-600 uppercase tracking-[0.14em]">{s.note}</p>}
         </a>
       ))}
     </div>
