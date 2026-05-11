@@ -9,6 +9,9 @@ import stephPersonal2 from "../assets/team/personal/steph/photo-2.png";
 import stephPersonal3 from "../assets/team/personal/steph/photo-3.jpg";
 
 import briannaImg from "../assets/team/brianna.jpg";
+import briannaPersonal1 from "../assets/team/personal/brianna/photo-1.jpg";
+import briannaPersonal2 from "../assets/team/personal/brianna/photo-2.jpg";
+import briannaPersonal3 from "../assets/team/personal/brianna/photo-3.jpg";
 
 import jarrodImg from "../assets/team/jarrod.jpg";
 import jarrodPersonal1 from "../assets/team/personal/jarrod/photo-1.png";
@@ -134,6 +137,7 @@ export const physiotherapists: Practitioner[] = [
     ],
     href: "/team/brianna-bourne",
     photo: briannaImg,
+    personalPhotos: [briannaPersonal1, briannaPersonal2, briannaPersonal3],
   },
   {
     name: "Jarrod Palmer-Brown",
