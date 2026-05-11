@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import heroImg from "../assets/hero-clinical-pilates.jpg";
+import heroImg from "../assets/hero-remedial-massage.jpg";
 import mbHeroImg from "../assets/hero-pregnancy-physio.jpg";
 import runClubPoster from "../assets/run-club/run-club-poster.jpg";
 import mbLogo from "../assets/mums-and-bubs/logo.svg";
@@ -56,7 +56,7 @@ const heroServices = [
     blurb: "From developmental milestones to adolescent sports injuries, both ends of paeds.",
     href: "/paediatric-physio",
     image: paediatricImg,
-    objectPosition: "center bottom",
+    objectPosition: "center",
   },
   {
     title: "Clinical pilates",
@@ -101,7 +101,7 @@ const locations = [
         <h1 class="text-charcoal">
           Move better.<br />
           Feel more confident in your body.<br />
-          <span class="text-sage-600">Get back to living fully.</span>
+          <span class="text-sage-600">Always moving forward.</span>
         </h1>
         <p class="mt-6 text-lg leading-relaxed text-stone max-w-xl">
           Personalised physiotherapy, pelvic floor care, vertigo treatment, remedial
@@ -127,7 +127,7 @@ const locations = [
       <div class="lg:col-span-5">
         <Image
           src={heroImg}
-          alt="Forward Health physiotherapist cueing a client through reformer pilates"
+          alt="Forward Health remedial massage therapist applying focused pressure to a client's back"
           width={900}
           height={1125}
           class="aspect-[4/5] rounded-3xl object-cover w-full"

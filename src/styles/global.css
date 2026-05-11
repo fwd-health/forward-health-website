@@ -53,10 +53,10 @@
   --color-rc-muted: #6e5240;
   --color-rc-rule: #e0d2b8;
 
-  /* Typography — Fraunces is a free near-equivalent to Recoleta Bold while we sort the license */
-  --font-display: "Fraunces", "Recoleta", "Georgia", serif;
+  /* Typography — Cormorant Garamond gives a classical, architectural lowercase 'f' (no swashy hook) */
+  --font-display: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
   --font-body: "Inter", "system-ui", "Helvetica Neue", sans-serif;
-  /* Mums & Bubs uses a softer serif */
+  /* Mums & Bubs shares the same serif for a unified type system */
   --font-mb-serif: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
 
   /* Layout */
@@ -73,7 +73,7 @@
     background: white;
     color: var(--color-ink);
     font-family: var(--font-body);
-    font-feature-settings: "ss01", "cv11";
+    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
