@@ -8,10 +8,10 @@ Live state of the build, what's still missing, and the strategy notes behind the
 
 | What | Status | Where it lands |
 | --- | --- | --- |
-| **Suzie Irwin** — *professional* headshot | Temp portrait is in use and honestly looks great. Slot in the pro shot when ready by replacing `src/assets/team/suzie.jpg` | `/team`, `/remedial-massage`, `/locations/currimundi` |
 | **Currimundi clinic** — exterior + interior + reception | Placeholder shown on `/locations/currimundi` | Photo strip + hero on Currimundi page |
-| **Practitioner lifestyle photos** — for each lightbox | Only Suzie has one wired (beach selfie). Drop more into `src/assets/team/personal/<firstname>/` and tell me; I'll build the swipeable gallery UI under each headshot. | Lightbox modals on `/team` |
-| **Mums & Bubs imagery** *(nice to have)* | Currently reuses the homepage hero — fine for launch | `/mums-and-bubs` hero |
+| **Mums & Bubs homepage teaser** | Currently reuses the pregnancy-physio shot. Want something that captures both mum *and* bub together (postnatal, milestone session, in-clinic with baby on lap, etc). | Mums & Bubs callout on `/` |
+| **Practitioner lifestyle photos** — for each lightbox | Most practitioners now wired (Brianna, Carly, Catalina, Ella, Holly, Jarrod, Joe, Lucy, Steph, Suzie). Still missing: Tara, Erin, Maddie. Drop into `src/assets/team/personal/<firstname>/` and tell me. | Lightbox modals on `/team` |
+| **Mums & Bubs imagery** *(nice to have)* | Currently reuses the homepage hero on `/mums-and-bubs` — fine for launch | `/mums-and-bubs` hero |
 | **Run Club action shot** *(nice to have)* | Currently uses the corgi-mascot poster + "All For Run" art. A real candid run-club shot would round it out | `/run-club` |
 
 ## ⏰ Content gaps still needed from you

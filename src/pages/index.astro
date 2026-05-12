@@ -28,18 +28,18 @@ const heroServices = [
     blurb: "Pregnancy, postnatal recovery, pelvic pain, prolapse and pessary fittings.",
     href: "/pelvic-floor-physio",
     image: pelvicFloorImg,
-    objectPosition: "center top",
+    objectPosition: "center 30%",
   },
   {
     title: "Remedial massage",
-    blurb: "Deep tissue, lymphatic and pregnancy massage. Available at both Currimundi and Sandstone Point.",
+    blurb: "Deep tissue, relaxation, lymphatic and pregnancy massage. Available at both Currimundi and Sandstone Point.",
     href: "/remedial-massage",
     image: remedialMassageImg,
     objectPosition: "center",
   },
   {
     title: "Running assessments",
-    blurb: "Video gait analysis, return-to-run plans and performance tuning for everyday runners.",
+    blurb: "Video gait analysis, return-to-run plans and performance tuning for runners of all levels.",
     href: "/running-assessments",
     image: runningImg,
     objectPosition: "center",
@@ -56,18 +56,18 @@ const heroServices = [
     blurb: "From developmental milestones to adolescent sports injuries, both ends of paeds.",
     href: "/paediatric-physio",
     image: paediatricImg,
-    objectPosition: "center",
+    objectPosition: "center bottom",
   },
   {
     title: "Clinical pilates",
-    blurb: "Reformer-based. Small-group classes at Sandstone Point, 1:1 sessions at Currimundi.",
+    blurb: "Reformer and wunda chair based. Small-group classes at Sandstone Point, 1:1 sessions at Currimundi.",
     href: "/clinical-pilates",
     image: clinicalPilatesImg,
     objectPosition: "center",
   },
   {
     title: "Home visit physiotherapy",
-    blurb: "NDIS (plan / self-managed), Home Care Packages, Remedy Health post-discharge, DVA.",
+    blurb: "For when leaving the house is the hard part. After hospital discharge, with limited mobility, or recovering from surgery.",
     href: "/home-visits",
     image: homeVisitsImg,
     objectPosition: "center",
@@ -241,23 +241,42 @@ const locations = [
     </div>
   </section>
 
-  <!-- Run Club teaser -->
+  <!-- Run Club teaser, RC themed -->
   <section class="max-w-7xl mx-auto px-5 lg:px-8 pb-20">
-    <div class="rounded-3xl bg-cream-50 border border-tan-200 p-8 lg:p-12 grid lg:grid-cols-12 gap-10 items-center">
+    <div class="rounded-3xl p-10 lg:p-16 grid lg:grid-cols-12 gap-10 items-center"
+         style="background-color: var(--color-rc-cream); color: var(--color-rc-ink); border: 1px solid var(--color-rc-rule);">
       <div class="lg:col-span-7">
-        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Forward Run Club</p>
-        <h2 class="text-charcoal">All for run. Run for all.</h2>
-        <p class="mt-5 text-stone leading-relaxed">
+        <p class="text-xs uppercase tracking-[0.18em] font-semibold mb-5" style="color: var(--color-rc-rust-dark);">@fwdrunclub · Kings Beach</p>
+        <h2 style="color: var(--color-rc-ink); font-family: var(--font-display); font-weight: 600; font-size: clamp(1.85rem, 3.5vw, 2.65rem); line-height: 1.15;">
+          All for run. <em style="font-style: italic; color: var(--color-rc-rust);">Run for all.</em>
+        </h2>
+        <p class="mt-5 leading-relaxed" style="color: var(--color-rc-muted);">
           A free, easygoing running community on the Sunshine Coast. Sunrise runs every Tuesday at 5:30 am
           + monthly Friday afternoon socials at <strong>Aurenda Coffee Co, Kings Beach</strong>. Beginner
           pace welcome. Marathon pace welcome. Walking-and-chatting pace, also welcome.
         </p>
-        <a
-          href="/run-club"
-          class="mt-7 inline-flex items-center rounded-full bg-charcoal px-7 py-3.5 text-sm font-semibold text-cream-50 hover:bg-sage-700 transition-colors"
-        >
-          Join the run club →
-        </a>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a
+            href="https://www.instagram.com/fwdrunclub/"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center rounded-full px-7 py-3.5 text-sm font-semibold transition-colors"
+            style="background-color: var(--color-rc-rust); color: var(--color-rc-cream);"
+            onmouseover="this.style.backgroundColor='var(--color-rc-rust-dark)'"
+            onmouseout="this.style.backgroundColor='var(--color-rc-rust)'"
+          >
+            Follow @fwdrunclub
+          </a>
+          <a
+            href="/run-club"
+            class="inline-flex items-center rounded-full px-7 py-3.5 text-sm font-semibold transition-colors"
+            style="background-color: white; border: 1px solid var(--color-rc-rule); color: var(--color-rc-ink);"
+            onmouseover="this.style.borderColor='var(--color-rc-rust)'"
+            onmouseout="this.style.borderColor='var(--color-rc-rule)'"
+          >
+            See the schedule →
+          </a>
+        </div>
       </div>
       <div class="lg:col-span-5">
         <Image
