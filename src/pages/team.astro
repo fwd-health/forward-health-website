@@ -201,7 +201,11 @@ const allPractitioners = [...physiotherapists, ...massageTherapists, ...careTeam
           <h3 class="mt-2 font-display text-3xl text-charcoal">{p.name}</h3>
           <p class="mt-1 text-sm text-stone">{p.locations}</p>
 
-          <p class="mt-6 text-stone leading-relaxed">{p.fullBio}</p>
+          <div class="mt-6 space-y-4 text-stone leading-relaxed">
+            {p.fullBio.split("\n\n").map((para) => (
+              <p>{para}</p>
+            ))}
+          </div>
 
           {p.specialties.length > 0 && (
             <div class="mt-7">

@@ -200,18 +200,19 @@ export const massageTherapists: Practitioner[] = [
     role: "Remedial Massage Therapist · Myotherapist",
     locations: "Currimundi",
     blurb:
-      "13+ years as a remedial massage therapist with an advanced diploma of Myotherapy. Treats complex chronic pain and post-injury recovery.",
+      "Over 20 years in the health and fitness industry. Qualified Myotherapist and Remedial Massage Therapist with a warm, nurturing approach to pain, mobility and wellbeing.",
     fullBio:
-      "Tara is the most experienced bodyworker on our team, with more than thirteen years of remedial massage practice and an advanced diploma of Myotherapy. She's the right call for chronic, complex or stubborn cases that haven't shifted with general massage, combining soft tissue, dry needling, cupping and joint mobilisation depending on what your body needs.",
+      "With over 20 years of experience in the health and fitness industry, Tara brings a depth of knowledge and a genuine passion for helping people feel and move better in their everyday lives. As a qualified Myotherapist and Remedial Massage Therapist, Tara enjoys working with people from all walks of life, tailoring each treatment to support their individual needs. Her approach is centred on creating a supportive, welcoming and nurturing environment where clients feel comfortable and cared for. She uses a range of remedial and relaxation techniques to address pain, improve mobility and enhance general wellbeing.\n\nTara believes that quality of life is closely tied to how we move and feel, and is committed to empowering clients to improve their everyday life through massage and movement.\n\nOutside of the clinic, Tara enjoys spending time with her husband and four children, going for a recreational run, and keeping active in everyday life.",
     qualifications: [
-      "Diploma of Remedial Massage (Q Academy, 2013)",
       "Advanced Diploma of Myotherapy (Q Academy, 2017)",
+      "Diploma of Remedial Massage (Q Academy, 2013)",
+      "20+ years in the health and fitness industry",
     ],
     specialties: [
-      "Complex chronic pain",
+      "Pain management",
+      "Mobility and movement",
+      "Remedial and relaxation techniques",
       "Myotherapy",
-      "Post-injury recovery",
-      "Dry needling & cupping",
     ],
     href: "/team/tara-donnolley",
     photo: taraImg,
