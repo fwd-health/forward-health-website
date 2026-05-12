@@ -260,9 +260,9 @@ export const massageTherapists: Practitioner[] = [
     role: "Remedial Massage Therapist",
     locations: "Currimundi · Tuesdays",
     blurb:
-      "Trained in New Zealand, on the Sunshine Coast since 2010. Trigger point therapy, myofascial release, joint mobilisation and stretching, with a calm, nurturing approach.",
+      "Trained in New Zealand, on the Sunshine Coast since 2010. Remedial massage therapist with a nursing background and a calm, nurturing approach.",
     fullBio:
-      "Suzie brings deep experience as a remedial massage therapist alongside her background as an assistant nurse working in community and residential care. She trained in New Zealand through the Wellington School of Massage Therapy before moving to the Sunshine Coast in 2010, and has worked across many multi-disciplinary clinics since. Her treatments draw on trigger point therapy, myofascial release, joint mobilisation, and active and passive stretching. All delivered with the kind of compassionate, unhurried presence her clients come back for. Outside work, you'll find Suzie at yoga, the gym, walking in nature, meditating, at sound baths, travelling or with her loved ones.",
+      "Suzie brings deep experience as a remedial massage therapist, coupled with her knowledge working as an assistant nurse in the community and in residential care.\n\nShe trained in New Zealand through the Wellington School of Massage Therapy before moving to the Sunshine Coast in 2010, and has worked across many multidisciplinary clinics since. Her treatments draw on a variety of techniques including trigger point therapy, myofascial release, joint mobilisation, and active and passive stretching. She loves making her clients feel valued.\n\nOutside the clinic, Suzie is into all things wellbeing: yoga, the gym, walking in nature, meditation, sound baths, travel and time with her loved ones.\n\nHer approach to health care and her genuine interest in helping others make her a compassionate and nurturing therapist.",
     qualifications: [
       "Diploma of Remedial Massage (Wellington School of Massage Therapy, NZ)",
       "Assistant Nurse, community and residential care experience",
