@@ -8,7 +8,7 @@ Live state of the build, what's still missing, and the strategy notes behind the
 
 | What | Status | Where it lands |
 | --- | --- | --- |
-| **Currimundi clinic** — exterior + interior + reception | Placeholder shown on `/locations/currimundi` | Photo strip + hero on Currimundi page |
+| **Currimundi clinic** — exterior + interior + reception | Currently using a single Google Business Profile photo as a stand-in on `/locations/currimundi` and `/locations`. Want better, properly-lit photography (exterior, reception, treatment room, ideally a Pilates / wundachair shot too) to bring it up to parity with the Sandstone Point clinic photo strip. | Hero + photo strip on `/locations/currimundi`, location card on `/locations` |
 | **Mums & Bubs homepage teaser** | Currently reuses the pregnancy-physio shot. Want something that captures both mum *and* bub together (postnatal, milestone session, in-clinic with baby on lap, etc). | Mums & Bubs callout on `/` |
 | **Practitioner lifestyle photos** — for each lightbox | Most practitioners now wired (Brianna, Carly, Catalina, Ella, Holly, Jarrod, Joe, Lucy, Steph, Suzie). Still missing: Tara, Erin, Maddie. Drop into `src/assets/team/personal/<firstname>/` and tell me. | Lightbox modals on `/team` |
 | **Mums & Bubs imagery** *(nice to have)* | Currently reuses the homepage hero on `/mums-and-bubs` — fine for launch | `/mums-and-bubs` hero |
