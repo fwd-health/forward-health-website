@@ -18,6 +18,12 @@ Live state of the build, what's still missing, and the strategy notes behind the
 
 - **Opening hours per clinic per day** — you mentioned they vary. Drop me the actual times and I'll wire them into `/contact` and `/policies`. Right now `/contact` has placeholder text.
 
+## 📌 On the radar (not blockers, but flagged for a future round)
+
+- [ ] **Careers page team picture** — current hero is the pottery class shot; would be good to swap to a more recent full-team photo when one's available.
+- [ ] **Colour scheme refresh** — open to taking the palette somewhere brighter / more vibrant than the current sage + cream + tan. Worth a design pass once the structure is settled.
+- [ ] **Homepage hero** — currently the Running Assessments 3 shot. Open to swapping again when a stronger hero candidate emerges (something that pops even more on first load).
+
 ## ✅ Recent answers locked in
 
 - **Maddie McCulloch** — added to `/team` (CCC, Currimundi) and `/locations/currimundi` with her professional headshot. Photo was sideways from iPhone HEIC; rotated and converted to JPG.
