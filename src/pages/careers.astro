@@ -43,7 +43,7 @@ const reasons = [
   },
 ];
 
-const galleryRow = [galleryDinner, galleryPottery, gallerySunset, galleryBowling, galleryPizza];
+const galleryRow = [galleryDinner, gallerySunset, galleryBowling, galleryPizza];
 ---
 
 <Layout
@@ -80,8 +80,8 @@ const galleryRow = [galleryDinner, galleryPottery, gallerySunset, galleryBowling
 
       <div class="lg:col-span-5">
         <Image
-          src={galleryAnniversary}
-          alt="Forward Health team celebrating the clinic's two-year anniversary"
+          src={galleryPottery}
+          alt="Forward Health team at a pottery class together"
           width={1200}
           height={900}
           class="aspect-[4/3] rounded-3xl object-cover w-full shadow-sm"
@@ -123,7 +123,7 @@ const galleryRow = [galleryDinner, galleryPottery, gallerySunset, galleryBowling
           time together outside the four walls.
         </p>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 lg:gap-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4">
         {galleryRow.map((img) => (
           <Image
             src={img}

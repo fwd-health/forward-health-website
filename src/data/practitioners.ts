@@ -99,7 +99,7 @@ export const physiotherapists: Practitioner[] = [
     blurb:
       "Women's health and pelvic floor physio, including pessary fittings. Sees paediatric clients across both clinics.",
     fullBio:
-      "Steph's clinical heart sits with women navigating pregnancy, postnatal recovery, and the pelvic health concerns that often go undiscussed. She fits pessaries, runs pre-and-post natal pelvic floor consultations, and treats paediatric clients from babies through teens. Patients describe her as warm, thorough and genuinely unhurried, qualities that matter most when the questions feel sensitive.",
+      "With several years of experience treating women's health and pelvic floor physio, along with paediatric patients, Steph's clinical heart sits with women navigating pregnancy, postnatal recovery, and the pelvic health concerns that often go undiscussed. She fits pessaries, runs pre-and-post natal pelvic floor consultations, and treats paediatric clients from babies through teens. Patients describe her as warm, thorough and genuinely unhurried, qualities that matter most when the questions feel sensitive.",
     qualifications: [
       "Bachelor of Biomedical Science (QUT)",
       "Master of Physiotherapy Studies (University of Queensland)",

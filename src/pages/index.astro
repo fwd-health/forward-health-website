@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import heroImg from "../assets/hero-clinical-pilates.jpg";
+import heroImg from "../assets/hero-running.jpg";
 import mbHeroImg from "../assets/hero-pregnancy-physio.jpg";
 import runClubPoster from "../assets/run-club/run-club-poster.jpg";
 import mbLogo from "../assets/mums-and-bubs/logo.svg";
@@ -60,14 +60,14 @@ const heroServices = [
   },
   {
     title: "Clinical pilates",
-    blurb: "Reformer and wunda chair based. Small-group classes at Sandstone Point, 1:1 sessions at Currimundi.",
+    blurb: "Reformer and wundachair based. Small-group classes at Sandstone Point, 1:1 sessions at Currimundi.",
     href: "/clinical-pilates",
     image: clinicalPilatesImg,
     objectPosition: "center",
   },
   {
     title: "Home visit physiotherapy",
-    blurb: "For when leaving the house is the hard part. After hospital discharge, with limited mobility, or recovering from surgery.",
+    blurb: "For patients who can't get to the clinic. Limited mobility, post-hospital discharge, after surgery, or anyone who can't drive in.",
     href: "/home-visits",
     image: homeVisitsImg,
     objectPosition: "center",
@@ -99,8 +99,8 @@ const locations = [
           Currimundi · Sandstone Point · Bribie Island
         </p>
         <h1 class="text-charcoal">
-          Feel better,<br />
-          Live better,<br />
+          Feel better.<br />
+          Live better.<br />
           <span class="text-sage-600">Move forward.</span>
         </h1>
         <p class="mt-6 text-lg leading-relaxed text-stone max-w-xl">
@@ -127,7 +127,7 @@ const locations = [
       <div class="lg:col-span-5">
         <Image
           src={heroImg}
-          alt="Forward Health clinical pilates session at our Sandstone Point studio, two women side-stretching on wundachairs"
+          alt="Forward Health running assessment, a runner on the treadmill in our Sandstone Point studio in front of the &lsquo;your best foot forward&rsquo; wall"
           width={900}
           height={1125}
           class="aspect-[4/5] rounded-3xl object-cover w-full"
@@ -208,7 +208,7 @@ const locations = [
          style="background-color: var(--color-mb-cream); color: var(--color-mb-ink); border: 1px solid var(--color-mb-rule);">
       <div>
         <div class="flex items-center gap-3 mb-5">
-          <img src={mbLogo.src} alt="" class="w-16 h-16" />
+          <img src={mbLogo.src} alt="" class="w-24 h-24" />
           <p class="text-xs uppercase tracking-[0.18em] font-semibold" style="color: var(--color-mb-terracotta-dark);">Mums &amp; Bubs Physio</p>
         </div>
         <h2 style="font-family: var(--font-mb-serif); font-weight: 400; font-size: clamp(1.85rem, 3.5vw, 2.65rem); line-height: 1.15;">
