@@ -70,7 +70,7 @@ export interface Practitioner {
 
 export const physiotherapists: Practitioner[] = [
   {
-    name: "Joe",
+    name: "Joe Vos",
     role: "Physiotherapist",
     locations: "Currimundi · Sandstone Point",
     blurb:
@@ -93,7 +93,7 @@ export const physiotherapists: Practitioner[] = [
     personalPhotos: [joePersonal1, joePersonal2, joePersonal3],
   },
   {
-    name: "Steph",
+    name: "Steph Pyle",
     role: "Physiotherapist",
     locations: "Currimundi · Sandstone Point",
     blurb:
