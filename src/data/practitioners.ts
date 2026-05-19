@@ -71,12 +71,12 @@ export interface Practitioner {
 export const physiotherapists: Practitioner[] = [
   {
     name: "Joe Vos",
-    role: "Physiotherapist",
+    role: "Physiotherapist\nRunning Injury & Performance Physio",
     locations: "Currimundi · Sandstone Point",
     blurb:
       "10+ years in health and wellness. Special interest in running injury, performance and the active population. Also treats vertigo, headaches and migraines.",
     fullBio:
-      "Joe has spent more than a decade working with active people who want to keep moving, runners chasing their next race, weekend athletes, parents who want to play with their kids without grimacing. His clinical interest sits at the intersection of running performance and injury rehab, but he also brings deep skill to vestibular conditions and chronic headaches. Outside the clinic, you'll find him leading the Forward Run Club at Aurenda Coffee Co.",
+      "Joe has spent more than a decade working with active people who want to keep moving, runners chasing their next race, weekend athletes, parents who want to play with their kids without grimacing. His clinical interest sits at the intersection of running performance and injury rehab, but he also brings deep skill to vestibular conditions and chronic headaches.\n\nOutside the clinic, you'll find him leading the Forward Run Club at Aurenda Coffee Co, hanging out with his wife (and business partner) Steph, their dog Fraser (unofficial co-leader of the run club) and their little boy Noah. He's a big music guy, John Mayer and Jack Johnson on repeat, and a serious beer enthusiast. He brews his own at home, so if you're lucky you might get a sample.",
     qualifications: [
       "BSc Kinesiology (University of Alberta)",
       "Master of Physiotherapy Studies (University of Queensland)",
@@ -99,7 +99,7 @@ export const physiotherapists: Practitioner[] = [
     blurb:
       "Women's health and pelvic floor physio, including pessary fittings. Sees paediatric clients across both clinics.",
     fullBio:
-      "With several years of experience treating women's health and pelvic floor physio, along with paediatric patients, Steph's clinical heart sits with women navigating pregnancy, postnatal recovery, and the pelvic health concerns that often go undiscussed. She fits pessaries, runs pre-and-post natal pelvic floor consultations, and treats paediatric clients from babies through teens. Patients describe her as warm, thorough and genuinely unhurried, qualities that matter most when the questions feel sensitive.",
+      "With several years of experience treating women's health and pelvic floor physio, along with paediatric patients, Steph's clinical heart sits with women navigating pregnancy, postnatal recovery, and the pelvic health concerns that often go undiscussed. She fits pessaries, runs pre-and-post natal pelvic floor consultations, and treats paediatric clients from babies through teens. Patients describe her as warm, thorough and genuinely unhurried, qualities that matter most when the questions feel sensitive.\n\nOutside the clinic, Steph spends most of her time with Joe and their two little ones, Noah and their new baby girl. When she gets a spare moment, you'll find her at the beach, with her nose in a book, or catching up on the sleep that first-year-of-baby tends to steal.",
     qualifications: [
       "Bachelor of Biomedical Science (QUT)",
       "Master of Physiotherapy Studies (University of Queensland)",
@@ -123,9 +123,10 @@ export const physiotherapists: Practitioner[] = [
     blurb:
       "Women's health and pelvic floor, clinical pilates and paediatrics. Background working with sporting and active populations.",
     fullBio:
-      "Brianna brings together two clinical worlds that don't often share a room: women's health and the active sporting population. She runs much of our clinical pilates program and is a go-to for postnatal women returning to exercise. Bri is methodical, calm and excellent at translating clinical reasoning into a plan people actually want to follow.",
+      "Brianna brings together two clinical worlds that don't often share a room: women's health and the active sporting population. She runs much of our clinical pilates program and is a go-to for postnatal women returning to exercise. Bri is methodical, calm and excellent at translating clinical reasoning into a plan people actually want to follow.\n\nOutside clinic hours, Bri's usually at the gym, on a long walk, or trying out a new café somewhere up the coast.",
     qualifications: [
       "Bachelor of Physiotherapy",
+      "Pelvic floor post-graduate training",
       "Clinical pilates training",
       "Dry needling certified",
     ],
@@ -146,7 +147,7 @@ export const physiotherapists: Practitioner[] = [
     blurb:
       "4+ years working with knee and hip osteoarthritis and post-operative rehab. Leads our home-visit program.",
     fullBio:
-      "Jarrod runs Forward Health's home-visit physiotherapy service across the Sunshine Coast and Moreton Bay. His clinical wheelhouse is knee and hip osteoarthritis and post-surgical rehab, the kind of work where progress is measured in steps gained rather than reps logged. He works with NDIS plan-managed clients, Home Care Package recipients, post-discharge programs and DVA card holders.",
+      "Jarrod leads Forward Health's home-visit physiotherapy service across the Sunshine Coast and Moreton Bay, but he also sees plenty of patients in clinic. His clinical wheelhouse is knee and hip osteoarthritis and post-surgical rehab, the kind of work where progress is measured in steps gained rather than reps logged. He works with NDIS plan-managed clients, Home Care Package recipients, post-discharge programs and DVA card holders.\n\nYou can book him at either clinic for a regular appointment, or have him come to you for a home visit. Outside of clinic hours, Jarrod's typically running or surfing, the two activities he most needs to keep his own knees and hips honest.",
     qualifications: [
       "Bachelor of Physiotherapy (Charles Sturt University)",
     ],
@@ -167,7 +168,7 @@ export const physiotherapists: Practitioner[] = [
     blurb:
       "General musculoskeletal physiotherapy, clinical pilates and our strength & balance class lead at Sandstone Point.",
     fullBio:
-      "Holly is the heart of the Sandstone Point physiotherapy team, equally at home on the treatment table, on the reformer, or running our strength-and-balance group classes. She brings warmth and clear communication to general musculoskeletal cases and has built a loyal community of regulars who come back week after week for her classes.",
+      "Holly is the heart of the Sandstone Point physiotherapy team, equally at home on the treatment table, on the reformer, or running our strength-and-balance group classes. She brings warmth and clear communication to general musculoskeletal cases and has built a loyal community of regulars who come back week after week for her classes.\n\nOff the clock, Holly's a coffee enthusiast, a keen walker, and the kind of person who'll know everyone in the café by name within a fortnight of moving suburbs.",
     qualifications: ["Bachelor of Physiotherapy (Australian Catholic University)"],
     specialties: [
       "General musculoskeletal physio",
@@ -181,11 +182,11 @@ export const physiotherapists: Practitioner[] = [
   {
     name: "Ella Gubesch",
     role: "Physiotherapist · Currently on maternity leave",
-    locations: "Currimundi",
+    locations: "Sandstone Point",
     blurb:
-      "Currimundi physiotherapist currently on maternity leave. Back with us when ready.",
+      "Sandstone Point physiotherapist currently on maternity leave with her young family.",
     fullBio:
-      "Ella is part of the Currimundi physiotherapy team and is currently away on maternity leave. We're looking forward to welcoming her back when she's ready to return to clinical practice.",
+      "Ella is part of the Sandstone Point physiotherapy team and is currently on maternity leave with her young family, her little boy and her recently-born baby girl. We can't wait for her return.",
     qualifications: [],
     specialties: [],
     href: "/team/ella-gubesch",
@@ -197,12 +198,12 @@ export const physiotherapists: Practitioner[] = [
 export const massageTherapists: Practitioner[] = [
   {
     name: "Tara Donnolley",
-    role: "Remedial Massage Therapist · Myotherapist",
+    role: "Remedial Massage Therapist",
     locations: "Currimundi · Tuesdays & Fridays",
     blurb:
-      "Over 20 years in the health and fitness industry. Qualified Myotherapist and Remedial Massage Therapist with a warm, nurturing approach to pain, mobility and wellbeing.",
+      "Over 20 years in the health and fitness industry, with a warm, nurturing approach to pain, mobility and wellbeing.",
     fullBio:
-      "With over 20 years of experience in the health and fitness industry, Tara brings a depth of knowledge and a genuine passion for helping people feel and move better in their everyday lives. As a qualified Myotherapist and Remedial Massage Therapist, Tara enjoys working with people from all walks of life, tailoring each treatment to support their individual needs. Her approach is centred on creating a supportive, welcoming and nurturing environment where clients feel comfortable and cared for. She uses a range of remedial and relaxation techniques to address pain, improve mobility and enhance general wellbeing.\n\nTara believes that quality of life is closely tied to how we move and feel, and is committed to empowering clients to improve their everyday life through massage and movement.\n\nOutside of the clinic, Tara enjoys spending time with her husband and four children, going for a recreational run, and keeping active in everyday life.",
+      "With over 20 years of experience in the health and fitness industry, Tara brings a depth of knowledge and a genuine passion for helping people feel and move better in their everyday lives. As a qualified Myotherapist and Remedial Massage Therapist (currently focusing on remedial massage), Tara enjoys working with people from all walks of life, tailoring each treatment to support their individual needs. Her approach is centred on creating a supportive, welcoming and nurturing environment where clients feel comfortable and cared for. She uses a range of remedial and relaxation techniques to address pain, improve mobility and enhance general wellbeing.\n\nTara believes that quality of life is closely tied to how we move and feel, and is committed to empowering clients to improve their everyday life through massage and movement.\n\nOutside of the clinic, Tara enjoys spending time with her husband and four children, going for a recreational run, and keeping active in everyday life.",
     qualifications: [
       "Advanced Diploma of Myotherapy (Q Academy, 2017)",
       "Diploma of Remedial Massage (Q Academy, 2013)",
@@ -212,7 +213,6 @@ export const massageTherapists: Practitioner[] = [
       "Pain management",
       "Mobility and movement",
       "Remedial and relaxation techniques",
-      "Myotherapy",
     ],
     href: "/team/tara-donnolley",
     photo: taraImg,
@@ -222,12 +222,11 @@ export const massageTherapists: Practitioner[] = [
     role: "Remedial Massage Therapist",
     locations: "Currimundi · Thursdays",
     blurb:
-      "Multiple years as a remedial massage therapist, currently studying to become a Myotherapist.",
+      "Multiple years as a remedial massage therapist, known for the right balance of firm and intuitive pressure.",
     fullBio:
-      "Carly is one of the most-requested therapists at Currimundi, known for the right balance of firm and intuitive pressure, and an ability to find the knot you've been carrying without you needing to point it out. She's currently studying to become a Myotherapist alongside her clinic work.",
+      "Carly is one of the most-requested therapists at Currimundi, known for the right balance of firm and intuitive pressure, and an ability to find the knot you've been carrying without you needing to point it out.\n\nOutside the clinic, Carly is a big outdoors person, you'll find her at the beach, on a hike, or chasing the next sunny day with friends.",
     qualifications: [
       "Diploma of Remedial Massage",
-      "Studying Advanced Diploma of Myotherapy",
     ],
     specialties: ["Deep tissue", "Sports & recovery", "Tension headaches"],
     href: "/team/carly-wilson",
@@ -241,7 +240,7 @@ export const massageTherapists: Practitioner[] = [
     blurb:
       "Diploma of Remedial Massage. Several years previous experience as a physiotherapist in Colombia. Special interest in lymphatic drainage.",
     fullBio:
-      "Before becoming a remedial massage therapist in Australia, Catalina spent several years practising as a physiotherapist in Colombia. She brings that clinical lens to her massage practice, particularly skilled at lymphatic drainage and post-surgical recovery work. She's currently working towards AHPRA recognition of her overseas physiotherapy qualifications.",
+      "Before becoming a remedial massage therapist in Australia, Catalina spent several years practising as a physiotherapist in Colombia. She brings that clinical lens to her massage practice, particularly skilled at lymphatic drainage and post-surgical recovery work. She's currently working towards AHPRA recognition of her overseas physiotherapy qualifications.\n\nOutside the clinic, Catalina loves spending time with her family, getting out for a walk on the beach, and bringing a bit of her Colombian heritage to the kitchen.",
     qualifications: [
       "Diploma of Remedial Massage (Mastery Institute Australia, 2025)",
       "Physiotherapy training (Colombia)",
@@ -286,23 +285,11 @@ export const careTeam: Practitioner[] = [
     locations: "Currimundi",
     blurb: "First friendly face you meet at Currimundi reception.",
     fullBio:
-      "Erin is the first friendly face you meet when you walk into Currimundi. The person who'll find you a parking spot, sort your HICAPS claim, and make sure your favourite practitioner has the slot you need.",
+      "Erin is the first friendly face you meet when you walk into Currimundi. The person who'll find you a parking spot, sort your HICAPS claim, and make sure your favourite practitioner has the slot you need.\n\nOutside reception, Erin's most likely to be found at the beach, with her family, or planning her next coffee stop.",
     qualifications: [],
     specialties: [],
     href: "/team/erin-gadsby",
     photo: erinImg,
-  },
-  {
-    name: "Chloe Becker",
-    role: "Client Care Coordinator",
-    locations: "Sandstone Point",
-    blurb: "First friendly face you meet at Sandstone Point reception.",
-    fullBio:
-      "Chloe runs reception at Sandstone Point, bookings, callbacks, claims, and everything in between. She's the reason the day stays on time.",
-    qualifications: [],
-    specialties: [],
-    href: "/team/chloe-becker",
-    photo: chloeImg,
   },
   {
     name: "Lucy Chung",
@@ -310,7 +297,7 @@ export const careTeam: Practitioner[] = [
     locations: "Sandstone Point",
     blurb: "Bookings, claims and a calm front-of-house presence.",
     fullBio:
-      "Lucy keeps the Sandstone Point front desk running smoothly, patient communications, health-fund claims, and the everyday warmth that makes a clinic feel like a clinic, not a corporation.",
+      "Lucy keeps the Sandstone Point front desk running smoothly, patient communications, health-fund claims, and the everyday warmth that makes a clinic feel like a clinic, not a corporation.\n\nOff the clock, Lucy's an avid traveller, a keen cook, and the kind of person who finds the best hidden coffee spot in any town she visits.",
     qualifications: [],
     specialties: [],
     href: "/team/lucy-chung",
@@ -318,12 +305,24 @@ export const careTeam: Practitioner[] = [
     personalPhotos: [lucyPersonal1, lucyPersonal2, lucyPersonal3],
   },
   {
+    name: "Chloe Becker",
+    role: "Client Care Coordinator",
+    locations: "Sandstone Point",
+    blurb: "First friendly face you meet at Sandstone Point reception.",
+    fullBio:
+      "Chloe runs reception at Sandstone Point, bookings, callbacks, claims, and everything in between. She's the reason the day stays on time.\n\nOutside the clinic, Chloe loves a long walk with friends, weekend trips up and down the coast, and any excuse for a beach day.",
+    qualifications: [],
+    specialties: [],
+    href: "/team/chloe-becker",
+    photo: chloeImg,
+  },
+  {
     name: "Maddie McCulloch",
     role: "Client Care Coordinator",
     locations: "Currimundi",
     blurb: "Friendly front-of-house at Currimundi reception.",
     fullBio:
-      "Maddie joined the Currimundi reception team in 2026. She'll be one of the first faces you meet, sorting bookings, answering questions about pricing and health-fund claims, and making sure your visit runs smoothly from the moment you walk in.",
+      "Maddie joined the Currimundi reception team in 2026. She'll be one of the first faces you meet, sorting bookings, answering questions about pricing and health-fund claims, and making sure your visit runs smoothly from the moment you walk in.\n\nOutside the clinic, Maddie is a big music and movie person, and never says no to a beach swim or a long weekend with friends.",
     qualifications: [],
     specialties: [],
     href: "/team/maddie-mcculloch",

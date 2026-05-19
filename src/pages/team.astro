@@ -12,7 +12,7 @@ import {
 
 // Display order, Joe-specified
 const physioOrder = ["holly", "brianna", "jarrod", "ella", "joe", "steph"];
-const rmtOrder = ["catalina", "tara", "suzie", "carly"];
+const rmtOrder = ["tara", "carly", "catalina", "suzie"];
 const physiosOrdered = physioOrder.map((k) => practitioners[k]).filter(Boolean);
 const rmtsOrdered = rmtOrder.map((k) => practitioners[k]).filter(Boolean);
 
@@ -47,10 +47,9 @@ const allPractitioners = [...physiotherapists, ...massageTherapists, ...careTeam
         <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-4">Our team</p>
         <h1 class="text-charcoal">A clinical team that actually works together.</h1>
         <p class="mt-6 text-lg text-stone leading-relaxed">
-          Every Forward Health practitioner has a clinical niche, and they all talk to each other.
-          That's how a pelvic floor patient ends up with the right reformer class, why a runner with
-          recurring vertigo gets the same diagnosis story from two different clinicians, and how a paeds
-          referral doesn't get lost between the GP and the gym.
+          We all have our specific niches, but we work together as a team to give patients the best
+          care and make sure they're seeing the right person for the job. Clinical cases get discussed
+          across the team, always while protecting your privacy and asking for your consent first.
         </p>
         <p class="mt-4 text-stone leading-relaxed">
           Click any practitioner to see their full background.
@@ -84,7 +83,7 @@ const allPractitioners = [...physiotherapists, ...massageTherapists, ...careTeam
     <div class="max-w-7xl mx-auto px-5 lg:px-8">
       <div class="max-w-2xl mb-10">
         <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Remedial massage</p>
-        <h2>Massage therapists & myotherapists.</h2>
+        <h2>Massage therapists.</h2>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {rmtsOrdered.map((p) => (
@@ -158,7 +157,7 @@ const allPractitioners = [...physiotherapists, ...massageTherapists, ...careTeam
   {allPractitioners.map((p) => (
     <dialog
       id={`lb-${slugify(p.name)}`}
-      class="fixed inset-0 m-auto p-0 max-w-2xl w-[calc(100%-2rem)] max-h-[90vh] bg-cream-50 rounded-3xl border border-sage-100 shadow-2xl backdrop:bg-charcoal/60 backdrop:backdrop-blur-sm"
+      class="fixed inset-0 m-auto p-0 max-w-3xl w-[calc(100%-2rem)] max-h-[90vh] bg-cream-50 rounded-3xl border border-sage-100 shadow-2xl backdrop:bg-charcoal/60 backdrop:backdrop-blur-sm"
     >
       <div class="overflow-y-auto max-h-[90vh]">
         <div class="relative">
