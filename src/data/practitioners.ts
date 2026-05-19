@@ -94,7 +94,7 @@ export const physiotherapists: Practitioner[] = [
   },
   {
     name: "Steph Pyle",
-    role: "Pelvic floor physiotherapist",
+    role: "Physiotherapist\nPelvic floor physiotherapist",
     locations: "Currimundi · Sandstone Point",
     blurb:
       "Women's health and pelvic floor physio, including pessary fittings. Sees paediatric clients across both clinics.",
@@ -118,7 +118,7 @@ export const physiotherapists: Practitioner[] = [
   },
   {
     name: "Brianna Bourne",
-    role: "Pelvic floor physiotherapist",
+    role: "Physiotherapist\nPelvic floor physiotherapist",
     locations: "Currimundi · Sandstone Point",
     blurb:
       "Women's health and pelvic floor, clinical pilates and paediatrics. Background working with sporting and active populations.",
