@@ -181,7 +181,7 @@ export const physiotherapists: Practitioner[] = [
   },
   {
     name: "Ella Gubesch",
-    role: "Physiotherapist · Currently on maternity leave",
+    role: "Physiotherapist\nPelvic floor physiotherapist · Currently on maternity leave",
     locations: "Sandstone Point",
     blurb:
       "Sandstone Point physiotherapist currently on maternity leave with her young family.",

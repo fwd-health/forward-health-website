@@ -64,11 +64,11 @@ const packages = [
     {
       heading: "Classes at both clinics",
       items: [
-        "Currimundi: mat, reformer and wundachair, max 4 per class",
-        "Sandstone Point: mat, reformer and wundachair, max 6 per class",
+        "Small-group classes at both Currimundi and Sandstone Point",
+        "Mat, reformer and wundachair at every class",
         "Every exercise modified to you, by your physio, during class",
         "A physiotherapist in the room every session",
-        "Health-fund claimable as physio either way",
+        "Health-fund claimable as physio",
         "Switch clinics or class times whenever your schedule changes",
       ],
     },
@@ -158,12 +158,31 @@ const packages = [
       ))}
     </div>
 
-    <div class="mt-8 rounded-2xl border border-tan-200 bg-tan-50/60 p-5 lg:p-6">
-      <p class="text-xs uppercase tracking-[0.18em] text-tan-700 font-semibold mb-2">Cancellation policy</p>
+    <div class="mt-8 grid md:grid-cols-2 gap-4">
+      <div class="rounded-2xl border border-sage-100 bg-sage-50/60 p-5 lg:p-6">
+        <p class="text-xs uppercase tracking-[0.18em] text-sage-700 font-semibold mb-2">Health fund rebates</p>
+        <p class="text-sm text-stone leading-relaxed">
+          Rebates are available after you finish working through your class pack. We process the claim
+          for the completed package through HICAPS so you only out-of-pocket the gap.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-tan-200 bg-tan-50/60 p-5 lg:p-6">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-700 font-semibold mb-2">Cancellation policy</p>
+        <p class="text-sm text-stone leading-relaxed">
+          We have a strict 24-hour cancellation policy for classes. If less than 24 hours' notice is
+          given, the class is billed from your package. We'll always send a reminder in advance so you
+          have time to reschedule.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-6 rounded-2xl border border-sage-100 bg-cream-50 p-5 lg:p-6">
+      <p class="text-xs uppercase tracking-[0.18em] text-tan-700 font-semibold mb-2">How to book classes</p>
       <p class="text-sm text-stone leading-relaxed">
-        We have a strict 24-hour cancellation policy for classes. If less than 24 hours' notice is
-        given, the class is billed from your package. We'll always send a reminder in advance so you
-        have time to reschedule.
+        Classes are booked online and you can lock in your spot up to 6 months in advance. Tick
+        <strong class="text-charcoal">"save my details for later"</strong> the first time you book to
+        make every future booking a 30-second job. If you have trouble booking online, drop into
+        reception and one of the team will walk you through it.
       </p>
     </div>
   </section>

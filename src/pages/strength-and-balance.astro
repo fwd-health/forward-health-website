@@ -1,0 +1,131 @@
+---
+import ServiceLayout from "../layouts/ServiceLayout.astro";
+import { practitioners } from "../data/practitioners";
+import heroImage from "../assets/services/clinical-pilates.jpg";
+
+const days = ["Wednesday", "Thursday", "Friday"];
+
+const classes: Record<string, { time: string; lead: string }[]> = {
+  Wednesday: [{ time: "10:00 am", lead: "Holly" }],
+  Thursday: [{ time: "10:00 am", lead: "Bri" }],
+  Friday: [{ time: "9:00 am", lead: "Jarrod" }],
+};
+---
+
+<ServiceLayout
+  title="Strength & Balance classes"
+  description="Physio-led strength and balance classes at Forward Health Sandstone Point. Small-group falls prevention, strength training and confidence work for older adults, claimable through health funds and GP CCMP."
+  eyebrow="Sandstone Point · Physio-led · Small-group"
+  intro="A small-group class built around the work that keeps you steady, independent and confident at any age. Strength training, balance challenge, and the kind of variety that keeps it interesting week to week. Every class is run by a physio, so exercises are modified to your body and any niggle you're working through."
+  heroImage={heroImage}
+  heroImageAlt="Forward Health strength and balance class with a physiotherapist"
+  conditions={[
+    {
+      heading: "Who these classes are for",
+      items: [
+        "Older adults wanting to stay strong, steady and independent",
+        "Falls prevention and confidence after a fall",
+        "Post-fracture rehab once early healing is done",
+        "Knee and hip osteoarthritis management",
+        "Recovery after a hospital admission",
+        "Anyone wanting structured strength training in a small group",
+      ],
+    },
+    {
+      heading: "What you'll work on",
+      items: [
+        "Lower-body strength (sit-to-stand, step-ups, squats with support)",
+        "Balance challenge, on different surfaces, with movement",
+        "Bone-density work using progressive resistance",
+        "Coordination and dual-task practice",
+        "Confidence in catching yourself if you stumble",
+        "Whole-body conditioning, modified to your level",
+      ],
+    },
+  ]}
+  whatToExpect={[
+    {
+      title: "1:1 assessment first",
+      body: "Before joining a class, we book you in for a 1:1 with one of our physios. They check your strength, balance, mobility and any conditions, then know exactly how to modify the class exercises for you.",
+    },
+    {
+      title: "Small group, individual modifications",
+      body: "Each class is capped, so you get plenty of attention from the physio in the room. Everyone works at their own level, the exercises are the same, the version of each exercise gets modified to suit you.",
+    },
+    {
+      title: "Progress tracked over time",
+      body: "Strength, balance and confidence improve when you turn up consistently. Your physio adjusts your version of the work as you get stronger, so you keep being challenged without being overwhelmed.",
+    },
+  ]}
+  practitioners={[
+    practitioners.holly,
+    practitioners.brianna,
+    practitioners.jarrod,
+  ]}
+  locations={["Sandstone Point"]}
+  bookingHeading="Stronger, steadier, more confident."
+  bookingBlurb="Easiest way to start is a 1:1 assessment with one of our physios. From there we'll match you to the class that suits you best, and you'll have your spot saved each week."
+  faqs={[
+    {
+      q: "Where are the classes held?",
+      a: "Sandstone Point clinic, in our group-class space. We run three sessions a week, Wednesday and Thursday at 10am, and Friday at 9am.",
+    },
+    {
+      q: "Do I need to be very fit to start?",
+      a: "Not at all. Most people who start with us are well off their previous fitness, or have never trained formally. The class is built to meet you exactly where you're at and progress from there.",
+    },
+    {
+      q: "Can I use my GP CCMP / Medicare referral?",
+      a: "Yes. If your GP has written you a GP CCMP plan (formerly TCA, EPC, or commonly known as a Medicare referral) for chronic disease management, the classes are claimable. We'll process the rebate through HICAPS on the day.",
+    },
+    {
+      q: "Can I claim through my health fund?",
+      a: "Yes. Classes are physio-led and claimable as physiotherapy under most extras policies. We're HCF preferred and Medibank preferred for physio.",
+    },
+    {
+      q: "What if I miss a class?",
+      a: "We have a fair make-up policy. Let reception know in advance and we'll find another class within the same fortnight where possible.",
+    },
+  ]}
+  related={[
+    { title: "Clinical pilates", href: "/clinical-pilates", blurb: "More variation, including reformer and wundachair work." },
+    { title: "Home visit physio", href: "/home-visits", blurb: "When getting to the clinic isn't possible." },
+    { title: "Physiotherapy", href: "/physiotherapy", blurb: "Hands-on care for niggles between classes." },
+  ]}
+>
+  <!-- Class timetable -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="max-w-2xl mb-12">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Class timetable</p>
+      <h2>When classes run.</h2>
+      <p class="mt-4 text-stone leading-relaxed">
+        Three sessions a week at Sandstone Point. Book your 1:1 assessment first, then your physio
+        will help you pick the class time that suits.
+      </p>
+    </div>
+
+    <div class="rounded-2xl border border-sage-100 bg-white overflow-hidden">
+      <div class="grid grid-cols-3 divide-x divide-sage-100">
+        {days.map((day) => (
+          <div class="bg-sage-50 px-4 py-3">
+            <p class="text-xs uppercase tracking-[0.14em] text-tan-600 font-semibold">{day}</p>
+          </div>
+        ))}
+      </div>
+      <div class="grid grid-cols-3 divide-x divide-sage-100">
+        {days.map((day) => (
+          <div class="px-4 py-5 min-h-[5rem]">
+            <ul class="space-y-3">
+              {classes[day].map((slot) => (
+                <li>
+                  <p class="text-sm font-semibold text-charcoal">{slot.time}</p>
+                  <p class="text-xs text-sage-600">{slot.lead}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</ServiceLayout>

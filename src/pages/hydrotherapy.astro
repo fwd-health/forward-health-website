@@ -1,0 +1,83 @@
+---
+import ServiceLayout from "../layouts/ServiceLayout.astro";
+import { practitioners } from "../data/practitioners";
+import heroImage from "../assets/services/clinical-pilates.jpg";
+---
+
+<ServiceLayout
+  title="Hydrotherapy"
+  description="Physiotherapist-led hydrotherapy on the Sunshine Coast and Moreton Bay. Water-based rehab and exercise for arthritis, post-op recovery, chronic pain and reduced mobility."
+  eyebrow="Pool-based · Physio-led · Low-impact"
+  intro="Hydrotherapy uses the buoyancy, warmth and resistance of water to make movement easier, especially when joints, fractures or chronic pain make land-based exercise hard. Run by one of our physiotherapists, the session is built around your goals."
+  heroImage={heroImage}
+  heroImageAlt="Forward Health hydrotherapy session in the pool"
+  conditions={[
+    {
+      heading: "Common reasons people start",
+      items: [
+        "Knee or hip osteoarthritis",
+        "Post-operative rehab (joint replacement, ACL, spinal)",
+        "Chronic low back pain",
+        "Fibromyalgia and persistent pain",
+        "Hypermobility and joint instability",
+        "Reduced weight-bearing tolerance",
+        "Falls confidence and balance work",
+      ],
+    },
+    {
+      heading: "Why water works",
+      items: [
+        "Buoyancy reduces joint load by up to 80%",
+        "Warmth helps muscles relax and pain settle",
+        "Water resistance builds strength gently",
+        "Less balance demand means lower fall risk",
+        "Movements that hurt on land often don't in the pool",
+      ],
+    },
+  ]}
+  whatToExpect={[
+    {
+      title: "Initial physio assessment",
+      body: "Before your first pool session, we book you in for a land-based assessment with your physio. They take a full history, screen any joints, and design the water-based program you'll work through.",
+    },
+    {
+      title: "Programmed pool session",
+      body: "You bring the program your physio wrote you and work through it in a warm pool. Aerobic, strength, balance and mobility work, all paced to suit you.",
+    },
+    {
+      title: "Reviewed as you progress",
+      body: "Your physio updates your program every few weeks as you get stronger or work through the next phase of your rehab.",
+    },
+  ]}
+  practitioners={[practitioners.jarrod, practitioners.holly]}
+  locations={["Sandstone Point"]}
+  bookingHeading="Lower impact, faster progress."
+  bookingBlurb="The easiest way to start is to book a physio assessment with us. We'll work out whether hydrotherapy is the right fit, and design the program you'll take to the pool."
+  faqs={[
+    {
+      q: "Where is the pool?",
+      a: "We use a local heated pool close to Sandstone Point for our hydrotherapy programs. We'll give you the exact location and access details when you book your first session.",
+    },
+    {
+      q: "Do I need to be a strong swimmer?",
+      a: "No. Hydrotherapy is done in waist- to chest-deep water with your feet on the bottom. You don't need to swim, and the program is built so non-swimmers are entirely comfortable.",
+    },
+    {
+      q: "Can I claim through my health fund?",
+      a: "Hydrotherapy assessments and physiotherapist-supervised sessions are claimable under most extras policies. We'll process HICAPS for the assessment; speak to reception about pool-session billing.",
+    },
+    {
+      q: "Is hydrotherapy claimable on a GP CCMP plan?",
+      a: "Yes, if your GP has written you a GP CCMP plan (formerly TCA, EPC, or commonly known as a Medicare referral), the assessment is claimable. The pool session itself depends on the supervising clinician and the program structure, give us a call and we'll talk you through it.",
+    },
+    {
+      q: "What should I bring?",
+      a: "Swimwear you can move in, a towel, drink bottle and a thong/sandal for the pool deck. We'll give you everything else you need.",
+    },
+  ]}
+  related={[
+    { title: "Clinical pilates", href: "/clinical-pilates", blurb: "Land-based, physio-led group classes." },
+    { title: "Home visit physio", href: "/home-visits", blurb: "When getting to the pool isn't possible." },
+    { title: "Strength & Balance", href: "/strength-and-balance", blurb: "Land-based group strength + balance class." },
+  ]}
+/>
