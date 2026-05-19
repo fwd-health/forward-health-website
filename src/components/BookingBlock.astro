@@ -1,11 +1,13 @@
 ---
 interface Props {
   heading?: string;
+  headingHref?: string;
   blurb?: string;
   variant?: "light" | "sage";
 }
 const {
   heading = "Ready to book?",
+  headingHref,
   blurb = "Book online below, or give us a call. We usually have appointments within 1-2 days.",
   variant = "light",
 } = Astro.props;
@@ -22,7 +24,11 @@ const isSage = variant === "sage";
 >
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="max-w-2xl mb-10">
-      <h2 class:list={[isSage ? "text-cream-50" : "text-charcoal"]}>{heading}</h2>
+      <h2 class:list={[isSage ? "text-cream-50" : "text-charcoal"]}>
+        {headingHref ? (
+          <a href={headingHref} class="underline decoration-2 underline-offset-4 decoration-tan-300 hover:decoration-tan-100 transition-colors">{heading}</a>
+        ) : heading}
+      </h2>
       <p
         class:list={[
           "mt-5 leading-relaxed",

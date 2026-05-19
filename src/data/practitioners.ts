@@ -94,7 +94,7 @@ export const physiotherapists: Practitioner[] = [
   },
   {
     name: "Steph Pyle",
-    role: "Physiotherapist",
+    role: "Pelvic floor physiotherapist",
     locations: "Currimundi · Sandstone Point",
     blurb:
       "Women's health and pelvic floor physio, including pessary fittings. Sees paediatric clients across both clinics.",
@@ -118,7 +118,7 @@ export const physiotherapists: Practitioner[] = [
   },
   {
     name: "Brianna Bourne",
-    role: "Physiotherapist",
+    role: "Pelvic floor physiotherapist",
     locations: "Currimundi · Sandstone Point",
     blurb:
       "Women's health and pelvic floor, clinical pilates and paediatrics. Background working with sporting and active populations.",
@@ -198,7 +198,7 @@ export const massageTherapists: Practitioner[] = [
   {
     name: "Tara Donnolley",
     role: "Remedial Massage Therapist · Myotherapist",
-    locations: "Currimundi",
+    locations: "Currimundi · Tuesdays & Fridays",
     blurb:
       "Over 20 years in the health and fitness industry. Qualified Myotherapist and Remedial Massage Therapist with a warm, nurturing approach to pain, mobility and wellbeing.",
     fullBio:
@@ -220,7 +220,7 @@ export const massageTherapists: Practitioner[] = [
   {
     name: "Carly Wilson",
     role: "Remedial Massage Therapist",
-    locations: "Currimundi",
+    locations: "Currimundi · Thursdays",
     blurb:
       "Multiple years as a remedial massage therapist, currently studying to become a Myotherapist.",
     fullBio:
@@ -237,7 +237,7 @@ export const massageTherapists: Practitioner[] = [
   {
     name: "Catalina Paredes Ramirez",
     role: "Remedial Massage Therapist",
-    locations: "Sandstone Point",
+    locations: "Sandstone Point · Tuesdays, Thursdays, Fridays + monthly Saturdays",
     blurb:
       "Diploma of Remedial Massage. Several years previous experience as a physiotherapist in Colombia. Special interest in lymphatic drainage.",
     fullBio:
@@ -258,7 +258,7 @@ export const massageTherapists: Practitioner[] = [
   {
     name: "Suzie Irwin",
     role: "Remedial Massage Therapist",
-    locations: "Currimundi · Tuesdays",
+    locations: "Currimundi · Tuesdays + monthly Saturdays",
     blurb:
       "Trained in New Zealand, on the Sunshine Coast since 2010. Remedial massage therapist with a nursing background and a calm, nurturing approach.",
     fullBio:

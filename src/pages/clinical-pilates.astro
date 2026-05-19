@@ -2,15 +2,35 @@
 import ServiceLayout from "../layouts/ServiceLayout.astro";
 import { practitioners } from "../data/practitioners";
 import heroImage from "../assets/services/clinical-pilates.jpg";
+
+const currimundiClasses = [
+  { day: "Monday", time: "10:00 am", lead: "Brianna" },
+  { day: "Tuesday", time: "2:00 pm", lead: "Steph" },
+  { day: "Wednesday", time: "8:00 am", lead: "Brianna" },
+  { day: "Friday", time: "8:00 am", lead: "Joe" },
+];
+
+const sandstoneClasses = [
+  { day: "Monday", time: "3:00 pm", lead: "Steph" },
+  { day: "Tuesday", time: "7:00 am", lead: "Bri" },
+  { day: "Tuesday", time: "8:30 am", lead: "Bri" },
+  { day: "Wednesday", time: "9:00 am", lead: "Holly" },
+  { day: "Wednesday", time: "4:30 pm", lead: "Joe" },
+  { day: "Thursday", time: "6:00 am", lead: "Joe" },
+  { day: "Thursday", time: "8:00 am", lead: "Joe" },
+  { day: "Thursday", time: "3:00 pm", lead: "Bri" },
+  { day: "Friday", time: "8:00 am", lead: "Holly" },
+  { day: "Friday", time: "3:00 pm", lead: "Holly" },
+];
 ---
 
 <ServiceLayout
   title="Clinical pilates"
-  description="Reformer-based clinical pilates across Sandstone Point and Currimundi, small-group classes (max 6) at Sandstone Point, 1:1 reformer sessions at Currimundi. Physio-led, rehab-first, not fitness-first."
-  eyebrow="Reformer · Physio-led · Rehab-first"
-  intro="Clinical pilates is rehab dressed up as exercise. Every session (class or 1:1) is run by a physiotherapist, and your program is built specifically for your body. No generic flows, no following the strongest person in the room."
+  description="Physio-led clinical pilates at Forward Health Currimundi and Sandstone Point. Mat, reformer and wundachair classes (max 4 at Currimundi, max 6 at Sandstone Point), with individualised programs run inside a class format."
+  eyebrow="Mat · Reformer · Wundachair · Physio-led"
+  intro="Clinical pilates is rehab dressed up as exercise. Every class is run by a physiotherapist, and your exercises are individually tailored to your body and any injury. You'll work alongside a small group, so there's a real sense of community, but no two people in the room are doing the same program."
   heroImage={heroImage}
-  heroImageAlt="Forward Health clinical pilates on the reformer with a physiotherapist"
+  heroImageAlt="Forward Health clinical pilates class with reformer and wundachair work"
   conditions={[
     {
       heading: "Common reasons people start",
@@ -24,20 +44,20 @@ import heroImage from "../assets/services/clinical-pilates.jpg";
       ],
     },
     {
-      heading: "Two formats, pick what suits",
+      heading: "Classes at both clinics",
       items: [
-        "Small-group classes at Sandstone Point (max 6 on reformers)",
-        "1:1 reformer sessions at Currimundi (purely individual)",
-        "Want classes at Currimundi? Let us know. We build classes there on a needs basis once we have enough interest",
-        "Programs are personalised regardless of format",
+        "Currimundi: mat, reformer and wundachair, max 4 per class",
+        "Sandstone Point: reformer-based, max 6 per class",
+        "Every exercise is tailored to you, in a class format",
+        "Run by a physiotherapist, every session",
         "Health-fund claimable as physio either way",
-        "Switch between formats if your needs change",
+        "Switch clinics or class times whenever your schedule changes",
       ],
     },
     {
       heading: "Who shouldn't start with us",
       items: [
-        "Total beginners just looking for a workout. We're rehab-led",
+        "Total beginners just looking for a workout, we're rehab-led",
         "People wanting a high-impact cardio session",
         "Acute, undiagnosed pain, see one of our physios first",
       ],
@@ -46,15 +66,15 @@ import heroImage from "../assets/services/clinical-pilates.jpg";
   whatToExpect={[
     {
       title: "1:1 assessment first",
-      body: "Before you join either format, we book you in for a 1:1 with one of our physios. They build your individual program based on your body, goals and any injuries, and recommend whether 1:1 or small-group will get you there fastest.",
+      body: "Before you join a class, we book you in for a 1:1 with one of our physios. They'll assess your body, your goals and any injuries, and build the program you'll work through in class.",
     },
     {
-      title: "Your format, your program",
-      body: "At Sandstone Point, you follow your program in a small group on the reformer, up to five other people are in the room, but no one's doing exactly what you're doing. At Currimundi, you work 1:1 with your physio on the reformer for the entire session.",
+      title: "Your program, run as a class",
+      body: "You follow your individualised program inside a small group. Everyone in the room is doing different exercises, modified for them, but you train alongside each other. Community of a class, clinical care of a 1:1.",
     },
     {
-      title: "Reviewed every 6-8 weeks",
-      body: "We update your program as you get stronger so the work stays meaningful. If something's painful or unclear, you tell us immediately, that's the whole point of having a physio in the room.",
+      title: "Modified as you progress",
+      body: "Your physio adjusts exercises in real time as you get stronger or work through injury. If something's painful or unclear, tell us straight away. That's the whole point of having a physio in the room.",
     },
   ]}
   practitioners={[
@@ -64,24 +84,24 @@ import heroImage from "../assets/services/clinical-pilates.jpg";
     practitioners.joe,
   ]}
   locations={["Currimundi", "Sandstone Point"]}
-  bookingHeading="Two clinics, two formats."
-  bookingBlurb="Group classes (max 6) run from our reformer studio at Sandstone Point. Currimundi runs 1:1 reformer sessions only. If you'd like to do classes at Currimundi, get in touch. We build classes there on a needs basis once enough people register interest. Easiest way to start is a 1:1 assessment, and we'll match you to the right format and clinician."
+  bookingHeading="Two clinics, one rehab-led approach."
+  bookingBlurb="Easiest way to start is a 1:1 assessment. We'll build your program, then match you to the class day, time and clinic that fits your week."
   faqs={[
     {
-      q: "What's the difference between the two locations?",
-      a: "Sandstone Point has a dedicated reformer studio and runs small-group classes (max 6 on reformers). Currimundi runs 1:1 reformer sessions only. Every appointment is one-on-one with your physio. The clinical programming is the same; only the format differs.",
+      q: "What's the difference between the two clinics?",
+      a: "Currimundi classes are a combination of mat, reformer and wundachair work, with a maximum of 4 patients per class. Sandstone Point classes are reformer-based with a maximum of 6 per class. The clinical model is the same at both. Every program is individualised by your physio, every class is physio-run.",
     },
     {
-      q: "Can I do a class at Currimundi instead of 1:1?",
-      a: "Not yet, but we love the question. We build classes at Currimundi on a needs basis once enough people register interest. If a class at Currimundi suits you better, let reception know or send us an email and we'll add you to the interest list. When we hit a workable group size we'll be in touch with class times.",
+      q: "Do I have to do an assessment before joining a class?",
+      a: "Yes. The 1:1 assessment is what makes the class actually clinical. Your physio takes a full history, screens any injuries, and writes the program you'll work through in class. Without it, we'd be guessing.",
     },
     {
-      q: "Which should I pick 1:1 or class?",
-      a: "1:1 if you want maximum personal attention, are early in rehab, or have something complex going on. Small-group classes once you're stable, want the routine, and prefer the slightly lower price point per session. Plenty of clients move between both as their needs change.",
+      q: "Will the class be the same exercises every week?",
+      a: "No, your physio modifies your program as you progress, settle into the work, or work through a niggle. Different bodies in the room are doing different exercises at any one time. The class structure stays consistent, your program inside it evolves.",
     },
     {
       q: "Can I claim pilates through my health fund?",
-      a: "Yes, clinical pilates is delivered by a physiotherapist (1:1 or class) and is claimable under physio cover. We're HCF preferred and Medibank preferred for physio. HICAPS available for everyone else.",
+      a: "Yes. Clinical pilates is delivered by a physiotherapist, so it's claimable under physio cover. We're HCF preferred and Medibank preferred for physio. HICAPS available for everyone else.",
     },
     {
       q: "How many sessions per week?",
@@ -89,16 +109,66 @@ import heroImage from "../assets/services/clinical-pilates.jpg";
     },
     {
       q: "I'm 8 weeks postnatal, can I start?",
-      a: "Pop in for a postnatal physio assessment first. If you've had a straightforward recovery, you'll likely be cleared. If you need to build groundwork on diastasis or pelvic floor first, we'll do that and bring you to reformer when you're ready.",
+      a: "Pop in for a postnatal physio assessment first. If you've had a straightforward recovery, you'll likely be cleared. If you need to build groundwork on diastasis or pelvic floor first, we'll do that and bring you to class when you're ready.",
     },
     {
-      q: "What if I miss a class at Sandstone Point?",
+      q: "What if I miss a class?",
       a: "We have a fair make-up policy. Let us know in advance and we'll find another class that suits you within the same fortnight where possible.",
     },
   ]}
   related={[
     { title: "Pelvic floor physio", href: "/pelvic-floor-physio", blurb: "Postnatal clearance and pelvic floor screening." },
-    { title: "Physiotherapy", href: "/physiotherapy", blurb: "Hands-on rehab for what reformer alone won't fix." },
+    { title: "Physiotherapy", href: "/physiotherapy", blurb: "Hands-on rehab for what class work alone won't fix." },
     { title: "Running assessments", href: "/running-assessments", blurb: "Strength + running prescribed together." },
   ]}
-/>
+>
+  <!-- Class timetable -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="max-w-2xl mb-12">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Class timetable</p>
+      <h2>When and where classes run.</h2>
+      <p class="mt-4 text-stone leading-relaxed">
+        Book your 1:1 assessment first, then your physio will help you pick the class time that suits.
+        Class places are capped, so the easiest path in is to message reception once you've been assessed.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Currimundi -->
+      <div class="rounded-2xl border border-sage-100 bg-white overflow-hidden">
+        <div class="bg-sage-50 border-b border-sage-100 px-7 py-5">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600">Currimundi</p>
+          <h3 class="mt-1 text-xl text-charcoal">Mat · Reformer · Wundachair</h3>
+          <p class="mt-1 text-sm text-stone">Max 4 per class</p>
+        </div>
+        <ul class="divide-y divide-sage-100">
+          {currimundiClasses.map((c) => (
+            <li class="flex items-baseline gap-4 px-7 py-4">
+              <span class="text-charcoal font-medium w-24 shrink-0">{c.day}</span>
+              <span class="text-stone w-24 shrink-0">{c.time}</span>
+              <span class="text-sm text-sage-600 font-semibold ml-auto">{c.lead}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Sandstone Point -->
+      <div class="rounded-2xl border border-sage-100 bg-white overflow-hidden">
+        <div class="bg-sage-50 border-b border-sage-100 px-7 py-5">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600">Sandstone Point</p>
+          <h3 class="mt-1 text-xl text-charcoal">Reformer studio</h3>
+          <p class="mt-1 text-sm text-stone">Max 6 per class</p>
+        </div>
+        <ul class="divide-y divide-sage-100">
+          {sandstoneClasses.map((c) => (
+            <li class="flex items-baseline gap-4 px-7 py-4">
+              <span class="text-charcoal font-medium w-24 shrink-0">{c.day}</span>
+              <span class="text-stone w-24 shrink-0">{c.time}</span>
+              <span class="text-sm text-sage-600 font-semibold ml-auto">{c.lead}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>

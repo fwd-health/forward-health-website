@@ -39,6 +39,7 @@ interface Props {
   faqs: FAQ[];
   related: RelatedService[];
   bookingHeading?: string;
+  bookingHeadingHref?: string;
   bookingBlurb?: string;
 }
 
@@ -56,6 +57,7 @@ const {
   faqs,
   related,
   bookingHeading,
+  bookingHeadingHref,
   bookingBlurb,
 } = Astro.props;
 ---
@@ -182,8 +184,11 @@ const {
     </section>
   )}
 
+  <!-- Optional custom slot (e.g. class timetables) -->
+  <slot />
+
   <!-- Booking -->
-  <BookingBlock heading={bookingHeading} blurb={bookingBlurb} variant="sage" />
+  <BookingBlock heading={bookingHeading} headingHref={bookingHeadingHref} blurb={bookingBlurb} variant="sage" />
 
   <!-- FAQs -->
   {faqs.length > 0 && (
