@@ -1,14 +1,13 @@
 ---
 import ServiceLayout from "../layouts/ServiceLayout.astro";
-import { practitioners } from "../data/practitioners";
 import heroImage from "../assets/services/clinical-pilates.jpg";
 ---
 
 <ServiceLayout
   title="Hydrotherapy"
-  description="Physiotherapist-led hydrotherapy classes at the Bribie Island Aquatic Centre. Water-based rehab and exercise for arthritis, post-op recovery, chronic pain and reduced mobility. Pool is undercover and heated, so classes run year-round."
-  eyebrow="Pool-based · Physio-led · Group class"
-  intro="Hydrotherapy uses the buoyancy, warmth and resistance of water to make movement easier, especially when joints, fractures or chronic pain make land-based exercise hard. Brianna leads our hydrotherapy class at the Bribie Island Aquatic Centre, with every exercise modified to suit you on the day."
+  description="Physiotherapist-led hydrotherapy class at the Bribie Island Aquatic Centre, Thursdays at 1:15 pm. Water-based rehab and exercise for arthritis, post-op recovery, chronic pain and reduced mobility. Pool is undercover and heated, so classes run year-round."
+  eyebrow="Pool-based · Physio-led · Thursdays 1:15 pm"
+  intro="Hydrotherapy uses the buoyancy, warmth and resistance of water to make movement easier, especially when joints, fractures or chronic pain make land-based exercise hard. Our class runs at the Bribie Island Aquatic Centre on Thursdays at 1:15 pm, led by one of our physios with every exercise modified to suit you on the day."
   heroImage={heroImage}
   heroImageAlt="Forward Health hydrotherapy class in the pool"
   conditions={[
@@ -38,8 +37,9 @@ import heroImage from "../assets/services/clinical-pilates.jpg";
       heading: "Where the class runs",
       items: [
         "Bribie Island Aquatic Centre, undercover heated pool",
+        "Thursdays at 1:15 pm",
         "Runs year-round, including through winter",
-        "Brianna leads the class, every session",
+        "Physio-led, every session",
         "Class places are capped, easiest to book a 1:1 first",
         "Pool entry fee paid directly to the Aquatic Centre (waived for DVA patients)",
       ],
@@ -52,14 +52,14 @@ import heroImage from "../assets/services/clinical-pilates.jpg";
     },
     {
       title: "Class with a physio in the pool",
-      body: "You join the class at Bribie Island Aquatic Centre. Brianna runs the session in the pool, and modifies each exercise to suit you, your body and the work you're managing. Everyone in the class is doing different versions of the same exercises.",
+      body: "You join the Thursday 1:15 pm class at Bribie Island Aquatic Centre. One of our physios runs the session in the pool, and modifies each exercise to suit you, your body and the work you're managing. Everyone in the class is doing different versions of the same exercises.",
     },
     {
       title: "Reviewed as you progress",
       body: "Your physio updates your modifications in real time as you get stronger or work through the next phase of your rehab. You don't need to bring anything but yourself and your bathers.",
     },
   ]}
-  practitioners={[practitioners.brianna]}
+  practitioners={[]}
   locations={["Sandstone Point"]}
   bookingHeading="Lower impact, faster progress."
   bookingBlurb="The easiest way to start is to book a land-based physio assessment with us. We'll work out whether hydrotherapy is the right fit, and which class will suit you best."
@@ -129,7 +129,7 @@ import heroImage from "../assets/services/clinical-pilates.jpg";
         <ul class="space-y-3 text-sm text-stone leading-relaxed">
           <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Undercover, heated hydrotherapy pool</span></li>
           <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Runs year-round, winter included</span></li>
-          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Brianna runs the class, every session</span></li>
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Thursdays at 1:15 pm, physio-led every session</span></li>
           <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Pool entry paid on arrival (DVA exempt)</span></li>
           <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Class fee claimable as physio under most extras policies</span></li>
         </ul>

@@ -22,14 +22,11 @@ const subNav = [
 ---
 
 <Layout title={title} description={description} ogImage={ogImage}>
-  <!-- M&B sub-brand strip -->
+  <!-- M&B sub-nav strip -->
   <div class="mb-section bg-[var(--color-mb-warm)] border-b border-[var(--color-mb-rule)]">
     <div class="max-w-7xl mx-auto px-5 lg:px-8 py-4 flex flex-wrap items-center gap-x-6 gap-y-3">
-      <a href="/mums-and-bubs" class="flex items-center gap-3 leading-none">
-        <img src="/mums-and-bubs-logo.svg" alt="" class="h-14 w-auto" />
-        <span class="font-[var(--font-mb-serif)] text-xl lg:text-2xl text-[var(--color-mb-burgundy)] tracking-tight">
-          mums &amp; bubs <span class="text-[var(--color-mb-terracotta)] italic">physio</span>
-        </span>
+      <a href="/mums-and-bubs" class="text-xs uppercase tracking-[0.18em] font-semibold text-[var(--color-mb-terracotta-dark)]">
+        ← Back to Forward Health
       </a>
       <nav aria-label="Mums & Bubs sub-navigation" class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-[var(--color-mb-ink)] ml-auto">
         {subNav.map((item) => {
