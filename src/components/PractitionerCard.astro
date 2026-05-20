@@ -13,6 +13,15 @@ interface Props {
 }
 const { name, role, locations, blurb, href, photo, lightboxId } = Astro.props;
 
+function parseRole(role: string) {
+  const lines = role.split("\n").map((line) => {
+    const parts = line.split(" · ");
+    return { title: parts[0], status: parts.slice(1).join(" · ") };
+  });
+  const status = lines.map((l) => l.status).filter(Boolean)[0] ?? "";
+  return { lines, status };
+}
+
 const isLightboxTrigger = !!lightboxId;
 const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
 ---
@@ -39,7 +48,21 @@ const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
       )}
       <div class="min-w-0">
         <h3 class="text-lg text-charcoal group-hover:text-sage-600 transition-colors">{name}</h3>
-        <p class="text-xs uppercase tracking-[0.14em] text-tan-600 mt-0.5 whitespace-pre-line leading-relaxed">{role}</p>
+        {(() => { const r = parseRole(role); return (
+          <div>
+            <div class="mt-1.5 space-y-1">
+              {r.lines.map((l) => (
+                <p class="text-[0.7rem] leading-tight uppercase tracking-[0.14em] text-tan-600 font-semibold flex items-baseline gap-1.5">
+                  <span class="w-1 h-1 rounded-full bg-tan-400 shrink-0"></span>
+                  <span>{l.title}</span>
+                </p>
+              ))}
+            </div>
+            {r.status && (
+              <p class="mt-2 text-[0.7rem] italic text-stone">{r.status}</p>
+            )}
+          </div>
+        ); })()}
         <p class="text-xs text-stone mt-1">{locations}</p>
       </div>
     </div>
@@ -69,7 +92,21 @@ const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
       )}
       <div class="min-w-0">
         <h3 class="text-lg text-charcoal group-hover:text-sage-600 transition-colors">{name}</h3>
-        <p class="text-xs uppercase tracking-[0.14em] text-tan-600 mt-0.5 whitespace-pre-line leading-relaxed">{role}</p>
+        {(() => { const r = parseRole(role); return (
+          <div>
+            <div class="mt-1.5 space-y-1">
+              {r.lines.map((l) => (
+                <p class="text-[0.7rem] leading-tight uppercase tracking-[0.14em] text-tan-600 font-semibold flex items-baseline gap-1.5">
+                  <span class="w-1 h-1 rounded-full bg-tan-400 shrink-0"></span>
+                  <span>{l.title}</span>
+                </p>
+              ))}
+            </div>
+            {r.status && (
+              <p class="mt-2 text-[0.7rem] italic text-stone">{r.status}</p>
+            )}
+          </div>
+        ); })()}
         <p class="text-xs text-stone mt-1">{locations}</p>
       </div>
     </div>
@@ -93,7 +130,21 @@ const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
       )}
       <div class="min-w-0">
         <h3 class="text-lg text-charcoal">{name}</h3>
-        <p class="text-xs uppercase tracking-[0.14em] text-tan-600 mt-0.5 whitespace-pre-line leading-relaxed">{role}</p>
+        {(() => { const r = parseRole(role); return (
+          <div>
+            <div class="mt-1.5 space-y-1">
+              {r.lines.map((l) => (
+                <p class="text-[0.7rem] leading-tight uppercase tracking-[0.14em] text-tan-600 font-semibold flex items-baseline gap-1.5">
+                  <span class="w-1 h-1 rounded-full bg-tan-400 shrink-0"></span>
+                  <span>{l.title}</span>
+                </p>
+              ))}
+            </div>
+            {r.status && (
+              <p class="mt-2 text-[0.7rem] italic text-stone">{r.status}</p>
+            )}
+          </div>
+        ); })()}
         <p class="text-xs text-stone mt-1">{locations}</p>
       </div>
     </div>

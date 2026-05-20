@@ -6,11 +6,11 @@ import heroImage from "../assets/services/clinical-pilates.jpg";
 
 <ServiceLayout
   title="Hydrotherapy"
-  description="Physiotherapist-led hydrotherapy on the Sunshine Coast and Moreton Bay. Water-based rehab and exercise for arthritis, post-op recovery, chronic pain and reduced mobility."
-  eyebrow="Pool-based · Physio-led · Low-impact"
-  intro="Hydrotherapy uses the buoyancy, warmth and resistance of water to make movement easier, especially when joints, fractures or chronic pain make land-based exercise hard. Run by one of our physiotherapists, the session is built around your goals."
+  description="Physiotherapist-led hydrotherapy classes at the Bribie Island Aquatic Centre. Water-based rehab and exercise for arthritis, post-op recovery, chronic pain and reduced mobility. Pool is undercover and heated, so classes run year-round."
+  eyebrow="Pool-based · Physio-led · Group class"
+  intro="Hydrotherapy uses the buoyancy, warmth and resistance of water to make movement easier, especially when joints, fractures or chronic pain make land-based exercise hard. Brianna leads our hydrotherapy class at the Bribie Island Aquatic Centre, with every exercise modified to suit you on the day."
   heroImage={heroImage}
-  heroImageAlt="Forward Health hydrotherapy session in the pool"
+  heroImageAlt="Forward Health hydrotherapy class in the pool"
   conditions={[
     {
       heading: "Common reasons people start",
@@ -34,50 +34,106 @@ import heroImage from "../assets/services/clinical-pilates.jpg";
         "Movements that hurt on land often don't in the pool",
       ],
     },
+    {
+      heading: "Where the class runs",
+      items: [
+        "Bribie Island Aquatic Centre, undercover heated pool",
+        "Runs year-round, including through winter",
+        "Brianna leads the class, every session",
+        "Class places are capped, easiest to book a 1:1 first",
+        "Pool entry fee paid directly to the Aquatic Centre (waived for DVA patients)",
+      ],
+    },
   ]}
   whatToExpect={[
     {
-      title: "Initial physio assessment",
-      body: "Before your first pool session, we book you in for a land-based assessment with your physio. They take a full history, screen any joints, and design the water-based program you'll work through.",
+      title: "Land-based physio assessment first",
+      body: "Before joining the pool class, we book you in for a land-based assessment with one of our physios. They take a full history, screen any joints, and confirm hydrotherapy is the right fit for your goals.",
     },
     {
-      title: "Programmed pool session",
-      body: "You bring the program your physio wrote you and work through it in a warm pool. Aerobic, strength, balance and mobility work, all paced to suit you.",
+      title: "Class with a physio in the pool",
+      body: "You join the class at Bribie Island Aquatic Centre. Brianna runs the session in the pool, and modifies each exercise to suit you, your body and the work you're managing. Everyone in the class is doing different versions of the same exercises.",
     },
     {
       title: "Reviewed as you progress",
-      body: "Your physio updates your program every few weeks as you get stronger or work through the next phase of your rehab.",
+      body: "Your physio updates your modifications in real time as you get stronger or work through the next phase of your rehab. You don't need to bring anything but yourself and your bathers.",
     },
   ]}
-  practitioners={[practitioners.jarrod, practitioners.holly]}
+  practitioners={[practitioners.brianna]}
   locations={["Sandstone Point"]}
   bookingHeading="Lower impact, faster progress."
-  bookingBlurb="The easiest way to start is to book a physio assessment with us. We'll work out whether hydrotherapy is the right fit, and design the program you'll take to the pool."
+  bookingBlurb="The easiest way to start is to book a land-based physio assessment with us. We'll work out whether hydrotherapy is the right fit, and which class will suit you best."
   faqs={[
     {
       q: "Where is the pool?",
-      a: "We use a local heated pool close to Sandstone Point for our hydrotherapy programs. We'll give you the exact location and access details when you book your first session.",
+      a: "We run hydrotherapy at the Bribie Island Aquatic Centre. The hydrotherapy pool is undercover and heated, so the class runs year-round, including through winter. Visit the aquatic centre's website at bribieislandaquatic.com.au for directions, parking and facility info.",
     },
     {
       q: "Do I need to be a strong swimmer?",
-      a: "No. Hydrotherapy is done in waist- to chest-deep water with your feet on the bottom. You don't need to swim, and the program is built so non-swimmers are entirely comfortable.",
+      a: "No. Hydrotherapy is done in waist- to chest-deep water with your feet on the bottom. You don't need to swim, and the class is built so non-swimmers are entirely comfortable.",
+    },
+    {
+      q: "Is there a pool entry fee on top of the class price?",
+      a: "Yes. The class price covers the physio-led session only; you pay the standard Bribie Island Aquatic Centre entry fee directly to them. DVA patients are the exception, the pool entry is waived under their DVA cover.",
     },
     {
       q: "Can I claim through my health fund?",
-      a: "Hydrotherapy assessments and physiotherapist-supervised sessions are claimable under most extras policies. We'll process HICAPS for the assessment; speak to reception about pool-session billing.",
+      a: "Yes. Hydrotherapy classes are physio-led and claimable as group physiotherapy (item code 560) under most extras policies. We'll process HICAPS for the class fee; the pool entry fee isn't claimable.",
     },
     {
       q: "Is hydrotherapy claimable on a GP CCMP plan?",
-      a: "Yes, if your GP has written you a GP CCMP plan (formerly TCA, EPC, or commonly known as a Medicare referral), the assessment is claimable. The pool session itself depends on the supervising clinician and the program structure, give us a call and we'll talk you through it.",
+      a: "GP CCMP plans (formerly TCA, EPC, or commonly known as Medicare referrals) only cover 1:1 physio sessions. They don't cover group hydrotherapy classes. If you'd prefer a 1:1 hydrotherapy session, that can be billed under your GP CCMP, give us a call to organise it.",
     },
     {
       q: "What should I bring?",
-      a: "Swimwear you can move in, a towel, drink bottle and a thong/sandal for the pool deck. We'll give you everything else you need.",
+      a: "Bathers you can move in, a towel, drink bottle and thongs or sandals for the pool deck. We'll give you everything else you need.",
     },
   ]}
   related={[
     { title: "Clinical pilates", href: "/clinical-pilates", blurb: "Land-based, physio-led group classes." },
+    { title: "Strength & Balance", href: "/strength-and-balance", blurb: "Land-based strength + balance class." },
     { title: "Home visit physio", href: "/home-visits", blurb: "When getting to the pool isn't possible." },
-    { title: "Strength & Balance", href: "/strength-and-balance", blurb: "Land-based group strength + balance class." },
   ]}
-/>
+>
+  <!-- Bribie Aquatic Centre callout -->
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="max-w-2xl mb-8">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Where we run</p>
+      <h2>Bribie Island Aquatic Centre.</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+      <div class="space-y-4 text-stone leading-relaxed">
+        <p>
+          Our hydrotherapy class runs at the <strong class="text-charcoal">Bribie Island Aquatic
+          Centre</strong>, just over the bridge from Sandstone Point. The hydrotherapy pool is
+          undercover and heated, which means we run year-round, including through winter.
+        </p>
+        <p>
+          Visit their website for directions, parking and facility info:
+          <a
+            href="https://bribieislandaquatic.com.au/"
+            target="_blank"
+            rel="noopener"
+            class="text-sage-600 font-semibold hover:underline"
+          >
+            bribieislandaquatic.com.au
+          </a>
+        </p>
+        <p class="text-sm">
+          Pool entry is paid directly to the Aquatic Centre on the day. Class price is for the
+          physio-led session only. DVA patients are exempt from the entry fee.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-sage-100 bg-cream-50 p-6">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold mb-2">At a glance</p>
+        <ul class="space-y-3 text-sm text-stone leading-relaxed">
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Undercover, heated hydrotherapy pool</span></li>
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Runs year-round, winter included</span></li>
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Brianna runs the class, every session</span></li>
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Pool entry paid on arrival (DVA exempt)</span></li>
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Class fee claimable as physio under most extras policies</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>

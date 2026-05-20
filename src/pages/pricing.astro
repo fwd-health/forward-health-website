@@ -21,11 +21,24 @@ const sections = [
     ],
   },
   {
-    title: "Specialist physio",
+    title: "Vertigo & vestibular physio",
     items: [
-      { label: "Vestibular / running assessment", duration: "60 min", price: "$135" },
+      { label: "Initial consultation", duration: "45 min", price: "$160" },
+      { label: "Follow-up appointment", duration: "30 min", price: "$130" },
+    ],
+  },
+  {
+    title: "Running assessments",
+    items: [
+      { label: "Initial running assessment", duration: "60 min", price: "$220" },
+      { label: "Follow-up running session", duration: "45 min", price: "$180" },
+    ],
+  },
+  {
+    title: "Paediatric & home visit physio",
+    items: [
       { label: "Paediatric physio", duration: "varies", price: "Contact us" },
-      { label: "Home visit physio", duration: "varies", price: "Contact us" },
+      { label: "Home visit physio (plus travel charge)", duration: "varies", price: "Contact us" },
     ],
   },
   {
@@ -40,19 +53,44 @@ const sections = [
     title: "Clinical pilates",
     items: [
       { label: "Initial 1-on-1 assessment", duration: "60 min", price: "$135" },
-      { label: "Single class (max 4 Currimundi, max 6 Sandstone Point)", duration: "-", price: "$45" },
-      { label: "3-class pack", duration: "-", price: "$114" },
-      { label: "6-class pack", duration: "-", price: "$216" },
-      { label: "12-class pack", duration: "-", price: "$408" },
-      { label: "24-class pack", duration: "-", price: "$768" },
+      { label: "3-class pack", duration: "-", price: "$114", note: "$38 / class" },
+      { label: "6-class pack", duration: "-", price: "$216", note: "$36 / class" },
+      { label: "12-class pack", duration: "-", price: "$408", note: "$34 / class" },
+      { label: "24-class pack", duration: "-", price: "$768", note: "$32 / class" },
     ],
   },
+  {
+    title: "Strength & Balance classes",
+    items: [
+      { label: "Single class (drop-in or by package)", duration: "-", price: "$25 / session" },
+    ],
+  },
+  {
+    title: "Hydrotherapy classes",
+    items: [
+      { label: "Casual class", duration: "-", price: "$25", note: "Excluding pool entry fee" },
+      { label: "5 class pack", duration: "-", price: "$100", note: "$20 / class, excluding pool entry fee" },
+      { label: "10 class pack", duration: "-", price: "$180", note: "$18 / class, excluding pool entry fee" },
+    ],
+  },
+];
+
+const healthFundCodes = [
+  { service: "Initial physiotherapy consultation", code: "500" },
+  { service: "Subsequent physiotherapy consultation", code: "505" },
+  { service: "Initial pelvic floor / women's health consultation", code: "500 (with women's-health item indicator)" },
+  { service: "Subsequent pelvic floor / women's health", code: "505" },
+  { service: "Vestibular / running assessment (physio)", code: "500 / 505" },
+  { service: "Clinical pilates class (group)", code: "560" },
+  { service: "Strength & Balance class (group)", code: "560" },
+  { service: "Hydrotherapy class (group)", code: "560" },
+  { service: "Remedial massage (30 / 45 / 60 min)", code: "102 / 103 / 105 (varies by fund)" },
 ];
 ---
 
 <Layout
   title="Pricing, Forward Health"
-  description="Forward Health pricing for physiotherapy, pelvic floor physio, remedial massage, clinical pilates and specialist services. HCF and Medibank preferred provider; HICAPS on-the-spot claiming."
+  description="Forward Health pricing for physiotherapy, pelvic floor physio, vertigo physio, running assessments, clinical pilates, strength & balance, hydrotherapy, paediatrics and remedial massage. HCF and Medibank preferred provider, HICAPS on-the-spot claiming."
 >
   <!-- Hero -->
   <section class="bg-sage-50">
@@ -61,7 +99,7 @@ const sections = [
         <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-4">Pricing</p>
         <h1 class="text-charcoal">Honest pricing, on-the-spot claiming.</h1>
         <p class="mt-6 text-lg text-stone leading-relaxed">
-          Every price below is the gap fee you'd pay before health-fund rebate. We process HICAPS
+          Every price below is the fee you'd pay before health-fund rebate. We process HICAPS
           claims on the spot for every major fund, so most clients pay only the difference between
           the fee and their rebate.
         </p>
@@ -84,6 +122,9 @@ const sections = [
                 {it.duration && it.duration !== "-" && (
                   <p class="text-xs text-stone uppercase tracking-[0.14em] mt-0.5">{it.duration}</p>
                 )}
+                {it.note && (
+                  <p class="text-xs text-stone mt-0.5">{it.note}</p>
+                )}
               </div>
               <p class="text-charcoal font-display text-lg shrink-0">{it.price}</p>
             </li>
@@ -93,8 +134,34 @@ const sections = [
     ))}
   </section>
 
-  <!-- Funding & rebates -->
+  <!-- Health fund codes -->
   <section class="bg-cream-50 py-16 lg:py-20">
+    <div class="max-w-5xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl mb-10">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Health fund codes</p>
+        <h2 class="text-charcoal text-2xl lg:text-3xl">Item codes for your fund.</h2>
+        <p class="mt-4 text-stone leading-relaxed">
+          We process HICAPS claims on the spot. If your fund requires the item code in advance to
+          quote a rebate, the typical codes for each of our services are below. Codes occasionally
+          vary by fund, so if your fund quotes back something different, give us a call and we'll
+          confirm.
+        </p>
+      </div>
+      <div class="rounded-3xl border border-sage-100 bg-white overflow-hidden">
+        <ul class="divide-y divide-sage-100">
+          {healthFundCodes.map((c) => (
+            <li class="px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+              <p class="text-charcoal">{c.service}</p>
+              <p class="text-charcoal font-display text-lg shrink-0">{c.code}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Funding & rebates -->
+  <section class="py-16 lg:py-20">
     <div class="max-w-5xl mx-auto px-5 lg:px-8 grid md:grid-cols-2 gap-10">
       <div>
         <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Health funds</p>
@@ -113,7 +180,7 @@ const sections = [
           </li>
           <li class="flex gap-3">
             <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
-            <span><strong>EPC plans</strong> (5 sessions/year via your GP), small gap fee applies.</span>
+            <span><strong>GP CCMP</strong> (formerly TCA, EPC, or commonly known as Medicare referrals), 5 sessions/year via your GP, small gap fee applies.</span>
           </li>
           <li class="flex gap-3">
             <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
@@ -121,7 +188,7 @@ const sections = [
           </li>
           <li class="flex gap-3">
             <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
-            <span><strong>WorkCover</strong>, bulk billed with valid referral.</span>
+            <span><strong>WorkCover</strong>, $100 deposit required at booking, refunded at the end of your claim. Valid referral needed.</span>
           </li>
           <li class="flex gap-3">
             <span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span>
@@ -133,12 +200,20 @@ const sections = [
   </section>
 
   <!-- Cancellation note -->
-  <section class="max-w-5xl mx-auto px-5 lg:px-8 py-12">
+  <section class="max-w-5xl mx-auto px-5 lg:px-8 pb-16">
     <div class="rounded-3xl bg-tan-100/40 border border-tan-200 p-8 text-stone">
-      <p class="text-sm">
-        <strong class="text-charcoal">24-hour cancellation policy.</strong> We require at least 24 hours' notice
-        to cancel or reschedule. Late cancellations may attract 50% of the appointment fee; missed appointments
-        may attract the full fee. Life happens. Let us know as early as you can.
+      <p class="text-sm font-semibold text-charcoal mb-3 uppercase tracking-[0.14em]">Late-cancellation policy</p>
+      <p class="text-sm leading-relaxed">
+        We have a 24-hour cancellation policy.
+      </p>
+      <ul class="mt-3 space-y-2 text-sm leading-relaxed">
+        <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span><strong class="text-charcoal">Private-paying patients:</strong> $50 late-cancellation fee.</span></li>
+        <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span><strong class="text-charcoal">NDIS, DVA and Home Care Package patients:</strong> the late-cancellation fee is billed directly to the service provider.</span></li>
+        <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span><strong class="text-charcoal">WorkCover patients:</strong> a $100 deposit is required at booking, refunded at the end of your claim.</span></li>
+        <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span><strong class="text-charcoal">Pilates / S&amp;B / Hydrotherapy classes:</strong> the class is billed in full from your package.</span></li>
+      </ul>
+      <p class="mt-4 text-sm">
+        Life happens, let us know as early as you can.
         <a href="/policies" class="text-sage-600 underline">Full policies →</a>
       </p>
     </div>

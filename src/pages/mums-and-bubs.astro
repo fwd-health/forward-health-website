@@ -120,7 +120,13 @@ const schema = {
     <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
       <div class="lg:col-span-7">
         <p class="mb-eyebrow">Sunshine Coast · Currimundi · Sandstone Point</p>
-        <h1 class="mt-4">Specialist physiotherapy for <em>mums &amp; bubs</em>.</h1>
+        <div class="mt-4 flex items-center gap-4">
+          <img src={logoMark} alt="" class="w-20 h-20 lg:w-24 lg:h-24 shrink-0" />
+          <p style="font-family: var(--font-mb-serif); font-weight: 500; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; color: var(--color-mb-terracotta);">
+            Mums &amp; Bubs Physio
+          </p>
+        </div>
+        <h1 class="mt-5">Specialist physiotherapy for <em>mums &amp; bubs</em>.</h1>
         <p class="mt-6 text-xl leading-relaxed text-[var(--color-mb-ink)] max-w-xl">
           Expert care through pregnancy, postpartum recovery, pelvic health and paediatrics, under
           the one warm, welcoming roof.
@@ -158,13 +164,13 @@ const schema = {
   <!-- Sub-brand identity strip -->
   <section class="mb-bg-warm py-12 lg:py-16 border-y border-[var(--color-mb-rule)]">
     <div class="max-w-3xl mx-auto px-5 lg:px-8 text-center">
-      <img src={logoMark} alt="" class="w-48 h-48 mx-auto mb-6" />
       <p class="mb-eyebrow">A specialist service of Forward Health</p>
       <h2 class="mt-3">Same physio. <em>From bump to bub.</em></h2>
       <p class="mt-5 text-[var(--color-mb-muted)] leading-relaxed">
-        Most clinics force you to start over with a new clinician at every life stage, different
-        physio for pregnancy, different physio for baby, different physio for school-age niggles.
-        We've built our team so the same trusted clinicians can carry you through.
+        A warm, welcoming and safe space for both mum and bub. Whether you're navigating something
+        in pregnancy, working through postpartum recovery, or watching out for your bub's
+        developmental milestones, the same trusted team is here for all of it. The questions
+        you've been holding onto are exactly the ones we love answering.
       </p>
     </div>
   </section>
@@ -200,6 +206,42 @@ const schema = {
             </span>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinical pilates focus for mum + bub -->
+  <section class="py-16 lg:py-20">
+    <div class="max-w-5xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7">
+        <p class="mb-eyebrow">Clinical pilates for mums &amp; bubs</p>
+        <h2 class="mt-3">Strong through pregnancy, <em>steady on the other side</em>.</h2>
+        <p class="mt-5 text-[var(--color-mb-muted)] leading-relaxed">
+          Our whole team is trained in clinical pilates, and it's one of the highest-value things you
+          can do for your body through pregnancy and postpartum recovery. Attend a 1:1 session, or
+          join a small group class. Either way every exercise is modified to your stage and your
+          body.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="/clinical-pilates" class="mb-btn-primary inline-flex items-center rounded-full px-7 py-3.5 text-sm font-semibold">
+            Explore clinical pilates
+          </a>
+          <a href="/#book" class="mb-btn-outline inline-flex items-center rounded-full px-7 py-3.5 text-sm font-semibold">
+            Book a 1:1 assessment
+          </a>
+        </div>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="mb-card p-7">
+          <h4 class="font-semibold text-base text-[var(--color-mb-ink)]">Why our mums love it</h4>
+          <ul class="mt-5 space-y-3 text-[var(--color-mb-ink)] leading-relaxed text-sm">
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span><span>Pelvic floor and deep-core training built in</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span><span>Each exercise modified for your stage</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span><span>Run by a physiotherapist who knows your story</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span><span>1:1 or small-group, switch any time</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-mb-terracotta)]"></span><span>Claimable as physiotherapy</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -271,8 +313,8 @@ const schema = {
         <h2 class="mt-3">Paediatric physio for babies, toddlers &amp; kids.</h2>
         <p class="mt-5 text-[var(--color-mb-muted)] max-w-2xl mx-auto leading-relaxed">
           From a flat spot or stiff neck in the first weeks of life through to gross motor delay,
-          hypermobility and the kid who walks on their toes. We work alongside families and
-          paediatricians across the Sunshine Coast.
+          hypermobility and toe walking. We work alongside families and paediatricians across the
+          Sunshine Coast.
         </p>
       </div>
       <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 text-[var(--color-mb-ink)] leading-relaxed">

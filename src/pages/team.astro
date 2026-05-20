@@ -16,6 +16,15 @@ const rmtOrder = ["catalina", "tara", "suzie", "carly"];
 const physiosOrdered = physioOrder.map((k) => practitioners[k]).filter(Boolean);
 const rmtsOrdered = rmtOrder.map((k) => practitioners[k]).filter(Boolean);
 
+function parseRole(role: string) {
+  const lines = role.split("\n").map((line) => {
+    const parts = line.split(" · ");
+    return { title: parts[0], status: parts.slice(1).join(" · ") };
+  });
+  const status = lines.map((l) => l.status).filter(Boolean)[0] ?? "";
+  return { lines, status };
+}
+
 import galleryAnniversary from "../assets/team/gallery/team-clinic-anniversary.png";
 import galleryPottery from "../assets/team/gallery/team-pottery-class.png";
 import gallerySunset from "../assets/team/gallery/team-sunset-beach.jpg";
@@ -196,7 +205,21 @@ const allPractitioners = [...physiotherapists, ...massageTherapists, ...careTeam
           )}
         </div>
         <div class="p-8 lg:p-10">
-          <p class="text-xs uppercase tracking-[0.18em] text-tan-600 whitespace-pre-line leading-relaxed">{p.role}</p>
+          {(() => { const r = parseRole(p.role); return (
+            <div>
+              <div class="space-y-1">
+                {r.lines.map((l) => (
+                  <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold flex items-baseline gap-2">
+                    <span class="w-1 h-1 rounded-full bg-tan-400 shrink-0"></span>
+                    <span>{l.title}</span>
+                  </p>
+                ))}
+              </div>
+              {r.status && (
+                <p class="mt-3 text-xs italic text-stone">{r.status}</p>
+              )}
+            </div>
+          ); })()}
           <h3 class="mt-2 font-display text-3xl text-charcoal">{p.name}</h3>
           <p class="mt-1 text-sm text-stone">{p.locations}</p>
 

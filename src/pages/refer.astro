@@ -188,18 +188,41 @@ const success = Astro.url.searchParams.get("success") === "true";
     )}
   </section>
 
-  <!-- Contact alternative -->
+  <!-- Contact methods -->
   <section class="bg-cream-50 py-16">
-    <div class="max-w-3xl mx-auto px-5 lg:px-8 text-center">
-      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Prefer email or fax?</p>
-      <h2 class="text-charcoal">Send it however suits you.</h2>
-      <p class="mt-5 text-stone leading-relaxed max-w-xl mx-auto">
-        Email referrals to
-        <a href="mailto:hello@fwdhealth.com.au" class="text-sage-600 font-semibold hover:underline">hello@fwdhealth.com.au</a>
-        or call reception on
-        <a href="tel:0420522558" class="text-sage-600 font-semibold hover:underline">0420 522 558</a>
-        for fax details or to discuss complex cases.
-      </p>
+    <div class="max-w-4xl mx-auto px-5 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Prefer another channel?</p>
+        <h2 class="text-charcoal">Send it however suits you.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="rounded-2xl border border-sage-100 bg-white p-6">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold">Email</p>
+          <a href="mailto:hello@fwdhealth.com.au" class="mt-2 block font-display text-2xl text-charcoal hover:text-sage-600 transition-colors break-all">
+            hello@fwdhealth.com.au
+          </a>
+        </div>
+        <div class="rounded-2xl border border-sage-100 bg-white p-6">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold">Phone</p>
+          <a href="tel:0420522558" class="mt-2 block font-display text-2xl text-charcoal hover:text-sage-600 transition-colors">
+            0420 522 558
+          </a>
+        </div>
+        <div class="rounded-2xl border border-sage-100 bg-white p-6">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold">Fax</p>
+          <p class="mt-2 font-display text-2xl text-charcoal">
+            [TO CONFIRM]
+          </p>
+          <p class="mt-1 text-xs text-stone">Call reception on 0420 522 558 for our current fax number.</p>
+        </div>
+        <div class="rounded-2xl border border-sage-100 bg-white p-6">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold">Medical Objects</p>
+          <p class="mt-2 font-display text-2xl text-charcoal">
+            Forward Health Group
+          </p>
+          <p class="mt-1 text-xs text-stone">Search "Forward Health" in your Medical Objects directory to send secure messages.</p>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
