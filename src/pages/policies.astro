@@ -1,73 +1,370 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const policies = [
-  {
-    title: "Cancellations",
-    body:
-      "We require at least 24 hours' notice to cancel or reschedule. Cancellations within 24 hours may attract a 50% fee; missed appointments may attract the full fee. We understand that life happens. Let us know as soon as you can and we'll work with you.",
-  },
-  {
-    title: "Late arrival",
-    body:
-      "If you're running late, please call. We'll do our best to fit you in, but we may need to shorten the appointment to keep the clinic running on time for everyone else.",
-  },
-  {
-    title: "Communication",
-    body:
-      "Reception is open Monday to Friday and Saturday mornings. Outside those hours we monitor email and respond on the next business day. If something is urgent and clinical, please call rather than email.",
-  },
-  {
-    title: "Health fund claiming",
-    body:
-      "We process HICAPS claims on the spot for every major Australian health fund. We're a HCF preferred provider for all services and a Medibank preferred provider for physiotherapy. The gap fee is payable at the appointment.",
-  },
-  {
-    title: "Medicare and DVA",
-    body:
-      "We accept Enhanced Primary Care (EPC) plans (5 sessions per calendar year on referral from your GP), Workcover claims, and DVA Gold and White Cards (where the condition is on your card). A referral from your GP is required for these streams.",
-  },
-  {
-    title: "NDIS",
-    body:
-      "Forward Health is not a registered NDIS provider. We welcome plan-managed and self-managed NDIS participants. Agency-managed (NDIA-managed) participants will need to use a registered provider. We can recommend one if helpful.",
-  },
-  {
-    title: "Children and young people",
-    body:
-      "A parent or guardian must be present for the whole appointment for clients under 14. From 14 to 17, we recommend a parent attend the first appointment but subsequent appointments may be attended alone with consent.",
-  },
-  {
-    title: "Concerns and feedback",
-    body:
-      "If something we did didn't meet your expectations, we genuinely want to hear about it. Email hello@fwdhealth.com.au or speak with reception and we'll do everything we can to make it right.",
-  },
-];
 ---
 
 <Layout
   title="Policies, Forward Health"
-  description="Cancellation, late arrival, communication, and health-fund policies at Forward Health."
+  description="Forward Health policies — cancellation, clinical pilates, returns and exchanges, and privacy."
 >
+  <!-- Hero -->
   <section class="bg-sage-50">
     <div class="max-w-3xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
       <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-4">Clinic policies</p>
       <h1 class="text-charcoal">The boring-but-important bits.</h1>
       <p class="mt-6 text-stone leading-relaxed">
-        Quick reference for cancellations, claiming, and how we communicate. If anything's unclear,
-        ask reception. We'd rather over-explain than have you feel surprised later.
+        Quick reference for cancellations, clinical pilates classes, returns and how we look after
+        your personal information. If anything's unclear, please ask reception, we'd rather
+        over-explain than have you feel surprised later.
+      </p>
+
+      <!-- Anchor nav -->
+      <div class="mt-8 flex flex-wrap gap-2 text-sm">
+        <a href="#cancellation" class="rounded-full bg-white border border-sage-200 px-4 py-2 text-charcoal hover:border-sage-400 transition-colors">Cancellation</a>
+        <a href="#clinical-pilates" class="rounded-full bg-white border border-sage-200 px-4 py-2 text-charcoal hover:border-sage-400 transition-colors">Clinical pilates</a>
+        <a href="#returns" class="rounded-full bg-white border border-sage-200 px-4 py-2 text-charcoal hover:border-sage-400 transition-colors">Returns &amp; exchanges</a>
+        <a href="#privacy" class="rounded-full bg-white border border-sage-200 px-4 py-2 text-charcoal hover:border-sage-400 transition-colors">Privacy</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cancellation policy -->
+  <section id="cancellation" class="max-w-3xl mx-auto px-5 lg:px-8 py-12 lg:py-16 scroll-mt-24">
+    <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold mb-3">01 / Cancellation policy</p>
+    <h2 class="font-display text-2xl lg:text-3xl text-charcoal">Cancellations and rescheduling.</h2>
+    <div class="mt-5 space-y-4 text-stone leading-relaxed">
+      <p>
+        At Forward Health your appointment time is held just for you, and we work hard to make sure
+        your experience is smooth and supportive. To keep things fair to all of our patients and to
+        manage the costs of running a small business, we ask for your understanding of the
+        following:
+      </p>
+      <ul class="space-y-3">
+        <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span><strong class="text-charcoal">24 hours' notice</strong> is required to cancel or reschedule any appointment.</span></li>
+        <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Changes made within 24 hours attract a <strong class="text-charcoal">$50 cancellation fee</strong>.</span></li>
+        <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>For <strong class="text-charcoal">Clinical Pilates classes</strong>, a 100% cancellation fee applies for late cancellations or missed classes.</span></li>
+        <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>A <strong class="text-charcoal">$50 deposit</strong> is required for all initial massage and physiotherapy bookings.</span></li>
+      </ul>
+      <p>
+        Life happens, and we get that things come up. If you have any questions or concerns about
+        this policy, please email
+        <a href="mailto:management@fwdhealth.com.au" class="text-sage-600 font-semibold hover:underline">management@fwdhealth.com.au</a>.
+        Helping us uphold this policy means we can keep delivering great care to everyone.
       </p>
     </div>
   </section>
 
-  <section class="max-w-3xl mx-auto px-5 lg:px-8 py-12 lg:py-16">
-    <div class="divide-y divide-sage-100 border-y border-sage-100">
-      {policies.map((p) => (
-        <div class="py-8">
-          <h2 class="font-display text-xl text-charcoal">{p.title}</h2>
-          <p class="mt-3 text-stone leading-relaxed">{p.body}</p>
+  <!-- Clinical pilates policy -->
+  <section id="clinical-pilates" class="bg-cream-50 scroll-mt-24">
+    <div class="max-w-3xl mx-auto px-5 lg:px-8 py-12 lg:py-16">
+      <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold mb-3">02 / Clinical pilates policy</p>
+      <h2 class="font-display text-2xl lg:text-3xl text-charcoal">Joining a Clinical Pilates class.</h2>
+
+      <div class="mt-6 space-y-8 text-stone leading-relaxed">
+        <div>
+          <h3 class="font-display text-lg text-charcoal">Before you start</h3>
+          <p class="mt-2">
+            All new clients are seen for a <strong class="text-charcoal">Pilates Prescreen
+            Assessment</strong> ($135) before joining classes. This is where we work through any
+            current or previous injuries, plus mobility, strength and balance considerations. You'll
+            receive a complimentary pair of grip socks to wear in your classes.
+          </p>
         </div>
-      ))}
+
+        <div>
+          <h3 class="font-display text-lg text-charcoal">Class payments</h3>
+          <p class="mt-2">
+            After your prescreen, you can book in for a single trial class ($45). To continue, a
+            class package must be purchased. See
+            <a href="/pricing" class="text-sage-600 font-semibold hover:underline">our pricing page</a>
+            for the 3, 6, 12 and 24 class pack options.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-display text-lg text-charcoal">Health fund claiming</h3>
+          <p class="mt-2">
+            Health fund rebates are available for all Clinical Pilates appointments and classes. Once
+            you've completed a class package, we'll provide your invoices and payment-receipt
+            statements so you can submit your rebate to your fund.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-display text-lg text-charcoal">Cancellation and no-show policy</h3>
+          <p class="mt-2">
+            We have a <strong class="text-charcoal">strict 24-hour cancellation policy</strong> for
+            all Clinical Pilates classes. An automated SMS reminder (with a cancellation link) is
+            sent 48 hours before each class, and the link is valid up until the 24-hour cut-off.
+          </p>
+          <p class="mt-3">
+            Any cancellation less than 24 hours in advance is billed in full, or uses a class from
+            your package. You can cancel by:
+          </p>
+          <ul class="mt-3 space-y-2">
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Calling or attending the clinic</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Using the cancellation link in your appointment confirmation email</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Using the cancellation link in the 48-hour SMS reminder</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-display text-lg text-charcoal">What to wear and bring</h3>
+          <p class="mt-2">Please bring along:</p>
+          <ul class="mt-3 space-y-2">
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Towel</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Water bottle</span></li>
+            <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Pilates grip socks (can be purchased at the clinic)</span></li>
+          </ul>
+          <p class="mt-3">
+            Comfortable activewear works best. For safety and hygiene, grip socks must be worn during
+            classes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Returns policy -->
+  <section id="returns" class="max-w-3xl mx-auto px-5 lg:px-8 py-12 lg:py-16 scroll-mt-24">
+    <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold mb-3">03 / Returns &amp; exchanges</p>
+    <h2 class="font-display text-2xl lg:text-3xl text-charcoal">Returns and exchanges policy.</h2>
+    <div class="mt-5 space-y-5 text-stone leading-relaxed">
+      <p>
+        We offer refunds or exchanges within <strong class="text-charcoal">30 days of purchase</strong>
+        for any product bought from Forward Health, provided the conditions below are met.
+      </p>
+
+      <div>
+        <h3 class="font-display text-lg text-charcoal">Eligible for a refund or exchange</h3>
+        <ul class="mt-3 space-y-2">
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Returned within 30 days of purchase</span></li>
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Unused / unworn, in the same condition as purchase</span></li>
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Returned with original packaging (tags still attached)</span></li>
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Proof of purchase (or the name the product was purchased under) is provided</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display text-lg text-charcoal">Not covered</h3>
+        <ul class="mt-3 space-y-2">
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-tan-400"></span><span>Change of mind</span></li>
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-tan-400"></span><span>Items that have been used / worn, or are not in their original condition</span></li>
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-tan-400"></span><span>Items returned without original packaging</span></li>
+          <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-tan-400"></span><span>Items where proof of purchase cannot be provided</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display text-lg text-charcoal">Exempt goods</h3>
+        <p class="mt-2">Gift cards are not eligible for a refund or exchange.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy policy -->
+  <section id="privacy" class="bg-cream-50 scroll-mt-24">
+    <div class="max-w-3xl mx-auto px-5 lg:px-8 py-12 lg:py-16">
+      <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold mb-3">04 / Privacy policy</p>
+      <h2 class="font-display text-2xl lg:text-3xl text-charcoal">Privacy policy.</h2>
+      <p class="mt-2 text-xs text-stone">Last revised 20 December 2024.</p>
+
+      <div class="mt-6 space-y-5 text-stone leading-relaxed">
+        <p>
+          Forward Health Group and its managed practice locations are committed to delivering
+          excellent, individualised care to every patient, client and team member. To do that, we
+          take the safety of your privacy seriously and collect, store, manage and disclose your
+          personal information in accordance with the <strong class="text-charcoal">Australian
+          Privacy Principles (APPs)</strong> and the <strong class="text-charcoal">Privacy Act 1988
+          (Cth)</strong>.
+        </p>
+        <p>
+          This policy explains what information we collect, how and why we collect it, what we do
+          with it, who we share it with, and your rights around accessing, correcting, requesting
+          anonymous treatment, and making a complaint. Any updates will be published on this page.
+          If you have any questions, please email
+          <a href="mailto:hello@fwdhealth.com.au" class="text-sage-600 font-semibold hover:underline">hello@fwdhealth.com.au</a>.
+        </p>
+        <p>
+          Your personal information will only be used for the purposes for which it was collected,
+          and will only be shared in line with what's described in this policy.
+        </p>
+      </div>
+
+      <div class="mt-8 divide-y divide-sage-100 border-y border-sage-100">
+        <details class="group py-5">
+          <summary class="cursor-pointer list-none flex items-start justify-between gap-6">
+            <h3 class="font-display text-lg text-charcoal">What information we collect</h3>
+            <span class="text-sage-600 font-display text-2xl group-open:rotate-45 transition-transform shrink-0">+</span>
+          </summary>
+          <div class="mt-4 text-stone leading-relaxed space-y-3">
+            <p>We collect a range of personal information about existing and prospective patients, clients, team members and suppliers, which may include:</p>
+            <ul class="space-y-2">
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Name, date of birth, mailing and residential address, email, contact numbers</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Family member or emergency contact details</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Health fund details</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Government identifiers (Medicare, DVA, NDIS, WorkCover or insurance claim number) for invoicing and billing</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Health information: symptoms, relevant medical history (conditions, diagnoses, surgeries), reason for presenting, diagnosis and treatment provided</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Specialist / surgeon letters and reports, imaging reports, prescriptions, your healthcare identifier</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Occupation and employer details</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Lifestyle and hobbies (relevant to your care)</span></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="cursor-pointer list-none flex items-start justify-between gap-6">
+            <h3 class="font-display text-lg text-charcoal">How we collect and hold it</h3>
+            <span class="text-sage-600 font-display text-2xl group-open:rotate-45 transition-transform shrink-0">+</span>
+          </summary>
+          <div class="mt-4 text-stone leading-relaxed space-y-3">
+            <p>We typically collect personal information through:</p>
+            <ul class="space-y-2">
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>You directly (intake forms, outcome measures, in-clinic, phone, online forms, feedback, reviews, competition entries, voicemails or texts)</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Someone responsible for you (carer, parent, guardian)</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Product purchases or in-clinic orders</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Enquiries or complaints</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Incoming caller ID</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Government agencies (Medicare, Department of Veterans' Affairs) where legally permitted</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Private health insurers (Allianz, RACQ, etc.)</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Workers' compensation companies, solicitors and lawyers</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Other medical professionals (GPs, allied health practitioners, specialists, surgeons)</span></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="cursor-pointer list-none flex items-start justify-between gap-6">
+            <h3 class="font-display text-lg text-charcoal">Why we collect and use your information</h3>
+            <span class="text-sage-600 font-display text-2xl group-open:rotate-45 transition-transform shrink-0">+</span>
+          </summary>
+          <div class="mt-4 text-stone leading-relaxed space-y-3">
+            <p>Forward Health Group collects personal information so we can provide you with excellent, individualised health care and communicate with everyone involved in delivering that care. Examples include:</p>
+            <ul class="space-y-2">
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Administering and running the clinics</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Billing and invoicing</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Email and SMS appointment reminders, plus direct-marketing communications (clinic updates, promotions, fee changes)</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Meeting our legislative and regulatory obligations</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Communicating about our services (physio, pilates, remedial massage, etc.)</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Following up on products you've ordered</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Updating or confirming your personal details</span></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="cursor-pointer list-none flex items-start justify-between gap-6">
+            <h3 class="font-display text-lg text-charcoal">When and why we share your information</h3>
+            <span class="text-sage-600 font-display text-2xl group-open:rotate-45 transition-transform shrink-0">+</span>
+          </summary>
+          <div class="mt-4 text-stone leading-relaxed space-y-3">
+            <p>We may use or share your personal information for the following reasons:</p>
+            <ul class="space-y-2">
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>To meet legal obligations (mandatory reporting, responding to a court order or subpoena, audits, etc.)</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>To consult with other medical professionals involved in your care, including specialists and GPs at third-party practices</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>To communicate within a multidisciplinary treating team</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>To provide treatment-discharge information to insurers, employers or other medical professionals when required</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>To collect test results from imaging clinics or medical practices</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>To liaise with insurance companies and case managers</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>To correspond with your health fund or government agencies (Medicare, DVA)</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>To manage our accounts and administrative systems (invoicing, phone payments, follow-up on unpaid invoices)</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>To handle enquiries, complaints, orders and feedback</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>To develop and improve our website and social media</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>For direct marketing, plus email and SMS reminders</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Reminding patients of upcoming appointments or letting you know about changes (phone, in-person, SMS or email)</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Advising patients of practitioner availability</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Alerting another professional or emergency-service personnel of a serious threat to the health and safety of a patient, employee or the public</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Providing information to emergency services (such as police) where required</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Contacting an emergency contact</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Gathering information for an upcoming or existing legal proceeding</span></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="cursor-pointer list-none flex items-start justify-between gap-6">
+            <h3 class="font-display text-lg text-charcoal">How we safeguard your information</h3>
+            <span class="text-sage-600 font-display text-2xl group-open:rotate-45 transition-transform shrink-0">+</span>
+          </summary>
+          <div class="mt-4 text-stone leading-relaxed space-y-3">
+            <p>
+              We have rigorous security measures in place to keep your personal information
+              protected, confidential, securely stored and destroyed correctly, in line with our
+              legislative obligations and internal policies.
+            </p>
+            <p>
+              Every Forward Health Group team member is bound by the confidentiality terms in their
+              employment contract from day one. Any prohibited disclosure of your personal
+              information is treated as a serious breach and will trigger disciplinary or legal
+              action.
+            </p>
+            <p>
+              We keep records accurate and current, and may contact you (in person, by phone, email
+              or SMS) to confirm details. If anything about your contact details, name, address or
+              other relevant information has changed, please call us on
+              <a href="tel:0420522558" class="text-sage-600 font-semibold hover:underline">0420 522 558</a>
+              or email
+              <a href="mailto:hello@fwdhealth.com.au" class="text-sage-600 font-semibold hover:underline">hello@fwdhealth.com.au</a>
+              and we'll update them.
+            </p>
+            <p>
+              Existing patients can request copies of their personal information, clinical notes,
+              images and any reports sent to them or to a third-party organisation (such as a
+              workers' compensation company) by contacting their physiotherapist directly.
+            </p>
+            <p>We will only disclose your personal information in accordance with the Privacy Act 1988, specifically:</p>
+            <ul class="space-y-2">
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>For the purposes set out in this policy</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Where we have your verbal or written consent</span></li>
+              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-sage-500"></span><span>Where we are required or permitted by law</span></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="cursor-pointer list-none flex items-start justify-between gap-6">
+            <h3 class="font-display text-lg text-charcoal">Anonymous treatment</h3>
+            <span class="text-sage-600 font-display text-2xl group-open:rotate-45 transition-transform shrink-0">+</span>
+          </summary>
+          <div class="mt-4 text-stone leading-relaxed">
+            <p>
+              Where it is legal, ethical and clinically suitable, Forward Health Group respects your
+              decision to receive treatment anonymously, or under an alias or pseudonym.
+            </p>
+          </div>
+        </details>
+
+        <details class="group py-5">
+          <summary class="cursor-pointer list-none flex items-start justify-between gap-6">
+            <h3 class="font-display text-lg text-charcoal">Privacy concerns and complaints</h3>
+            <span class="text-sage-600 font-display text-2xl group-open:rotate-45 transition-transform shrink-0">+</span>
+          </summary>
+          <div class="mt-4 text-stone leading-relaxed space-y-3">
+            <p>
+              If you have any concerns about how Forward Health Group has handled, collected, stored
+              or disclosed your information, please let us know in writing. We'll investigate the
+              concern and respond in writing within 30 days.
+            </p>
+            <p>
+              If you're not satisfied with our response, you can escalate by submitting an official
+              privacy complaint to the
+              <strong class="text-charcoal">Office of the Information Commissioner Queensland</strong>
+              via their Privacy Complaint form, available at
+              <a href="https://www.oic.qld.gov.au" target="_blank" rel="noopener" class="text-sage-600 font-semibold hover:underline">www.oic.qld.gov.au</a>.
+            </p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Privacy contact -->
+      <div class="mt-10 rounded-2xl border border-sage-100 bg-white p-6 lg:p-7">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold mb-2">Contact us about privacy</p>
+        <p class="font-display text-lg text-charcoal">Joe Vos &amp; Stephanie Pyle</p>
+        <p class="text-sm text-stone">Clinical Directors</p>
+        <div class="mt-3 text-sm space-y-1">
+          <p><a href="mailto:hello@fwdhealth.com.au" class="text-charcoal hover:text-sage-600">hello@fwdhealth.com.au</a></p>
+          <p><a href="tel:0420522558" class="text-charcoal hover:text-sage-600">0420 522 558</a></p>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
