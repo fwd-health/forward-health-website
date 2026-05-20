@@ -26,7 +26,7 @@ Live state of the build, what's still missing, and the strategy notes behind the
 - **Social icons in the footer** — Instagram + Facebook placeholders linked to `instagram.com/forwardhealth.com.au/` and `facebook.com/forwardhealth.com.au`. **Action:** confirm the actual handles. If they're different, I'll swap them straight in.
 - **Strength & Balance page** (`/strength-and-balance`) and **Hydrotherapy page** (`/hydrotherapy`) — built off our existing service-page pattern. Class timetable for S&B is wired in (Wed 10am Holly, Thu 10am Bri, Fri 9am Jarrod). **Action:** read both pages and tell me what to tighten. Hydrotherapy page in particular guesses at pool location + billing details, please correct anything that's wrong.
 - **Strength & Balance photo** — wired in (lady-in-pink doing wundachair side-stretch at Sandstone Point, currently used as the hero; you sent it as Physiotherapy 7.heic and I saved it to `src/assets/services/strength-balance.jpg`).
-- **Hydrotherapy hero photo** — still pending. Drop a shot in `/Users/joe/Downloads/` whenever you have one (pool / class shot ideally) and I'll wire it in to `src/assets/services/hydrotherapy.jpg`.
+- **Hydrotherapy hero photo** — interim stock image wired in (Pexels free-licence indoor-pool shot at `src/assets/services/hydrotherapy.jpg`). Swap for a real Bribie Island Aquatic Centre / class photo whenever you have one.
 
 ## 📌 On the radar (not blockers, but flagged for a future round)
 
