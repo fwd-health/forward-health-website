@@ -25,7 +25,8 @@ Live state of the build, what's still missing, and the strategy notes behind the
 - **Refer-a-patient page** (`/refer`) — Netlify Form set up with practitioner name, practice, email, phone, service, subject, message, file upload (PDF/Doc/image) and consent checkbox. Submissions land in the Netlify dashboard once deployed. **Action:** once the Netlify site is live, go to Site → Forms → Notifications, and add an email notification pointing at `hello@fwdhealth.com.au` so referrals trigger an inbox alert (not just a dashboard entry). The form name is `referral`.
 - **Social icons in the footer** — Instagram + Facebook placeholders linked to `instagram.com/forwardhealth.com.au/` and `facebook.com/forwardhealth.com.au`. **Action:** confirm the actual handles. If they're different, I'll swap them straight in.
 - **Strength & Balance page** (`/strength-and-balance`) and **Hydrotherapy page** (`/hydrotherapy`) — built off our existing service-page pattern. Class timetable for S&B is wired in (Wed 10am Holly, Thu 10am Bri, Fri 9am Jarrod). **Action:** read both pages and tell me what to tighten. Hydrotherapy page in particular guesses at pool location + billing details, please correct anything that's wrong.
-- **Strength & Balance + Hydrotherapy don't yet have their own photos** — currently re-using the clinical-pilates.jpg hero. Send through a shot for each when you have one and I'll wire them in.
+- **Strength & Balance photo** — wired in (lady-in-pink doing wundachair side-stretch at Sandstone Point, currently used as the hero; you sent it as Physiotherapy 7.heic and I saved it to `src/assets/services/strength-balance.jpg`).
+- **Hydrotherapy hero photo** — still pending. Drop a shot in `/Users/joe/Downloads/` whenever you have one (pool / class shot ideally) and I'll wire it in to `src/assets/services/hydrotherapy.jpg`.
 
 ## 📌 On the radar (not blockers, but flagged for a future round)
 
