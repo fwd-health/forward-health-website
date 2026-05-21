@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import AnnouncementPopup from "../components/AnnouncementPopup.astro";
 
 interface Props {
   title?: string;
@@ -99,5 +100,6 @@ const fullCanonical = canonical ?? new URL(Astro.url.pathname, siteUrl).toString
       <slot />
     </main>
     <Footer />
+    <AnnouncementPopup />
   </body>
 </html>

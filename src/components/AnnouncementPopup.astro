@@ -1,0 +1,216 @@
+---
+import { Image } from "astro:assets";
+import remedialImg from "../assets/services/remedial-massage.jpg";
+import pilatesImg from "../assets/services/clinical-pilates.jpg";
+
+// Bump the version to re-show the popup to all visitors after a refresh
+const POPUP_VERSION = "2026-05";
+
+const rmtRoster = [
+  { name: "Tara", clinic: "Currimundi", days: "Tuesdays & Fridays" },
+  { name: "Carly", clinic: "Currimundi", days: "Thursdays" },
+  { name: "Suzie", clinic: "Currimundi", days: "Tuesdays + monthly Saturdays" },
+  { name: "Catalina", clinic: "Sandstone Point", days: "Tuesdays, Thursdays, Fridays + monthly Saturdays" },
+];
+
+const pilatesCurrimundi = [
+  { day: "Monday", time: "10:00 am", lead: "Brianna" },
+  { day: "Tuesday", time: "2:00 pm", lead: "Steph" },
+  { day: "Wednesday", time: "8:00 am", lead: "Brianna" },
+  { day: "Friday", time: "8:00 am", lead: "Joe" },
+];
+---
+
+<dialog
+  id="fh-announce"
+  data-version={POPUP_VERSION}
+  class="fixed inset-0 m-auto p-0 max-w-4xl w-[calc(100%-2rem)] max-h-[92vh] bg-cream-50 rounded-3xl border border-sage-100 shadow-2xl backdrop:bg-charcoal/60 backdrop:backdrop-blur-sm overflow-hidden"
+  aria-labelledby="fh-announce-title"
+>
+  <button
+    type="button"
+    data-fh-announce-close
+    aria-label="Close announcement"
+    class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-sage-100 hover:bg-white text-charcoal flex items-center justify-center text-xl"
+  >
+    ×
+  </button>
+
+  <div class="overflow-y-auto max-h-[92vh]">
+    <div class="px-6 lg:px-10 pt-10 pb-2 lg:pt-12">
+      <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold">What's new at Forward Health</p>
+      <h2
+        id="fh-announce-title"
+        class="mt-3 font-display text-2xl lg:text-3xl text-charcoal"
+      >
+        Two new things you should know about.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5 px-6 lg:px-10 py-8">
+      <!-- Remedial massage -->
+      <article class="rounded-2xl border border-sage-100 bg-white overflow-hidden flex flex-col">
+        <div class="aspect-[4/3] overflow-hidden bg-sage-100">
+          <Image
+            src={remedialImg}
+            alt="Forward Health remedial massage"
+            width={600}
+            height={450}
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-5 lg:p-6 flex-1 flex flex-col">
+          <p class="text-xs uppercase tracking-[0.16em] text-tan-600 font-semibold">Remedial massage</p>
+          <h3 class="mt-2 font-display text-xl text-charcoal">We've added extra days.</h3>
+          <p class="mt-3 text-sm text-stone leading-relaxed">
+            Four therapists across both clinics, so it's easier than ever to find a time that suits.
+          </p>
+
+          <ul class="mt-4 space-y-2 text-sm">
+            {rmtRoster.map((r) => (
+              <li class="flex justify-between gap-3">
+                <span class="text-charcoal font-medium">{r.name}</span>
+                <span class="text-stone text-right">{r.clinic} · {r.days}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-5 flex flex-wrap gap-2 pt-2 border-t border-sage-100">
+            <a
+              href="/#book"
+              data-fh-announce-close
+              class="inline-flex items-center rounded-full bg-sage-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-sage-700 transition-colors"
+            >
+              Book online
+            </a>
+            <a
+              href="tel:0420522558"
+              class="inline-flex items-center rounded-full bg-white border border-sage-200 px-5 py-2.5 text-sm font-semibold text-charcoal hover:border-sage-400 transition-colors"
+            >
+              Call the clinic
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Clinical Pilates at Currimundi -->
+      <article class="rounded-2xl border border-sage-100 bg-white overflow-hidden flex flex-col">
+        <div class="aspect-[4/3] overflow-hidden bg-sage-100">
+          <Image
+            src={pilatesImg}
+            alt="Forward Health clinical pilates"
+            width={600}
+            height={450}
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-5 lg:p-6 flex-1 flex flex-col">
+          <p class="text-xs uppercase tracking-[0.16em] text-tan-600 font-semibold">Clinical pilates · Currimundi</p>
+          <h3 class="mt-2 font-display text-xl text-charcoal">Currimundi classes are back.</h3>
+          <p class="mt-3 text-sm text-stone leading-relaxed">
+            Small-group, physio-led classes. Max 4 per class. Mat, reformer and wundachair work,
+            all individualised to you.
+          </p>
+
+          <ul class="mt-4 space-y-2 text-sm">
+            {pilatesCurrimundi.map((c) => (
+              <li class="flex justify-between gap-3">
+                <span class="text-charcoal font-medium">{c.day}</span>
+                <span class="text-stone text-right">{c.time} · {c.lead}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-5 flex flex-wrap gap-2 pt-2 border-t border-sage-100">
+            <a
+              href="/clinical-pilates"
+              data-fh-announce-close
+              class="inline-flex items-center rounded-full bg-sage-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-sage-700 transition-colors"
+            >
+              See class details
+            </a>
+            <a
+              href="/#book"
+              data-fh-announce-close
+              class="inline-flex items-center rounded-full bg-white border border-sage-200 px-5 py-2.5 text-sm font-semibold text-charcoal hover:border-sage-400 transition-colors"
+            >
+              Book assessment
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="px-6 lg:px-10 pb-8 lg:pb-10 -mt-2">
+      <button
+        type="button"
+        data-fh-announce-close
+        class="text-sm text-stone hover:text-charcoal underline underline-offset-4 decoration-sage-300"
+      >
+        No thanks, I'll browse first
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<script is:inline define:vars={{ POPUP_VERSION }}>
+  (function () {
+    const KEY = "fh-announce-dismissed";
+    const dialog = document.getElementById("fh-announce");
+    if (!dialog) return;
+
+    const seen = (() => {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    })();
+
+    if (seen !== POPUP_VERSION) {
+      // Wait a beat so the page paints first
+      setTimeout(() => {
+        if (typeof dialog.showModal === "function") {
+          dialog.showModal();
+        }
+      }, 800);
+    }
+
+    const close = () => {
+      try { localStorage.setItem(KEY, POPUP_VERSION); } catch (e) {}
+      dialog.close();
+    };
+
+    dialog.addEventListener("click", (e) => {
+      const t = e.target;
+      // Backdrop click (clicking the dialog element itself, not its contents)
+      if (t === dialog) {
+        close();
+        return;
+      }
+      if (t.closest && t.closest("[data-fh-announce-close]")) {
+        close();
+      }
+    });
+
+    dialog.addEventListener("close", () => {
+      try { localStorage.setItem(KEY, POPUP_VERSION); } catch (e) {}
+    });
+  })();
+</script>
+
+<style>
+  dialog#fh-announce[open] {
+    animation: fhAnnounceFadeIn 0.22s ease-out;
+  }
+  dialog#fh-announce[open]::backdrop {
+    animation: fhAnnounceBackdropFadeIn 0.22s ease-out;
+  }
+  @keyframes fhAnnounceFadeIn {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes fhAnnounceBackdropFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  body:has(dialog#fh-announce[open]) {
+    overflow: hidden;
+  }
+</style>
