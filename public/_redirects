@@ -27,6 +27,3 @@
 
 # Team page variants
 /our-team                     /team                          301
-
-# /refer was rolled into /contact#referrals
-/refer                        /contact#referrals             301

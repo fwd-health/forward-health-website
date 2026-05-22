@@ -1,0 +1,265 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const services = [
+  "Physiotherapy",
+  "Pelvic floor physio",
+  "Paediatric physio",
+  "Vertigo & vestibular",
+  "Running assessments",
+  "Clinical pilates",
+  "Home visit physio",
+  "Remedial massage",
+];
+
+const success = Astro.url.searchParams.get("success") === "true";
+---
+
+<Layout
+  title="Refer a patient, Forward Health"
+  description="Submit a patient referral to Forward Health. Health practitioners can upload a referral document, add a subject and message, and we'll receive it at hello@fwdhealth.com.au."
+>
+  <!-- Success modal — appears automatically when ?success=true is in the URL -->
+  {success && (
+    <dialog
+      id="refer-success-modal"
+      open
+      class="fixed inset-0 m-auto p-0 max-w-lg w-[calc(100%-2rem)] bg-white rounded-3xl border border-sage-200 shadow-2xl backdrop:bg-charcoal/60 backdrop:backdrop-blur-sm"
+      aria-labelledby="refer-success-title"
+    >
+      <div class="relative p-8 lg:p-10 text-center">
+        <button
+          type="button"
+          data-refer-success-close
+          aria-label="Close confirmation"
+          class="absolute top-4 right-4 w-10 h-10 rounded-full bg-sage-50 hover:bg-sage-100 text-charcoal flex items-center justify-center text-xl"
+        >
+          ×
+        </button>
+
+        <div class="mx-auto w-20 h-20 rounded-full bg-sage-100 flex items-center justify-center mb-5 fh-success-icon">
+          <svg class="w-10 h-10 text-sage-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+
+        <h2 id="refer-success-title" class="font-display text-2xl lg:text-3xl text-charcoal">
+          Referral received, thank you!
+        </h2>
+        <p class="mt-4 text-stone leading-relaxed">
+          We've got your message and the attached document. Someone from our team will get in
+          touch shortly. If it's urgent, give us a call on
+          <a href="tel:0420522558" class="text-sage-600 font-semibold hover:underline">0420 522 558</a>.
+        </p>
+
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <a
+            href="/refer"
+            class="inline-flex items-center rounded-full bg-sage-600 px-6 py-3 text-sm font-semibold text-white hover:bg-sage-700 transition-colors"
+          >
+            Send another referral
+          </a>
+          <a
+            href="/"
+            class="inline-flex items-center rounded-full bg-white border border-sage-200 px-6 py-3 text-sm font-semibold text-charcoal hover:border-sage-400 transition-colors"
+          >
+            Back to homepage
+          </a>
+        </div>
+      </div>
+    </dialog>
+
+    <script is:inline>
+      (function () {
+        const dialog = document.getElementById("refer-success-modal");
+        if (!dialog) return;
+        const close = () => {
+          dialog.close();
+          // Clean the ?success=true off the URL so refresh doesn't re-show
+          if (history && history.replaceState) {
+            history.replaceState({}, "", "/refer");
+          }
+        };
+        dialog.addEventListener("click", (e) => {
+          if (e.target === dialog || (e.target.closest && e.target.closest("[data-refer-success-close]"))) {
+            close();
+          }
+        });
+        dialog.addEventListener("close", close);
+      })();
+    </script>
+
+    <style>
+      dialog#refer-success-modal[open] {
+        animation: fhSuccessIn 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      dialog#refer-success-modal[open]::backdrop {
+        animation: fhSuccessBackdropIn 0.32s ease-out;
+      }
+      @keyframes fhSuccessIn {
+        from { opacity: 0; transform: translateY(12px) scale(0.96); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      @keyframes fhSuccessBackdropIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .fh-success-icon {
+        animation: fhCheckPop 0.5s 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+      }
+      @keyframes fhCheckPop {
+        from { transform: scale(0.4); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+      }
+      body:has(dialog#refer-success-modal[open]) {
+        overflow: hidden;
+      }
+    </style>
+  )}
+
+  <!-- Hero -->
+  <section class="bg-sage-50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-12 lg:py-20">
+      <div class="max-w-3xl">
+        <p class="text-xs lg:text-sm uppercase tracking-[0.18em] text-tan-600 mb-3 lg:mb-4">For health professionals</p>
+        <h1 class="text-charcoal">Refer a patient.</h1>
+        <p class="mt-5 lg:mt-6 text-base lg:text-lg text-stone leading-relaxed">
+          GPs, specialists, allied health colleagues, send a referral directly through this form.
+          Attach your letter, add a quick note about what you'd like us to address, and we'll get
+          back to you and the patient as soon as we can.
+        </p>
+        <p class="mt-4 text-stone leading-relaxed">
+          Referrals land directly at <a href="mailto:hello@fwdhealth.com.au" class="text-sage-600 font-semibold hover:underline">hello@fwdhealth.com.au</a>
+          and are read by our reception and clinical team.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section class="max-w-3xl mx-auto px-5 lg:px-8 py-12 lg:py-20">
+    <form
+      name="referral"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      enctype="multipart/form-data"
+      action="/refer?success=true"
+      class="space-y-5"
+    >
+      <input type="hidden" name="form-name" value="referral" />
+      <p class="hidden">
+        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <div>
+          <label for="ref-name" class="block text-sm font-semibold text-charcoal mb-2">Your name *</label>
+          <input id="ref-name" name="practitioner_name" type="text" required
+            class="w-full rounded-xl border border-sage-200 bg-white px-4 py-3 text-base text-charcoal focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-200" />
+        </div>
+        <div>
+          <label for="ref-practice" class="block text-sm font-semibold text-charcoal mb-2">Practice / clinic *</label>
+          <input id="ref-practice" name="practice" type="text" required
+            class="w-full rounded-xl border border-sage-200 bg-white px-4 py-3 text-base text-charcoal focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-200" />
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <div>
+          <label for="ref-email" class="block text-sm font-semibold text-charcoal mb-2">Your email *</label>
+          <input id="ref-email" name="practitioner_email" type="email" required
+            class="w-full rounded-xl border border-sage-200 bg-white px-4 py-3 text-base text-charcoal focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-200" />
+        </div>
+        <div>
+          <label for="ref-phone" class="block text-sm font-semibold text-charcoal mb-2">Phone (optional)</label>
+          <input id="ref-phone" name="practitioner_phone" type="tel"
+            class="w-full rounded-xl border border-sage-200 bg-white px-4 py-3 text-base text-charcoal focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-200" />
+        </div>
+      </div>
+
+      <div>
+        <label for="ref-service" class="block text-sm font-semibold text-charcoal mb-2">Service requested</label>
+        <select id="ref-service" name="service_requested"
+          class="w-full rounded-xl border border-sage-200 bg-white px-4 py-3 text-base text-charcoal focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-200">
+          <option value="">Not sure / general referral</option>
+          {services.map((s) => <option value={s}>{s}</option>)}
+        </select>
+      </div>
+
+      <div>
+        <label for="ref-subject" class="block text-sm font-semibold text-charcoal mb-2">Subject *</label>
+        <input id="ref-subject" name="subject" type="text" required
+          placeholder="e.g. Referral, [patient name] – chronic knee pain"
+          class="w-full rounded-xl border border-sage-200 bg-white px-4 py-3 text-base text-charcoal focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-200" />
+      </div>
+
+      <div>
+        <label for="ref-message" class="block text-sm font-semibold text-charcoal mb-2">Message *</label>
+        <textarea id="ref-message" name="message" rows="6" required
+          placeholder="Quick summary of what you'd like us to address, any relevant history, urgency, etc."
+          class="w-full rounded-xl border border-sage-200 bg-white px-4 py-3 text-base text-charcoal focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-200"></textarea>
+      </div>
+
+      <div>
+        <label for="ref-file" class="block text-sm font-semibold text-charcoal mb-2">
+          Referral document (PDF, DOC, image, optional)
+        </label>
+        <input id="ref-file" name="referral_document" type="file"
+          accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.heic"
+          class="w-full text-sm text-stone file:mr-4 file:rounded-full file:border-0 file:bg-sage-100 file:px-5 file:py-2.5 file:text-sm file:font-semibold file:text-sage-700 hover:file:bg-sage-200 transition-colors" />
+        <p class="mt-2 text-xs text-stone">Max 10 MB. We accept PDF, Word, and image files.</p>
+      </div>
+
+      <div class="flex items-start gap-3 text-sm text-stone">
+        <input id="ref-consent" name="patient_consent" type="checkbox" required
+          class="mt-1 rounded border-sage-300 text-sage-600 focus:ring-sage-500" />
+        <label for="ref-consent">
+          I confirm the patient has consented to this referral and to their information being shared with Forward Health. *
+        </label>
+      </div>
+
+      <button type="submit"
+        class="inline-flex items-center rounded-full bg-sage-600 px-7 py-3.5 text-base font-semibold text-white hover:bg-sage-700 transition-colors">
+        Send referral
+      </button>
+    </form>
+  </section>
+
+  <!-- Contact methods -->
+  <section class="bg-cream-50 py-12 lg:py-16">
+    <div class="max-w-4xl mx-auto px-5 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-xs lg:text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Prefer another channel?</p>
+        <h2 class="text-charcoal">Send it however suits you.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="rounded-2xl border border-sage-100 bg-white p-6">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold">Email</p>
+          <a href="mailto:hello@fwdhealth.com.au" class="mt-2 block font-display text-xl lg:text-2xl text-charcoal hover:text-sage-600 transition-colors break-all">
+            hello@fwdhealth.com.au
+          </a>
+        </div>
+        <div class="rounded-2xl border border-sage-100 bg-white p-6">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold">Phone</p>
+          <a href="tel:0420522558" class="mt-2 block font-display text-xl lg:text-2xl text-charcoal hover:text-sage-600 transition-colors">
+            0420 522 558
+          </a>
+        </div>
+        <div class="rounded-2xl border border-sage-100 bg-white p-6">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold">Fax</p>
+          <p class="mt-2 font-display text-xl lg:text-2xl text-charcoal">
+            07 5335 1664
+          </p>
+        </div>
+        <div class="rounded-2xl border border-sage-100 bg-white p-6">
+          <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold">Medical Objects</p>
+          <p class="mt-2 font-display text-xl lg:text-2xl text-charcoal">
+            Forward Health Group
+          </p>
+          <p class="mt-1 text-xs text-stone">Search "Forward Health" in your Medical Objects directory to send secure messages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
