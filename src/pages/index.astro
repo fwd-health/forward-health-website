@@ -217,41 +217,25 @@ const locations = [
   </section>
 
   <!-- Mums & Bubs teaser, M&B themed -->
-  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-12 lg:py-20">
-    <div class="rounded-3xl p-6 lg:p-16"
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 py-20">
+    <div class="rounded-3xl p-10 lg:p-16 grid lg:grid-cols-2 gap-10 items-center"
          style="background-color: var(--color-mb-cream); color: var(--color-mb-ink); border: 1px solid var(--color-mb-rule);">
-      <!-- Logo + label + image side-by-side -->
-      <div class="grid grid-cols-12 gap-4 lg:gap-10 items-center">
-        <div class="col-span-7 lg:col-span-7">
-          <div class="flex items-center gap-3 mb-3 lg:mb-5">
-            <img src={mbLogo.src} alt="" class="w-16 h-16 lg:w-24 lg:h-24 shrink-0" />
-            <p class="text-[0.6rem] sm:text-xs uppercase tracking-[0.16em] lg:tracking-[0.18em] font-semibold leading-tight" style="color: var(--color-mb-terracotta-dark);">Mums &amp; Bubs Physio</p>
-          </div>
-          <h2 style="font-family: var(--font-mb-serif); font-weight: 400; font-size: clamp(1.4rem, 4.8vw, 2.65rem); line-height: 1.1;">
-            From bump to bub, <em style="font-style: italic; color: var(--color-mb-terracotta);">under one roof</em>.
-          </h2>
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <img src={mbLogo.src} alt="" class="w-36 h-36" />
+          <p class="text-xs uppercase tracking-[0.18em] font-semibold" style="color: var(--color-mb-terracotta-dark);">Mums &amp; Bubs Physio</p>
         </div>
-        <div class="col-span-5 lg:col-span-5">
-          <Image
-            src={mbHeroImg}
-            alt="Forward Health pelvic floor physiotherapist with a pregnant patient"
-            width={900}
-            height={675}
-            class="aspect-[3/4] lg:aspect-[4/3] rounded-2xl object-cover w-full"
-          />
-        </div>
-      </div>
-
-      <!-- Lead + CTA below -->
-      <div class="mt-5 lg:mt-7 lg:max-w-2xl">
-        <p class="leading-relaxed text-sm lg:text-base" style="color: var(--color-mb-muted);">
+        <h2 style="font-family: var(--font-mb-serif); font-weight: 400; font-size: clamp(1.85rem, 3.5vw, 2.65rem); line-height: 1.15;">
+          From bump to bub, <em style="font-style: italic; color: var(--color-mb-terracotta);">under one roof</em>.
+        </h2>
+        <p class="mt-5 leading-relaxed" style="color: var(--color-mb-muted);">
           The only physio team across the Sunshine Coast and Moreton Bay following you and your baby
           through pregnancy, birth recovery and developmental milestones. Pelvic floor and paediatric
           physio by the same trusted clinicians.
         </p>
         <a
           href="/mums-and-bubs"
-          class="mt-5 lg:mt-7 inline-flex items-center rounded-full px-6 lg:px-7 py-3 lg:py-3.5 text-sm font-semibold transition-colors"
+          class="mt-7 inline-flex items-center rounded-full px-7 py-3.5 text-sm font-semibold transition-colors"
           style="background-color: var(--color-mb-terracotta); color: white;"
           onmouseover="this.style.backgroundColor='var(--color-mb-terracotta-dark)'"
           onmouseout="this.style.backgroundColor='var(--color-mb-terracotta)'"
@@ -259,45 +243,38 @@ const locations = [
           Mums &amp; Bubs at Forward Health →
         </a>
       </div>
+      <div>
+        <Image
+          src={mbHeroImg}
+          alt="Forward Health pelvic floor physiotherapist with a pregnant patient"
+          width={900}
+          height={675}
+          class="aspect-[4/3] rounded-2xl object-cover w-full"
+        />
+      </div>
     </div>
   </section>
 
   <!-- Run Club teaser, RC themed -->
-  <section class="max-w-7xl mx-auto px-5 lg:px-8 pb-12 lg:pb-20">
-    <div class="rounded-3xl p-6 lg:p-16"
+  <section class="max-w-7xl mx-auto px-5 lg:px-8 pb-20">
+    <div class="rounded-3xl p-10 lg:p-16 grid lg:grid-cols-12 gap-10 items-center"
          style="background-color: var(--color-rc-cream); color: var(--color-rc-ink); border: 1px solid var(--color-rc-rule);">
-      <!-- Heading + poster side-by-side -->
-      <div class="grid grid-cols-12 gap-4 lg:gap-10 items-center">
-        <div class="col-span-7 lg:col-span-7">
-          <p class="text-[0.65rem] sm:text-xs uppercase tracking-[0.16em] lg:tracking-[0.18em] font-semibold mb-2 lg:mb-5 leading-tight" style="color: var(--color-rc-rust-dark);">@fwdrunclub · Kings Beach</p>
-          <h2 style="color: var(--color-rc-ink); font-family: var(--font-display); font-weight: 600; font-size: clamp(1.4rem, 4.8vw, 2.65rem); line-height: 1.1;">
-            All for run. <em style="font-style: italic; color: var(--color-rc-rust);">Run for all.</em>
-          </h2>
-        </div>
-        <div class="col-span-5 lg:col-span-5">
-          <Image
-            src={runClubPoster}
-            alt="Forward Run Club mascot poster, corgi runner with coffee, Aurenda Coffee Co Kings Beach"
-            width={900}
-            height={1200}
-            class="aspect-[3/4] rounded-2xl object-cover w-full max-w-sm mx-auto"
-          />
-        </div>
-      </div>
-
-      <!-- Lead + CTAs full-width below -->
-      <div class="mt-5 lg:mt-7 lg:max-w-2xl">
-        <p class="leading-relaxed text-sm lg:text-base" style="color: var(--color-rc-muted);">
+      <div class="lg:col-span-7">
+        <p class="text-xs uppercase tracking-[0.18em] font-semibold mb-5" style="color: var(--color-rc-rust-dark);">@fwdrunclub · Kings Beach</p>
+        <h2 style="color: var(--color-rc-ink); font-family: var(--font-display); font-weight: 600; font-size: clamp(1.85rem, 3.5vw, 2.65rem); line-height: 1.15;">
+          All for run. <em style="font-style: italic; color: var(--color-rc-rust);">Run for all.</em>
+        </h2>
+        <p class="mt-5 leading-relaxed" style="color: var(--color-rc-muted);">
           A free, easygoing running community on the Sunshine Coast. Sunrise runs every Tuesday at 5:30 am
           + monthly Friday afternoon socials at <strong>Aurenda Coffee Co, Kings Beach</strong>. Beginner
           pace welcome. Marathon pace welcome. Walking-and-chatting pace, also welcome.
         </p>
-        <div class="mt-5 lg:mt-7 flex flex-wrap gap-3">
+        <div class="mt-7 flex flex-wrap gap-3">
           <a
             href="https://www.instagram.com/fwdrunclub/"
             target="_blank"
             rel="noopener"
-            class="inline-flex items-center rounded-full px-6 lg:px-7 py-3 lg:py-3.5 text-sm font-semibold transition-colors"
+            class="inline-flex items-center rounded-full px-7 py-3.5 text-sm font-semibold transition-colors"
             style="background-color: var(--color-rc-rust); color: var(--color-rc-cream);"
             onmouseover="this.style.backgroundColor='var(--color-rc-rust-dark)'"
             onmouseout="this.style.backgroundColor='var(--color-rc-rust)'"
@@ -306,7 +283,7 @@ const locations = [
           </a>
           <a
             href="/run-club"
-            class="inline-flex items-center rounded-full px-6 lg:px-7 py-3 lg:py-3.5 text-sm font-semibold transition-colors"
+            class="inline-flex items-center rounded-full px-7 py-3.5 text-sm font-semibold transition-colors"
             style="background-color: white; border: 1px solid var(--color-rc-rule); color: var(--color-rc-ink);"
             onmouseover="this.style.borderColor='var(--color-rc-rust)'"
             onmouseout="this.style.borderColor='var(--color-rc-rule)'"
@@ -314,6 +291,15 @@ const locations = [
             Run with us →
           </a>
         </div>
+      </div>
+      <div class="lg:col-span-5">
+        <Image
+          src={runClubPoster}
+          alt="Forward Run Club mascot poster, corgi runner with coffee, Aurenda Coffee Co Kings Beach"
+          width={900}
+          height={1200}
+          class="aspect-[3/4] rounded-2xl object-cover w-full max-w-sm mx-auto"
+        />
       </div>
     </div>
   </section>
