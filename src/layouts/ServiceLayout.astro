@@ -3,6 +3,10 @@ import { Image } from "astro:assets";
 import Layout from "./Layout.astro";
 import BookingBlock from "../components/BookingBlock.astro";
 import PractitionerCard from "../components/PractitionerCard.astro";
+import PractitionerLightbox from "../components/PractitionerLightbox.astro";
+
+const slugify = (name: string) =>
+  name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 import type { ImageMetadata } from "astro";
 
 interface Practitioner {
@@ -183,13 +187,16 @@ const {
             role={p.role}
             locations={p.locations}
             blurb={p.blurb}
-            href={p.href}
             photo={p.photo}
+            lightboxId={`lb-${slugify(p.name)}`}
           />
         ))}
       </div>
     </section>
   )}
+
+  <!-- Practitioner lightbox modals (shared component, same UX as /team) -->
+  {practitioners.filter(Boolean).map((p) => <PractitionerLightbox practitioner={p} />)}
 
   <!-- Optional custom slot (e.g. class timetables) -->
   <slot />
