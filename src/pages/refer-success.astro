@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Referral received, Forward Health"
+  description="Your referral has been received by the Forward Health team. We'll be in touch shortly."
+>
+  <section class="bg-sage-50 min-h-[60vh] flex items-center">
+    <div class="max-w-2xl mx-auto px-5 lg:px-8 py-16 lg:py-24 text-center">
+      <div class="mx-auto w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-sage-100 flex items-center justify-center mb-6 lg:mb-8 fh-check-pop">
+        <svg class="w-10 h-10 lg:w-12 lg:h-12 text-sage-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <p class="text-xs lg:text-sm uppercase tracking-[0.18em] text-tan-600 font-semibold mb-3 lg:mb-4">Referral received</p>
+      <h1 class="text-charcoal">Thank you, your referral is with us.</h1>
+
+      <p class="mt-6 lg:mt-8 text-base lg:text-lg text-stone leading-relaxed">
+        We've got your message and any attached document. Someone from our reception or
+        clinical team will be in touch shortly to confirm the next steps.
+      </p>
+      <p class="mt-4 text-stone leading-relaxed">
+        If this is urgent, please give us a call on
+        <a href="tel:0420522558" class="text-sage-600 font-semibold hover:underline">0420 522 558</a>
+        and we'll prioritise it.
+      </p>
+
+      <div class="mt-8 lg:mt-10 flex flex-wrap justify-center gap-3">
+        <a
+          href="/refer"
+          class="inline-flex items-center rounded-full bg-sage-600 px-7 py-3.5 text-base font-semibold text-white hover:bg-sage-700 transition-colors"
+        >
+          Send another referral
+        </a>
+        <a
+          href="/"
+          class="inline-flex items-center rounded-full bg-white border border-sage-200 px-7 py-3.5 text-base font-semibold text-charcoal hover:border-sage-400 transition-colors"
+        >
+          Back to homepage
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .fh-check-pop {
+    animation: fhCheckPop 0.5s 0.05s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  }
+  @keyframes fhCheckPop {
+    from { transform: scale(0.4); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
