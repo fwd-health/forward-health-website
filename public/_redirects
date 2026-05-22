@@ -20,9 +20,13 @@
 
 # De-prioritised / no-longer-offered
 /dry-needling                 /physiotherapy                 301
-/strength-balance             /physiotherapy                 301
-/hydrotherapy                 /physiotherapy                 301
 /glad                         /physiotherapy                 301
+
+# Old slug → current page (S&B + hydrotherapy are now their own pages)
+/strength-balance             /strength-and-balance          301
 
 # Team page variants
 /our-team                     /team                          301
+
+# /refer was rolled into /contact#referrals
+/refer                        /contact#referrals             301

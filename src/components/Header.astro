@@ -9,7 +9,6 @@ const nav = [
   { label: "Pricing", href: "/pricing" },
   { label: "Mums & Bubs", href: "/mums-and-bubs" },
   { label: "Run Club", href: "/run-club" },
-  { label: "Refer", href: "/refer" },
   { label: "Contact", href: "/contact" },
 ];
 ---
@@ -61,13 +60,14 @@ const nav = [
         aria-controls="mobile-menu"
         aria-expanded="false"
         aria-label="Open menu"
-        class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-full hover:bg-sage-100 transition-colors"
+        class="lg:hidden inline-flex items-center gap-2 rounded-full bg-sage-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sage-700 transition-colors"
       >
-        <svg class="w-6 h-6 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
+        <span>Menu</span>
       </button>
     </div>
   </div>
@@ -103,15 +103,20 @@ const nav = [
         </button>
       </div>
 
-      <nav class="flex-1 overflow-y-auto px-5 py-6">
-        <ul class="space-y-1">
+      <nav class="flex-1 overflow-y-auto px-5 py-4">
+        <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold mb-3 mt-1">Browse</p>
+        <ul class="divide-y divide-sage-100 border-y border-sage-100">
           {nav.map((item) => (
             <li>
               <a
                 href={item.href}
-                class="block px-4 py-4 rounded-xl text-lg font-medium text-charcoal hover:bg-sage-100 hover:text-sage-700 transition-colors"
+                class="flex items-center justify-between px-2 py-4 text-lg font-semibold text-charcoal hover:text-sage-700 hover:bg-sage-50 -mx-2 px-4 rounded-xl transition-colors"
               >
-                {item.label}
+                <span>{item.label}</span>
+                <svg class="w-5 h-5 text-sage-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
               </a>
             </li>
           ))}
