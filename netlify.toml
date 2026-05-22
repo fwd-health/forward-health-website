@@ -3,7 +3,7 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
 
 # Astro builds static HTML; default Netlify settings handle it fine.
 # _redirects file in /public is read automatically and merged with site redirects.
