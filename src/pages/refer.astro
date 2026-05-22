@@ -23,7 +23,6 @@ const success = Astro.url.searchParams.get("success") === "true";
   {success && (
     <dialog
       id="refer-success-modal"
-      open
       class="fixed inset-0 m-auto p-0 max-w-lg w-[calc(100%-2rem)] bg-white rounded-3xl border border-sage-200 shadow-2xl backdrop:bg-charcoal/60 backdrop:backdrop-blur-sm"
       aria-labelledby="refer-success-title"
     >
@@ -73,19 +72,37 @@ const success = Astro.url.searchParams.get("success") === "true";
       (function () {
         const dialog = document.getElementById("refer-success-modal");
         if (!dialog) return;
+
+        // Open as a real modal (backdrop + centered) — <dialog> without showModal() is just inline
+        const open = () => {
+          if (typeof dialog.showModal === "function" && !dialog.open) {
+            dialog.showModal();
+          } else if (!dialog.open) {
+            dialog.setAttribute("open", "");
+          }
+        };
         const close = () => {
-          dialog.close();
-          // Clean the ?success=true off the URL so refresh doesn't re-show
+          if (dialog.open) dialog.close();
+          // Strip ?success=true off the URL so a refresh doesn't re-show
           if (history && history.replaceState) {
             history.replaceState({}, "", "/refer");
           }
+          document.body.style.overflow = "";
         };
+
+        // Open immediately. requestAnimationFrame ensures the dialog is in the DOM.
+        requestAnimationFrame(open);
+        document.body.style.overflow = "hidden";
+
         dialog.addEventListener("click", (e) => {
           if (e.target === dialog || (e.target.closest && e.target.closest("[data-refer-success-close]"))) {
             close();
           }
         });
         dialog.addEventListener("close", close);
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && dialog.open) close();
+        });
       })();
     </script>
 

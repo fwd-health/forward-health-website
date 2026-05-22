@@ -94,20 +94,20 @@ const locations = [
   <!-- Hero -->
   <section class="relative bg-sage-50 overflow-hidden">
     <div class="max-w-7xl mx-auto px-5 lg:px-8 py-10 lg:py-28">
-      <!-- Eyebrow + heading + image side-by-side -->
-      <div class="grid grid-cols-12 gap-4 lg:gap-10 items-center">
-        <div class="col-span-7 lg:col-span-7">
-          <p class="text-[0.7rem] sm:text-xs lg:text-sm uppercase tracking-[0.16em] lg:tracking-[0.18em] text-tan-600 mb-2 lg:mb-4">
+      <!-- Heading + image side-by-side. Image dominant on mobile (col-span-7) so it's ~2.5x larger area than before -->
+      <div class="grid grid-cols-12 gap-3 lg:gap-10 items-center">
+        <div class="col-span-5 lg:col-span-7">
+          <p class="text-[0.65rem] sm:text-xs lg:text-sm uppercase tracking-[0.14em] lg:tracking-[0.18em] text-tan-600 mb-2 lg:mb-4 leading-tight">
             Currimundi · Sandstone Point · Bribie Island
           </p>
-          <h1 class="text-charcoal" style="font-size: clamp(1.6rem, 6.4vw, 3.75rem); line-height: 1.05;">
+          <h1 class="text-charcoal" style="font-size: clamp(1.4rem, 5.5vw, 3.75rem); line-height: 1.05;">
             Feel better.<br />
             Live better.<br />
             <span class="text-sage-600">Move forward.</span>
           </h1>
         </div>
 
-        <div class="col-span-5 lg:col-span-5">
+        <div class="col-span-7 lg:col-span-5">
           <Image
             src={heroImg}
             alt="Forward Health clinical pilates session, a patient on the wundachair in our Sandstone Point studio"
