@@ -58,7 +58,6 @@ Quick friendly DMs/emails to your co-located partners asking them to link to fwd
 | What | Status | Where it lands |
 |---|---|---|
 | **Currimundi clinic** — exterior + interior + reception + pilates corner | Single Google scrape in use. Properly-lit shots needed to match Sandstone Point's photo strip. | `/locations/currimundi` + `/locations` |
-| **Hydrotherapy hero** | Stock photo in place (Pexels indoor pool). Real Bribie Aquatic Centre / class shot would be much better. | `/hydrotherapy` + `/services` card |
 | **Mums & Bubs homepage teaser** | Reuses the pregnancy-physio shot. Want a real mum-with-bub shot. | M&B callout on `/` |
 | **Tara Donnolley** — new pro headshot | Current shot is OK. You flagged wanting a refresh. | `/team`, `/remedial-massage`, `/locations/currimundi` |
 | **Suzie Irwin** — refreshed pro headshot | Current pro shot is in. You flagged wanting another. | `/team`, `/remedial-massage`, `/locations/currimundi` |
