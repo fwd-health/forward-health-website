@@ -285,7 +285,7 @@ export const careTeam: Practitioner[] = [
     locations: "Currimundi",
     blurb: "First friendly face you meet at Currimundi reception.",
     fullBio:
-      "Erin is the first friendly face you meet when you walk into Currimundi. The person who'll find you a parking spot, sort your HICAPS claim, and make sure your favourite practitioner has the slot you need.\n\nOutside reception, Erin's most likely to be found at the beach, with her family, or planning her next coffee stop.",
+      "Erin is the first friendly face you meet when you walk into Currimundi. The person who'll find you a parking spot, sort your HICAPS claim, and make sure your favourite practitioner has the slot you need.\n\nOutside reception, Erin is deeply passionate about music, nutrition and movement — you'll find her teaching private and group barre or pilates classes.",
     qualifications: [],
     specialties: [],
     href: "/team/erin-gadsby",
