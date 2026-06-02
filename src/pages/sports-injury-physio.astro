@@ -1,0 +1,105 @@
+---
+import ServiceLayout from "../layouts/ServiceLayout.astro";
+import { practitioners } from "../data/practitioners";
+import heroImage from "../assets/services/running.jpg";
+---
+
+<ServiceLayout
+  title="Sports injury physio"
+  description="Sports physiotherapy at Forward Health Currimundi and Sandstone Point. Diagnosis, hands-on rehab and return-to-sport programming for athletes of every level — from weekend warriors to elite performers."
+  eyebrow="Sport · Acute injury · Return-to-sport"
+  intro="Whether you've rolled an ankle, strained a hamstring, or can't get past last season's niggle, our sports team gets athletes back to what they love. Properly, not prematurely."
+  heroImage={heroImage}
+  heroImageAlt="Forward Health sports physiotherapist assessing an injured athlete"
+  conditions={[
+    {
+      heading: "Acute injuries",
+      items: [
+        "Ankle sprains and ligament injuries",
+        "Hamstring, calf and quad strains",
+        "ACL, meniscus and MCL knee injuries",
+        "Shoulder dislocations and AC joint sprains",
+        "Acute back and neck injuries",
+      ],
+    },
+    {
+      heading: "Overuse and tendinopathy",
+      items: [
+        "Achilles, patellar and gluteal tendinopathy",
+        "Rotator cuff and shoulder impingement",
+        "Shin splints and stress reactions",
+        "Plantar fasciitis and heel pain",
+        "Tennis and golfer's elbow",
+      ],
+    },
+    {
+      heading: "Sport-specific concerns",
+      items: [
+        "Rugby and AFL contact injuries",
+        "Volleyball and basketball jumping injuries",
+        "Surfing-related neck, shoulder and lower back",
+        "Cycling positioning and overuse",
+        "Racket-sport elbow, wrist and shoulder",
+      ],
+    },
+    {
+      heading: "Return-to-sport rehab",
+      items: [
+        "Staged loading and reactive training",
+        "Sport-specific strength and power work",
+        "GPS-monitored running re-introduction",
+        "Objective return-to-sport testing",
+        "Confidence and re-injury prevention",
+      ],
+    },
+  ]}
+  whatToExpect={[
+    {
+      title: "Diagnosis + imaging triage",
+      body: "A clear answer about what's injured and how serious it is. We refer for scans only when results would change treatment. Most of the time, hands-on assessment gives us what we need.",
+    },
+    {
+      title: "Hands-on and active rehab",
+      body: "Manual therapy plus a tailored loading program from day one. We don't sit on ice for two weeks then reassess. We get you moving the way the tissue needs to be moved, at the right dose.",
+    },
+    {
+      title: "Return to sport, not return to rest",
+      body: "Progressions all the way back to full training, with objective criteria to clear each stage. You'll know exactly when you're ready, and we'll know too.",
+    },
+  ]}
+  practitioners={[practitioners.joe, practitioners.jarrod, practitioners.brianna]}
+  locations={["Currimundi", "Sandstone Point"]}
+  bookingHeading="Book a sports physio assessment."
+  bookingBlurb="Same-week appointments are usually available. If the injury is acute and you can't weight-bear, call us first and we'll triage."
+  faqs={[
+    {
+      q: "Do I need a referral or a scan first?",
+      a: "No. We can diagnose most sports injuries with hands-on assessment. If imaging would change the plan (suspected fracture, full-thickness tear, ACL rupture), we'll refer you to the right radiology or specialist.",
+    },
+    {
+      q: "When should I see a physio versus go to A&E?",
+      a: "A&E for: unable to weight-bear at all, suspected fracture, severe deformity, no pulse below the injury, or any head/spinal injury. Anything else, come to us first. We can often see you the same week.",
+    },
+    {
+      q: "Do you do return-to-sport testing?",
+      a: "Yes. We use objective testing (single-leg hop tests, Y-balance, sprint metrics, sport-specific drills) to clear athletes for return. Not just 'feels OK.'",
+    },
+    {
+      q: "Can I claim through my health fund?",
+      a: "Yes. Sports physio falls under standard physiotherapy cover with every major fund. HCF preferred provider and Medibank preferred for physio, HICAPS on the spot for everyone else.",
+    },
+    {
+      q: "Do you work with local clubs?",
+      a: "Yes. We support a range of local sporting clubs and athletes across the Sunshine Coast and Moreton Bay. If you're with a specific team and want to know if we already work with them, give us a call.",
+    },
+    {
+      q: "Where do your athletes come from?",
+      a: "From Currimundi we see athletes from Caloundra, Pelican Waters, Kawana, Aroona, Wurtulla, Buddina and Mountain Creek. From Sandstone Point we see athletes from Bribie Island, Bongaree, Bellara, Banksia Beach, Ningi and Donnybrook.",
+    },
+  ]}
+  related={[
+    { title: "Running assessments", href: "/running-assessments", blurb: "Video gait analysis and return-to-run for running injuries." },
+    { title: "Post-surgical rehab", href: "/post-surgical-rehab", blurb: "ACL reconstructions and orthopaedic post-op work." },
+    { title: "Remedial massage", href: "/remedial-massage", blurb: "Recovery massage between training blocks and post-event." },
+  ]}
+/>

@@ -1,0 +1,109 @@
+---
+import ServiceLayout from "../layouts/ServiceLayout.astro";
+import { practitioners } from "../data/practitioners";
+import heroImage from "../assets/services/physiotherapy.jpg";
+---
+
+<ServiceLayout
+  title="Post-surgical rehab"
+  description="Post-operative physiotherapy at Forward Health Currimundi and Sandstone Point. Knee and hip replacements, ACL reconstructions, shoulder repairs and other orthopaedic recoveries. Home visits available in the early weeks."
+  eyebrow="Post-op · Orthopaedic · ACL & joint replacement"
+  intro="After surgery is when the real work begins. Our team has years of post-operative rehab experience — knee and hip replacements, ACL reconstructions, shoulder surgeries — and we can come to your home in the first few weeks if you can't travel."
+  heroImage={heroImage}
+  heroImageAlt="Forward Health physiotherapist guiding a patient through post-surgical knee rehabilitation"
+  conditions={[
+    {
+      heading: "Joint replacements",
+      items: [
+        "Total knee replacement (TKR)",
+        "Unicompartmental knee replacement (UKR)",
+        "Total hip replacement (THR)",
+        "Shoulder replacement",
+        "Ankle and small-joint replacements",
+      ],
+    },
+    {
+      heading: "Knee surgeries",
+      items: [
+        "ACL reconstruction",
+        "Meniscus repair or partial meniscectomy",
+        "MCL/PCL repairs",
+        "Patellar realignment and stabilisation",
+        "Cartilage repair and microfracture",
+      ],
+    },
+    {
+      heading: "Shoulder and upper limb",
+      items: [
+        "Rotator cuff repairs",
+        "Labral and SLAP repairs",
+        "Shoulder stabilisation post-dislocation",
+        "Frozen shoulder release",
+        "Elbow tendon repairs",
+      ],
+    },
+    {
+      heading: "Foot, ankle and other",
+      items: [
+        "Ankle stabilisation and ligament repairs",
+        "Achilles tendon repair",
+        "Bunionectomy and forefoot surgery",
+        "Arthroscopy follow-up",
+        "Post-fracture and post-spinal rehab (with surgeon clearance)",
+      ],
+    },
+  ]}
+  whatToExpect={[
+    {
+      title: "Surgeon-aligned plan",
+      body: "We work to your surgeon's specific protocol where one's provided, and to current best-evidence guidelines otherwise. We won't push you past what's safe. Where it helps, we liaise with your surgical team (with your consent).",
+    },
+    {
+      title: "Hands-on plus active rehab",
+      body: "Manual therapy for stiffness, swelling and scar mobility in the early weeks. Tailored loading from passive, to active-assisted, to active, to functional, to sport — at the pace your tissue can handle.",
+    },
+    {
+      title: "Home visits if you need them",
+      body: "Jarrod leads our home-visit program. If the first two to four weeks make travel hard, we'll come to you across the Sunshine Coast and Moreton Bay regions, including Bribie Island.",
+    },
+  ]}
+  practitioners={[practitioners.jarrod, practitioners.joe]}
+  locations={["Currimundi", "Sandstone Point"]}
+  bookingHeading="Book your post-surgical assessment."
+  bookingBlurb="Most surgeons recommend starting within 1-2 weeks of surgery. We'll align with your surgeon's protocol and we offer home visits across both regions if travel is hard."
+  faqs={[
+    {
+      q: "When should I start rehab after surgery?",
+      a: "Most surgeons recommend starting within 1-2 weeks. Earlier is usually better, within your surgeon's specific restrictions. If you're unsure, call us and we'll talk it through.",
+    },
+    {
+      q: "Do you work with my surgeon?",
+      a: "We follow surgeon-specific protocols when one's provided. We liaise with your surgical team (with your consent) when something needs clarifying. If you'd like a copy of your discharge notes brought to your first session, that helps us hit the ground running.",
+    },
+    {
+      q: "Will my health fund or hospital cover this?",
+      a: "Yes. Post-op physio falls under standard physio cover with every major fund. Some hospital cover policies also reimburse early post-discharge physiotherapy. HCF preferred provider and Medibank preferred for physio. We process HICAPS on the spot.",
+    },
+    {
+      q: "Can you do home visits in the first weeks?",
+      a: "Yes. Jarrod leads our home-visit program across the Sunshine Coast (Caloundra, Pelican Waters, Wurtulla, Kawana) and Moreton Bay (Bribie Island, Bongaree, Bellara, Ningi). We bring portable equipment and we'll work with what you have at home.",
+    },
+    {
+      q: "How long is rehab?",
+      a: "It's highly individual, but as rough guides: knee or hip replacement, 3-6 months to functional and 12 months to fully settled. ACL reconstruction, 9-12 months for return to pivoting sport. Shoulder repairs, 4-6 months for most. We give you a realistic timeline at your first appointment.",
+    },
+    {
+      q: "Do you accept NDIS, DVA or hospital cover top-ups?",
+      a: "Yes. We welcome DVA, plan-managed and self-managed NDIS, hospital cover top-ups, and all private health funds. We're not a registered NDIS provider, so agency-managed NDIS participants need a registered provider, but we can point you to one if helpful.",
+    },
+    {
+      q: "Where do your post-op patients come from?",
+      a: "From Currimundi we see patients across Caloundra, Pelican Waters, Aroona, Wurtulla and Mountain Creek. From Sandstone Point we see patients from Bribie Island, Bongaree, Bellara, Banksia Beach, Ningi, Donnybrook and Toorbul. Home visits cover both regions and the wider Sunshine Coast and Bribie/Moreton Bay catchments.",
+    },
+  ]}
+  related={[
+    { title: "Home visit physio", href: "/home-visits", blurb: "We come to you in the early post-op weeks." },
+    { title: "Sports injury physio", href: "/sports-injury-physio", blurb: "ACL and orthopaedic rehab with return-to-sport progressions." },
+    { title: "Hydrotherapy", href: "/hydrotherapy", blurb: "Low-impact water-based rehab during the bridge from non-weight-bearing back to walking and loading." },
+  ]}
+/>

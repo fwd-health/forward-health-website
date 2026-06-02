@@ -19,7 +19,6 @@
 /mobile-physio                /home-visits                   301
 
 # De-prioritised / no-longer-offered
-/dry-needling                 /physiotherapy                 301
 /glad                         /physiotherapy                 301
 
 # Old slug → current page (S&B + hydrotherapy are now their own pages)

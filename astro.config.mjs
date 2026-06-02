@@ -10,5 +10,14 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // Draft pages — exclude from sitemap until Joe approves
+      // (pages still build & are reachable directly, just hidden from search engines)
+      filter: (page) =>
+        !page.includes("/dry-needling") &&
+        !page.includes("/sports-injury-physio") &&
+        !page.includes("/post-surgical-rehab"),
+    }),
+  ],
 });

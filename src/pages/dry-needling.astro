@@ -1,0 +1,94 @@
+---
+import ServiceLayout from "../layouts/ServiceLayout.astro";
+import { practitioners } from "../data/practitioners";
+import heroImage from "../assets/services/physiotherapy.jpg";
+---
+
+<ServiceLayout
+  title="Dry needling"
+  description="Dry needling at Forward Health Currimundi and Sandstone Point. Trigger-point release for muscle pain, tension headaches, sports injuries and chronic tightness, delivered by certified physiotherapists."
+  eyebrow="Trigger-point release · Pain · Mobility"
+  intro="Fine acupuncture-style needles placed into specific muscle trigger points, designed to release tension, reduce pain and restore movement. Used alongside hands-on physio, not instead of it."
+  heroImage={heroImage}
+  heroImageAlt="Forward Health physiotherapist preparing dry needling treatment"
+  conditions={[
+    {
+      heading: "Muscle pain and trigger points",
+      items: [
+        "Tension headaches and jaw/TMJ tightness",
+        "Neck and shoulder trigger points",
+        "Low back tightness and glute referral pain",
+        "Calf, quad and hamstring knots",
+        "Mid-back and scapular tension",
+      ],
+    },
+    {
+      heading: "Sports and overuse injuries",
+      items: [
+        "ITB tightness and lateral knee pain",
+        "Achilles, hamstring and gluteal tendinopathy",
+        "Runner's knee referral pain",
+        "Shin pain (medial tibial stress syndrome)",
+        "Golfer's and tennis elbow",
+      ],
+    },
+    {
+      heading: "Chronic and stress-related tension",
+      items: [
+        "Stress-related neck and shoulder tightness",
+        "Postural overload from desk or driving",
+        "Persistent muscle pain in long-standing injuries",
+        "Recovery between heavy training blocks",
+      ],
+    },
+  ]}
+  whatToExpect={[
+    {
+      title: "Assessment first",
+      body: "We work out which muscles are actually driving your pain and whether needling is right for you. Often combined with manual therapy, mobility work and strength rebuilds in the same session.",
+    },
+    {
+      title: "The needling",
+      body: "Single-use sterile needles are placed into specific trigger points. Some areas have a sharper twitch response, most feel like a deep ache. We explain everything as we go and adjust to your comfort.",
+    },
+    {
+      title: "Aftercare",
+      body: "You may feel sore for 24-48 hours, similar to after a heavy workout. We pair the treatment with stretches, strength work or movement homework so the relief lasts.",
+    },
+  ]}
+  practitioners={[practitioners.joe, practitioners.brianna]}
+  locations={["Currimundi", "Sandstone Point"]}
+  bookingHeading="Book a dry needling session."
+  bookingBlurb="Dry needling is booked under a standard physiotherapy appointment. We'll assess whether needling is the right call and treat it within the same session if so."
+  faqs={[
+    {
+      q: "Is dry needling the same as acupuncture?",
+      a: "No. Acupuncture is rooted in traditional Chinese medicine and uses meridian theory. Dry needling is based on Western anatomy and targets specific muscle trigger points to release tension and improve movement.",
+    },
+    {
+      q: "Does it hurt?",
+      a: "Most clients describe a deep ache rather than sharp pain. When a needle hits a trigger point you may feel a brief twitch response, which is the muscle releasing. We always check in and adjust to your comfort.",
+    },
+    {
+      q: "Is it safe?",
+      a: "Yes. We only use single-use sterile needles and only certified physiotherapists perform the technique. We screen for contraindications (bleeding disorders, anti-coagulants, certain pregnancy considerations) and avoid sensitive anatomical areas.",
+    },
+    {
+      q: "Can I claim through my health fund?",
+      a: "Yes, when performed by a physiotherapist as part of a physio session. We're HCF preferred and Medibank preferred for physio, with HICAPS on the spot for every other major fund.",
+    },
+    {
+      q: "How many sessions will I need?",
+      a: "Most clients have 1-3 needling sessions as part of a broader physio plan. We don't book courses of needling on its own. The goal is to release the tension long enough for your strength and movement work to take hold.",
+    },
+    {
+      q: "Where do your clients come from?",
+      a: "From Currimundi we see clients from Caloundra, Pelican Waters, Kawana, Aroona, Wurtulla and Mountain Creek. From Sandstone Point we see clients from Bribie Island, Bongaree, Bellara, Banksia Beach, Ningi and Donnybrook.",
+    },
+  ]}
+  related={[
+    { title: "Physiotherapy", href: "/physiotherapy", blurb: "Hands-on rehab dry needling is most often used alongside." },
+    { title: "Remedial massage", href: "/remedial-massage", blurb: "When trigger points are the whole story, broad-area release works too." },
+    { title: "Running assessments", href: "/running-assessments", blurb: "Needling for ITB, calves and hip flexors is a common adjunct for runners." },
+  ]}
+/>
