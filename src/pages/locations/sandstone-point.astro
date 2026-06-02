@@ -42,8 +42,8 @@ const team = [
         <p class="mt-5 text-lg text-stone leading-relaxed max-w-xl">
           Our Moreton Bay clinic, located within <strong>The Village Sandstone Point near the IGA</strong>.
           We actually have two shops here, the main clinic next to the Sandstone Point Bakery, and our
-          Pilates Studio next to the dentist. Serving Sandstone Point, Bribie Island, Ningi, Bellara,
-          Bongaree and Banksia Beach.
+          Pilates Studio next to the dentist. Serving Sandstone Point, Bribie Island, Bongaree, Bellara,
+          Banksia Beach, Woorim, White Patch, Ningi, Donnybrook, Toorbul and Godwin Beach.
         </p>
         <div class="mt-6 rounded-2xl bg-tan-50 border border-tan-200 p-5">
           <p class="text-xs uppercase tracking-[0.18em] text-tan-700 font-semibold mb-2">Which shop do I go to?</p>
@@ -200,5 +200,44 @@ const team = [
     heading="Book at Sandstone Point."
     blurb="Book online or call us. New-patient appointments are usually available within 1 to 2 days."
     variant="sage"
+  />
+
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Physiotherapy",
+      name: "Forward Health Sandstone Point",
+      image: "https://www.fwdhealth.com.au/og-default.jpg",
+      url: "https://www.fwdhealth.com.au/locations/sandstone-point",
+      telephone: "+61420522558",
+      email: "hello@fwdhealth.com.au",
+      priceRange: "$$",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Shop 3, 208 Bestmann Road East",
+        addressLocality: "Sandstone Point",
+        addressRegion: "QLD",
+        postalCode: "4511",
+        addressCountry: "AU",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: -27.0797,
+        longitude: 153.1261,
+      },
+      areaServed: [
+        "Sandstone Point", "Bribie Island", "Bongaree", "Bellara", "Banksia Beach",
+        "Woorim", "White Patch", "Ningi", "Donnybrook", "Toorbul", "Godwin Beach",
+      ],
+      medicalSpecialty: [
+        "Physiotherapy", "PelvicHealth", "Pediatric", "SportsMedicine", "Geriatric",
+      ],
+      parentOrganization: {
+        "@type": "MedicalOrganization",
+        name: "Forward Health",
+        url: "https://www.fwdhealth.com.au",
+      },
+    })}
   />
 </Layout>
