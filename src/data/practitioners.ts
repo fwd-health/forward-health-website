@@ -23,11 +23,6 @@ import hollyPersonal1 from "../assets/team/personal/holly/photo-1.jpg";
 import hollyPersonal2 from "../assets/team/personal/holly/photo-2.jpg";
 import hollyPersonal3 from "../assets/team/personal/holly/photo-3.jpg";
 
-import ellaImg from "../assets/team/ella.jpg";
-import ellaPersonal1 from "../assets/team/personal/ella/photo-1.jpg";
-import ellaPersonal2 from "../assets/team/personal/ella/photo-2.jpg";
-import ellaPersonal3 from "../assets/team/personal/ella/photo-3.jpg";
-
 import catalinaImg from "../assets/team/catalina.jpg";
 import catalinaPersonal1 from "../assets/team/personal/catalina/photo-1.jpg";
 import catalinaPersonal2 from "../assets/team/personal/catalina/photo-2.jpg";
@@ -182,20 +177,6 @@ export const physiotherapists: Practitioner[] = [
     href: "/team/holly-dalton",
     photo: hollyImg,
     personalPhotos: [hollyPersonal1, hollyPersonal2, hollyPersonal3],
-  },
-  {
-    name: "Ella Gubesch",
-    role: "Physiotherapist\nPelvic floor physiotherapist · Currently on maternity leave",
-    locations: "Sandstone Point",
-    blurb:
-      "Sandstone Point physiotherapist currently on maternity leave with her young family.",
-    fullBio:
-      "Ella's passion for health and wellness blossomed early, fuelled by her active involvement in sports teams and dedication to gym and pilates classes during her teenage years. After enduring her own share of sporting injuries and witnessing the profound impact of physiotherapy in her grandparents' lives, Ella was inspired by the meaningful impact physical therapy can have across the lifespan and pursued a Bachelor's degree in Physiotherapy at the Australian Catholic University.\n\nHer professional journey began with roles as a sports trainer, rehabilitation coach, and pilates instructor, where she gained insights into diverse conditions and admired the body's innate healing capacity. A pivotal moment in her journey came when she served as an Allied Health Assistant in a paediatrics therapy clinic, igniting her passion for paediatric care. Here, she discovered the power of child-led play in fostering patient engagement and rapport, firmly advocating that therapy should be enjoyable and fun. Subsequently, following her personal experiences during pregnancy and postnatal recovery, her empathy, understanding, and enthusiasm for women's and pelvic health physiotherapy have flourished.\n\nElla is currently on maternity leave with her young family, her little boy and her recently-born baby girl. We can't wait for her return. Outside of work, Ella can be found spending time with her family, cheering on her local football team, or soaking in the beach vibes year-round. Committed to providing holistic care, Ella approaches each rehabilitation journey with empathy and an open ear, ensuring that every concern is acknowledged and supported.",
-    qualifications: [],
-    specialties: [],
-    href: "/team/ella-gubesch",
-    photo: ellaImg,
-    personalPhotos: [ellaPersonal1, ellaPersonal2, ellaPersonal3],
   },
 ];
 
