@@ -74,7 +74,7 @@ export const physiotherapists: Practitioner[] = [
     role: "Physiotherapist\nRunning Injury & Performance Physio",
     locations: "Currimundi · Sandstone Point",
     blurb:
-      "10+ years in health and wellness. Special interest in running injury, performance and the active population. Also treats vertigo, headaches and migraines.",
+      "Special interest in running injury, performance and the active population. Also treats vertigo, headaches and migraines.",
     fullBio:
       "As a multi-sport athlete, Joe's physiotherapy journey started at an early age. After undergoing non-surgical management of a PCL tear in his knee during his teenage years, he developed a strong belief and understanding of how physiotherapy can enable patients to return to their regular activities.\n\nIn 2015, Joe completed his Bachelor of Science in Kinesiology at the University of Alberta and worked as a Kinesiologist and Personal Trainer. He moved to Australia in 2015 and completed his Master of Physiotherapy Studies at the University of Queensland in 2017. He spent 3 years on beautiful Bribie Island treating a variety of injuries including chronic pain, young athletes, and acute rugby injury management.\n\nJoe enjoys working with people from all walks of life as long as they are committed to reaching their goals. In particular, he has a strong interest in treating headaches and migraines, and athletes on the elite and recreational level.\n\nIn his spare time, you can find Joe doing anything he can to stay active, or 'practicing what he preaches'. This includes resistance training, running, yoga, pilates and calisthenics, playing beach volleyball, snowboarding, racket sports, or getting outdoors hiking, camping, and fishing. On top of staying active, Joe enjoys playing guitar and singing, brewing his own beer, and enjoying a nice glass of wine. He also leads the Forward Run Club at Aurenda Coffee Co in Kings Beach, with his wife (and business partner) Steph, their little boy Noah, and their dog Fraser (unofficial co-leader of the run club).\n\nJoe's warm and friendly personality allows him to provide quality, effective treatment and care. In a typical session with Joe, you can expect to receive a balance of manual therapy, education on your injury, treatment planning, goal setting, development of self-management strategies, and an exercise program to get you back to what you love doing.",
     qualifications: [
@@ -150,6 +150,7 @@ export const physiotherapists: Practitioner[] = [
       "Jarrod completed his Bachelor of Physiotherapy at Charles Sturt University in Orange, New South Wales, and has since developed a broad background in musculoskeletal private practice and acute orthopaedic rehabilitation. He has worked in both outpatient and hospital settings, gaining experience in the management of post-operative hip and knee replacements, as well as a range of other surgical and orthopaedic conditions.\n\nIn addition to his orthopaedic expertise, Jarrod has worked with acute and chronic neurological clients, particularly those living in the community, helping individuals regain function and independence through movement-based rehabilitation.\n\nJarrod particularly enjoys working with knee and hip conditions from early-stage osteoarthritis management and pre-habilitation before surgery, through to post-operative recovery. He has a keen interest in helping people maintain active, healthy lifestyles and believes strongly in empowering his clients with the knowledge and tools to look after their bodies for the long term. You can see him at either clinic for a regular appointment, or book him for a home visit.\n\nOutside of work, Jarrod enjoys keeping fit through gym-based training, running, and hiking, and his favourite way to unwind is by camping and exploring the great outdoors.",
     qualifications: [
       "Bachelor of Physiotherapy (Charles Sturt University)",
+      "Dry needling certified",
     ],
     specialties: [
       "Home visits & mobile rehab",
@@ -169,7 +170,10 @@ export const physiotherapists: Practitioner[] = [
       "General musculoskeletal physiotherapy, clinical pilates and our strength & balance class lead at Sandstone Point.",
     fullBio:
       "Holly completed her Bachelor of Physiotherapy at the Australian Catholic University, where she developed a strong interest in musculoskeletal and women's health. Through her clinical placements, she gained valuable experience in these areas, which further strengthened her passion for helping people move better, build resilience, and return to the activities they value through all stages of life.\n\nHolly's interest in musculoskeletal and women's health physiotherapy is deeply personal, inspired by her own experience of the positive impact a women's health physiotherapist can have during the postnatal period. She is passionate about providing empathetic, evidence-based care and empowering her clients to feel confident and strong in their bodies.\n\nOutside of the clinic, Holly enjoys spending time with her two daughters, riding and competing on her horse, and jet ski racing.",
-    qualifications: ["Bachelor of Physiotherapy (Australian Catholic University)"],
+    qualifications: [
+      "Bachelor of Physiotherapy (Australian Catholic University)",
+      "Dry needling certified",
+    ],
     specialties: [
       "General musculoskeletal physio",
       "Clinical pilates",
