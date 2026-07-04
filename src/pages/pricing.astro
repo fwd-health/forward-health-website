@@ -6,8 +6,8 @@ const sections = [
   {
     title: "Physiotherapy",
     items: [
-      { label: "Initial consultation", duration: "45 min", price: "$135" },
-      { label: "Standard appointment", duration: "30 min", price: "$110" },
+      { label: "Initial consultation", duration: "45 min", price: "$145" },
+      { label: "Standard appointment", duration: "30 min", price: "$120" },
       { label: "Extended appointment", duration: "45 min", price: "$165" },
       { label: "Extended appointment", duration: "60 min", price: "$220" },
     ],
@@ -15,48 +15,62 @@ const sections = [
   {
     title: "Pelvic floor physio",
     items: [
-      { label: "Initial consultation", duration: "60 min", price: "$180" },
-      { label: "Follow-up appointment", duration: "45 min", price: "$160" },
-      { label: "Pessary fitting (excludes pessary cost)", duration: "20 min", price: "$95" },
+      { label: "Initial consultation", duration: "60 min", price: "$190" },
+      { label: "Follow-up appointment", duration: "45 min", price: "$170" },
+      { label: "Pessary fitting (excludes pessary cost)", duration: "20 min", price: "$120" },
     ],
   },
   {
     title: "Vertigo & vestibular physio",
     items: [
-      { label: "Initial consultation", duration: "45 min", price: "$160" },
-      { label: "Follow-up appointment", duration: "30 min", price: "$130" },
+      { label: "Initial consultation", duration: "45 min", price: "$170" },
+      { label: "Follow-up appointment", duration: "30 min", price: "$140" },
     ],
   },
   {
     title: "Running assessments",
     items: [
-      { label: "Initial running assessment", duration: "60 min", price: "$220" },
-      { label: "Follow-up running session", duration: "45 min", price: "$180" },
+      { label: "Initial running assessment", duration: "60 min", price: "$200" },
+      { label: "Follow-up running session", duration: "45 min", price: "$170" },
     ],
   },
   {
-    title: "Paediatric & home visit physio",
+    title: "Paediatric physio",
     items: [
-      { label: "Paediatric physio", duration: "varies", price: "Contact us" },
-      { label: "Home visit physio (plus travel charge)", duration: "varies", price: "Contact us" },
+      { label: "Initial assessment", duration: "-", price: "$183.99" },
+      { label: "Follow-up appointment", duration: "30 min", price: "$145" },
+      { label: "Follow-up appointment", duration: "45 min", price: "$183.99" },
+    ],
+  },
+  {
+    title: "Home visit physio",
+    items: [
+      { label: "Initial (private / Medicare, incl. travel)", duration: "-", price: "$190" },
+      { label: "Follow-up (private / Medicare, incl. travel)", duration: "-", price: "$165" },
+      {
+        label: "Home Care Package patients",
+        duration: "-",
+        price: "Contact us",
+        note: "Pricing varies from our standard / private rates — contact the clinic for a quote.",
+      },
     ],
   },
   {
     title: "Remedial massage",
     items: [
-      { label: "Remedial massage", duration: "30 min", price: "$75" },
-      { label: "Remedial massage", duration: "45 min", price: "$90" },
-      { label: "Remedial massage", duration: "60 min", price: "$125" },
+      { label: "Remedial massage", duration: "30 min", price: "$85" },
+      { label: "Remedial massage", duration: "45 min", price: "$100" },
+      { label: "Remedial massage", duration: "60 min", price: "$135" },
     ],
   },
   {
     title: "Clinical pilates",
     items: [
-      { label: "Initial 1-on-1 assessment", duration: "60 min", price: "$135" },
-      { label: "3-class pack", duration: "-", price: "$114", note: "$38 / class" },
-      { label: "6-class pack", duration: "-", price: "$216", note: "$36 / class" },
-      { label: "12-class pack", duration: "-", price: "$408", note: "$34 / class" },
-      { label: "24-class pack", duration: "-", price: "$768", note: "$32 / class" },
+      { label: "Initial 1-on-1 assessment", duration: "60 min", price: "$145" },
+      { label: "3-class pack", duration: "-", price: "$120", note: "$40 / class" },
+      { label: "6-class pack", duration: "-", price: "$228", note: "$38 / class" },
+      { label: "12-class pack", duration: "-", price: "$432", note: "$36 / class" },
+      { label: "24-class pack", duration: "-", price: "$816", note: "$34 / class" },
     ],
   },
   {
@@ -69,8 +83,8 @@ const sections = [
     title: "Hydrotherapy classes",
     items: [
       { label: "Casual class", duration: "-", price: "$25", note: "Excluding pool entry fee" },
-      { label: "5 class pack", duration: "-", price: "$100", note: "$20 / class, excluding pool entry fee" },
-      { label: "10 class pack", duration: "-", price: "$180", note: "$18 / class, excluding pool entry fee" },
+      { label: "5 class pack", duration: "-", price: "$110", note: "$22 / class, excluding pool entry fee" },
+      { label: "10 class pack", duration: "-", price: "$200", note: "$20 / class, excluding pool entry fee" },
     ],
   },
 ];
@@ -109,6 +123,7 @@ const healthFundCodes = [
 
   <!-- Pricing tables -->
   <section class="max-w-5xl mx-auto px-5 lg:px-8 py-16 lg:py-20 space-y-10">
+    <p class="text-xs uppercase tracking-[0.18em] text-tan-600 -mb-4">Effective from 6 July 2026</p>
     {sections.map((s) => (
       <div class="rounded-3xl border border-sage-100 bg-white overflow-hidden">
         <div class="px-6 lg:px-8 py-5 bg-cream-50 border-b border-sage-100">
