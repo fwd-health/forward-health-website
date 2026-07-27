@@ -41,12 +41,10 @@ import suzieBeach from "../assets/team/personal/suzie/beach.jpg";
 import erinImg from "../assets/team/erin.jpg";
 import chloeImg from "../assets/team/chloe.jpg";
 
-import lucyImg from "../assets/team/lucy.jpg";
-import lucyPersonal1 from "../assets/team/personal/lucy/photo-1.png";
-import lucyPersonal2 from "../assets/team/personal/lucy/photo-2.jpg";
-import lucyPersonal3 from "../assets/team/personal/lucy/photo-3.jpg";
-
-import maddieImg from "../assets/team/maddie.jpg";
+import zoeyImg from "../assets/team/zoey.jpg";
+import zoeyDog from "../assets/team/personal/zoey/dog-beach.jpg";
+import zoeyKimono from "../assets/team/personal/zoey/kimono.jpg";
+import zoeyOutdoor from "../assets/team/personal/zoey/outdoor.jpg";
 
 import type { ImageMetadata } from "astro";
 
@@ -277,19 +275,6 @@ export const careTeam: Practitioner[] = [
     photo: erinImg,
   },
   {
-    name: "Lucy Chung",
-    role: "Client Care Coordinator",
-    locations: "Sandstone Point",
-    blurb: "Bookings, claims and a calm front-of-house presence.",
-    fullBio:
-      "Lucy keeps the Sandstone Point front desk running smoothly, patient communications, health-fund claims, and the everyday warmth that makes a clinic feel like a clinic, not a corporation.\n\nLucy uses her free-time away from studying and working to be with family and friends, and enjoys exploring new places. She also enjoys reading and knitting.",
-    qualifications: [],
-    specialties: [],
-    href: "/team/lucy-chung",
-    photo: lucyImg,
-    personalPhotos: [lucyPersonal1, lucyPersonal2, lucyPersonal3],
-  },
-  {
     name: "Chloe Becker",
     role: "Client Care Coordinator",
     locations: "Sandstone Point",
@@ -302,16 +287,17 @@ export const careTeam: Practitioner[] = [
     photo: chloeImg,
   },
   {
-    name: "Maddie McCulloch",
-    role: "Client Care Coordinator",
-    locations: "Currimundi",
-    blurb: "Friendly front-of-house at Currimundi reception.",
+    name: "Zoey Thomson",
+    role: "Junior Client Care Coordinator",
+    locations: "Currimundi · Sandstone Point",
+    blurb: "Junior on the reception team, learning the ropes with a smile.",
     fullBio:
-      "Maddie joined the Currimundi reception team in 2026. She'll be one of the first faces you meet, sorting bookings, answering questions about pricing and health-fund claims, and making sure your visit runs smoothly from the moment you walk in.\n\nOutside the clinic, Maddie is a big music and movie person, and never says no to a beach swim or a long weekend with friends.",
+      "As part of the reception team at Forward Health, Zoey loves helping patients feel welcome from the moment they arrive. She enjoys getting to know the people who visit the clinic and supporting the team to make every experience a positive one.\n\nOutside of work, Zoey is studying a Bachelor of Business at USC. She enjoys travelling and spending time at the beach.",
     qualifications: [],
     specialties: [],
-    href: "/team/maddie-mcculloch",
-    photo: maddieImg,
+    href: "/team/zoey-thomson",
+    photo: zoeyImg,
+    personalPhotos: [zoeyDog, zoeyKimono, zoeyOutdoor],
   },
 ];
 
