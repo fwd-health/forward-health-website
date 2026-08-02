@@ -1,30 +1,20 @@
 ---
-import { Image } from "astro:assets";
-import remedialImg from "../assets/services/remedial-massage.jpg";
-import pilatesImg from "../assets/services/clinical-pilates-currimundi.jpg";
+// Bump the version to re-show the popup to visitors who dismissed the previous one
+const POPUP_VERSION = "2026-07-currimundi-move";
 
-// Bump the version to re-show the popup to all visitors after a refresh
-const POPUP_VERSION = "2026-05";
+// Auto-expire: after this date, the popup never shows again (even for first-time visitors).
+// Set for 30 days from launch; adjust or remove for future announcements.
+const EXPIRES_AT = "2026-08-27T23:59:59+10:00";
 
-const rmtRoster = [
-  { name: "Tara", clinic: "Currimundi", days: "Tuesdays & Fridays" },
-  { name: "Carly", clinic: "Currimundi", days: "Thursdays" },
-  { name: "Suzie", clinic: "Currimundi", days: "Tuesdays + monthly Saturdays" },
-  { name: "Catalina", clinic: "Sandstone Point", days: "Tuesdays, Thursdays, Fridays + monthly Saturdays" },
-];
-
-const pilatesCurrimundi = [
-  { day: "Monday", time: "10:00 am", lead: "Brianna" },
-  { day: "Tuesday", time: "2:00 pm", lead: "Steph" },
-  { day: "Wednesday", time: "8:00 am", lead: "Brianna" },
-  { day: "Friday", time: "8:00 am", lead: "Joe" },
-];
+const directionsUrl =
+  "https://www.google.com/maps/dir/?api=1&destination=698+Nicklin+Way+Currimundi+QLD+4551";
 ---
 
 <dialog
   id="fh-announce"
   data-version={POPUP_VERSION}
-  class="fixed inset-0 m-auto p-0 max-w-4xl w-[calc(100%-2rem)] max-h-[92vh] bg-cream-50 rounded-3xl border border-sage-100 shadow-2xl backdrop:bg-charcoal/60 backdrop:backdrop-blur-sm overflow-hidden"
+  data-expires={EXPIRES_AT}
+  class="fixed inset-0 m-auto p-0 max-w-xl w-[calc(100%-2rem)] max-h-[92vh] bg-cream-50 rounded-3xl border border-sage-100 shadow-2xl backdrop:bg-charcoal/60 backdrop:backdrop-blur-sm overflow-hidden"
   aria-labelledby="fh-announce-title"
 >
   <button
@@ -36,139 +26,84 @@ const pilatesCurrimundi = [
     ×
   </button>
 
-  <div class="overflow-y-auto max-h-[92vh]">
-    <div class="px-6 lg:px-10 pt-10 pb-2 lg:pt-12 text-center">
-      <h2
-        id="fh-announce-title"
-        class="font-display text-charcoal font-semibold leading-[1.05] tracking-tight"
-        style="font-size: clamp(2.25rem, 5vw, 3.5rem);"
+  <div class="overflow-y-auto max-h-[92vh] px-6 py-10 lg:px-10 lg:py-12 text-center">
+    <p class="text-xs uppercase tracking-[0.18em] text-tan-600 font-semibold">
+      Currimundi clinic
+    </p>
+
+    <h2
+      id="fh-announce-title"
+      class="mt-4 font-display text-sage-600 font-bold leading-[1.0]"
+      style="font-size: clamp(2.5rem, 7vw, 4rem);"
+    >
+      We're moving!
+    </h2>
+    <p class="mt-3 text-stone text-base lg:text-lg">
+      (1 minute up the road)
+    </p>
+
+    <div class="mt-8 py-6 border-y border-sage-200">
+      <p class="text-sm uppercase tracking-[0.14em] text-tan-700 font-semibold">
+        From Monday, 1 August 2026
+      </p>
+      <p class="mt-4 text-sm text-stone">Our new home:</p>
+      <p
+        class="mt-2 font-display font-bold text-sage-700 leading-tight"
+        style="font-size: clamp(1.75rem, 4.5vw, 2.5rem);"
       >
-        What's new at <span class="text-sage-600">Forward Health</span>.
-      </h2>
+        698 Nicklin Way
+      </p>
+      <p class="text-charcoal text-base lg:text-lg">
+        Currimundi QLD 4551
+      </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-5 px-6 lg:px-10 py-8">
-      <!-- Remedial massage -->
-      <article class="rounded-2xl border border-sage-100 bg-white overflow-hidden flex flex-col">
-        <div class="aspect-[4/3] overflow-hidden bg-sage-100">
-          <Image
-            src={remedialImg}
-            alt="Forward Health remedial massage"
-            width={600}
-            height={450}
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div class="p-5 lg:p-6 flex-1 flex flex-col">
-          <p class="text-xs uppercase tracking-[0.16em] text-tan-600 font-semibold">Remedial massage</p>
-          <h3 class="mt-2 font-display text-xl text-charcoal">We've added extra days.</h3>
-          <p class="mt-3 text-sm text-stone leading-relaxed">
-            Four therapists across both clinics, so it's easier than ever to find a time that suits.
-          </p>
-
-          <ul class="mt-4 space-y-2 text-sm">
-            {rmtRoster.map((r) => (
-              <li class="flex justify-between gap-3">
-                <span class="text-charcoal font-medium">{r.name}</span>
-                <span class="text-stone text-right">{r.clinic} · {r.days}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div class="mt-5 flex flex-wrap gap-2 pt-2 border-t border-sage-100">
-            <a
-              href="https://forward-health-group.au2.cliniko.com/bookings" target="_blank" rel="noopener"
-              data-fh-announce-close
-              class="inline-flex items-center rounded-full bg-sage-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-sage-700 transition-colors"
-            >
-              Book online
-            </a>
-            <a
-              href="tel:0420522558"
-              class="inline-flex items-center rounded-full bg-white border border-sage-200 px-5 py-2.5 text-sm font-semibold text-charcoal hover:border-sage-400 transition-colors"
-            >
-              Call the clinic
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Clinical Pilates at Currimundi -->
-      <article class="rounded-2xl border border-sage-100 bg-white overflow-hidden flex flex-col">
-        <div class="aspect-[4/3] overflow-hidden bg-sage-100">
-          <Image
-            src={pilatesImg}
-            alt="Forward Health clinical pilates"
-            width={600}
-            height={450}
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div class="p-5 lg:p-6 flex-1 flex flex-col">
-          <p class="text-xs uppercase tracking-[0.16em] text-tan-600 font-semibold">Clinical pilates · Currimundi</p>
-          <h3 class="mt-2 font-display text-xl text-charcoal">Currimundi classes are <span class="text-sage-600 font-bold">BACK!</span></h3>
-          <p class="mt-3 text-sm text-stone leading-relaxed">
-            Small-group, physio-led classes. Max 4 per class. Mat, reformer and wundachair work,
-            all individualised to you.
-          </p>
-
-          <ul class="mt-4 space-y-2 text-sm">
-            {pilatesCurrimundi.map((c) => (
-              <li class="flex justify-between gap-3">
-                <span class="text-charcoal font-medium">{c.day}</span>
-                <span class="text-stone text-right">{c.time} · {c.lead}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div class="mt-5 flex flex-wrap gap-2 pt-2 border-t border-sage-100">
-            <a
-              href="/clinical-pilates"
-              data-fh-announce-close
-              class="inline-flex items-center rounded-full bg-sage-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-sage-700 transition-colors"
-            >
-              See class details
-            </a>
-            <a
-              href="https://forward-health-group.au2.cliniko.com/bookings" target="_blank" rel="noopener"
-              data-fh-announce-close
-              class="inline-flex items-center rounded-full bg-white border border-sage-200 px-5 py-2.5 text-sm font-semibold text-charcoal hover:border-sage-400 transition-colors"
-            >
-              Book assessment
-            </a>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="px-6 lg:px-10 pb-8 lg:pb-10 -mt-2 text-center">
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a
+        href={directionsUrl}
+        target="_blank"
+        rel="noopener"
+        data-fh-announce-close
+        class="inline-flex items-center rounded-full bg-sage-600 px-6 py-3 text-sm font-semibold text-white hover:bg-sage-700 transition-colors"
+      >
+        Get directions →
+      </a>
       <button
         type="button"
         data-fh-announce-close
-        class="inline-flex items-center rounded-full bg-white border border-sage-200 px-7 py-3.5 text-base font-semibold text-charcoal hover:border-sage-400 hover:bg-cream-50 transition-colors"
+        class="inline-flex items-center rounded-full bg-white border border-sage-200 px-6 py-3 text-sm font-semibold text-charcoal hover:border-sage-400 transition-colors"
       >
-        No thanks, I'll browse first
+        Close
       </button>
+    </div>
+
+    <div class="mt-8 text-xs text-stone">
+      <p class="uppercase tracking-[0.14em] font-semibold text-tan-600 mb-2">Questions?</p>
+      <p>
+        <a href="tel:0420522558" class="text-charcoal hover:text-sage-600">0420 522 558</a>
+        <span class="mx-2 text-sage-300">·</span>
+        <a href="mailto:hello@fwdhealth.com.au" class="text-charcoal hover:text-sage-600">hello@fwdhealth.com.au</a>
+      </p>
     </div>
   </div>
 </dialog>
 
-<script is:inline define:vars={{ POPUP_VERSION }}>
+<script is:inline define:vars={{ POPUP_VERSION, EXPIRES_AT }}>
   (function () {
     const KEY = "fh-announce-dismissed";
     const dialog = document.getElementById("fh-announce");
     if (!dialog) return;
+
+    // Hard expiry — after this date the popup never shows again, even to first-timers.
+    if (new Date() > new Date(EXPIRES_AT)) return;
 
     const seen = (() => {
       try { return localStorage.getItem(KEY); } catch (e) { return null; }
     })();
 
     if (seen !== POPUP_VERSION) {
-      // Wait a beat so the page paints first
       setTimeout(() => {
-        if (typeof dialog.showModal === "function") {
-          dialog.showModal();
-        }
+        if (typeof dialog.showModal === "function") dialog.showModal();
       }, 800);
     }
 
@@ -179,14 +114,8 @@ const pilatesCurrimundi = [
 
     dialog.addEventListener("click", (e) => {
       const t = e.target;
-      // Backdrop click (clicking the dialog element itself, not its contents)
-      if (t === dialog) {
-        close();
-        return;
-      }
-      if (t.closest && t.closest("[data-fh-announce-close]")) {
-        close();
-      }
+      if (t === dialog) { close(); return; }
+      if (t.closest && t.closest("[data-fh-announce-close]")) close();
     });
 
     dialog.addEventListener("close", () => {
