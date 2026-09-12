@@ -35,10 +35,11 @@ const sandstoneClasses: Record<string, { time: string; lead: string }[]> = {
 };
 
 const packages = [
-  { name: "3 class pack", price: "$114", perClass: "$38/class" },
-  { name: "6 class pack", price: "$216", perClass: "$36/class" },
-  { name: "12 class pack", price: "$408", perClass: "$34/class" },
-  { name: "24 class pack", price: "$768", perClass: "$32/class" },
+  { name: "Casual class", price: "$45", perClass: "Drop-in, no pack" },
+  { name: "3 class pack", price: "$122", perClass: "~$40/class" },
+  { name: "6 class pack", price: "$230", perClass: "~$38/class" },
+  { name: "12 class pack", price: "$434", perClass: "~$36/class" },
+  { name: "24 class pack", price: "$818", perClass: "~$34/class" },
 ];
 ---
 
@@ -146,13 +147,12 @@ const packages = [
       <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Class packages</p>
       <h2>How class pricing works.</h2>
       <p class="mt-4 text-stone leading-relaxed">
-        After your initial 1:1 assessment ($135), you attend classes by purchasing a class
-        package. Pick the size that suits how often you'll come, the per-class rate drops the
-        bigger the pack.
+        After your initial 1:1 assessment ($147), you attend classes by purchasing a class
+        package or dropping in casually. The per-class rate drops the bigger the pack.
       </p>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
       {packages.map((p) => (
         <div class="rounded-2xl border border-sage-100 bg-white p-6">
           <p class="text-sm font-semibold text-charcoal">{p.name}</p>

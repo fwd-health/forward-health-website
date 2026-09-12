@@ -28,13 +28,6 @@ import catalinaPersonal1 from "../assets/team/personal/catalina/photo-1.jpg";
 import catalinaPersonal2 from "../assets/team/personal/catalina/photo-2.jpg";
 import catalinaPersonal3 from "../assets/team/personal/catalina/photo-3.jpg";
 
-import carlyImg from "../assets/team/carly.jpg";
-import carlyPersonal1 from "../assets/team/personal/carly/photo-1.jpg";
-import carlyPersonal2 from "../assets/team/personal/carly/photo-2.jpg";
-import carlyPersonal3 from "../assets/team/personal/carly/photo-3.jpg";
-
-import taraImg from "../assets/team/tara.jpg";
-
 import suzieImg from "../assets/team/suzie.jpg";
 import suzieBeach from "../assets/team/personal/suzie/beach.jpg";
 
@@ -179,43 +172,6 @@ export const physiotherapists: Practitioner[] = [
 ];
 
 export const massageTherapists: Practitioner[] = [
-  {
-    name: "Tara Donnolley",
-    role: "Remedial Massage Therapist",
-    locations: "Currimundi · Tuesdays & Fridays",
-    blurb:
-      "Over 20 years in the health and fitness industry, with a warm, nurturing approach to pain, mobility and wellbeing.",
-    fullBio:
-      "With over 20 years of experience in the health and fitness industry, Tara brings a depth of knowledge and a genuine passion for helping people feel and move better in their everyday lives. As a qualified Myotherapist and Remedial Massage Therapist (currently focusing on remedial massage), Tara enjoys working with people from all walks of life, tailoring each treatment to support their individual needs. Her approach is centred on creating a supportive, welcoming and nurturing environment where clients feel comfortable and cared for. She uses a range of remedial and relaxation techniques to address pain, improve mobility and enhance general wellbeing.\n\nTara believes that quality of life is closely tied to how we move and feel, and is committed to empowering clients to improve their everyday life through massage and movement.\n\nOutside of the clinic, Tara enjoys spending time with her husband and four children, going for a recreational run, and keeping active in everyday life.",
-    qualifications: [
-      "Advanced Diploma of Myotherapy (Q Academy, 2017)",
-      "Diploma of Remedial Massage (Q Academy, 2013)",
-      "20+ years in the health and fitness industry",
-    ],
-    specialties: [
-      "Pain management",
-      "Mobility and movement",
-      "Remedial and relaxation techniques",
-    ],
-    href: "/team/tara-donnolley",
-    photo: taraImg,
-  },
-  {
-    name: "Carly Wilson",
-    role: "Remedial Massage Therapist",
-    locations: "Currimundi · Thursdays",
-    blurb:
-      "Multiple years as a remedial massage therapist, known for the right balance of firm and intuitive pressure.",
-    fullBio:
-      "Introducing Carly, a dedicated remedial massage therapist with a genuine passion for utilising movement as a form of therapeutic medicine. Carly seamlessly blends her remedial massage skills with 15 years of invaluable nursing experience, and a vast understanding of surgery and various health conditions.\n\nCarly's approach to massage therapy is comprehensive and tailored to individual needs. Drawing from her extensive background, she employs a diverse range of modalities, including dry needling, stretch therapy, myofascial release, trigger point therapy, cupping and exercise prescription. This unique combination allows her to address a spectrum of concerns and provide holistic healing.\n\nWith a commitment to ongoing education and additional certifications, Carly is continually learning the latest techniques and incorporating them into effective, personalised treatments for her clients.\n\nBeyond her professional pursuits, Carly enjoys practicing aerial arts, pilates and functional strength training. Her love for movement extends into her personal life, where she enjoys exploring the beach and the great outdoors with her husband and their energetic Pointer puppy, Torvi. Carly's holistic approach to movement and wellness is a great fit alongside our physio team, and she's dedicated to helping you achieve the balance and movement your life and body needs.",
-    qualifications: [
-      "Diploma of Remedial Massage",
-    ],
-    specialties: ["Deep tissue", "Sports & recovery", "Tension headaches"],
-    href: "/team/carly-wilson",
-    photo: carlyImg,
-    personalPhotos: [carlyPersonal1, carlyPersonal2, carlyPersonal3],
-  },
   {
     name: "Catalina Paredes Ramirez",
     role: "Remedial Massage Therapist",
