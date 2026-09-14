@@ -32,7 +32,6 @@ import suzieImg from "../assets/team/suzie.jpg";
 import suzieBeach from "../assets/team/personal/suzie/beach.jpg";
 
 import erinImg from "../assets/team/erin.jpg";
-import chloeImg from "../assets/team/chloe.jpg";
 
 import zoeyImg from "../assets/team/zoey.jpg";
 import zoeyDog from "../assets/team/personal/zoey/dog-beach.jpg";
@@ -229,18 +228,6 @@ export const careTeam: Practitioner[] = [
     specialties: [],
     href: "/team/erin-gadsby",
     photo: erinImg,
-  },
-  {
-    name: "Chloe Becker",
-    role: "Client Care Coordinator",
-    locations: "Sandstone Point",
-    blurb: "First friendly face you meet at Sandstone Point reception.",
-    fullBio:
-      "Chloe runs reception at Sandstone Point, bookings, callbacks, claims, and everything in between. She's the reason the day stays on time.\n\nOutside the clinic, Chloe loves a long walk with friends, weekend trips up and down the coast, and any excuse for a beach day.",
-    qualifications: [],
-    specialties: [],
-    href: "/team/chloe-becker",
-    photo: chloeImg,
   },
   {
     name: "Zoey Thomson",
