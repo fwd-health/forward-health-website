@@ -246,7 +246,7 @@ export const careTeam: Practitioner[] = [
   {
     name: "Zoey Thomson",
     role: "Junior Client Care Coordinator",
-    locations: "Currimundi · Sandstone Point",
+    locations: "Sandstone Point",
     blurb: "Junior on the reception team, learning the ropes with a smile.",
     fullBio:
       "As part of the reception team at Forward Health, Zoey loves helping patients feel welcome from the moment they arrive. She enjoys getting to know the people who visit the clinic and supporting the team to make every experience a positive one.\n\nOutside of work, Zoey is studying a Bachelor of Business at USC. She enjoys travelling and spending time at the beach.",
