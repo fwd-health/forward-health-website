@@ -33,6 +33,8 @@ import suzieBeach from "../assets/team/personal/suzie/beach.jpg";
 
 import erinImg from "../assets/team/erin.jpg";
 
+import thereseImg from "../assets/team/therese.jpg";
+
 import zoeyImg from "../assets/team/zoey.jpg";
 import zoeyDog from "../assets/team/personal/zoey/dog-beach.jpg";
 import zoeyKimono from "../assets/team/personal/zoey/kimono.jpg";
@@ -228,6 +230,18 @@ export const careTeam: Practitioner[] = [
     specialties: [],
     href: "/team/erin-gadsby",
     photo: erinImg,
+  },
+  {
+    name: "Therese Moore",
+    role: "Client Care Coordinator",
+    locations: "Currimundi · Sandstone Point",
+    blurb: "A familiar face returning to Forward Health reception.",
+    fullBio:
+      "Therese is a familiar face returning to the Forward Health reception team. She knows how the clinic runs, so she's quickly back to greeting patients, sorting bookings and claims, and keeping the day moving smoothly.\n\nOutside the clinic, Therese is studying law, does some modelling on the side, and has a sharp eye for social media — expect to see her hand in our online presence as she settles in.",
+    qualifications: [],
+    specialties: [],
+    href: "/team/therese-moore",
+    photo: thereseImg,
   },
   {
     name: "Zoey Thomson",
