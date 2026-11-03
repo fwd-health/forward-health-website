@@ -1,3 +1,7 @@
+import karolinaImg from "../assets/team/karolina.jpg";
+import karolinaHilltop from "../assets/team/personal/karolina/hilltop.jpg";
+import karolinaSnow from "../assets/team/personal/karolina/snow.jpg";
+
 import joeImg from "../assets/team/joe.jpg";
 import joePersonal1 from "../assets/team/personal/joe/photo-1.png";
 import joePersonal2 from "../assets/team/personal/joe/photo-2.png";
@@ -56,6 +60,32 @@ export interface Practitioner {
 }
 
 export const physiotherapists: Practitioner[] = [
+  {
+    name: "Karolina Korytkowska",
+    role: "Physiotherapist",
+    locations: "Currimundi · Sandstone Point",
+    blurb:
+      "Musculoskeletal physio with a decade of experience. Manual therapy, dry needling and exercise-based rehabilitation.",
+    fullBio:
+      "Karolina brings over a decade of musculoskeletal physiotherapy experience to the Forward Health team. She completed her Master of Physiotherapy at the Medical University of Warsaw in 2013 and spent several years in private musculoskeletal practice in Poland before moving to the Sunshine Coast in 2019.\n\nHer main clinical interests are musculoskeletal physio, manual therapy, and exercise-based rehabilitation. Karolina has completed Maitland Concept Level 1, a 90-hour Manual Therapy and Dry Needling course, and a Diploma of Remedial Massage. During her physiotherapy studies she also worked as a matwork Pilates instructor, which shaped her belief in movement-based recovery — and she's keen to continue developing in clinical pilates and pelvic floor physiotherapy as she grows with the team.\n\nOutside the clinic, Karolina loves spending time with her family, exploring the outdoors, and the occasional trip home to Poland.",
+    qualifications: [
+      "Master of Physiotherapy (Medical University of Warsaw, 2013)",
+      "Bachelor of Physiotherapy (Medical University of Warsaw, 2011)",
+      "Maitland Concept Level 1",
+      "Manual Therapy and Dry Needling (90-hour course)",
+      "Diploma of Remedial Massage",
+      "Dry needling certified",
+    ],
+    specialties: [
+      "Musculoskeletal physiotherapy",
+      "Manual therapy",
+      "Exercise-based rehabilitation",
+      "Post-surgical rehab",
+    ],
+    href: "/team/karolina-korytkowska",
+    photo: karolinaImg,
+    personalPhotos: [karolinaSnow, karolinaHilltop],
+  },
   {
     name: "Joe Vos",
     role: "Physiotherapist\nRunning Injury & Performance Physio",
@@ -174,13 +204,13 @@ export const physiotherapists: Practitioner[] = [
 
 export const massageTherapists: Practitioner[] = [
   {
-    name: "Catalina Paredes Ramirez",
+    name: "Cat Paredes Ramirez",
     role: "Remedial Massage Therapist",
     locations: "Sandstone Point · Tuesdays, Thursdays, Fridays + monthly Saturdays",
     blurb:
       "Diploma of Remedial Massage. Several years previous experience as a physiotherapist in Colombia. Special interest in lymphatic drainage.",
     fullBio:
-      "Catalina is a caring and dedicated remedial massage therapist with a strong background in physiotherapy and over ten years of experience in health, rehabilitation, and wellness. She combines her deep understanding of the human body with a compassionate approach to help clients relieve pain, restore balance, and improve their overall wellbeing.\n\nHer treatments are tailored to each client's individual needs and may include deep tissue massage, lymphatic drainage, pregnancy and postnatal massage, and relaxation techniques. Catalina's goal is always to provide a safe, nurturing space where clients can relax, heal, and reconnect with their bodies.\n\nOriginally from Colombia, Catalina has worked with people from all walks of life, from athletes recovering from injuries to individuals seeking stress relief and improved mobility. She believes that massage is not only a treatment for the body but also a way to restore harmony between body and mind.\n\nBeyond her professional life, Catalina loves travelling, exploring new places, and going on adventures. She enjoys spending time outdoors and values meaningful moments with her friends and family. She also has a deep love for animals and finds joy in caring for them and being surrounded by nature. Warm, attentive, and passionate about helping others, Catalina is committed to making every treatment a restorative and uplifting experience.",
+      "Cat is a caring and dedicated remedial massage therapist with a strong background in physiotherapy and over ten years of experience in health, rehabilitation, and wellness. She combines her deep understanding of the human body with a compassionate approach to help clients relieve pain, restore balance, and improve their overall wellbeing.\n\nHer treatments are tailored to each client's individual needs and may include deep tissue massage, lymphatic drainage, pregnancy and postnatal massage, and relaxation techniques. Cat's goal is always to provide a safe, nurturing space where clients can relax, heal, and reconnect with their bodies.\n\nOriginally from Colombia, Cat has worked with people from all walks of life, from athletes recovering from injuries to individuals seeking stress relief and improved mobility. She believes that massage is not only a treatment for the body but also a way to restore harmony between body and mind.\n\nBeyond her professional life, Cat loves travelling, exploring new places, and going on adventures. She enjoys spending time outdoors and values meaningful moments with her friends and family. She also has a deep love for animals and finds joy in caring for them and being surrounded by nature. Warm, attentive, and passionate about helping others, Cat is committed to making every treatment a restorative and uplifting experience.",
     qualifications: [
       "Diploma of Remedial Massage (Mastery Institute Australia, 2025)",
       "Physiotherapy training (Colombia)",
@@ -190,7 +220,7 @@ export const massageTherapists: Practitioner[] = [
       "Pregnancy massage",
       "Post-surgical recovery",
     ],
-    href: "/team/catalina-paredes-ramirez",
+    href: "/team/cat-paredes-ramirez",
     photo: catalinaImg,
     personalPhotos: [catalinaPersonal1, catalinaPersonal2, catalinaPersonal3],
   },
