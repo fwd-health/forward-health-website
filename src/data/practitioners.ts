@@ -1,6 +1,7 @@
 import karolinaImg from "../assets/team/karolina.jpg";
 import karolinaHilltop from "../assets/team/personal/karolina/hilltop.jpg";
 import karolinaSnow from "../assets/team/personal/karolina/snow.jpg";
+import karolinaSnowPortrait from "../assets/team/personal/karolina/snow-portrait.jpg";
 
 import joeImg from "../assets/team/joe.jpg";
 import joePersonal1 from "../assets/team/personal/joe/photo-1.png";
@@ -84,7 +85,7 @@ export const physiotherapists: Practitioner[] = [
     ],
     href: "/team/karolina-korytkowska",
     photo: karolinaImg,
-    personalPhotos: [karolinaSnow, karolinaHilltop],
+    personalPhotos: [karolinaSnowPortrait, karolinaSnow, karolinaHilltop],
   },
   {
     name: "Joe Vos",
