@@ -2,8 +2,9 @@
 // Bump the version to re-show the popup to visitors who dismissed the previous one
 const POPUP_VERSION = "2026-12-gift-cards-v1";
 
-// Auto-expire: after this date, the popup never shows again (even for first-time visitors).
-const EXPIRES_AT = "2026-12-24T23:59:59+10:00";
+// Window: popup only shows between these two instants. Both inclusive.
+const STARTS_AT = "2026-11-15T00:00:00+10:00";
+const EXPIRES_AT = "2026-12-12T23:59:59+10:00";
 
 const giftCardsUrl = "/gift-cards";
 ---
@@ -11,6 +12,7 @@ const giftCardsUrl = "/gift-cards";
 <dialog
   id="fh-announce"
   data-version={POPUP_VERSION}
+  data-starts={STARTS_AT}
   data-expires={EXPIRES_AT}
   class="fixed inset-0 m-auto p-0 max-w-xl w-[calc(100%-2rem)] max-h-[92vh] bg-cream-50 rounded-3xl border border-sage-100 shadow-2xl backdrop:bg-charcoal/60 backdrop:backdrop-blur-sm overflow-hidden"
   aria-labelledby="fh-announce-title"
@@ -110,14 +112,16 @@ const giftCardsUrl = "/gift-cards";
   </div>
 </dialog>
 
-<script is:inline define:vars={{ POPUP_VERSION, EXPIRES_AT }}>
+<script is:inline define:vars={{ POPUP_VERSION, STARTS_AT, EXPIRES_AT }}>
   (function () {
     const KEY = "fh-announce-dismissed";
     const dialog = document.getElementById("fh-announce");
     if (!dialog) return;
 
-    // Hard expiry — after this date the popup never shows again, even to first-timers.
-    if (new Date() > new Date(EXPIRES_AT)) return;
+    const now = new Date();
+    // Window — don't show before the start date, or after the expiry.
+    if (now < new Date(STARTS_AT)) return;
+    if (now > new Date(EXPIRES_AT)) return;
 
     const seen = (() => {
       try { return localStorage.getItem(KEY); } catch (e) { return null; }

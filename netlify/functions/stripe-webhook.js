@@ -34,6 +34,7 @@ import {
   formatDatePretty,
   getServiceById,
 } from "../../src/data/gift-cards.js";
+import { getLogoBuffer } from "../../src/data/gift-card-logo.js";
 
 // Brand colours (match Tailwind theme in src/styles/global.css)
 const COLOR = {
@@ -91,12 +92,25 @@ async function buildGiftCardPdf({
       // Sage accent panel on the left
       doc.rect(0, 0, 36, 420).fill(COLOR.sage600);
 
+      // Logo (top-right). Source is 406×156 — place at 130×50pt (aspect-preserving).
+      try {
+        const logoBuf = getLogoBuffer();
+        doc.image(logoBuf, 395, 32, { width: 140 });
+      } catch (e) {
+        // If the logo fails to load for any reason, degrade gracefully with a text wordmark.
+        doc
+          .fillColor(COLOR.sage700)
+          .font("Times-Bold")
+          .fontSize(16)
+          .text("Forward Health", 440, 40);
+      }
+
       // Top eyebrow
       doc
         .fillColor(COLOR.tan700)
         .font("Helvetica-Bold")
         .fontSize(9)
-        .text("FORWARD HEALTH  ·  SUNSHINE COAST  ·  MORETON BAY", 60, 34, {
+        .text("SUNSHINE COAST  ·  MORETON BAY", 60, 44, {
           characterSpacing: 2.5,
         });
 
@@ -105,27 +119,27 @@ async function buildGiftCardPdf({
         .fillColor(COLOR.charcoal)
         .font("Times-Bold")
         .fontSize(34)
-        .text("The gift of health.", 60, 58);
+        .text("The gift of health.", 60, 66);
 
       // Service label
       doc
         .fillColor(COLOR.tan700)
         .font("Helvetica-Bold")
         .fontSize(8)
-        .text("GIFT", 60, 120, { characterSpacing: 2 });
+        .text("GIFT", 60, 128, { characterSpacing: 2 });
 
       doc
         .fillColor(COLOR.sage700)
         .font("Times-Bold")
         .fontSize(22)
-        .text(serviceShort, 60, 134, { width: 475 });
+        .text(serviceShort, 60, 142, { width: 475 });
 
       // Value / description split
       doc
         .fillColor(COLOR.stone)
         .font("Helvetica")
         .fontSize(10)
-        .text(serviceName, 60, 174, { width: 475 });
+        .text(serviceName, 60, 182, { width: 475 });
 
       // Horizontal divider
       doc
