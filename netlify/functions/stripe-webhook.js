@@ -386,27 +386,40 @@ export const handler = async (event) => {
     return { statusCode: 200, body: "ignored: unknown service" };
   }
 
-  // Idempotency: use the checkout session id as the dedupe key.
-  const store = getStore("gift-cards");
-  const sessionIdempotencyKey = `processed/${session.id}`;
-  const alreadyProcessed = await store.get(sessionIdempotencyKey);
-  if (alreadyProcessed) {
-    return { statusCode: 200, body: "already processed" };
+  // Try to use Netlify Blobs for idempotency + storage. If it isn't available
+  // (e.g. NETLIFY_AUTH_TOKEN not set yet), fall through and skip persistence —
+  // we still send the email so the customer isn't left hanging. The BCC to
+  // hello@fwdhealth.com.au is the backstop record in that case.
+  let store = null;
+  try {
+    store = getStore("gift-cards");
+    const sessionIdempotencyKey = `processed/${session.id}`;
+    const alreadyProcessed = await store.get(sessionIdempotencyKey);
+    if (alreadyProcessed) {
+      return { statusCode: 200, body: "already processed" };
+    }
+  } catch (err) {
+    console.error("Netlify Blobs unavailable, continuing without persistence:", err.message);
+    store = null;
   }
 
-  // Generate a code, retry a handful of times if collision (very unlikely).
+  // Generate a code. If Blobs is available, retry on collision; otherwise one shot.
   let code = "";
-  for (let i = 0; i < 6; i++) {
+  const attempts = store ? 6 : 1;
+  for (let i = 0; i < attempts; i++) {
     const rb = crypto.randomBytes(16);
     const candidate = generateGiftCardCode(rb);
-    const existing = await store.get(`code/${candidate}`);
+    let existing = null;
+    if (store) {
+      try { existing = await store.get(`code/${candidate}`); } catch {}
+    }
     if (!existing) {
       code = candidate;
       break;
     }
   }
   if (!code) {
-    console.error("Could not generate a unique code after 6 tries");
+    console.error("Could not generate a unique code after", attempts, "tries");
     return { statusCode: 500, body: "code generation failed" };
   }
 
@@ -511,18 +524,20 @@ export const handler = async (event) => {
     record.emailError = `${resendResp.status}: ${errBody.slice(0, 500)}`;
   }
 
-  // Persist. Two keys so we can lookup either by code or by stripe session.
-  await store.setJSON(`code/${code}`, record);
-  await store.setJSON(sessionIdempotencyKey, { code, at: issuedISO });
-
-  // Keep a flat list of codes for the admin page (append-only).
-  try {
-    const indexKey = "index/codes";
-    const current = (await store.get(indexKey, { type: "json" })) || [];
-    current.push({ code, issuedISO, status: "active" });
-    await store.setJSON(indexKey, current);
-  } catch (err) {
-    console.error("Index update failed (non-fatal):", err);
+  // Persist to Blobs if it's available. All failures here are non-fatal — the
+  // email has already been sent and the BCC to hello@fwdhealth.com.au is the
+  // backstop audit record.
+  if (store) {
+    try {
+      await store.setJSON(`code/${code}`, record);
+      await store.setJSON(`processed/${session.id}`, { code, at: issuedISO });
+      const indexKey = "index/codes";
+      const current = (await store.get(indexKey, { type: "json" })) || [];
+      current.push({ code, issuedISO, status: "active" });
+      await store.setJSON(indexKey, current);
+    } catch (err) {
+      console.error("Blobs persistence failed (non-fatal):", err);
+    }
   }
 
   return { statusCode: 200, body: `issued ${code}` };
