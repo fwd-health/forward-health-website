@@ -17,7 +17,7 @@
 //   POST { code, action: unredeem }                    → undo redemption
 //   POST { code, action: void }                        → cancel/void a card
 
-import { getStore } from "@netlify/blobs";
+import { getStore } from "./_blobs.js";
 import { formatAud, formatDatePretty } from "../../src/data/gift-cards.js";
 
 const COLOR = {

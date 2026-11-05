@@ -26,7 +26,7 @@
 import Stripe from "stripe";
 import PDFDocument from "pdfkit";
 import crypto from "node:crypto";
-import { getStore } from "@netlify/blobs";
+import { getStore } from "./_blobs.js";
 import {
   generateGiftCardCode,
   computeExpiryISO,
