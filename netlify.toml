@@ -9,10 +9,22 @@
 # _redirects file in /public is read automatically and merged with site redirects.
 
 # pdfkit ships .afm font files and uses dynamic requires that esbuild can't
-# reliably bundle. Mark it (and its font subdep) external so Netlify copies
-# the full package into the function at runtime instead.
+# reliably bundle. Mark it (and its font subdep) external, AND explicitly
+# include its node_modules directory in the function bundle so the runtime
+# actually finds it.
 [functions]
-  external_node_modules = ["pdfkit", "fontkit"]
+  external_node_modules = ["pdfkit", "fontkit", "linebreak", "brotli", "unicode-properties", "unicode-trie", "restructure", "png-js"]
+  included_files = [
+    "node_modules/pdfkit/**",
+    "node_modules/fontkit/**",
+    "node_modules/linebreak/**",
+    "node_modules/brotli/**",
+    "node_modules/unicode-properties/**",
+    "node_modules/unicode-trie/**",
+    "node_modules/restructure/**",
+    "node_modules/png-js/**",
+    "node_modules/base64-js/**"
+  ]
 
 [[headers]]
   for = "/*"
