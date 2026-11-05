@@ -3,7 +3,7 @@
 const POPUP_VERSION = "2026-12-gift-cards-v1";
 
 // Window: popup only shows between these two instants. Both inclusive.
-const STARTS_AT = "2026-11-15T00:00:00+10:00";
+const STARTS_AT = "2026-11-11T00:00:00+10:00";
 const EXPIRES_AT = "2026-12-12T23:59:59+10:00";
 
 const giftCardsUrl = "/gift-cards";
@@ -118,19 +118,26 @@ const giftCardsUrl = "/gift-cards";
     const dialog = document.getElementById("fh-announce");
     if (!dialog) return;
 
-    const now = new Date();
-    // Window — don't show before the start date, or after the expiry.
-    if (now < new Date(STARTS_AT)) return;
-    if (now > new Date(EXPIRES_AT)) return;
+    // Preview mode: append ?preview=1 to any page URL to force-show the popup,
+    // regardless of the date window or dismissal state. Handy for showing it to
+    // the team before launch, or when swapping copy.
+    const preview = new URLSearchParams(location.search).get("preview") === "1";
+
+    if (!preview) {
+      const now = new Date();
+      // Window — don't show before the start date, or after the expiry.
+      if (now < new Date(STARTS_AT)) return;
+      if (now > new Date(EXPIRES_AT)) return;
+    }
 
     const seen = (() => {
       try { return localStorage.getItem(KEY); } catch (e) { return null; }
     })();
 
-    if (seen !== POPUP_VERSION) {
+    if (preview || seen !== POPUP_VERSION) {
       setTimeout(() => {
         if (typeof dialog.showModal === "function") dialog.showModal();
-      }, 800);
+      }, preview ? 100 : 800);
     }
 
     const close = () => {
