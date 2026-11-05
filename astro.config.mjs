@@ -17,7 +17,9 @@ export default defineConfig({
       filter: (page) =>
         !page.includes("/dry-needling") &&
         !page.includes("/sports-injury-physio") &&
-        !page.includes("/post-surgical-rehab"),
+        !page.includes("/post-surgical-rehab") &&
+        !page.includes("/gift-cards/success") &&
+        !page.includes("/gift-cards/cancel"),
     }),
   ],
 });

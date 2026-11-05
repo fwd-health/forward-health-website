@@ -13,8 +13,11 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
+    "@netlify/blobs": "^10.7.13",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.3.1",
+    "pdfkit": "^0.20.2",
+    "stripe": "^23.1.0",
     "tailwindcss": "^4.3.0"
   }
 }

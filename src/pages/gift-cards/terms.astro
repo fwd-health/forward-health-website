@@ -1,0 +1,78 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { GIFT_CARD_EXPIRY_YEARS } from "../../data/gift-cards.js";
+---
+
+<Layout
+  title="Gift card terms & conditions | Forward Health"
+  description="Forward Health gift card terms and conditions, including validity, redemption, refunds and lost card policy."
+>
+  <section class="bg-sage-50">
+    <div class="max-w-3xl mx-auto px-5 lg:px-8 py-14 lg:py-20">
+      <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Gift cards</p>
+      <h1 class="text-charcoal font-display">Terms &amp; conditions.</h1>
+      <p class="mt-4 text-stone">Last updated 5 November 2026.</p>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-5 lg:px-8 py-14 lg:py-20 space-y-8 text-stone leading-relaxed">
+    <div>
+      <h2 class="text-charcoal text-2xl mb-3">Validity</h2>
+      <p>
+        Forward Health gift cards are valid for <strong>{GIFT_CARD_EXPIRY_YEARS} years</strong> from
+        the date of issue, in line with the ACL (Australian Consumer Law) minimum. The expiry date
+        is shown on your gift card.
+      </p>
+    </div>
+    <div>
+      <h2 class="text-charcoal text-2xl mb-3">Redemption</h2>
+      <ul class="space-y-3 list-disc pl-6">
+        <li>Gift cards are redeemable at either Forward Health clinic (Currimundi or Sandstone Point) for the specific service shown on the card.</li>
+        <li>Quote the unique code to reception at your appointment, or when booking by phone.</li>
+        <li>Gift cards cannot be redeemed for cash or exchanged for other services of lesser value.</li>
+        <li>Where the service price has changed by the time of redemption, any gap will be waived — we honour the original gift at today's standard of care.</li>
+        <li>A gift card is single-use. Once redeemed and marked as used in our system, it cannot be re-used.</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-charcoal text-2xl mb-3">Cancellation policy</h2>
+      <p>
+        Appointments booked using a gift card are subject to our standard
+        <a href="/policies" class="text-sage-700 underline">24-hour cancellation policy</a>. A
+        late-cancellation or no-show will consume the gift card.
+      </p>
+    </div>
+    <div>
+      <h2 class="text-charcoal text-2xl mb-3">Lost or stolen cards</h2>
+      <p>
+        Please treat your gift card code like cash. If you lose access to your code, email us at
+        <a href="mailto:hello@fwdhealth.com.au" class="text-sage-700 underline">hello@fwdhealth.com.au</a>
+        and we'll do our best to look it up from the purchase details. Forward Health is not
+        liable for codes used fraudulently by someone in possession of the code.
+      </p>
+    </div>
+    <div>
+      <h2 class="text-charcoal text-2xl mb-3">Refunds</h2>
+      <p>
+        Gift cards are non-refundable except where required under Australian Consumer Law. If you
+        believe a gift card was purchased in error, please contact us within 24 hours of purchase.
+      </p>
+    </div>
+    <div>
+      <h2 class="text-charcoal text-2xl mb-3">Suitability</h2>
+      <p>
+        Our services are for the general public but some treatments have clinical contraindications.
+        If the recipient has an existing condition, pregnancy, or recent surgery, please let our
+        therapist know at the start of their appointment. We may need to adapt the session.
+      </p>
+    </div>
+    <div>
+      <h2 class="text-charcoal text-2xl mb-3">Privacy</h2>
+      <p>
+        Purchase and recipient details are stored securely and used only to issue, deliver, and
+        validate the gift card. See our
+        <a href="/policies#privacy" class="text-sage-700 underline">privacy policy</a> for details.
+      </p>
+    </div>
+  </section>
+</Layout>

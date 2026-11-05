@@ -26,3 +26,6 @@
 
 # Team page variants
 /our-team                     /team                          301
+
+# Admin dashboard → Netlify function
+/admin/gift-cards             /.netlify/functions/admin-gift-cards   200

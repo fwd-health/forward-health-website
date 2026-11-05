@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="Payment cancelled | Forward Health gift cards"
+  description="Your gift card payment was cancelled. No charge was made."
+>
+  <section class="max-w-3xl mx-auto px-5 lg:px-8 py-20 lg:py-28 text-center">
+    <p class="text-sm uppercase tracking-[0.18em] text-tan-600 mb-3">Payment cancelled</p>
+    <h1 class="text-charcoal font-display">No worries.</h1>
+    <p class="mt-6 text-lg text-stone leading-relaxed">
+      Your payment was cancelled and no charge was made. If something didn't look right, you can
+      head back and try again, or give us a call and we'll sort it out.
+    </p>
+    <div class="mt-10 flex flex-wrap gap-3 justify-center">
+      <a
+        href="/gift-cards"
+        class="inline-flex items-center rounded-full bg-sage-600 px-6 py-3 text-sm font-semibold text-white hover:bg-sage-700"
+      >
+        ← Back to gift cards
+      </a>
+      <a
+        href="tel:0420522558"
+        class="inline-flex items-center rounded-full bg-white border border-sage-200 px-6 py-3 text-sm font-semibold text-charcoal hover:border-sage-400"
+      >
+        Call 0420 522 558
+      </a>
+    </div>
+  </section>
+</Layout>
