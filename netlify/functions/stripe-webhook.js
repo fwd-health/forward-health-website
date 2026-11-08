@@ -83,25 +83,27 @@ const escapeHtml = (s) =>
 
 // Measured label baselines in the template's PDF coordinate system
 // (origin is bottom-left, units are points, page is 419.25 × 297.75).
+//
+// Each value sits ON THE SAME BASELINE as its label, just to the right of
+// the label text, inside the sage panel. The x figures below are positioned
+// clear of the longest-letter-spaced label text.
 const LAYOUT = {
   pageWidth: 419.25,
   pageHeight: 297.75,
-  // Values sit inside each sage panel, same x as the label, baseline a fixed
-  // offset below the label baseline so it falls into the panel body.
-  valueOffsetY: 14,
-  issueDateValue: { x: 82, y: 289.8 },  // right of the "Issue date:" label (clear of the colon)
-  to:           { x: 47, y: 201.7 },
-  from:         { x: 47, y: 172.4 },
-  amount:       { x: 47, y: 143.0 },
-  validUntil:   { x: 215.9, y: 143.0 },
-  service:      { x: 47, y: 113.3 },
-  message:      { x: 47, y: 86.7 },
-  code:         { x: 47, y: 60.2 },
+  issueDateValue: { x: 82, y: 289.8 },   // right of "Issue date:"
+  to:           { x: 73, y: 201.7 },     // right of "T O"
+  from:         { x: 95, y: 172.4 },     // right of "F R O M"
+  amount:       { x: 110, y: 143.0 },    // right of "A M O U N T"
+  validUntil:   { x: 288, y: 143.0 },    // right of "V A L I D  U N T I L"
+  service:      { x: 110, y: 113.3 },    // right of "S E R V I C E"
+  message:      { x: 115, y: 86.7 },     // right of "M E S S A G E"
+  code:         { x: 170, y: 60.2 },     // right of "R E D E M P T I O N  C O D E"
 };
 
-// Trims a value to fit inside a given width at the given font/size, appending
-// an ellipsis if needed.
-function fitText(str, font, size, maxWidth) {
+// Truncates with an ellipsis as a LAST RESORT, when a string doesn't even
+// fit at the minimum font size. Fit-by-shrinking (fitValue below) handles
+// the common case first.
+function truncateWithEllipsis(str, font, size, maxWidth) {
   if (!str) return "";
   str = String(str);
   if (font.widthOfTextAtSize(str, size) <= maxWidth) return str;
@@ -116,28 +118,18 @@ function fitText(str, font, size, maxWidth) {
   return str.slice(0, lo).trimEnd() + ellipsis;
 }
 
-// Wraps text to a max width, returning an array of lines (max `maxLines`).
-function wrapText(str, font, size, maxWidth, maxLines) {
-  if (!str) return [];
-  const words = String(str).split(/\s+/);
-  const lines = [];
-  let cur = "";
-  for (const word of words) {
-    const trial = cur ? `${cur} ${word}` : word;
-    if (font.widthOfTextAtSize(trial, size) <= maxWidth) {
-      cur = trial;
-    } else {
-      if (cur) lines.push(cur);
-      cur = word;
-      if (lines.length >= maxLines) break;
+// Shrinks the font size progressively so the string fits inside maxWidth,
+// stopping at minSize. If it still won't fit at minSize, truncates with "…".
+// Returns { text, size } for the caller to draw at.
+function fitValue(str, font, maxSize, minSize, maxWidth) {
+  if (!str) return { text: "", size: maxSize };
+  str = String(str);
+  for (let size = maxSize; size >= minSize; size -= 0.5) {
+    if (font.widthOfTextAtSize(str, size) <= maxWidth) {
+      return { text: str, size };
     }
   }
-  if (cur && lines.length < maxLines) lines.push(cur);
-  // If last line still overflows (single very long word), ellipsis it.
-  if (lines.length === maxLines && lines[lines.length - 1]) {
-    lines[lines.length - 1] = fitText(lines[lines.length - 1], font, size, maxWidth);
-  }
-  return lines;
+  return { text: truncateWithEllipsis(str, font, minSize, maxWidth), size: minSize };
 }
 
 async function buildGiftCardPdf({
@@ -174,20 +166,22 @@ async function buildGiftCardPdf({
     color: ink,
   });
 
-  // Value font/size for panel body text.
-  const valueSize = 12;
-  const valueFont = helv;
-
-  // Each panel's value slot: just below the label at the same x.
+  // Values sit on the SAME baseline as their label (no vertical offset),
+  // just to the right of the label text, inside the sage panel.
+  //
+  // For each value we start at `maxSize` and shrink down to `minSize` if
+  // needed, so a long name or message stays on one line without spilling
+  // past the panel. Only if even minSize doesn't fit do we ellipsis.
   const drawPanelValue = (label, text, opts = {}) => {
     const anchor = LAYOUT[label];
-    const font = opts.font || valueFont;
-    const size = opts.size || valueSize;
+    const font = opts.font || helv;
+    const maxSize = opts.size || 10;
+    const minSize = opts.minSize || 6.5;
     const maxWidth = opts.maxWidth ?? (LAYOUT.pageWidth - anchor.x - 24);
-    const line = fitText(text, font, size, maxWidth);
+    const { text: line, size } = fitValue(text, font, maxSize, minSize, maxWidth);
     page.drawText(line, {
       x: anchor.x,
-      y: anchor.y - LAYOUT.valueOffsetY,
+      y: anchor.y,
       font,
       size,
       color: opts.color || ink,
@@ -202,7 +196,7 @@ async function buildGiftCardPdf({
   // AMOUNT (half width — ends before VALID UNTIL)
   drawPanelValue("amount", formatAud(priceCents), {
     font: helvBold,
-    size: 13,
+    size: 11,
     maxWidth: LAYOUT.validUntil.x - LAYOUT.amount.x - 12,
   });
 
@@ -211,33 +205,20 @@ async function buildGiftCardPdf({
     maxWidth: LAYOUT.pageWidth - LAYOUT.validUntil.x - 24,
   });
 
-  // REDEMPTION CODE — monospace, visually weighty but kept at 12pt so it
-  // stays inside the sage panel at the bottom of the template.
+  // REDEMPTION CODE — monospace, visually weighty.
   drawPanelValue("code", code, {
     font: courier,
-    size: 12,
+    size: 10,
   });
 
-  // MESSAGE — wraps to 2 lines if needed, italic. Panel is single-line tall
-  // on the current template so we cap to 1 line and ellipsis anything longer.
-  // (If Joe makes the MESSAGE panel taller later, bump maxLines.)
+  // MESSAGE — italic. Shrinks to fit a long message onto the single-line
+  // panel rather than truncating.
   const messageText = (personalMessage || "").trim();
   if (messageText) {
-    const msgLines = wrapText(
-      `"${messageText}"`,
-      helvOblique,
-      11,
-      LAYOUT.pageWidth - LAYOUT.message.x - 24,
-      1,
-    );
-    msgLines.forEach((line, i) => {
-      page.drawText(line, {
-        x: LAYOUT.message.x,
-        y: LAYOUT.message.y - LAYOUT.valueOffsetY - i * 13,
-        font: helvOblique,
-        size: 11,
-        color: ink,
-      });
+    drawPanelValue("message", `"${messageText}"`, {
+      font: helvOblique,
+      size: 10,
+      minSize: 6,
     });
   }
 
