@@ -6,8 +6,9 @@
 //
 // Prices are in AUD cents (Stripe convention) and mirror what we charge in
 // clinic, as per the pricing page:
-//   - Pilates pre-screen $147 + 3-class pack $122 = $269
-//   - Pilates pre-screen $147 + 6-class pack $230 = $377
+//   - Pilates pre-screen $147 + 3-class pack $122 = $269 (starter, new clients)
+//   - Pilates pre-screen $147 + 6-class pack $230 = $377 (starter, new clients)
+//   - 3-class pack alone $122, 6-class pack alone $230 (top-ups / existing clients)
 //   - 30/45/60 min remedial massage: $87 / $102 / $137
 
 export const GIFT_CARD_EXPIRY_YEARS = 3;
@@ -15,10 +16,10 @@ export const GIFT_CARD_EXPIRY_YEARS = 3;
 export const GIFT_CARD_SERVICES = [
   {
     id: "pilates-3",
-    name: "Clinical Pilates starter — 3-class pack",
-    short: "3-class Pilates pack",
+    name: "Clinical Pilates starter — pre-screen + 3-class pack",
+    short: "Pilates starter — 3 classes",
     description:
-      "60-minute 1-on-1 pre-screen with a physio, plus three group reformer classes.",
+      "60-minute 1-on-1 pre-screen with a physio, plus three group reformer classes. Ideal for a recipient new to our Pilates.",
     priceAud: 269,
     priceCents: 26900,
     includes: [
@@ -29,16 +30,44 @@ export const GIFT_CARD_SERVICES = [
   },
   {
     id: "pilates-6",
-    name: "Clinical Pilates starter — 6-class pack",
-    short: "6-class Pilates pack",
+    name: "Clinical Pilates starter — pre-screen + 6-class pack",
+    short: "Pilates starter — 6 classes",
     description:
-      "60-minute 1-on-1 pre-screen with a physio, plus six group reformer classes.",
+      "60-minute 1-on-1 pre-screen with a physio, plus six group reformer classes. Ideal for a recipient new to our Pilates.",
     priceAud: 377,
     priceCents: 37700,
     includes: [
       "60-minute 1-on-1 Pilates pre-screen",
       "6 × reformer group class credits",
       "Currimundi or Sandstone Point",
+    ],
+  },
+  {
+    id: "pilates-3-only",
+    name: "Clinical Pilates — 3-class pack",
+    short: "3-class Pilates pack*",
+    description:
+      "Three group reformer classes. For recipients already cleared by our physios.*",
+    priceAud: 122,
+    priceCents: 12200,
+    includes: [
+      "3 × reformer group class credits",
+      "Currimundi or Sandstone Point",
+      "*New clients must pre-screen first — see note below",
+    ],
+  },
+  {
+    id: "pilates-6-only",
+    name: "Clinical Pilates — 6-class pack",
+    short: "6-class Pilates pack*",
+    description:
+      "Six group reformer classes. For recipients already cleared by our physios.*",
+    priceAud: 230,
+    priceCents: 23000,
+    includes: [
+      "6 × reformer group class credits",
+      "Currimundi or Sandstone Point",
+      "*New clients must pre-screen first — see note below",
     ],
   },
   {

@@ -8,22 +8,12 @@
 # Astro builds static HTML; default Netlify settings handle it fine.
 # _redirects file in /public is read automatically and merged with site redirects.
 
-# pdfkit ships .afm font files and uses dynamic requires that esbuild can't
-# reliably bundle. Mark it (and its font subdep) external, AND explicitly
-# include its node_modules directory in the function bundle so the runtime
-# actually finds it.
+# Bundle the Canva voucher template PDF next to the webhook so pdf-lib can
+# load it at runtime. (pdf-lib itself bundles cleanly via esbuild — no
+# external_node_modules declaration needed.)
 [functions]
-  external_node_modules = ["pdfkit", "fontkit", "linebreak", "brotli", "unicode-properties", "unicode-trie", "restructure", "png-js"]
   included_files = [
-    "node_modules/pdfkit/**",
-    "node_modules/fontkit/**",
-    "node_modules/linebreak/**",
-    "node_modules/brotli/**",
-    "node_modules/unicode-properties/**",
-    "node_modules/unicode-trie/**",
-    "node_modules/restructure/**",
-    "node_modules/png-js/**",
-    "node_modules/base64-js/**"
+    "netlify/functions/assets/**"
   ]
 
 [[headers]]

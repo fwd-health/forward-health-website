@@ -106,7 +106,9 @@ export const handler = async (event) => {
             currency: "aud",
             unit_amount: service.priceCents,
             product_data: {
-              name: `Forward Health gift card — ${service.name}`,
+              // Trailing asterisks mark "no pre-screen" packs on the picker UI;
+              // strip them for the Stripe checkout product line.
+              name: `Forward Health gift card — ${service.name.replace(/\*+$/, "").trim()}`,
               description: `Digital gift card, redeemable at Forward Health Currimundi or Sandstone Point.`,
             },
           },

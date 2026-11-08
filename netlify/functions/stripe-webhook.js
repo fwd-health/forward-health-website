@@ -24,8 +24,11 @@
 //   https://www.fwdhealth.com.au/.netlify/functions/stripe-webhook
 
 import Stripe from "stripe";
-import PDFDocument from "pdfkit";
 import crypto from "node:crypto";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { getStore } from "./_blobs.js";
 import {
   generateGiftCardCode,
@@ -34,20 +37,24 @@ import {
   formatDatePretty,
   getServiceById,
 } from "../../src/data/gift-cards.js";
-import { getLogoBuffer } from "../../src/data/gift-card-logo.js";
 
 // Brand colours (match Tailwind theme in src/styles/global.css)
 const COLOR = {
-  sage600: "#5e6b4d",
   sage700: "#4a5540",
-  sage50: "#f3f5ef",
-  tan600: "#9b8155",
   tan700: "#7b6540",
-  tan100: "#eadfc9",
-  cream50: "#faf7ef",
   charcoal: "#1a1d1a",
   stone: "#6b6e68",
 };
+
+// pdf-lib takes colours as rgb(0..1) tuples.
+const hex2rgb = (h) => {
+  const n = parseInt(h.replace("#", ""), 16);
+  return rgb(((n >> 16) & 0xff) / 255, ((n >> 8) & 0xff) / 255, (n & 0xff) / 255);
+};
+
+// Template is bundled next to this function via netlify.toml `included_files`.
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const TEMPLATE_PDF_PATH = path.join(__dirname, "assets", "voucher-template.pdf");
 
 const escapeHtml = (s) =>
   String(s ?? "")
@@ -57,10 +64,84 @@ const escapeHtml = (s) =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 
-// Pdfkit uses Points (72 per inch). We build at A5 landscape (595 × 420pt).
+/* ------------------------------------------------------------------ *
+ * Gift voucher PDF renderer
+ *
+ * We take the Forward Health Canva export (netlify/functions/assets/
+ * voucher-template.pdf) as the background — logo, "GIFT VOUCHER" headline,
+ * labelled sage panels, addresses, contact details — and just overlay the
+ * dynamic values at measured coordinates with pdf-lib.
+ *
+ * Why not render from scratch? Canva owns the layout; Joe can update it,
+ * re-export, drop the new PDF in, and this code keeps working as long as
+ * the field positions don't change meaningfully.
+ *
+ * Coordinates below were measured once from the current template with
+ * pdfjs-dist (see commit message for the one-liner). If Joe swaps the
+ * template and labels move, we re-measure and update the LAYOUT constants.
+ * ------------------------------------------------------------------ */
+
+// Measured label baselines in the template's PDF coordinate system
+// (origin is bottom-left, units are points, page is 419.25 × 297.75).
+const LAYOUT = {
+  pageWidth: 419.25,
+  pageHeight: 297.75,
+  // Values sit inside each sage panel, same x as the label, baseline a fixed
+  // offset below the label baseline so it falls into the panel body.
+  valueOffsetY: 14,
+  issueDateValue: { x: 82, y: 289.8 },  // right of the "Issue date:" label (clear of the colon)
+  to:           { x: 47, y: 201.7 },
+  from:         { x: 47, y: 172.4 },
+  amount:       { x: 47, y: 143.0 },
+  validUntil:   { x: 215.9, y: 143.0 },
+  service:      { x: 47, y: 113.3 },
+  message:      { x: 47, y: 86.7 },
+  code:         { x: 47, y: 60.2 },
+};
+
+// Trims a value to fit inside a given width at the given font/size, appending
+// an ellipsis if needed.
+function fitText(str, font, size, maxWidth) {
+  if (!str) return "";
+  str = String(str);
+  if (font.widthOfTextAtSize(str, size) <= maxWidth) return str;
+  const ellipsis = "…";
+  let lo = 0, hi = str.length;
+  while (lo < hi) {
+    const mid = Math.ceil((lo + hi) / 2);
+    const candidate = str.slice(0, mid).trimEnd() + ellipsis;
+    if (font.widthOfTextAtSize(candidate, size) <= maxWidth) lo = mid;
+    else hi = mid - 1;
+  }
+  return str.slice(0, lo).trimEnd() + ellipsis;
+}
+
+// Wraps text to a max width, returning an array of lines (max `maxLines`).
+function wrapText(str, font, size, maxWidth, maxLines) {
+  if (!str) return [];
+  const words = String(str).split(/\s+/);
+  const lines = [];
+  let cur = "";
+  for (const word of words) {
+    const trial = cur ? `${cur} ${word}` : word;
+    if (font.widthOfTextAtSize(trial, size) <= maxWidth) {
+      cur = trial;
+    } else {
+      if (cur) lines.push(cur);
+      cur = word;
+      if (lines.length >= maxLines) break;
+    }
+  }
+  if (cur && lines.length < maxLines) lines.push(cur);
+  // If last line still overflows (single very long word), ellipsis it.
+  if (lines.length === maxLines && lines[lines.length - 1]) {
+    lines[lines.length - 1] = fitText(lines[lines.length - 1], font, size, maxWidth);
+  }
+  return lines;
+}
+
 async function buildGiftCardPdf({
   code,
-  serviceName,
   serviceShort,
   priceCents,
   recipientName,
@@ -69,162 +150,101 @@ async function buildGiftCardPdf({
   issuedISO,
   expiryISO,
 }) {
-  return new Promise((resolve, reject) => {
-    try {
-      const doc = new PDFDocument({
-        size: [595, 420],
-        margin: 0,
-        info: {
-          Title: `Forward Health Gift Card ${code}`,
-          Author: "Forward Health",
-          Subject: `Gift card for ${recipientName}`,
-        },
-      });
+  // Load the Canva template and work on top of it.
+  const templateBytes = fs.readFileSync(TEMPLATE_PDF_PATH);
+  const pdf = await PDFDocument.load(templateBytes);
+  pdf.setTitle(`Forward Health Gift Voucher ${code}`);
+  pdf.setAuthor("Forward Health");
+  pdf.setSubject(`Gift voucher for ${recipientName}`);
 
-      const chunks = [];
-      doc.on("data", (c) => chunks.push(c));
-      doc.on("end", () => resolve(Buffer.concat(chunks)));
-      doc.on("error", reject);
+  const page = pdf.getPage(0);
+  const helv = await pdf.embedFont(StandardFonts.Helvetica);
+  const helvBold = await pdf.embedFont(StandardFonts.HelveticaBold);
+  const helvOblique = await pdf.embedFont(StandardFonts.HelveticaOblique);
+  const courier = await pdf.embedFont(StandardFonts.CourierBold);
 
-      // Background: cream
-      doc.rect(0, 0, 595, 420).fill(COLOR.cream50);
+  const ink = hex2rgb(COLOR.charcoal);
 
-      // Sage accent panel on the left
-      doc.rect(0, 0, 36, 420).fill(COLOR.sage600);
-
-      // Logo (top-right). Source is 406×156 — place at 130×50pt (aspect-preserving).
-      try {
-        const logoBuf = getLogoBuffer();
-        doc.image(logoBuf, 395, 32, { width: 140 });
-      } catch (e) {
-        // If the logo fails to load for any reason, degrade gracefully with a text wordmark.
-        doc
-          .fillColor(COLOR.sage700)
-          .font("Times-Bold")
-          .fontSize(16)
-          .text("Forward Health", 440, 40);
-      }
-
-      // Top eyebrow
-      doc
-        .fillColor(COLOR.tan700)
-        .font("Helvetica-Bold")
-        .fontSize(9)
-        .text("SUNSHINE COAST  ·  MORETON BAY", 60, 44, {
-          characterSpacing: 2.5,
-        });
-
-      // Headline
-      doc
-        .fillColor(COLOR.charcoal)
-        .font("Times-Bold")
-        .fontSize(34)
-        .text("The gift of health.", 60, 66);
-
-      // Service label
-      doc
-        .fillColor(COLOR.tan700)
-        .font("Helvetica-Bold")
-        .fontSize(8)
-        .text("GIFT", 60, 128, { characterSpacing: 2 });
-
-      doc
-        .fillColor(COLOR.sage700)
-        .font("Times-Bold")
-        .fontSize(22)
-        .text(serviceShort, 60, 142, { width: 475 });
-
-      // Value / description split
-      doc
-        .fillColor(COLOR.stone)
-        .font("Helvetica")
-        .fontSize(10)
-        .text(serviceName, 60, 182, { width: 475 });
-
-      // Horizontal divider
-      doc
-        .moveTo(60, 212)
-        .lineTo(535, 212)
-        .lineWidth(0.5)
-        .strokeColor(COLOR.sage600)
-        .stroke();
-
-      // Recipient block
-      doc
-        .fillColor(COLOR.tan700)
-        .font("Helvetica-Bold")
-        .fontSize(8)
-        .text("FOR", 60, 226, { characterSpacing: 2 });
-      doc
-        .fillColor(COLOR.charcoal)
-        .font("Times-Italic")
-        .fontSize(18)
-        .text(recipientName, 60, 240, { width: 240 });
-
-      // From block
-      doc
-        .fillColor(COLOR.tan700)
-        .font("Helvetica-Bold")
-        .fontSize(8)
-        .text("FROM", 320, 226, { characterSpacing: 2 });
-      doc
-        .fillColor(COLOR.charcoal)
-        .font("Times-Italic")
-        .fontSize(18)
-        .text(buyerName, 320, 240, { width: 215 });
-
-      // Personal message (if present)
-      if (personalMessage && personalMessage.trim()) {
-        doc
-          .fillColor(COLOR.stone)
-          .font("Helvetica-Oblique")
-          .fontSize(10)
-          .text(`"${personalMessage.trim()}"`, 60, 278, { width: 475, align: "left" });
-      }
-
-      // Code panel (bottom)
-      doc.rect(0, 340, 595, 80).fill(COLOR.sage700);
-      doc
-        .fillColor("#dfe6d6")
-        .font("Helvetica-Bold")
-        .fontSize(8)
-        .text("REDEMPTION CODE", 60, 354, { characterSpacing: 2 });
-      doc
-        .fillColor("#ffffff")
-        .font("Courier-Bold")
-        .fontSize(22)
-        .text(code, 60, 368);
-
-      // Value right side
-      doc
-        .fillColor("#dfe6d6")
-        .font("Helvetica-Bold")
-        .fontSize(8)
-        .text("VALUE", 440, 354, { characterSpacing: 2 });
-      doc
-        .fillColor("#ffffff")
-        .font("Times-Bold")
-        .fontSize(22)
-        .text(formatAud(priceCents), 440, 368);
-
-      // Footer line
-      doc
-        .fillColor("#aebb9b")
-        .font("Helvetica")
-        .fontSize(8)
-        .text(
-          `Valid until ${formatDatePretty(expiryISO)}  ·  Issued ${formatDatePretty(issuedISO)}  ·  fwdhealth.com.au  ·  0420 522 558`,
-          60,
-          400,
-          { width: 475, align: "left" },
-        );
-
-      doc.end();
-    } catch (e) {
-      reject(e);
-    }
+  // ----- Issue date (right of the "Issue date:" label at top-left) -----
+  page.drawText(formatDatePretty(issuedISO), {
+    x: LAYOUT.issueDateValue.x,
+    y: LAYOUT.issueDateValue.y,
+    font: helv,
+    size: 8,
+    color: ink,
   });
+
+  // Value font/size for panel body text.
+  const valueSize = 12;
+  const valueFont = helv;
+
+  // Each panel's value slot: just below the label at the same x.
+  const drawPanelValue = (label, text, opts = {}) => {
+    const anchor = LAYOUT[label];
+    const font = opts.font || valueFont;
+    const size = opts.size || valueSize;
+    const maxWidth = opts.maxWidth ?? (LAYOUT.pageWidth - anchor.x - 24);
+    const line = fitText(text, font, size, maxWidth);
+    page.drawText(line, {
+      x: anchor.x,
+      y: anchor.y - LAYOUT.valueOffsetY,
+      font,
+      size,
+      color: opts.color || ink,
+    });
+  };
+
+  // Full-width panels (TO, FROM, SERVICE)
+  drawPanelValue("to", recipientName);
+  drawPanelValue("from", buyerName);
+  drawPanelValue("service", serviceShort);
+
+  // AMOUNT (half width — ends before VALID UNTIL)
+  drawPanelValue("amount", formatAud(priceCents), {
+    font: helvBold,
+    size: 13,
+    maxWidth: LAYOUT.validUntil.x - LAYOUT.amount.x - 12,
+  });
+
+  // VALID UNTIL (half width — ends before right page edge)
+  drawPanelValue("validUntil", formatDatePretty(expiryISO), {
+    maxWidth: LAYOUT.pageWidth - LAYOUT.validUntil.x - 24,
+  });
+
+  // REDEMPTION CODE — monospace, visually weighty but kept at 12pt so it
+  // stays inside the sage panel at the bottom of the template.
+  drawPanelValue("code", code, {
+    font: courier,
+    size: 12,
+  });
+
+  // MESSAGE — wraps to 2 lines if needed, italic. Panel is single-line tall
+  // on the current template so we cap to 1 line and ellipsis anything longer.
+  // (If Joe makes the MESSAGE panel taller later, bump maxLines.)
+  const messageText = (personalMessage || "").trim();
+  if (messageText) {
+    const msgLines = wrapText(
+      `"${messageText}"`,
+      helvOblique,
+      11,
+      LAYOUT.pageWidth - LAYOUT.message.x - 24,
+      1,
+    );
+    msgLines.forEach((line, i) => {
+      page.drawText(line, {
+        x: LAYOUT.message.x,
+        y: LAYOUT.message.y - LAYOUT.valueOffsetY - i * 13,
+        font: helvOblique,
+        size: 11,
+        color: ink,
+      });
+    });
+  }
+
+  const outBytes = await pdf.save();
+  return Buffer.from(outBytes);
 }
+
 
 function emailSubjectAndBody({
   code,
@@ -274,7 +294,6 @@ function emailSubjectAndBody({
           <div style="background:${COLOR.sage50};border:1px solid #d4ddc5;border-radius:14px;padding:22px;">
             <p style="margin:0;color:${COLOR.tan700};font-size:10px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">Gift</p>
             <p style="margin:6px 0 0;font-family:Georgia,'Times New Roman',serif;color:${COLOR.sage700};font-size:22px;font-weight:700;line-height:1.1;">${escapeHtml(serviceShort)}</p>
-            <p style="margin:6px 0 0;color:${COLOR.stone};font-size:13px;">${escapeHtml(serviceName)}</p>
 
             <div style="margin-top:18px;padding-top:16px;border-top:1px solid #d4ddc5;">
               <p style="margin:0;color:${COLOR.tan700};font-size:10px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">Redemption code</p>
@@ -315,7 +334,6 @@ function emailSubjectAndBody({
       : `Hi ${buyerName}, here's your Forward Health gift card for ${recipientName}.`,
     ``,
     `Gift: ${serviceShort}`,
-    `Details: ${serviceName}`,
     `Value: ${formatAud(priceCents)}`,
     `Redemption code: ${code}`,
     `Valid until: ${formatDatePretty(expiryISO)}`,
@@ -386,6 +404,12 @@ export const handler = async (event) => {
     return { statusCode: 200, body: "ignored: unknown service" };
   }
 
+  // Strip trailing asterisks (used on the picker UI to flag the no-pre-screen
+  // packs) before we render to PDF or email — the recipient has no context
+  // for a floating asterisk on their card.
+  const serviceShortClean = service.short.replace(/\*+$/, "").trim();
+  const serviceNameClean = service.name.replace(/\*+$/, "").trim();
+
   // Try to use Netlify Blobs for idempotency + storage. If it isn't available
   // (e.g. NETLIFY_AUTH_TOKEN not set yet), fall through and skip persistence —
   // we still send the email so the customer isn't left hanging. The BCC to
@@ -450,8 +474,8 @@ export const handler = async (event) => {
   try {
     pdfBuffer = await buildGiftCardPdf({
       code,
-      serviceName: service.name,
-      serviceShort: service.short,
+      serviceName: serviceNameClean,
+      serviceShort: serviceShortClean,
       priceCents,
       recipientName: record.recipientName,
       buyerName: record.buyerName,
@@ -468,8 +492,8 @@ export const handler = async (event) => {
   const { subject, html, text } = emailSubjectAndBody({
     code,
     deliveryMethod: record.deliveryMethod,
-    serviceName: service.name,
-    serviceShort: service.short,
+    serviceName: serviceNameClean,
+    serviceShort: serviceShortClean,
     priceCents,
     buyerName: record.buyerName,
     recipientName: record.recipientName,
