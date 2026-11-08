@@ -403,27 +403,22 @@ export const handler = async (event) => {
     store = null;
   }
 
-  // Generate a code. If Blobs is available, retry on collision; otherwise one shot.
-  let code = "";
-  const attempts = store ? 6 : 1;
-  for (let i = 0; i < attempts; i++) {
-    const rb = crypto.randomBytes(16);
-    const candidate = generateGiftCardCode(rb);
-    let existing = null;
-    if (store) {
-      try { existing = await store.get(`code/${candidate}`); } catch {}
-    }
-    if (!existing) {
-      code = candidate;
-      break;
-    }
-  }
-  if (!code) {
-    console.error("Could not generate a unique code after", attempts, "tries");
-    return { statusCode: 500, body: "code generation failed" };
-  }
+  // Derive the code DETERMINISTICALLY from session.id. This is critical:
+  // if the function runs more than once for the same Stripe session (webhook
+  // retries, manual resend, concurrent invocations) we must produce the same
+  // code every time — otherwise the recipient sees two or more different
+  // codes and we lose track of which one is "real". HMAC with the webhook
+  // secret keeps the code unguessable from a leaked session id.
+  const codeSeed = crypto
+    .createHmac("sha256", process.env.STRIPE_WEBHOOK_SECRET)
+    .update(session.id)
+    .digest();
+  const code = generateGiftCardCode(codeSeed);
 
-  const issuedISO = new Date().toISOString();
+  // Issue time is also derived from the Stripe session, so the expiry date on
+  // the PDF is stable across retries. session.created is a Unix timestamp
+  // (seconds); fall back to now if somehow absent.
+  const issuedISO = new Date((session.created || Date.now() / 1000) * 1000).toISOString();
   const expiryISO = computeExpiryISO(new Date(issuedISO));
   const priceCents = Number(meta.priceCents) || service.priceCents;
 
@@ -492,11 +487,16 @@ export const handler = async (event) => {
     process.env.RESEND_FROM_EMAIL ||
     "Forward Health Gifts <onboarding@resend.dev>";
 
+  // Resend dedupes requests that share an Idempotency-Key within 24h. Keying
+  // on the Stripe session id means any retried / resent webhook for the same
+  // checkout results in ONE email, not N.
+  // https://resend.com/docs/api-reference/idempotency-keys
   const resendResp = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       "Content-Type": "application/json",
+      "Idempotency-Key": `gift-card-${session.id}`,
     },
     body: JSON.stringify({
       from: fromAddress,
