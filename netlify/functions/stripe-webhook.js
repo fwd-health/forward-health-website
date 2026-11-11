@@ -160,6 +160,57 @@ function fitValue(str, font, maxSize, minSize, maxWidth) {
   return { text: truncateWithEllipsis(clean, font, minSize, maxWidth), size: minSize };
 }
 
+// Word-wraps `str` into up to `maxLines` lines, each ≤ maxWidth at the given
+// font/size. If the content still doesn't fit, the last line is truncated
+// with "..." so we never silently drop words.
+function wrapToLines(str, font, size, maxWidth, maxLines) {
+  const words = String(str).split(/\s+/).filter(Boolean);
+  const lines = [];
+  let cur = "";
+  let i = 0;
+  while (i < words.length && lines.length < maxLines) {
+    const word = words[i];
+    const trial = cur ? `${cur} ${word}` : word;
+    if (font.widthOfTextAtSize(trial, size) <= maxWidth) {
+      cur = trial;
+      i += 1;
+    } else {
+      if (cur) {
+        lines.push(cur);
+        cur = "";
+      } else {
+        // Single word wider than maxWidth — force it in, truncated.
+        lines.push(truncateWithEllipsis(word, font, size, maxWidth));
+        i += 1;
+      }
+    }
+  }
+  if (cur && lines.length < maxLines) lines.push(cur);
+  // Overflow — stuff whatever's left onto the final line and ellipsis it.
+  if (i < words.length) {
+    const remainder = `${lines[lines.length - 1]} ${words.slice(i).join(" ")}`;
+    lines[lines.length - 1] = truncateWithEllipsis(remainder, font, size, maxWidth);
+  }
+  return lines;
+}
+
+// Shrinks font size down to minSize to fit `str` across up to `maxLines`
+// lines inside maxWidth. Returns { lines, size }. Falls back to maxLines
+// lines at minSize (with ellipsis on the last line) if nothing fits cleanly.
+function fitMultiline(str, font, maxSize, minSize, maxWidth, maxLines) {
+  const clean = sanitiseForPdf(str);
+  if (!clean) return { lines: [], size: maxSize };
+  for (let size = maxSize; size >= minSize; size -= 0.5) {
+    const lines = wrapToLines(clean, font, size, maxWidth, maxLines);
+    const joined = lines.join(" ");
+    // joined contains everything if nothing was dropped / ellipsised.
+    if (!lines[lines.length - 1]?.endsWith("...") && joined.length >= clean.length) {
+      return { lines, size };
+    }
+  }
+  return { lines: wrapToLines(clean, font, minSize, maxWidth, maxLines), size: minSize };
+}
+
 async function buildGiftCardPdf({
   code,
   serviceShort,
@@ -239,15 +290,41 @@ async function buildGiftCardPdf({
     size: 10,
   });
 
-  // MESSAGE — italic. Shrinks to fit a long message onto the single-line
-  // panel rather than truncating.
+  // MESSAGE — italic. The MESSAGE panel on the Canva template is taller than
+  // the other rows, so we allow up to TWO lines. Try fitting on one line down
+  // to 8pt first; if that still spills, wrap to two lines (second line sits
+  // just below the first, inside the panel body).
   const messageText = (personalMessage || "").trim();
   if (messageText) {
-    drawPanelValue("message", `"${messageText}"`, {
-      font: helvOblique,
-      size: 10,
-      minSize: 6,
-    });
+    const anchor = LAYOUT.message;
+    const font = helvOblique;
+    const maxWidth = LAYOUT.pageWidth - anchor.x - 24;
+    const quoted = `"${messageText}"`;
+
+    // Try one line first (down to 8pt for readability).
+    const oneLine = fitValue(quoted, font, 10, 8, maxWidth);
+    if (!oneLine.text.endsWith("...")) {
+      page.drawText(oneLine.text, {
+        x: anchor.x,
+        y: anchor.y,
+        font,
+        size: oneLine.size,
+        color: ink,
+      });
+    } else {
+      // Spills — wrap to two lines.
+      const { lines, size } = fitMultiline(quoted, font, 9.5, 6.5, maxWidth, 2);
+      const lineHeight = size + 2;
+      lines.forEach((line, i) => {
+        page.drawText(line, {
+          x: anchor.x,
+          y: anchor.y - i * lineHeight,
+          font,
+          size,
+          color: ink,
+        });
+      });
+    }
   }
 
   const outBytes = await pdf.save();
