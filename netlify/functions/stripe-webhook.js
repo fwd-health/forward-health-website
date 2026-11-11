@@ -26,7 +26,7 @@
 import Stripe from "stripe";
 import crypto from "node:crypto";
 import fs from "node:fs";
-import { fileURLToPath } from "node:url";
+import path from "node:path";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { getStore } from "./_blobs.js";
 import {
@@ -52,10 +52,13 @@ const hex2rgb = (h) => {
 };
 
 // Template is bundled next to this function via netlify.toml `included_files`.
-// Resolve the path directly off import.meta.url so we don't collide with the
-// `__dirname` global the Netlify Functions runtime injects for CJS compat —
-// that collision made the function fail to load at all (502 on every event).
-const TEMPLATE_PDF_PATH = fileURLToPath(new URL("./assets/voucher-template.pdf", import.meta.url));
+// Netlify's function bundler auto-injects `__dirname` (CJS-compat shim) even
+// inside an ESM module, so we read it off that global. We must NOT declare it
+// ourselves — doing so collides with the injected one and the function fails
+// to load at all. `import.meta.url` is also unreliable in this runtime.
+// eslint-disable-next-line no-undef
+const FUNCTION_DIR = typeof __dirname !== "undefined" ? __dirname : process.cwd();
+const TEMPLATE_PDF_PATH = path.join(FUNCTION_DIR, "assets", "voucher-template.pdf");
 
 const escapeHtml = (s) =>
   String(s ?? "")
