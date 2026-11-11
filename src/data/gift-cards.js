@@ -55,6 +55,7 @@ export const GIFT_CARD_SERVICES = [
       "Currimundi or Sandstone Point",
       "*New clients must pre-screen first — see note below",
     ],
+    requiresPreScreen: true,
   },
   {
     id: "pilates-6-only",
@@ -69,6 +70,7 @@ export const GIFT_CARD_SERVICES = [
       "Currimundi or Sandstone Point",
       "*New clients must pre-screen first — see note below",
     ],
+    requiresPreScreen: true,
   },
   {
     id: "massage-60",

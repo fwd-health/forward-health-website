@@ -220,6 +220,7 @@ async function buildGiftCardPdf({
   personalMessage,
   issuedISO,
   expiryISO,
+  requiresPreScreen,
 }) {
   // Load the Canva template and work on top of it.
   const templateBytes = fs.readFileSync(TEMPLATE_PDF_PATH);
@@ -327,6 +328,26 @@ async function buildGiftCardPdf({
     }
   }
 
+  // Pre-screen notice — only shown for services that don't include a
+  // Pilates pre-screen (i.e. the standalone 3- and 6-class packs). Sits in
+  // the strip between the REDEMPTION CODE panel and the footer so Tracey
+  // / the recipient can't miss it at redemption time.
+  if (requiresPreScreen) {
+    const noticeText =
+      "Note: new clients must book a 1-on-1 Pilates pre-screen with a physio before attending classes.";
+    // Center-align across the page body; red-brown to stand out from sage.
+    const noticeFont = helvBold;
+    const noticeSize = 7;
+    const noticeWidth = noticeFont.widthOfTextAtSize(noticeText, noticeSize);
+    page.drawText(sanitiseForPdf(noticeText), {
+      x: (LAYOUT.pageWidth - noticeWidth) / 2,
+      y: 44,
+      font: noticeFont,
+      size: noticeSize,
+      color: hex2rgb("#a0472b"),
+    });
+  }
+
   const outBytes = await pdf.save();
   return Buffer.from(outBytes);
 }
@@ -343,6 +364,7 @@ function emailSubjectAndBody({
   personalMessage,
   issuedISO,
   expiryISO,
+  requiresPreScreen,
 }) {
   const toFriend = deliveryMethod === "email-friend";
 
@@ -391,6 +413,17 @@ function emailSubjectAndBody({
 
         ${messageBlock}
 
+        ${requiresPreScreen ? `
+        <tr><td style="padding:16px 32px 0;">
+          <div style="background:#f3e4dc;border:1px solid #d7a995;border-left:4px solid #a0472b;border-radius:10px;padding:14px 16px;">
+            <p style="margin:0;color:#a0472b;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;">Before your first class</p>
+            <p style="margin:6px 0 0;color:${COLOR.charcoal};font-size:14px;line-height:1.55;">
+              New to Forward Health Clinical Pilates? You <strong>must</strong> book a 1-on-1 Pilates pre-screen appointment with a physio before attending group classes. This is a separate booking and is not included in this gift card.
+            </p>
+          </div>
+        </td></tr>
+        ` : ""}
+
         <tr><td style="padding:20px 32px 0;">
           <p style="margin:0;color:${COLOR.tan700};font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;">How to use it</p>
           <ol style="margin:8px 0 0 18px;padding:0;color:${COLOR.stone};font-size:14px;line-height:1.6;">
@@ -424,6 +457,9 @@ function emailSubjectAndBody({
     `Redemption code: ${code}`,
     `Valid until: ${formatDatePretty(expiryISO)}`,
     personalMessage && personalMessage.trim() ? `\nFrom ${buyerName}: "${personalMessage.trim()}"` : "",
+    requiresPreScreen
+      ? `\n*** BEFORE YOUR FIRST CLASS ***\nNew to Forward Health Clinical Pilates? You MUST book a 1-on-1 Pilates pre-screen appointment with a physio before attending group classes. The pre-screen is a separate booking and is not included in this gift card.\n`
+      : "",
     ``,
     `How to use it:`,
     `  1. Book online at https://www.fwdhealth.com.au or call 0420 522 558`,
@@ -568,6 +604,7 @@ export const handler = async (event) => {
       personalMessage: record.personalMessage,
       issuedISO,
       expiryISO,
+      requiresPreScreen: !!service.requiresPreScreen,
     });
   } catch (err) {
     console.error("PDF generation failed:", err);
@@ -586,6 +623,7 @@ export const handler = async (event) => {
     personalMessage: record.personalMessage,
     issuedISO,
     expiryISO,
+    requiresPreScreen: !!service.requiresPreScreen,
   });
 
   const toAddress =
