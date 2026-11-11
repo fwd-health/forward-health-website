@@ -26,7 +26,6 @@
 import Stripe from "stripe";
 import crypto from "node:crypto";
 import fs from "node:fs";
-import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { getStore } from "./_blobs.js";
@@ -53,8 +52,10 @@ const hex2rgb = (h) => {
 };
 
 // Template is bundled next to this function via netlify.toml `included_files`.
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const TEMPLATE_PDF_PATH = path.join(__dirname, "assets", "voucher-template.pdf");
+// Resolve the path directly off import.meta.url so we don't collide with the
+// `__dirname` global the Netlify Functions runtime injects for CJS compat —
+// that collision made the function fail to load at all (502 on every event).
+const TEMPLATE_PDF_PATH = fileURLToPath(new URL("./assets/voucher-template.pdf", import.meta.url));
 
 const escapeHtml = (s) =>
   String(s ?? "")
