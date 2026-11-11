@@ -104,6 +104,30 @@ const LAYOUT = {
   code:         { x: 170, y: 60.2 },     // right of "R E D E M P T I O N  C O D E"
 };
 
+// pdf-lib's StandardFonts use WinAnsi encoding, which can't encode newlines,
+// tabs, curly quotes, em-dashes, ellipses, or most non-Western characters.
+// Users type all of those into name / message fields, so sanitise before draw,
+// otherwise pdf-lib throws "WinAnsi cannot encode ... (0x000a)" etc.
+function sanitiseForPdf(s) {
+  if (!s) return "";
+  return String(s)
+    // Smart quotes -> straight
+    .replace(/[‘’‚‛′]/g, "'")
+    .replace(/[“”„‟″]/g, '"')
+    // Em / en dashes -> hyphen
+    .replace(/[–—―]/g, "-")
+    // Ellipsis -> three dots
+    .replace(/…/g, "...")
+    // Non-breaking space -> regular space
+    .replace(/ /g, " ")
+    // Collapse all whitespace (newlines, tabs, CR, etc.) to single spaces
+    .replace(/\s+/g, " ")
+    // Drop anything still outside WinAnsi-safe range so pdf-lib doesn't throw
+    // (printable ASCII + Latin-1 supplement covers most Western accented chars)
+    .replace(/[^\x20-\x7E¡-ÿ]/g, "")
+    .trim();
+}
+
 // Truncates with an ellipsis as a LAST RESORT, when a string doesn't even
 // fit at the minimum font size. Fit-by-shrinking (fitValue below) handles
 // the common case first.
@@ -111,7 +135,7 @@ function truncateWithEllipsis(str, font, size, maxWidth) {
   if (!str) return "";
   str = String(str);
   if (font.widthOfTextAtSize(str, size) <= maxWidth) return str;
-  const ellipsis = "…";
+  const ellipsis = "...";
   let lo = 0, hi = str.length;
   while (lo < hi) {
     const mid = Math.ceil((lo + hi) / 2);
@@ -123,17 +147,17 @@ function truncateWithEllipsis(str, font, size, maxWidth) {
 }
 
 // Shrinks the font size progressively so the string fits inside maxWidth,
-// stopping at minSize. If it still won't fit at minSize, truncates with "…".
+// stopping at minSize. If it still won't fit at minSize, truncates with "...".
 // Returns { text, size } for the caller to draw at.
 function fitValue(str, font, maxSize, minSize, maxWidth) {
-  if (!str) return { text: "", size: maxSize };
-  str = String(str);
+  const clean = sanitiseForPdf(str);
+  if (!clean) return { text: "", size: maxSize };
   for (let size = maxSize; size >= minSize; size -= 0.5) {
-    if (font.widthOfTextAtSize(str, size) <= maxWidth) {
-      return { text: str, size };
+    if (font.widthOfTextAtSize(clean, size) <= maxWidth) {
+      return { text: clean, size };
     }
   }
-  return { text: truncateWithEllipsis(str, font, minSize, maxWidth), size: minSize };
+  return { text: truncateWithEllipsis(clean, font, minSize, maxWidth), size: minSize };
 }
 
 async function buildGiftCardPdf({
@@ -162,7 +186,7 @@ async function buildGiftCardPdf({
   const ink = hex2rgb(COLOR.charcoal);
 
   // ----- Issue date (right of the "Issue date:" label at top-left) -----
-  page.drawText(formatDatePretty(issuedISO), {
+  page.drawText(sanitiseForPdf(formatDatePretty(issuedISO)), {
     x: LAYOUT.issueDateValue.x,
     y: LAYOUT.issueDateValue.y,
     font: helv,
