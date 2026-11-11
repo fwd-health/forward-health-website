@@ -15,6 +15,48 @@ export const GIFT_CARD_EXPIRY_YEARS = 3;
 
 export const GIFT_CARD_SERVICES = [
   {
+    id: "massage-60",
+    name: "60-minute remedial massage",
+    short: "60-min remedial massage",
+    description:
+      "A full-hour, hands-on remedial massage with one of our qualified RMTs.",
+    priceAud: 137,
+    priceCents: 13700,
+    includes: [
+      "60 minutes, treatment-room appointment",
+      "Deep tissue, sports, or pregnancy massage",
+      "Currimundi or Sandstone Point",
+    ],
+  },
+  {
+    id: "massage-45",
+    name: "45-minute remedial massage",
+    short: "45-min remedial massage",
+    description:
+      "A longer targeted remedial massage session with one of our qualified RMTs.",
+    priceAud: 102,
+    priceCents: 10200,
+    includes: [
+      "45 minutes, treatment-room appointment",
+      "Focused on one or two problem areas",
+      "Currimundi or Sandstone Point",
+    ],
+  },
+  {
+    id: "massage-30",
+    name: "30-minute remedial massage",
+    short: "30-min remedial massage",
+    description:
+      "A focused 30-minute remedial massage — perfect for a quick reset.",
+    priceAud: 87,
+    priceCents: 8700,
+    includes: [
+      "30 minutes, treatment-room appointment",
+      "Targeted single-area work",
+      "Currimundi or Sandstone Point",
+    ],
+  },
+  {
     id: "pilates-3",
     name: "Clinical Pilates starter — pre-screen + 3-class pack",
     short: "Pilates starter — 3 classes",
@@ -71,48 +113,6 @@ export const GIFT_CARD_SERVICES = [
       "*New clients must pre-screen first — see note below",
     ],
     requiresPreScreen: true,
-  },
-  {
-    id: "massage-60",
-    name: "60-minute remedial massage",
-    short: "60-min remedial massage",
-    description:
-      "A full-hour, hands-on remedial massage with one of our qualified RMTs.",
-    priceAud: 137,
-    priceCents: 13700,
-    includes: [
-      "60 minutes, treatment-room appointment",
-      "Deep tissue, sports, or pregnancy massage",
-      "Currimundi or Sandstone Point",
-    ],
-  },
-  {
-    id: "massage-45",
-    name: "45-minute remedial massage",
-    short: "45-min remedial massage",
-    description:
-      "A longer targeted remedial massage session with one of our qualified RMTs.",
-    priceAud: 102,
-    priceCents: 10200,
-    includes: [
-      "45 minutes, treatment-room appointment",
-      "Focused on one or two problem areas",
-      "Currimundi or Sandstone Point",
-    ],
-  },
-  {
-    id: "massage-30",
-    name: "30-minute remedial massage",
-    short: "30-min remedial massage",
-    description:
-      "A focused 30-minute remedial massage — perfect for a quick reset.",
-    priceAud: 87,
-    priceCents: 8700,
-    includes: [
-      "30 minutes, treatment-room appointment",
-      "Targeted single-area work",
-      "Currimundi or Sandstone Point",
-    ],
   },
 ];
 
