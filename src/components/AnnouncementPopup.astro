@@ -1,10 +1,15 @@
 ---
 // Bump the version to re-show the popup to visitors who dismissed the previous one
-const POPUP_VERSION = "2026-12-gift-cards-v1";
+const POPUP_VERSION = "2026-12-gift-cards-v2";
 
 // Window: popup only shows between these two instants. Both inclusive.
 const STARTS_AT = "2026-11-11T00:00:00+10:00";
 const EXPIRES_AT = "2026-12-26T23:59:59+10:00";
+
+// How long a dismissal silences the popup for (ms). 7 days means someone who
+// closes it today will see it again a week later — so during a month-long
+// Christmas campaign they get nudged a few times without being hammered.
+const RESHOW_AFTER_MS = 7 * 24 * 60 * 60 * 1000;
 
 const giftCardsUrl = "/gift-cards";
 ---
@@ -112,7 +117,7 @@ const giftCardsUrl = "/gift-cards";
   </div>
 </dialog>
 
-<script is:inline define:vars={{ POPUP_VERSION, STARTS_AT, EXPIRES_AT }}>
+<script is:inline define:vars={{ POPUP_VERSION, STARTS_AT, EXPIRES_AT, RESHOW_AFTER_MS }}>
   (function () {
     const KEY = "fh-announce-dismissed";
     const dialog = document.getElementById("fh-announce");
@@ -130,18 +135,46 @@ const giftCardsUrl = "/gift-cards";
       if (now > new Date(EXPIRES_AT)) return;
     }
 
+    // Dismissal state is stored as JSON: {version, at} where `at` is the ISO
+    // timestamp of the last dismissal. We re-show when:
+    //   - no record (never seen), OR
+    //   - version differs from current POPUP_VERSION (new campaign), OR
+    //   - last dismissal is older than RESHOW_AFTER_MS (gentle re-nudge).
+    // For backwards compatibility we also accept the old raw-string format
+    // (previous versions stored just the version string).
     const seen = (() => {
-      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+      try {
+        const raw = localStorage.getItem(KEY);
+        if (!raw) return null;
+        if (raw.startsWith("{")) return JSON.parse(raw);
+        return { version: raw, at: 0 }; // legacy — treat as very old
+      } catch (e) {
+        return null;
+      }
     })();
 
-    if (preview || seen !== POPUP_VERSION) {
+    const shouldShow = preview
+      || !seen
+      || seen.version !== POPUP_VERSION
+      || (Date.now() - new Date(seen.at || 0).getTime()) > RESHOW_AFTER_MS;
+
+    if (shouldShow) {
       setTimeout(() => {
         if (typeof dialog.showModal === "function") dialog.showModal();
       }, preview ? 100 : 800);
     }
 
+    const recordDismissal = () => {
+      try {
+        localStorage.setItem(
+          KEY,
+          JSON.stringify({ version: POPUP_VERSION, at: new Date().toISOString() }),
+        );
+      } catch (e) {}
+    };
+
     const close = () => {
-      try { localStorage.setItem(KEY, POPUP_VERSION); } catch (e) {}
+      recordDismissal();
       dialog.close();
     };
 
@@ -151,9 +184,7 @@ const giftCardsUrl = "/gift-cards";
       if (t.closest && t.closest("[data-fh-announce-close]")) close();
     });
 
-    dialog.addEventListener("close", () => {
-      try { localStorage.setItem(KEY, POPUP_VERSION); } catch (e) {}
-    });
+    dialog.addEventListener("close", recordDismissal);
   })();
 </script>
 
