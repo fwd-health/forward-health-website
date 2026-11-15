@@ -1,22 +1,13 @@
 ---
-// Bump the version to re-show the popup to visitors who dismissed the previous one
-const POPUP_VERSION = "2026-12-gift-cards-v2";
-
 // Window: popup only shows between these two instants. Both inclusive.
 const STARTS_AT = "2026-11-11T00:00:00+10:00";
 const EXPIRES_AT = "2026-12-26T23:59:59+10:00";
-
-// How long a dismissal silences the popup for (ms). 7 days means someone who
-// closes it today will see it again a week later — so during a month-long
-// Christmas campaign they get nudged a few times without being hammered.
-const RESHOW_AFTER_MS = 7 * 24 * 60 * 60 * 1000;
 
 const giftCardsUrl = "/gift-cards";
 ---
 
 <dialog
   id="fh-announce"
-  data-version={POPUP_VERSION}
   data-starts={STARTS_AT}
   data-expires={EXPIRES_AT}
   class="fixed inset-0 m-auto p-0 max-w-xl w-[calc(100%-2rem)] max-h-[92vh] bg-cream-50 rounded-3xl border border-sage-100 shadow-2xl backdrop:bg-charcoal/60 backdrop:backdrop-blur-sm overflow-hidden"
@@ -117,15 +108,13 @@ const giftCardsUrl = "/gift-cards";
   </div>
 </dialog>
 
-<script is:inline define:vars={{ POPUP_VERSION, STARTS_AT, EXPIRES_AT, RESHOW_AFTER_MS }}>
+<script is:inline define:vars={{ STARTS_AT, EXPIRES_AT }}>
   (function () {
-    const KEY = "fh-announce-dismissed";
     const dialog = document.getElementById("fh-announce");
     if (!dialog) return;
 
-    // Preview mode: append ?preview=1 to any page URL to force-show the popup,
-    // regardless of the date window or dismissal state. Handy for showing it to
-    // the team before launch, or when swapping copy.
+    // Preview mode: append ?preview=1 to any page URL to force-show the popup
+    // regardless of the date window.
     const preview = new URLSearchParams(location.search).get("preview") === "1";
 
     if (!preview) {
@@ -135,56 +124,18 @@ const giftCardsUrl = "/gift-cards";
       if (now > new Date(EXPIRES_AT)) return;
     }
 
-    // Dismissal state is stored as JSON: {version, at} where `at` is the ISO
-    // timestamp of the last dismissal. We re-show when:
-    //   - no record (never seen), OR
-    //   - version differs from current POPUP_VERSION (new campaign), OR
-    //   - last dismissal is older than RESHOW_AFTER_MS (gentle re-nudge).
-    // For backwards compatibility we also accept the old raw-string format
-    // (previous versions stored just the version string).
-    const seen = (() => {
-      try {
-        const raw = localStorage.getItem(KEY);
-        if (!raw) return null;
-        if (raw.startsWith("{")) return JSON.parse(raw);
-        return { version: raw, at: 0 }; // legacy — treat as very old
-      } catch (e) {
-        return null;
-      }
-    })();
-
-    const shouldShow = preview
-      || !seen
-      || seen.version !== POPUP_VERSION
-      || (Date.now() - new Date(seen.at || 0).getTime()) > RESHOW_AFTER_MS;
-
-    if (shouldShow) {
-      setTimeout(() => {
-        if (typeof dialog.showModal === "function") dialog.showModal();
-      }, preview ? 100 : 800);
-    }
-
-    const recordDismissal = () => {
-      try {
-        localStorage.setItem(
-          KEY,
-          JSON.stringify({ version: POPUP_VERSION, at: new Date().toISOString() }),
-        );
-      } catch (e) {}
-    };
-
-    const close = () => {
-      recordDismissal();
-      dialog.close();
-    };
+    // No dismissal persistence — the popup appears on every page load inside
+    // the campaign window, per Joe's request. Clicking any close control just
+    // closes the dialog for that page load; the next navigation re-shows it.
+    setTimeout(() => {
+      if (typeof dialog.showModal === "function") dialog.showModal();
+    }, preview ? 100 : 800);
 
     dialog.addEventListener("click", (e) => {
       const t = e.target;
-      if (t === dialog) { close(); return; }
-      if (t.closest && t.closest("[data-fh-announce-close]")) close();
+      if (t === dialog) { dialog.close(); return; }
+      if (t.closest && t.closest("[data-fh-announce-close]")) dialog.close();
     });
-
-    dialog.addEventListener("close", recordDismissal);
   })();
 </script>
 
