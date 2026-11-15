@@ -3,6 +3,11 @@
 const STARTS_AT = "2026-11-11T00:00:00+10:00";
 const EXPIRES_AT = "2026-12-26T23:59:59+10:00";
 
+// How long a dismissal silences the popup for (ms). 3 days ≈ ~10 impressions
+// over the full Christmas campaign window — frequent enough to keep
+// reminding, not frequent enough to nag on back-to-back page clicks.
+const RESHOW_AFTER_MS = 3 * 24 * 60 * 60 * 1000;
+
 const giftCardsUrl = "/gift-cards";
 ---
 
@@ -108,13 +113,14 @@ const giftCardsUrl = "/gift-cards";
   </div>
 </dialog>
 
-<script is:inline define:vars={{ STARTS_AT, EXPIRES_AT }}>
+<script is:inline define:vars={{ STARTS_AT, EXPIRES_AT, RESHOW_AFTER_MS }}>
   (function () {
+    const KEY = "fh-announce-dismissed-at";
     const dialog = document.getElementById("fh-announce");
     if (!dialog) return;
 
     // Preview mode: append ?preview=1 to any page URL to force-show the popup
-    // regardless of the date window.
+    // regardless of the date window or cooldown.
     const preview = new URLSearchParams(location.search).get("preview") === "1";
 
     if (!preview) {
@@ -122,20 +128,41 @@ const giftCardsUrl = "/gift-cards";
       // Window — don't show before the start date, or after the expiry.
       if (now < new Date(STARTS_AT)) return;
       if (now > new Date(EXPIRES_AT)) return;
+
+      // Cooldown — don't show if the visitor dismissed within RESHOW_AFTER_MS.
+      try {
+        const dismissedAtRaw = localStorage.getItem(KEY);
+        if (dismissedAtRaw) {
+          const dismissedAt = Number(dismissedAtRaw);
+          if (Number.isFinite(dismissedAt) && (Date.now() - dismissedAt) < RESHOW_AFTER_MS) {
+            return;
+          }
+        }
+      } catch (e) {
+        // localStorage blocked — fall through and show the popup.
+      }
     }
 
-    // No dismissal persistence — the popup appears on every page load inside
-    // the campaign window, per Joe's request. Clicking any close control just
-    // closes the dialog for that page load; the next navigation re-shows it.
     setTimeout(() => {
       if (typeof dialog.showModal === "function") dialog.showModal();
     }, preview ? 100 : 800);
 
+    const recordDismissal = () => {
+      try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+    };
+
+    const close = () => {
+      recordDismissal();
+      dialog.close();
+    };
+
     dialog.addEventListener("click", (e) => {
       const t = e.target;
-      if (t === dialog) { dialog.close(); return; }
-      if (t.closest && t.closest("[data-fh-announce-close]")) dialog.close();
+      if (t === dialog) { close(); return; }
+      if (t.closest && t.closest("[data-fh-announce-close]")) close();
     });
+
+    dialog.addEventListener("close", recordDismissal);
   })();
 </script>
 
