@@ -232,7 +232,7 @@ export const massageTherapists: Practitioner[] = [
   {
     name: "Bee Nysschen",
     role: "Remedial Massage Therapist",
-    locations: "Currimundi",
+    locations: "Currimundi · Tuesdays & Wednesdays",
     blurb:
       "Remedial massage therapist with a background in community nursing and a particular interest in SI joint, lower back and shoulder pain. Trained in The Whelton Method (myofascial referral).",
     fullBio:
