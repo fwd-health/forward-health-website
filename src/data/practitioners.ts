@@ -40,6 +40,10 @@ import beeImg from "../assets/team/bee.jpg";
 import beeHandpan from "../assets/team/personal/bee/handpan.jpg";
 import beeTreatmentRoom from "../assets/team/personal/bee/treatment-room.jpg";
 
+import hamishImg from "../assets/team/hamish.jpg";
+import hamishFishing from "../assets/team/personal/hamish/fishing.jpg";
+import hamishDolomites from "../assets/team/personal/hamish/dolomites.jpg";
+
 import erinImg from "../assets/team/erin.jpg";
 
 import thereseImg from "../assets/team/therese.jpg";
@@ -185,6 +189,34 @@ export const physiotherapists: Practitioner[] = [
     personalPhotos: [jarrodPersonal1, jarrodPersonal2, jarrodPersonal3],
   },
   {
+    name: "Hamish Inch",
+    role: "Advanced Scope Physiotherapist\nAccredited Hand Therapist",
+    locations: "Currimundi · Tuesdays & Thursdays",
+    blurb:
+      "Advanced scope physiotherapist and accredited hand therapist. Over 10 years treating fractures, post-surgical rehab, splinting, casting, wound and scar management. Also consults under his own upper limb practice, S.U.L.T, at Currimundi on Mondays, Wednesdays and Fridays.",
+    fullBio:
+      "Hamish is an advanced scope physiotherapist and accredited hand therapist with over 10 years of clinical experience. He has completed extensive further study and training in fracture management, post-surgical rehabilitation, splinting and casting, wound care and scar management, and has integrated these into his everyday practice.\n\nHis special clinical interests are upper limb and shoulder conditions, as well as knee, foot and ankle injuries. He sees clients at Forward Health Currimundi on Tuesdays and Thursdays for general physiotherapy appointments.\n\nOn Mondays, Wednesdays and Fridays, Hamish consults from the Currimundi clinic under his own specialist upper limb practice, S.U.L.T (Specialised Upper Limb Therapy), for clients wanting dedicated hand therapy or upper limb rehab. Bookings for those days go through sult.com.au.\n\nIn his spare time, Hamish enjoys fishing, hiking and working on his car.",
+    qualifications: [
+      "Master of Physiotherapy (Griffith University, 2016)",
+      "Accredited Hand Therapist",
+      "Advanced training in fracture management & post-surgical rehab",
+      "Splinting & casting",
+      "Wound care & scar management",
+      "Dry needling certified",
+    ],
+    specialties: [
+      "Hand therapy & upper limb",
+      "Shoulder injuries",
+      "Fracture & post-surgical management",
+      "Knee, foot & ankle injuries",
+      "Custom splinting, casting & orthoses",
+      "Wound & scar management",
+    ],
+    href: "/team/hamish-inch",
+    photo: hamishImg,
+    personalPhotos: [hamishFishing, hamishDolomites],
+  },
+  {
     name: "Holly Dalton",
     role: "Physiotherapist",
     locations: "Sandstone Point",
@@ -253,7 +285,7 @@ export const massageTherapists: Practitioner[] = [
     ],
     href: "/team/bee-nysschen",
     photo: beeImg,
-    personalPhotos: [beeHandpan, beeTreatmentRoom],
+    personalPhotos: [beeHandpan, beeTreatmentRoom, beeImg],
   },
   {
     name: "Suzie Irwin",
