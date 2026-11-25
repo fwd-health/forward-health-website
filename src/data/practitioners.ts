@@ -231,7 +231,7 @@ export const physiotherapists: Practitioner[] = [
       {
         label: "Book with Hamish at S.U.L.T",
         href: "https://sult.com.au/",
-        caption: "Mon, Wed & Fri — specialised hand therapy & upper limb",
+        caption: "Mon, Wed & Fri — specialised hand therapy",
       },
     ],
   },
