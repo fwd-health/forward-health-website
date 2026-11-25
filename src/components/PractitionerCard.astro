@@ -30,7 +30,7 @@ const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
   <button
     type="button"
     data-lightbox-trigger={lightboxId}
-    class="group block w-full text-left p-6 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 hover:shadow-sm transition-all"
+    class="group h-full flex flex-col w-full text-left p-6 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 hover:shadow-sm transition-all"
   >
     <div class="flex items-start gap-4">
       {photo ? (
@@ -39,7 +39,7 @@ const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
           alt={`${name} ${role}`}
           width={144}
           height={144}
-          class="w-28 h-28 shrink-0 rounded-full object-cover border border-sage-200"
+          class="w-28 h-28 shrink-0 rounded-full object-cover object-top border border-sage-200"
         />
       ) : (
         <div class="w-28 h-28 shrink-0 rounded-full bg-sage-100 border border-sage-200 flex items-center justify-center text-xs text-sage-600/70">
@@ -66,7 +66,7 @@ const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
         <p class="text-xs text-stone mt-1">{locations}</p>
       </div>
     </div>
-    <p class="mt-4 text-sm text-stone leading-relaxed">{blurb}</p>
+    <p class="mt-4 text-sm text-stone leading-relaxed flex-1">{blurb}</p>
     <span class="mt-4 inline-block text-sm font-semibold text-sage-600 group-hover:translate-x-0.5 transition-transform">
       Read more →
     </span>
@@ -74,7 +74,7 @@ const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
 ) : href ? (
   <a
     href={href}
-    class="group block p-6 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 hover:shadow-sm transition-all"
+    class="group h-full flex flex-col p-6 rounded-2xl border border-sage-100 bg-white hover:border-sage-300 hover:shadow-sm transition-all"
   >
     <div class="flex items-start gap-4">
       {photo ? (
@@ -83,7 +83,7 @@ const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
           alt={`${name} ${role}`}
           width={144}
           height={144}
-          class="w-28 h-28 shrink-0 rounded-full object-cover border border-sage-200"
+          class="w-28 h-28 shrink-0 rounded-full object-cover object-top border border-sage-200"
         />
       ) : (
         <div class="w-28 h-28 shrink-0 rounded-full bg-sage-100 border border-sage-200 flex items-center justify-center text-xs text-sage-600/70">
@@ -110,10 +110,10 @@ const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
         <p class="text-xs text-stone mt-1">{locations}</p>
       </div>
     </div>
-    <p class="mt-4 text-sm text-stone leading-relaxed">{blurb}</p>
+    <p class="mt-4 text-sm text-stone leading-relaxed flex-1">{blurb}</p>
   </a>
 ) : (
-  <div class="block p-6 rounded-2xl border border-sage-100 bg-white">
+  <div class="h-full flex flex-col p-6 rounded-2xl border border-sage-100 bg-white">
     <div class="flex items-start gap-4">
       {photo ? (
         <Image
@@ -121,7 +121,7 @@ const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
           alt={`${name} ${role}`}
           width={144}
           height={144}
-          class="w-28 h-28 shrink-0 rounded-full object-cover border border-sage-200"
+          class="w-28 h-28 shrink-0 rounded-full object-cover object-top border border-sage-200"
         />
       ) : (
         <div class="w-28 h-28 shrink-0 rounded-full bg-sage-100 border border-sage-200 flex items-center justify-center text-xs text-sage-600/70">
@@ -148,6 +148,6 @@ const tagName = isLightboxTrigger ? "button" : href ? "a" : "div";
         <p class="text-xs text-stone mt-1">{locations}</p>
       </div>
     </div>
-    <p class="mt-4 text-sm text-stone leading-relaxed">{blurb}</p>
+    <p class="mt-4 text-sm text-stone leading-relaxed flex-1">{blurb}</p>
   </div>
 )}

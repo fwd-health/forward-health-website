@@ -55,6 +55,12 @@ import zoeyOutdoor from "../assets/team/personal/zoey/outdoor.jpg";
 
 import type { ImageMetadata } from "astro";
 
+export interface BookingButton {
+  label: string;
+  href: string;
+  caption?: string;
+}
+
 export interface Practitioner {
   name: string;
   role: string;
@@ -66,6 +72,7 @@ export interface Practitioner {
   href: string;
   photo: ImageMetadata;
   personalPhotos?: ImageMetadata[];
+  bookingButtons?: BookingButton[];
 }
 
 export const physiotherapists: Practitioner[] = [
@@ -190,12 +197,12 @@ export const physiotherapists: Practitioner[] = [
   },
   {
     name: "Hamish Inch",
-    role: "Advanced Scope Physiotherapist\nAccredited Hand Therapist",
-    locations: "Currimundi · Tuesdays & Thursdays",
+    role: "Physiotherapist\nAccredited Hand Therapist",
+    locations: "Currimundi",
     blurb:
-      "Advanced scope physiotherapist and accredited hand therapist. Over 10 years treating fractures, post-surgical rehab, splinting, casting, wound and scar management. Also consults under his own upper limb practice, S.U.L.T, at Currimundi on Mondays, Wednesdays and Fridays.",
+      "Physiotherapist and accredited hand therapist with over 10 years of experience in fracture management, post-surgical rehab, splinting, casting, wound and scar management. Book with Hamish at Forward Health for regular physio, or at S.U.L.T for specialised hand therapy.",
     fullBio:
-      "Hamish is an advanced scope physiotherapist and accredited hand therapist with over 10 years of clinical experience. He has completed extensive further study and training in fracture management, post-surgical rehabilitation, splinting and casting, wound care and scar management, and has integrated these into his everyday practice.\n\nHis special clinical interests are upper limb and shoulder conditions, as well as knee, foot and ankle injuries. He sees clients at Forward Health Currimundi on Tuesdays and Thursdays for general physiotherapy appointments.\n\nOn Mondays, Wednesdays and Fridays, Hamish consults from the Currimundi clinic under his own specialist upper limb practice, S.U.L.T (Specialised Upper Limb Therapy), for clients wanting dedicated hand therapy or upper limb rehab. Bookings for those days go through sult.com.au.\n\nIn his spare time, Hamish enjoys fishing, hiking and working on his car.",
+      "Hamish is a physiotherapist and accredited hand therapist with over 10 years of clinical experience. He has completed extensive further study and training in fracture management, post-surgical rehabilitation, splinting and casting, wound care and scar management, and has integrated these into his everyday practice.\n\nHis special clinical interests are upper limb and shoulder conditions, as well as knee, foot and ankle injuries.\n\nHamish offers two ways to book. Tuesdays and Thursdays, he sees clients at Forward Health Currimundi for regular physiotherapy — any musculoskeletal injury you'd see a physio for. Mondays, Wednesdays and Fridays, he consults from the same Currimundi clinic under his own specialist upper limb practice, S.U.L.T (Specialised Upper Limb Therapy), for clients wanting dedicated hand therapy or upper limb rehab. Those bookings go through sult.com.au.\n\nIn his spare time, Hamish enjoys fishing, hiking and working on his car.",
     qualifications: [
       "Master of Physiotherapy (Griffith University, 2016)",
       "Accredited Hand Therapist",
@@ -215,6 +222,18 @@ export const physiotherapists: Practitioner[] = [
     href: "/team/hamish-inch",
     photo: hamishImg,
     personalPhotos: [hamishFishing, hamishDolomites],
+    bookingButtons: [
+      {
+        label: "Book with Hamish at Forward Health",
+        href: "https://forward-health-group.au2.cliniko.com/bookings",
+        caption: "Tue & Thu — regular physiotherapy injuries",
+      },
+      {
+        label: "Book with Hamish at S.U.L.T",
+        href: "https://sult.com.au/",
+        caption: "Mon, Wed & Fri — specialised hand therapy & upper limb",
+      },
+    ],
   },
   {
     name: "Holly Dalton",
