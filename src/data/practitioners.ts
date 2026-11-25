@@ -36,6 +36,10 @@ import catalinaPersonal3 from "../assets/team/personal/catalina/photo-3.jpg";
 import suzieImg from "../assets/team/suzie.jpg";
 import suzieBeach from "../assets/team/personal/suzie/beach.jpg";
 
+import beeImg from "../assets/team/bee.jpg";
+import beeHandpan from "../assets/team/personal/bee/handpan.jpg";
+import beeTreatmentRoom from "../assets/team/personal/bee/treatment-room.jpg";
+
 import erinImg from "../assets/team/erin.jpg";
 
 import thereseImg from "../assets/team/therese.jpg";
@@ -224,6 +228,32 @@ export const massageTherapists: Practitioner[] = [
     href: "/team/cat-paredes-ramirez",
     photo: catalinaImg,
     personalPhotos: [catalinaPersonal1, catalinaPersonal2, catalinaPersonal3],
+  },
+  {
+    name: "Bee Nysschen",
+    role: "Remedial Massage Therapist",
+    locations: "Currimundi",
+    blurb:
+      "Remedial massage therapist with a background in community nursing and a particular interest in SI joint, lower back and shoulder pain. Trained in The Whelton Method (myofascial referral).",
+    fullBio:
+      "Originally from Zimbabwe, Bee brings 18 years of community healthcare experience to Forward Health, having worked in community nursing, aged care and disability care before transitioning into hands-on therapies in 2023. Fascinated by the human body and the interconnected nature of its systems, she completed her Diploma of Kinesiology in 2025 and her Diploma of Remedial Massage in 2026.\n\nBee is a certified practitioner of The Whelton Method (Myofascial Referral), having completed specialised training developed by Dr Ryan Whelton. She has a particular interest in SI joint dysfunction, lower back pain, shoulder pain, restricted mobility, fascial restrictions and headaches.\n\nShe takes an individualised, whole-body approach to treatment, focusing on identifying the underlying contributors to pain, restoring functional movement and improving overall wellbeing.\n\nOutside the clinic, Bee enjoys spending time with her husband and two boys, exploring nature, travelling, strength training, playing the handpan and expressing her creativity through art.",
+    qualifications: [
+      "Diploma of Remedial Massage (2026)",
+      "Diploma of Kinesiology (2025)",
+      "The Whelton Method — Myofascial Referral (Dr Ryan Whelton)",
+      "RockTape certified",
+      "Provide First Aid (HLTAID011)",
+      "18 years' community healthcare experience (nursing, aged care, disability)",
+    ],
+    specialties: [
+      "SI joint dysfunction & lower back pain",
+      "Shoulder pain & restricted mobility",
+      "Myofascial release & fascial restrictions",
+      "Tension headaches",
+    ],
+    href: "/team/bee-nysschen",
+    photo: beeImg,
+    personalPhotos: [beeHandpan, beeTreatmentRoom],
   },
   {
     name: "Suzie Irwin",
