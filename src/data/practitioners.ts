@@ -221,7 +221,7 @@ export const physiotherapists: Practitioner[] = [
     ],
     href: "/team/hamish-inch",
     photo: hamishImg,
-    personalPhotos: [hamishFishing, hamishDolomites],
+    personalPhotos: [hamishFishing, hamishDolomites, hamishImg],
     bookingButtons: [
       {
         label: "Book with Hamish at Forward Health",
